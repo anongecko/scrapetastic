@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:25:38 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817da2aff918f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"7d0ece7e62eab5e5a3c6d9da735b819a"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: nty+fRNIck2bCK87CefY6rz0oQJWtiXqw4JVeGvKe5m1pn1aFUKY+PYF8YSkZYRXoWmboZmmkLY=
+X-Amz-Meta-Mtime: 1721796073.237579359
+X-Amz-Request-Id: H40N5ADGN90SBG6M
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-08708e03940fb9261
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/topics/benchmarking.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/benchmarking.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=5GpFQCOp5lg6t8d9UbmE5qX4W1LJETKTwYR13fQ38LE-1721798738610-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

@@ -1,0 +1,750 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/autothrottle.html",
+  "title": "AutoThrottle extension — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Design goals"
+    },
+    {
+      "type": "text",
+      "content": "How it works"
+    },
+    {
+      "type": "text",
+      "content": "Disabling throttling on a downloader slot"
+    },
+    {
+      "type": "text",
+      "content": "Throttling algorithm"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_START_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_MAX_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_TARGET_CONCURRENCY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "This is an extension for automatically throttling crawling speed based on load\nof both the Scrapy server and the website you are crawling."
+    },
+    {
+      "type": "text",
+      "content": "Design goals"
+    },
+    {
+      "type": "text",
+      "content": "be nicer to sites instead of using default download delay of zero"
+    },
+    {
+      "type": "text",
+      "content": "be nicer to sites instead of using default download delay of zero"
+    },
+    {
+      "type": "text",
+      "content": "automatically adjust Scrapy to the optimum crawling speed, so the user\ndoesn’t have to tune the download delays to find the optimum one.\nThe user only needs to specify the maximum concurrent requests\nit allows, and the extension does the rest."
+    },
+    {
+      "type": "text",
+      "content": "automatically adjust Scrapy to the optimum crawling speed, so the user\ndoesn’t have to tune the download delays to find the optimum one.\nThe user only needs to specify the maximum concurrent requests\nit allows, and the extension does the rest."
+    },
+    {
+      "type": "text",
+      "content": "How it works"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension adjusts download delays dynamically to make spider send\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It uses download latency to compute the delays. The main idea is the\nfollowing: if a server needs "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">latency</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">latency/N</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Instead of adjusting the delays one can just set a small fixed\ndownload delay and impose hard limits on concurrency using\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_DOMAIN</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_IP</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "because the download delay is small there will be occasional bursts\nof requests;"
+    },
+    {
+      "type": "text",
+      "content": "because the download delay is small there will be occasional bursts\nof requests;"
+    },
+    {
+      "type": "text",
+      "content": "often non-200 (error) responses can be returned faster than regular\nresponses, so with a small download delay and a hard concurrency limit\ncrawler will be sending requests to server faster when server starts to\nreturn errors. But this is an opposite of what crawler should do - in case\nof errors it makes more sense to slow down: these errors may be caused by\nthe high request rate."
+    },
+    {
+      "type": "text",
+      "content": "often non-200 (error) responses can be returned faster than regular\nresponses, so with a small download delay and a hard concurrency limit\ncrawler will be sending requests to server faster when server starts to\nreturn errors. But this is an opposite of what crawler should do - in case\nof errors it makes more sense to slow down: these errors may be caused by\nthe high request rate."
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle doesn’t have these issues."
+    },
+    {
+      "type": "text",
+      "content": "Disabling throttling on a downloader slot"
+    },
+    {
+      "type": "text",
+      "content": "It is possible to disable AutoThrottle for a specific download slot at run time\nby setting its "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">throttle</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_SLOTS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note, however, that AutoThrottle still determines the starting delay of every\nslot by setting the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">download_delay</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">delay</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_SLOTS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Throttling algorithm"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle algorithm adjusts download delays based on the following rules:"
+    },
+    {
+      "type": "text",
+      "content": "spiders always start with a download delay of\n"
+    },
+    {
+      "type": "text",
+      "content": "spiders always start with a download delay of\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_START_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "when a response is received, the target download delay is calculated as\n"
+    },
+    {
+      "type": "text",
+      "content": "when a response is received, the target download delay is calculated as\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">latency</span> <span class=\"pre\">/</span> <span class=\"pre\">N</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">latency</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "download delay for next requests is set to the average of previous\ndownload delay and the target download delay;"
+    },
+    {
+      "type": "text",
+      "content": "download delay for next requests is set to the average of previous\ndownload delay and the target download delay;"
+    },
+    {
+      "type": "text",
+      "content": "latencies of non-200 responses are not allowed to decrease the delay;"
+    },
+    {
+      "type": "text",
+      "content": "latencies of non-200 responses are not allowed to decrease the delay;"
+    },
+    {
+      "type": "text",
+      "content": "download delay can’t become less than "
+    },
+    {
+      "type": "text",
+      "content": "download delay can’t become less than "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_DELAY</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_MAX_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "The AutoThrottle extension honours the standard Scrapy settings for\nconcurrency and delay. This means that it will respect\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_DOMAIN</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_IP</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In Scrapy, the download latency is measured as the time elapsed between\nestablishing the TCP connection and receiving the HTTP headers."
+    },
+    {
+      "type": "text",
+      "content": "Note that these latencies are very hard to measure accurately in a cooperative\nmultitasking environment because Scrapy may be busy processing a spider\ncallback, for example, and unable to attend downloads. However, these latencies\nshould still give a reasonable estimate of how busy Scrapy (and ultimately, the\nserver) is, and this extension builds on that premise."
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "The settings used to control the AutoThrottle extension are:"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_ENABLED"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_START_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_START_DELAY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_START_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_MAX_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_MAX_DELAY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_MAX_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_TARGET_CONCURRENCY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_TARGET_CONCURRENCY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_DEBUG"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_DEBUG</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_DOMAIN"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_DOMAIN"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_DOMAIN</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_IP"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_IP"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_IP</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_DELAY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_DELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For more information see "
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Enables the AutoThrottle extension."
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_START_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">5.0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The initial download delay (in seconds)."
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_MAX_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">60.0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The maximum download delay (in seconds) to be set in case of high latencies."
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_TARGET_CONCURRENCY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">1.0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Average number of requests Scrapy should be sending in parallel to remote\nwebsites. It must be higher than "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0.0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "By default, AutoThrottle adjusts the delay to send a single\nconcurrent request to each of the remote websites. Set this option to\na higher value (e.g. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">2.0</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0.5</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note that "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_DOMAIN</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_IP</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_DOMAIN</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS_PER_IP</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "At every given time point Scrapy can be sending more or less concurrent\nrequests than "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">AUTOTHROTTLE_TARGET_CONCURRENCY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Enable AutoThrottle debug mode which will display stats on every response\nreceived, so you can see how the throttling parameters are being adjusted in\nreal time."
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/retry.html",
+  "title": "scrapy.downloadermiddlewares.retry — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.retry"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.retry"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">An extension to retry failed requests that are potentially caused by temporary</span>\n<span class=\"sd\">problems such as a connection timeout or HTTP 500 error.</span>\n\n<span class=\"sd\">You can change the behaviour of this middleware by modifying the scraping settings:</span>\n<span class=\"sd\">RETRY_TIMES - how many times to retry a failed page</span>\n<span class=\"sd\">RETRY_HTTP_CODES - which HTTP response codes to retry</span>\n\n<span class=\"sd\">Failed pages are collected on the scraping process and rescheduled at the end,</span>\n<span class=\"sd\">once the spider has finished crawling all regular (non failed) pages.</span>\n<span class=\"sd\">\"\"\"</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">warnings</span>\n<span class=\"kn\">from</span> <span class=\"nn\">logging</span> <span class=\"kn\">import</span> <span class=\"n\">Logger</span><span class=\"p\">,</span> <span class=\"n\">getLogger</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">Optional</span><span class=\"p\">,</span> <span class=\"n\">Tuple</span><span class=\"p\">,</span> <span class=\"n\">Type</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span><span class=\"p\">,</span> <span class=\"n\">ScrapyDeprecationWarning</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.settings</span> <span class=\"kn\">import</span> <span class=\"n\">BaseSettings</span><span class=\"p\">,</span> <span class=\"n\">Settings</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.misc</span> <span class=\"kn\">import</span> <span class=\"n\">load_object</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.python</span> <span class=\"kn\">import</span> <span class=\"n\">global_object_name</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.response</span> <span class=\"kn\">import</span> <span class=\"n\">response_status_message</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">Response</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.request</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span>\n\n\n<span class=\"n\">retry_logger</span> <span class=\"o\">=</span> <span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"k\">def</span> <span class=\"nf\">backwards_compatibility_getattr</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">...</span><span class=\"p\">]:</span>\n    <span class=\"k\">if</span> <span class=\"n\">name</span> <span class=\"o\">==</span> <span class=\"s2\">\"EXCEPTIONS_TO_RETRY\"</span><span class=\"p\">:</span>\n        <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"Attribute RetryMiddleware.EXCEPTIONS_TO_RETRY is deprecated. \"</span>\n            <span class=\"s2\">\"Use the RETRY_EXCEPTIONS setting instead.\"</span><span class=\"p\">,</span>\n            <span class=\"n\">ScrapyDeprecationWarning</span><span class=\"p\">,</span>\n            <span class=\"n\">stacklevel</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"nb\">tuple</span><span class=\"p\">(</span>\n            <span class=\"n\">load_object</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"k\">else</span> <span class=\"n\">x</span>\n            <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">Settings</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_EXCEPTIONS\"</span><span class=\"p\">)</span>\n        <span class=\"p\">)</span>\n    <span class=\"k\">raise</span> <span class=\"ne\">AttributeError</span><span class=\"p\">(</span>\n        <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"vm\">__class__</span><span class=\"o\">.</span><span class=\"vm\">__name__</span><span class=\"si\">!r}</span><span class=\"s2\"> object has no attribute </span><span class=\"si\">{</span><span class=\"n\">name</span><span class=\"si\">!r}</span><span class=\"s2\">\"</span>\n    <span class=\"p\">)</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">BackwardsCompatibilityMetaclass</span><span class=\"p\">(</span><span class=\"nb\">type</span><span class=\"p\">):</span>\n    <span class=\"fm\">__getattr__</span> <span class=\"o\">=</span> <span class=\"n\">backwards_compatibility_getattr</span>\n\n\n<div class=\"viewcode-block\" id=\"get_retry_request\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.retry.get_retry_request\">[docs]</a><span class=\"k\">def</span> <span class=\"nf\">get_retry_request</span><span class=\"p\">(</span>\n    <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span>\n    <span class=\"o\">*</span><span class=\"p\">,</span>\n    <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">,</span>\n    <span class=\"n\">reason</span><span class=\"p\">:</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"ne\">Exception</span><span class=\"p\">,</span> <span class=\"n\">Type</span><span class=\"p\">[</span><span class=\"ne\">Exception</span><span class=\"p\">]]</span> <span class=\"o\">=</span> <span class=\"s2\">\"unspecified\"</span><span class=\"p\">,</span>\n    <span class=\"n\">max_retry_times</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"nb\">int</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n    <span class=\"n\">priority_adjust</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"nb\">int</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n    <span class=\"n\">logger</span><span class=\"p\">:</span> <span class=\"n\">Logger</span> <span class=\"o\">=</span> <span class=\"n\">retry_logger</span><span class=\"p\">,</span>\n    <span class=\"n\">stats_base_key</span><span class=\"p\">:</span> <span class=\"nb\">str</span> <span class=\"o\">=</span> <span class=\"s2\">\"retry\"</span><span class=\"p\">,</span>\n<span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">]:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">    Returns a new :class:`~scrapy.Request` object to retry the specified</span>\n<span class=\"sd\">    request, or ``None`` if retries of the specified request have been</span>\n<span class=\"sd\">    exhausted.</span>\n\n<span class=\"sd\">    For example, in a :class:`~scrapy.Spider` callback, you could use it as</span>\n<span class=\"sd\">    follows::</span>\n\n<span class=\"sd\">        def parse(self, response):</span>\n<span class=\"sd\">            if not response.text:</span>\n<span class=\"sd\">                new_request_or_none = get_retry_request(</span>\n<span class=\"sd\">                    response.request,</span>\n<span class=\"sd\">                    spider=self,</span>\n<span class=\"sd\">                    reason='empty',</span>\n<span class=\"sd\">                )</span>\n<span class=\"sd\">                return new_request_or_none</span>\n\n<span class=\"sd\">    *spider* is the :class:`~scrapy.Spider` instance which is asking for the</span>\n<span class=\"sd\">    retry request. It is used to access the :ref:`settings &lt;topics-settings&gt;`</span>\n<span class=\"sd\">    and :ref:`stats &lt;topics-stats&gt;`, and to provide extra logging context (see</span>\n<span class=\"sd\">    :func:`logging.debug`).</span>\n\n<span class=\"sd\">    *reason* is a string or an :class:`Exception` object that indicates the</span>\n<span class=\"sd\">    reason why the request needs to be retried. It is used to name retry stats.</span>\n\n<span class=\"sd\">    *max_retry_times* is a number that determines the maximum number of times</span>\n<span class=\"sd\">    that *request* can be retried. If not specified or ``None``, the number is</span>\n<span class=\"sd\">    read from the :reqmeta:`max_retry_times` meta key of the request. If the</span>\n<span class=\"sd\">    :reqmeta:`max_retry_times` meta key is not defined or ``None``, the number</span>\n<span class=\"sd\">    is read from the :setting:`RETRY_TIMES` setting.</span>\n\n<span class=\"sd\">    *priority_adjust* is a number that determines how the priority of the new</span>\n<span class=\"sd\">    request changes in relation to *request*. If not specified, the number is</span>\n<span class=\"sd\">    read from the :setting:`RETRY_PRIORITY_ADJUST` setting.</span>\n\n<span class=\"sd\">    *logger* is the logging.Logger object to be used when logging messages</span>\n\n<span class=\"sd\">    *stats_base_key* is a string to be used as the base key for the</span>\n<span class=\"sd\">    retry-related job stats</span>\n<span class=\"sd\">    \"\"\"</span>\n    <span class=\"n\">settings</span> <span class=\"o\">=</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span>\n    <span class=\"k\">assert</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n    <span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n    <span class=\"n\">retry_times</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"retry_times\"</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n    <span class=\"k\">if</span> <span class=\"n\">max_retry_times</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"n\">max_retry_times</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"max_retry_times\"</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">max_retry_times</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"n\">max_retry_times</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_TIMES\"</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">retry_times</span> <span class=\"o\">&lt;=</span> <span class=\"n\">max_retry_times</span><span class=\"p\">:</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"Retrying </span><span class=\"si\">%(request)s</span><span class=\"s2\"> (failed </span><span class=\"si\">%(retry_times)d</span><span class=\"s2\"> times): </span><span class=\"si\">%(reason)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n            <span class=\"p\">{</span><span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"s2\">\"retry_times\"</span><span class=\"p\">:</span> <span class=\"n\">retry_times</span><span class=\"p\">,</span> <span class=\"s2\">\"reason\"</span><span class=\"p\">:</span> <span class=\"n\">reason</span><span class=\"p\">},</span>\n            <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n        <span class=\"p\">)</span>\n        <span class=\"n\">new_request</span><span class=\"p\">:</span> <span class=\"n\">Request</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">copy</span><span class=\"p\">()</span>\n        <span class=\"n\">new_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"retry_times\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">retry_times</span>\n        <span class=\"n\">new_request</span><span class=\"o\">.</span><span class=\"n\">dont_filter</span> <span class=\"o\">=</span> <span class=\"kc\">True</span>\n        <span class=\"k\">if</span> <span class=\"n\">priority_adjust</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"n\">priority_adjust</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_PRIORITY_ADJUST\"</span><span class=\"p\">)</span>\n        <span class=\"n\">new_request</span><span class=\"o\">.</span><span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">priority</span> <span class=\"o\">+</span> <span class=\"n\">priority_adjust</span>\n\n        <span class=\"k\">if</span> <span class=\"nb\">callable</span><span class=\"p\">(</span><span class=\"n\">reason</span><span class=\"p\">):</span>\n            <span class=\"n\">reason</span> <span class=\"o\">=</span> <span class=\"n\">reason</span><span class=\"p\">()</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">reason</span><span class=\"p\">,</span> <span class=\"ne\">Exception</span><span class=\"p\">):</span>\n            <span class=\"n\">reason</span> <span class=\"o\">=</span> <span class=\"n\">global_object_name</span><span class=\"p\">(</span><span class=\"n\">reason</span><span class=\"o\">.</span><span class=\"vm\">__class__</span><span class=\"p\">)</span>\n\n        <span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">stats_base_key</span><span class=\"si\">}</span><span class=\"s2\">/count\"</span><span class=\"p\">)</span>\n        <span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">stats_base_key</span><span class=\"si\">}</span><span class=\"s2\">/reason_count/</span><span class=\"si\">{</span><span class=\"n\">reason</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">new_request</span>\n    <span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">stats_base_key</span><span class=\"si\">}</span><span class=\"s2\">/max_reached\"</span><span class=\"p\">)</span>\n    <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">error</span><span class=\"p\">(</span>\n        <span class=\"s2\">\"Gave up retrying </span><span class=\"si\">%(request)s</span><span class=\"s2\"> (failed </span><span class=\"si\">%(retry_times)d</span><span class=\"s2\"> times): \"</span> <span class=\"s2\">\"</span><span class=\"si\">%(reason)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n        <span class=\"p\">{</span><span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"s2\">\"retry_times\"</span><span class=\"p\">:</span> <span class=\"n\">retry_times</span><span class=\"p\">,</span> <span class=\"s2\">\"reason\"</span><span class=\"p\">:</span> <span class=\"n\">reason</span><span class=\"p\">},</span>\n        <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n    <span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"kc\">None</span></div>\n\n\n<div class=\"viewcode-block\" id=\"RetryMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.retry.RetryMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">RetryMiddleware</span><span class=\"p\">(</span><span class=\"n\">metaclass</span><span class=\"o\">=</span><span class=\"n\">BackwardsCompatibilityMetaclass</span><span class=\"p\">):</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">max_retry_times</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_TIMES\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">retry_http_codes</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"nb\">int</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_HTTP_CODES\"</span><span class=\"p\">)}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">priority_adjust</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_PRIORITY_ADJUST\"</span><span class=\"p\">)</span>\n\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">exceptions_to_retry</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"fm\">__getattribute__</span><span class=\"p\">(</span><span class=\"s2\">\"EXCEPTIONS_TO_RETRY\"</span><span class=\"p\">)</span>\n        <span class=\"k\">except</span> <span class=\"ne\">AttributeError</span><span class=\"p\">:</span>\n            <span class=\"c1\"># If EXCEPTIONS_TO_RETRY is not \"overridden\"</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">exceptions_to_retry</span> <span class=\"o\">=</span> <span class=\"nb\">tuple</span><span class=\"p\">(</span>\n                <span class=\"n\">load_object</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"k\">else</span> <span class=\"n\">x</span>\n                <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"RETRY_EXCEPTIONS\"</span><span class=\"p\">)</span>\n            <span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_retry\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n        <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">retry_http_codes</span><span class=\"p\">:</span>\n            <span class=\"n\">reason</span> <span class=\"o\">=</span> <span class=\"n\">response_status_message</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_retry</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">reason</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"n\">response</span>\n        <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_exception</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">exception</span><span class=\"p\">:</span> <span class=\"ne\">Exception</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">exception</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">exceptions_to_retry</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"ow\">not</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"dont_retry\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span>\n        <span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_retry</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">exception</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_retry</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span>\n        <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span>\n        <span class=\"n\">reason</span><span class=\"p\">:</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"ne\">Exception</span><span class=\"p\">,</span> <span class=\"n\">Type</span><span class=\"p\">[</span><span class=\"ne\">Exception</span><span class=\"p\">]],</span>\n        <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">,</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">]:</span>\n        <span class=\"n\">max_retry_times</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"max_retry_times\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">max_retry_times</span><span class=\"p\">)</span>\n        <span class=\"n\">priority_adjust</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"priority_adjust\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">priority_adjust</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">get_retry_request</span><span class=\"p\">(</span>\n            <span class=\"n\">request</span><span class=\"p\">,</span>\n            <span class=\"n\">reason</span><span class=\"o\">=</span><span class=\"n\">reason</span><span class=\"p\">,</span>\n            <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">,</span>\n            <span class=\"n\">max_retry_times</span><span class=\"o\">=</span><span class=\"n\">max_retry_times</span><span class=\"p\">,</span>\n            <span class=\"n\">priority_adjust</span><span class=\"o\">=</span><span class=\"n\">priority_adjust</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n\n    <span class=\"fm\">__getattr__</span> <span class=\"o\">=</span> <span class=\"n\">backwards_compatibility_getattr</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

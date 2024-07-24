@@ -1,0 +1,1246 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/extensions.html",
+  "title": "Extensions — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Extension settings"
+    },
+    {
+      "type": "text",
+      "content": "Loading & activating extensions"
+    },
+    {
+      "type": "text",
+      "content": "Available, enabled and disabled extensions"
+    },
+    {
+      "type": "text",
+      "content": "Disabling an extension"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own extension"
+    },
+    {
+      "type": "text",
+      "content": "Sample extension"
+    },
+    {
+      "type": "text",
+      "content": "Built-in extensions reference"
+    },
+    {
+      "type": "text",
+      "content": "General purpose extensions"
+    },
+    {
+      "type": "text",
+      "content": "Log Stats extension"
+    },
+    {
+      "type": "text",
+      "content": "Core Stats extension"
+    },
+    {
+      "type": "text",
+      "content": "Telnet console extension"
+    },
+    {
+      "type": "text",
+      "content": "Memory usage extension"
+    },
+    {
+      "type": "text",
+      "content": "Memory debugger extension"
+    },
+    {
+      "type": "text",
+      "content": "Close spider extension"
+    },
+    {
+      "type": "text",
+      "content": "StatsMailer extension"
+    },
+    {
+      "type": "text",
+      "content": "Periodic log extension"
+    },
+    {
+      "type": "text",
+      "content": "Debugging extensions"
+    },
+    {
+      "type": "text",
+      "content": "Stack trace dump extension"
+    },
+    {
+      "type": "text",
+      "content": "Debugger extension"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "The extensions framework provides a mechanism for inserting your own\ncustom functionality into Scrapy."
+    },
+    {
+      "type": "text",
+      "content": "Extensions are just regular classes."
+    },
+    {
+      "type": "text",
+      "content": "Extension settings"
+    },
+    {
+      "type": "text",
+      "content": "Extensions use the "
+    },
+    {
+      "type": "text",
+      "content": "It is customary for extensions to prefix their settings with their own name, to\navoid collision with existing (and future) extensions. For example, a\nhypothetical extension to handle "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">GOOGLESITEMAP_ENABLED</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">GOOGLESITEMAP_DEPTH</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Loading & activating extensions"
+    },
+    {
+      "type": "text",
+      "content": "Extensions are loaded and activated at startup by instantiating a single\ninstance of the extension class per spider being run. All the extension\ninitialization code must be performed in the class "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">__init__</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To make an extension available, add it to the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">EXTENSIONS</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"scrapy.extensions.corestats.CoreStats\"</span><span class=\"p\">:</span> <span class=\"mi\">500</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"scrapy.extensions.telnet.TelnetConsole\"</span><span class=\"p\">:</span> <span class=\"mi\">500</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "As you can see, the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS_BASE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "As extensions typically do not depend on each other, their loading order is\nirrelevant in most cases. This is why the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Available, enabled and disabled extensions"
+    },
+    {
+      "type": "text",
+      "content": "Not all available extensions will be enabled. Some of them usually depend on a\nparticular setting. For example, the HTTP Cache extension is available by default\nbut disabled unless the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPCACHE_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Disabling an extension"
+    },
+    {
+      "type": "text",
+      "content": "In order to disable an extension that comes enabled by default (i.e. those\nincluded in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">EXTENSIONS</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"scrapy.extensions.corestats.CoreStats\"</span><span class=\"p\">:</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own extension"
+    },
+    {
+      "type": "text",
+      "content": "Each extension is a Python class. The main entry point for a Scrapy extension\n(this also includes middlewares and pipelines) is the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">from_crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Typically, extensions connect to "
+    },
+    {
+      "type": "text",
+      "content": "Finally, if the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">from_crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">NotConfigured</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Sample extension"
+    },
+    {
+      "type": "text",
+      "content": "Here we will implement a simple extension to illustrate the concepts described\nin the previous section. This extension will log a message every time:"
+    },
+    {
+      "type": "text",
+      "content": "a spider is opened"
+    },
+    {
+      "type": "text",
+      "content": "a spider is opened"
+    },
+    {
+      "type": "text",
+      "content": "a spider is closed"
+    },
+    {
+      "type": "text",
+      "content": "a spider is closed"
+    },
+    {
+      "type": "text",
+      "content": "a specific number of items are scraped"
+    },
+    {
+      "type": "text",
+      "content": "a specific number of items are scraped"
+    },
+    {
+      "type": "text",
+      "content": "The extension will be enabled through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MYEXT_ENABLED</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MYEXT_ITEMCOUNT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here is the code of such extension:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">SpiderOpenCloseLogging</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item_count</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">item_count</span> <span class=\"o\">=</span> <span class=\"n\">item_count</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_scraped</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"c1\"># first check if the extension should be enabled and raise</span>\n        <span class=\"c1\"># NotConfigured otherwise</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"MYEXT_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n\n        <span class=\"c1\"># get the number of items from settings</span>\n        <span class=\"n\">item_count</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"MYEXT_ITEMCOUNT\"</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n\n        <span class=\"c1\"># instantiate the extension object</span>\n        <span class=\"n\">ext</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">item_count</span><span class=\"p\">)</span>\n\n        <span class=\"c1\"># connect the extension object to signals</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">ext</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">ext</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">ext</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">)</span>\n\n        <span class=\"c1\"># return the extension object</span>\n        <span class=\"k\">return</span> <span class=\"n\">ext</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"opened spider </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"closed spider </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">item_scraped</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_scraped</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_scraped</span> <span class=\"o\">%</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">item_count</span> <span class=\"o\">==</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"scraped </span><span class=\"si\">%d</span><span class=\"s2\"> items\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_scraped</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in extensions reference"
+    },
+    {
+      "type": "text",
+      "content": "General purpose extensions"
+    },
+    {
+      "type": "text",
+      "content": "Log Stats extension"
+    },
+    {
+      "type": "text",
+      "content": "Log basic stats like crawled pages and scraped items."
+    },
+    {
+      "type": "text",
+      "content": "Core Stats extension"
+    },
+    {
+      "type": "text",
+      "content": "Enable the collection of core statistics, provided the stats collection is\nenabled (see "
+    },
+    {
+      "type": "text",
+      "content": "Telnet console extension"
+    },
+    {
+      "type": "text",
+      "content": "Provides a telnet console for getting into a Python interpreter inside the\ncurrently running Scrapy process, which can be very useful for debugging."
+    },
+    {
+      "type": "text",
+      "content": "The telnet console must be enabled by the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">TELNETCONSOLE_ENABLED</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">TELNETCONSOLE_PORT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Memory usage extension"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "This extension does not work in Windows."
+    },
+    {
+      "type": "text",
+      "content": "Monitors the memory used by the Scrapy process that runs the spider and:"
+    },
+    {
+      "type": "text",
+      "content": "sends a notification e-mail when it exceeds a certain value"
+    },
+    {
+      "type": "text",
+      "content": "sends a notification e-mail when it exceeds a certain value"
+    },
+    {
+      "type": "text",
+      "content": "closes the spider when it exceeds a certain value"
+    },
+    {
+      "type": "text",
+      "content": "closes the spider when it exceeds a certain value"
+    },
+    {
+      "type": "text",
+      "content": "The notification e-mails can be triggered when a certain warning value is\nreached ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_WARNING_MB</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_LIMIT_MB</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This extension is enabled by the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_LIMIT_MB"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_LIMIT_MB"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_LIMIT_MB</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_WARNING_MB"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_WARNING_MB"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_WARNING_MB</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_NOTIFY_MAIL"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_NOTIFY_MAIL"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_NOTIFY_MAIL</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_CHECK_INTERVAL_SECONDS"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_CHECK_INTERVAL_SECONDS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMUSAGE_CHECK_INTERVAL_SECONDS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Memory debugger extension"
+    },
+    {
+      "type": "text",
+      "content": "An extension for debugging memory usage. It collects information about:"
+    },
+    {
+      "type": "text",
+      "content": "objects uncollected by the Python garbage collector"
+    },
+    {
+      "type": "text",
+      "content": "objects uncollected by the Python garbage collector"
+    },
+    {
+      "type": "text",
+      "content": "objects left alive that shouldn’t. For more info, see "
+    },
+    {
+      "type": "text",
+      "content": "objects left alive that shouldn’t. For more info, see "
+    },
+    {
+      "type": "text",
+      "content": "To enable this extension, turn on the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">MEMDEBUG_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Close spider extension"
+    },
+    {
+      "type": "text",
+      "content": "Closes a spider automatically when some conditions are met, using a specific\nclosing reason for each condition."
+    },
+    {
+      "type": "text",
+      "content": "The conditions for closing a spider can be configured through the following\nsettings:"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CLOSESPIDER_TIMEOUT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT_NO_ITEM"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT_NO_ITEM"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CLOSESPIDER_TIMEOUT_NO_ITEM</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ITEMCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ITEMCOUNT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CLOSESPIDER_ITEMCOUNT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_PAGECOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_PAGECOUNT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CLOSESPIDER_PAGECOUNT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ERRORCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ERRORCOUNT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CLOSESPIDER_ERRORCOUNT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "When a certain closing condition is met, requests which are\ncurrently in the downloader queue (up to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_REQUESTS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies a number of seconds. If the spider remains open for\nmore than that number of second, it will be automatically closed with the\nreason "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_timeout</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT_NO_ITEM"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies a number of seconds. If the spider has not produced\nany items in the last number of seconds, it will be closed with the reason\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_timeout_no_item</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ITEMCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies a number of items. If the spider scrapes more than\nthat amount and those items are passed by the item pipeline, the\nspider will be closed with the reason "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_itemcount</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_PAGECOUNT"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies the maximum number of responses to crawl. If the spider\ncrawls more than that, the spider will be closed with the reason\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_pagecount</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_PAGECOUNT_NO_ITEM"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies the maximum number of consecutive responses to crawl\nwithout items scraped. If the spider crawls more consecutive responses than that\nand no items are scraped in the meantime, the spider will be closed with the\nreason "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_pagecount_no_item</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ERRORCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An integer which specifies the maximum number of errors to receive before\nclosing the spider. If the spider generates more than that number of errors,\nit will be closed with the reason "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">closespider_errorcount</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsMailer extension"
+    },
+    {
+      "type": "text",
+      "content": "This simple extension can be used to send a notification e-mail every time a\ndomain has finished scraping, including the Scrapy stats collected. The email\nwill be sent to all recipients specified in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">STATSMAILER_RCPTS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Emails can be sent using the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">MailSender</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">MailSender</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Periodic log extension"
+    },
+    {
+      "type": "text",
+      "content": "This extension periodically logs rich stat data as a JSON object:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"mi\">2023</span><span class=\"o\">-</span><span class=\"mi\">08</span><span class=\"o\">-</span><span class=\"mi\">04</span> <span class=\"mi\">02</span><span class=\"p\">:</span><span class=\"mi\">30</span><span class=\"p\">:</span><span class=\"mi\">57</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">extensions</span><span class=\"o\">.</span><span class=\"n\">logstats</span><span class=\"p\">]</span> <span class=\"n\">INFO</span><span class=\"p\">:</span> <span class=\"n\">Crawled</span> <span class=\"mi\">976</span> <span class=\"n\">pages</span> <span class=\"p\">(</span><span class=\"n\">at</span> <span class=\"mi\">162</span> <span class=\"n\">pages</span><span class=\"o\">/</span><span class=\"nb\">min</span><span class=\"p\">),</span> <span class=\"n\">scraped</span> <span class=\"mi\">925</span> <span class=\"n\">items</span> <span class=\"p\">(</span><span class=\"n\">at</span> <span class=\"mi\">161</span> <span class=\"n\">items</span><span class=\"o\">/</span><span class=\"nb\">min</span><span class=\"p\">)</span>\n<span class=\"mi\">2023</span><span class=\"o\">-</span><span class=\"mi\">08</span><span class=\"o\">-</span><span class=\"mi\">04</span> <span class=\"mi\">02</span><span class=\"p\">:</span><span class=\"mi\">30</span><span class=\"p\">:</span><span class=\"mi\">57</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">extensions</span><span class=\"o\">.</span><span class=\"n\">periodic_log</span><span class=\"p\">]</span> <span class=\"n\">INFO</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"delta\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"downloader/request_bytes\"</span><span class=\"p\">:</span> <span class=\"mi\">55582</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/request_count\"</span><span class=\"p\">:</span> <span class=\"mi\">162</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/request_method_count/GET\"</span><span class=\"p\">:</span> <span class=\"mi\">162</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_bytes\"</span><span class=\"p\">:</span> <span class=\"mi\">618133</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_count\"</span><span class=\"p\">:</span> <span class=\"mi\">162</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_status_count/200\"</span><span class=\"p\">:</span> <span class=\"mi\">162</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"item_scraped_count\"</span><span class=\"p\">:</span> <span class=\"mi\">161</span>\n    <span class=\"p\">},</span>\n    <span class=\"s2\">\"stats\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"downloader/request_bytes\"</span><span class=\"p\">:</span> <span class=\"mi\">338243</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/request_count\"</span><span class=\"p\">:</span> <span class=\"mi\">992</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/request_method_count/GET\"</span><span class=\"p\">:</span> <span class=\"mi\">992</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_bytes\"</span><span class=\"p\">:</span> <span class=\"mi\">3836736</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_count\"</span><span class=\"p\">:</span> <span class=\"mi\">976</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"downloader/response_status_count/200\"</span><span class=\"p\">:</span> <span class=\"mi\">976</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"item_scraped_count\"</span><span class=\"p\">:</span> <span class=\"mi\">925</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"log_count/INFO\"</span><span class=\"p\">:</span> <span class=\"mi\">21</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"log_count/WARNING\"</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"scheduler/dequeued\"</span><span class=\"p\">:</span> <span class=\"mi\">992</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"scheduler/dequeued/memory\"</span><span class=\"p\">:</span> <span class=\"mi\">992</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"scheduler/enqueued\"</span><span class=\"p\">:</span> <span class=\"mi\">1050</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"scheduler/enqueued/memory\"</span><span class=\"p\">:</span> <span class=\"mi\">1050</span>\n    <span class=\"p\">},</span>\n    <span class=\"s2\">\"time\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"elapsed\"</span><span class=\"p\">:</span> <span class=\"mf\">360.008903</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"log_interval\"</span><span class=\"p\">:</span> <span class=\"mf\">60.0</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"log_interval_real\"</span><span class=\"p\">:</span> <span class=\"mf\">60.006694</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"start_time\"</span><span class=\"p\">:</span> <span class=\"s2\">\"2023-08-03 23:24:57\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"utcnow\"</span><span class=\"p\">:</span> <span class=\"s2\">\"2023-08-03 23:30:57\"</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This extension logs the following configurable sections:"
+    },
+    {
+      "type": "text",
+      "content": "\"delta\""
+    },
+    {
+      "type": "text",
+      "content": "\"delta\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"delta\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">PERIODIC_LOG_DELTA</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">int</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">float</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"stats\""
+    },
+    {
+      "type": "text",
+      "content": "\"stats\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"stats\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">PERIODIC_LOG_STATS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"time\""
+    },
+    {
+      "type": "text",
+      "content": "\"time\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"time\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">PERIODIC_LOG_TIMING_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This extension logs data at the start, then on a fixed time interval\nconfigurable through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">LOGSTATS_INTERVAL</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example extension configuration:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">custom_settings</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"LOG_LEVEL\"</span><span class=\"p\">:</span> <span class=\"s2\">\"INFO\"</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"PERIODIC_LOG_STATS\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"include\"</span><span class=\"p\">:</span> <span class=\"p\">[</span><span class=\"s2\">\"downloader/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"scheduler/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"log_count/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"item_scraped_count/\"</span><span class=\"p\">],</span>\n    <span class=\"p\">},</span>\n    <span class=\"s2\">\"PERIODIC_LOG_DELTA\"</span><span class=\"p\">:</span> <span class=\"p\">{</span><span class=\"s2\">\"include\"</span><span class=\"p\">:</span> <span class=\"p\">[</span><span class=\"s2\">\"downloader/\"</span><span class=\"p\">]},</span>\n    <span class=\"s2\">\"PERIODIC_LOG_TIMING_ENABLED\"</span><span class=\"p\">:</span> <span class=\"kc\">True</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"EXTENSIONS\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"scrapy.extensions.periodic_log.PeriodicLog\"</span><span class=\"p\">:</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n    <span class=\"p\">},</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_DELTA"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_DELTA\":</span> <span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">int</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">float</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_DELTA\":</span> <span class=\"pre\">{\"include\":</span> <span class=\"pre\">[\"downloader/\",</span> <span class=\"pre\">\"scheduler/\"]}</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_DELTA\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_DELTA\":</span> <span class=\"pre\">{\"exclude\":</span> <span class=\"pre\">[\"downloader/\"]}</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_STATS"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_STATS\":</span> <span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_STATS\":</span> <span class=\"pre\">{\"include\":</span> <span class=\"pre\">[\"downloader/\",</span> <span class=\"pre\">\"scheduler/\"]}</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "text",
+      "content": "\"PERIODIC_LOG_STATS\":"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"PERIODIC_LOG_STATS\":</span> <span class=\"pre\">{\"exclude\":</span> <span class=\"pre\">[\"downloader/\"]}</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_TIMING_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "True"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"time\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Debugging extensions"
+    },
+    {
+      "type": "text",
+      "content": "Stack trace dump extension"
+    },
+    {
+      "type": "text",
+      "content": "Dumps information about the running process when a "
+    },
+    {
+      "type": "text",
+      "content": "engine status (using "
+    },
+    {
+      "type": "text",
+      "content": "engine status (using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.utils.engine.get_engine_status()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "live references (see "
+    },
+    {
+      "type": "text",
+      "content": "live references (see "
+    },
+    {
+      "type": "text",
+      "content": "stack trace of all threads"
+    },
+    {
+      "type": "text",
+      "content": "stack trace of all threads"
+    },
+    {
+      "type": "text",
+      "content": "After the stack trace and engine status is dumped, the Scrapy process continues\nrunning normally."
+    },
+    {
+      "type": "text",
+      "content": "This extension only works on POSIX-compliant platforms (i.e. not Windows),\nbecause the "
+    },
+    {
+      "type": "text",
+      "content": "There are at least two ways to send Scrapy the "
+    },
+    {
+      "type": "text",
+      "content": "By pressing Ctrl-while a Scrapy process is running (Linux only?)"
+    },
+    {
+      "type": "text",
+      "content": "By pressing Ctrl-while a Scrapy process is running (Linux only?)"
+    },
+    {
+      "type": "text",
+      "content": "By running this command (assuming "
+    },
+    {
+      "type": "text",
+      "content": "By running this command (assuming "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;pid&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">kill</span> <span class=\"o\">-</span><span class=\"n\">QUIT</span> <span class=\"o\">&lt;</span><span class=\"n\">pid</span><span class=\"o\">&gt;</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Debugger extension"
+    },
+    {
+      "type": "text",
+      "content": "Invokes a "
+    },
+    {
+      "type": "text",
+      "content": "For more info see "
+    },
+    {
+      "type": "text",
+      "content": "This extension only works on POSIX-compliant platforms (i.e. not Windows)."
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

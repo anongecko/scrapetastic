@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/offsite.html",
+  "title": "scrapy.downloadermiddlewares.offsite — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.offsite"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.offsite"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">import</span> <span class=\"nn\">re</span>\n<span class=\"kn\">import</span> <span class=\"nn\">warnings</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Set</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.httpobj</span> <span class=\"kn\">import</span> <span class=\"n\">urlparse_cached</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.statscollectors</span> <span class=\"kn\">import</span> <span class=\"n\">StatsCollector</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"OffsiteMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.offsite.OffsiteMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">OffsiteMiddleware</span><span class=\"p\">:</span>\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">assert</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n        <span class=\"n\">o</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">request_scheduled</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">request_scheduled</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">o</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsCollector</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">domains_seen</span><span class=\"p\">:</span> <span class=\"n\">Set</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"nb\">set</span><span class=\"p\">()</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">host_regex</span><span class=\"p\">:</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">Pattern</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">get_host_regex</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">request_scheduled</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">process_request</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">dont_filter</span> <span class=\"ow\">or</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">should_follow</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n        <span class=\"n\">domain</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">hostname</span>\n        <span class=\"k\">if</span> <span class=\"n\">domain</span> <span class=\"ow\">and</span> <span class=\"n\">domain</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">domains_seen</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">domains_seen</span><span class=\"o\">.</span><span class=\"n\">add</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">)</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Filtered offsite request to </span><span class=\"si\">%(domain)r</span><span class=\"s2\">: </span><span class=\"si\">%(request)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"domain\"</span><span class=\"p\">:</span> <span class=\"n\">domain</span><span class=\"p\">,</span> <span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">},</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"offsite/domains\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"offsite/filtered\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"k\">raise</span> <span class=\"n\">IgnoreRequest</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">should_follow</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">bool</span><span class=\"p\">:</span>\n        <span class=\"n\">regex</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">host_regex</span>\n        <span class=\"c1\"># hostname can be None for wrong urls (like javascript links)</span>\n        <span class=\"n\">host</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">hostname</span> <span class=\"ow\">or</span> <span class=\"s2\">\"\"</span>\n        <span class=\"k\">return</span> <span class=\"nb\">bool</span><span class=\"p\">(</span><span class=\"n\">regex</span><span class=\"o\">.</span><span class=\"n\">search</span><span class=\"p\">(</span><span class=\"n\">host</span><span class=\"p\">))</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">get_host_regex</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">Pattern</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"Override this method to implement a different offsite policy\"\"\"</span>\n        <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"allowed_domains\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">allowed_domains</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">compile</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>  <span class=\"c1\"># allow all by default</span>\n        <span class=\"n\">url_pattern</span> <span class=\"o\">=</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">compile</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"^https?://.*$\"</span><span class=\"p\">)</span>\n        <span class=\"n\">port_pattern</span> <span class=\"o\">=</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">compile</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\":\\d+$\"</span><span class=\"p\">)</span>\n        <span class=\"n\">domains</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n        <span class=\"k\">for</span> <span class=\"n\">domain</span> <span class=\"ow\">in</span> <span class=\"n\">allowed_domains</span><span class=\"p\">:</span>\n            <span class=\"k\">if</span> <span class=\"n\">domain</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n                <span class=\"k\">continue</span>\n            <span class=\"k\">if</span> <span class=\"n\">url_pattern</span><span class=\"o\">.</span><span class=\"n\">match</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">):</span>\n                <span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n                    <span class=\"s2\">\"allowed_domains accepts only domains, not URLs. \"</span>\n                    <span class=\"sa\">f</span><span class=\"s2\">\"Ignoring URL entry </span><span class=\"si\">{</span><span class=\"n\">domain</span><span class=\"si\">}</span><span class=\"s2\"> in allowed_domains.\"</span>\n                <span class=\"p\">)</span>\n                <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>\n            <span class=\"k\">elif</span> <span class=\"n\">port_pattern</span><span class=\"o\">.</span><span class=\"n\">search</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">):</span>\n                <span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n                    <span class=\"s2\">\"allowed_domains accepts only domains without ports. \"</span>\n                    <span class=\"sa\">f</span><span class=\"s2\">\"Ignoring entry </span><span class=\"si\">{</span><span class=\"n\">domain</span><span class=\"si\">}</span><span class=\"s2\"> in allowed_domains.\"</span>\n                <span class=\"p\">)</span>\n                <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>\n            <span class=\"k\">else</span><span class=\"p\">:</span>\n                <span class=\"n\">domains</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">escape</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">))</span>\n        <span class=\"n\">regex</span> <span class=\"o\">=</span> <span class=\"sa\">rf</span><span class=\"s1\">'^(.*\\.)?(</span><span class=\"si\">{</span><span class=\"s2\">\"|\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">domains</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s1\">)$'</span>\n        <span class=\"k\">return</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">compile</span><span class=\"p\">(</span><span class=\"n\">regex</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

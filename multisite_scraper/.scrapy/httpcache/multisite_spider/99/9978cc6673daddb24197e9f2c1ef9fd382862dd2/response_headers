@@ -1,0 +1,27 @@
+Content-Length: 729476
+Date: Wed, 24 Jul 2024 05:24:29 GMT
+Content-Type: application/epub+zip
+Cf-Ray: 8a817beed99f18f3-FRA
+Cf-Cache-Status: MISS
+Accept-Ranges: bytes
+Cache-Control: max-age=1200
+Content-Disposition: filename=docs-scrapy-org-en-master.epub
+Etag: "694b49a3d99d7da298372ca030e8655d"
+Last-Modified: Wed, 24 Jul 2024 04:42:21 GMT
+Vary: Accept-Encoding
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: AFicPTlrUHY145e2WvofCiTVoge9zieCl1WdtnY/86s1mIaxH4OMRYLpu0v1hvZO2tSJLO7aUWk=
+X-Amz-Meta-Mtime: 1721796137.397667009
+X-Amz-Request-Id: 4R46Q3FQMSHB08PK
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-08708e03940fb9261
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/epub/scrapy/master/scrapy.epub
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=ueLGqHx_AarC6ahJZwEOogV4PwAKnh6B1zxTZRbeHQM-1721798669349-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

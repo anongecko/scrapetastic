@@ -1,0 +1,2086 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/topics/selectors.html",
+  "title": "Selectors — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "When you’re scraping web pages, the most common task you need to perform is\nto extract data from the HTML source. There are several libraries available to\nachieve this, such as:"
+    },
+    {
+      "type": "text",
+      "content": "BeautifulSoup"
+    },
+    {
+      "type": "text",
+      "content": "lxml"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">ElementTree</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy comes with its own mechanism for extracting data. They’re called\nselectors because they “select” certain parts of the HTML document specified\neither by "
+    },
+    {
+      "type": "text",
+      "content": "XPath"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Selectors is a thin wrapper around "
+    },
+    {
+      "type": "text",
+      "content": "parsel"
+    },
+    {
+      "type": "text",
+      "content": "Response objects expose a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//span/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'good'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Querying responses using XPath and CSS is so common that responses include two\nmore shortcuts: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//span/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'good'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"span::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'good'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy selectors are instances of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">TextResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">text</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usually there is no need to construct Scrapy selectors manually:\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "But if required, it is possible to use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.selector</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"s2\">\"&lt;html&gt;&lt;body&gt;&lt;span&gt;good&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"o\">=</span><span class=\"n\">body</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//span/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'good'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Constructing from response - "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HtmlResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">TextResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.selector</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">HtmlResponse</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"o\">=</span><span class=\"s2\">\"http://example.com\"</span><span class=\"p\">,</span> <span class=\"n\">body</span><span class=\"o\">=</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">encoding</span><span class=\"o\">=</span><span class=\"s2\">\"utf-8\"</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">=</span><span class=\"n\">response</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//span/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'good'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Selector"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To explain how to use the selectors we’ll use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Scrapy</span> <span class=\"pre\">shell</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "https://docs.scrapy.org/en/latest/_static/selectors-sample1.html"
+    },
+    {
+      "type": "text",
+      "content": "For the sake of completeness, here’s its full HTML code:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"cp\">&lt;!DOCTYPE html&gt;</span>\n\n<span class=\"p\">&lt;</span><span class=\"nt\">html</span><span class=\"p\">&gt;</span>\n  <span class=\"p\">&lt;</span><span class=\"nt\">head</span><span class=\"p\">&gt;</span>\n    <span class=\"p\">&lt;</span><span class=\"nt\">base</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'http://example.com/'</span> <span class=\"p\">/&gt;</span>\n    <span class=\"p\">&lt;</span><span class=\"nt\">title</span><span class=\"p\">&gt;</span>Example website<span class=\"p\">&lt;/</span><span class=\"nt\">title</span><span class=\"p\">&gt;</span>\n  <span class=\"p\">&lt;/</span><span class=\"nt\">head</span><span class=\"p\">&gt;</span>\n  <span class=\"p\">&lt;</span><span class=\"nt\">body</span><span class=\"p\">&gt;</span>\n    <span class=\"p\">&lt;</span><span class=\"nt\">div</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">'images'</span><span class=\"p\">&gt;</span>\n      <span class=\"p\">&lt;</span><span class=\"nt\">a</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'image1.html'</span><span class=\"p\">&gt;</span>Name: My image 1 <span class=\"p\">&lt;</span><span class=\"nt\">br</span> <span class=\"p\">/&gt;&lt;</span><span class=\"nt\">img</span> <span class=\"na\">src</span><span class=\"o\">=</span><span class=\"s\">'image1_thumb.jpg'</span> <span class=\"na\">alt</span><span class=\"o\">=</span><span class=\"s\">'image1'</span><span class=\"p\">/&gt;&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;</span>\n      <span class=\"p\">&lt;</span><span class=\"nt\">a</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'image2.html'</span><span class=\"p\">&gt;</span>Name: My image 2 <span class=\"p\">&lt;</span><span class=\"nt\">br</span> <span class=\"p\">/&gt;&lt;</span><span class=\"nt\">img</span> <span class=\"na\">src</span><span class=\"o\">=</span><span class=\"s\">'image2_thumb.jpg'</span> <span class=\"na\">alt</span><span class=\"o\">=</span><span class=\"s\">'image2'</span><span class=\"p\">/&gt;&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;</span>\n      <span class=\"p\">&lt;</span><span class=\"nt\">a</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'image3.html'</span><span class=\"p\">&gt;</span>Name: My image 3 <span class=\"p\">&lt;</span><span class=\"nt\">br</span> <span class=\"p\">/&gt;&lt;</span><span class=\"nt\">img</span> <span class=\"na\">src</span><span class=\"o\">=</span><span class=\"s\">'image3_thumb.jpg'</span> <span class=\"na\">alt</span><span class=\"o\">=</span><span class=\"s\">'image3'</span><span class=\"p\">/&gt;&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;</span>\n      <span class=\"p\">&lt;</span><span class=\"nt\">a</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'image4.html'</span><span class=\"p\">&gt;</span>Name: My image 4 <span class=\"p\">&lt;</span><span class=\"nt\">br</span> <span class=\"p\">/&gt;&lt;</span><span class=\"nt\">img</span> <span class=\"na\">src</span><span class=\"o\">=</span><span class=\"s\">'image4_thumb.jpg'</span> <span class=\"na\">alt</span><span class=\"o\">=</span><span class=\"s\">'image4'</span><span class=\"p\">/&gt;&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;</span>\n      <span class=\"p\">&lt;</span><span class=\"nt\">a</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">'image5.html'</span><span class=\"p\">&gt;</span>Name: My image 5 <span class=\"p\">&lt;</span><span class=\"nt\">br</span> <span class=\"p\">/&gt;&lt;</span><span class=\"nt\">img</span> <span class=\"na\">src</span><span class=\"o\">=</span><span class=\"s\">'image5_thumb.jpg'</span> <span class=\"na\">alt</span><span class=\"o\">=</span><span class=\"s\">'image5'</span><span class=\"p\">/&gt;&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;</span>\n    <span class=\"p\">&lt;/</span><span class=\"nt\">div</span><span class=\"p\">&gt;</span>\n  <span class=\"p\">&lt;/</span><span class=\"nt\">body</span><span class=\"p\">&gt;</span>\n<span class=\"p\">&lt;/</span><span class=\"nt\">html</span><span class=\"p\">&gt;</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "First, let’s open the shell:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy<span class=\"w\"> </span>shell<span class=\"w\"> </span>https://docs.scrapy.org/en/latest/_static/selectors-sample1.html\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Then, after the shell loads, you’ll have the response available as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Since we’re dealing with HTML, the selector will automatically use an HTML parser."
+    },
+    {
+      "type": "text",
+      "content": "So, by looking at the "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//title/text()\"</span><span class=\"p\">)</span>\n<span class=\"go\">[&lt;Selector query='//title/text()' data='Example website'&gt;]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To actually extract the textual data, you must call the selector "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.getall()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//title/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['Example website']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//title/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'Example website'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": ".get()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.getall()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Notice that CSS selectors can select text or attribute nodes using CSS3\npseudo-elements:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"title::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'Example website'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "As you can see, "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"@src\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1_thumb.jpg',</span>\n<span class=\"go\">'image2_thumb.jpg',</span>\n<span class=\"go\">'image3_thumb.jpg',</span>\n<span class=\"go\">'image4_thumb.jpg',</span>\n<span class=\"go\">'image5_thumb.jpg']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to extract only the first matched element, you can call the\nselector "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract_first()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//div[@id=\"images\"]/a/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'Name: My image 1 '</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "It returns "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//div[@id=\"not-exists\"]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span>\n<span class=\"go\">True</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "A default return value can be provided as an argument, to be used instead\nof "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//div[@id=\"not-exists\"]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">default</span><span class=\"o\">=</span><span class=\"s2\">\"not-found\"</span><span class=\"p\">)</span>\n<span class=\"go\">'not-found'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Instead of using e.g. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'@src'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.attrib</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">img</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"src\"</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">img</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img\"</span><span class=\"p\">)]</span>\n<span class=\"go\">['image1_thumb.jpg',</span>\n<span class=\"go\">'image2_thumb.jpg',</span>\n<span class=\"go\">'image3_thumb.jpg',</span>\n<span class=\"go\">'image4_thumb.jpg',</span>\n<span class=\"go\">'image5_thumb.jpg']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "As a shortcut, "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.attrib</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"src\"</span><span class=\"p\">]</span>\n<span class=\"go\">'image1_thumb.jpg'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is most useful when only a single result is expected, e.g. when selecting\nby id, or selecting unique elements on a web page:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"base\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"href\"</span><span class=\"p\">]</span>\n<span class=\"go\">'http://example.com/'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Now we’re going to get the base URL and some image links:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//base/@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'http://example.com/'</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"base::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'http://example.com/'</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"base\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"href\"</span><span class=\"p\">]</span>\n<span class=\"go\">'http://example.com/'</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[contains(@href, \"image\")]/@href'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html',</span>\n<span class=\"go\">'image2.html',</span>\n<span class=\"go\">'image3.html',</span>\n<span class=\"go\">'image4.html',</span>\n<span class=\"go\">'image5.html']</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a[href*=image]::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html',</span>\n<span class=\"go\">'image2.html',</span>\n<span class=\"go\">'image3.html',</span>\n<span class=\"go\">'image4.html',</span>\n<span class=\"go\">'image5.html']</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[contains(@href, \"image\")]/img/@src'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1_thumb.jpg',</span>\n<span class=\"go\">'image2_thumb.jpg',</span>\n<span class=\"go\">'image3_thumb.jpg',</span>\n<span class=\"go\">'image4_thumb.jpg',</span>\n<span class=\"go\">'image5_thumb.jpg']</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a[href*=image] img::attr(src)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1_thumb.jpg',</span>\n<span class=\"go\">'image2_thumb.jpg',</span>\n<span class=\"go\">'image3_thumb.jpg',</span>\n<span class=\"go\">'image4_thumb.jpg',</span>\n<span class=\"go\">'image5_thumb.jpg']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Per W3C standards, "
+    },
+    {
+      "type": "text",
+      "content": "to select text nodes, use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">::text</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "to select attribute values, use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">::attr(name)</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "These pseudo-elements are Scrapy-/Parsel-specific.\nThey will most probably not work with other libraries like\n"
+    },
+    {
+      "type": "text",
+      "content": "Examples:"
+    },
+    {
+      "type": "text",
+      "content": "title::text"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">title::text</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;title&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"title::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'Example website'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "*::text"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">*::text</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"#images *::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['\\n   ',</span>\n<span class=\"go\">'Name: My image 1 ',</span>\n<span class=\"go\">'\\n   ',</span>\n<span class=\"go\">'Name: My image 2 ',</span>\n<span class=\"go\">'\\n   ',</span>\n<span class=\"go\">'Name: My image 3 ',</span>\n<span class=\"go\">'\\n   ',</span>\n<span class=\"go\">'Name: My image 4 ',</span>\n<span class=\"go\">'\\n   ',</span>\n<span class=\"go\">'Name: My image 5 ',</span>\n<span class=\"go\">'\\n  ']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "foo::text"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">foo::text</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">[]</span>\n\n<span class=\"go\">This means ``.css('foo::text').get()`` could return None even if an element</span>\n<span class=\"go\">exists. Use ``default=''`` if you always want a string:</span>\n</pre>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"img::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">default</span><span class=\"o\">=</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>\n<span class=\"go\">''</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "a::attr(href)"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">a::attr(href)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html',</span>\n<span class=\"go\">'image2.html',</span>\n<span class=\"go\">'image3.html',</span>\n<span class=\"go\">'image4.html',</span>\n<span class=\"go\">'image5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "You cannot chain these pseudo-elements. But in practice it would not\nmake much sense: text nodes do not have attributes, and attribute values\nare string values already and do not have children nodes."
+    },
+    {
+      "type": "text",
+      "content": "The selection methods ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">links</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[contains(@href, \"image\")]'</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">links</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['&lt;a href=\"image1.html\"&gt;Name: My image 1 &lt;br&gt;&lt;img src=\"image1_thumb.jpg\" alt=\"image1\"&gt;&lt;/a&gt;',</span>\n<span class=\"go\">'&lt;a href=\"image2.html\"&gt;Name: My image 2 &lt;br&gt;&lt;img src=\"image2_thumb.jpg\" alt=\"image2\"&gt;&lt;/a&gt;',</span>\n<span class=\"go\">'&lt;a href=\"image3.html\"&gt;Name: My image 3 &lt;br&gt;&lt;img src=\"image3_thumb.jpg\" alt=\"image3\"&gt;&lt;/a&gt;',</span>\n<span class=\"go\">'&lt;a href=\"image4.html\"&gt;Name: My image 4 &lt;br&gt;&lt;img src=\"image4_thumb.jpg\" alt=\"image4\"&gt;&lt;/a&gt;',</span>\n<span class=\"go\">'&lt;a href=\"image5.html\"&gt;Name: My image 5 &lt;br&gt;&lt;img src=\"image5_thumb.jpg\" alt=\"image5\"&gt;&lt;/a&gt;']</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">index</span><span class=\"p\">,</span> <span class=\"n\">link</span> <span class=\"ow\">in</span> <span class=\"nb\">enumerate</span><span class=\"p\">(</span><span class=\"n\">links</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"n\">href_xpath</span> <span class=\"o\">=</span> <span class=\"n\">link</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"gp\">... </span>    <span class=\"n\">img_xpath</span> <span class=\"o\">=</span> <span class=\"n\">link</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"img/@src\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Link number </span><span class=\"si\">{</span><span class=\"n\">index</span><span class=\"si\">}</span><span class=\"s2\"> points to url </span><span class=\"si\">{</span><span class=\"n\">href_xpath</span><span class=\"si\">!r}</span><span class=\"s2\"> and image </span><span class=\"si\">{</span><span class=\"n\">img_xpath</span><span class=\"si\">!r}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">Link number 0 points to url 'image1.html' and image 'image1_thumb.jpg'</span>\n<span class=\"go\">Link number 1 points to url 'image2.html' and image 'image2_thumb.jpg'</span>\n<span class=\"go\">Link number 2 points to url 'image3.html' and image 'image3_thumb.jpg'</span>\n<span class=\"go\">Link number 3 points to url 'image4.html' and image 'image4_thumb.jpg'</span>\n<span class=\"go\">Link number 4 points to url 'image5.html' and image 'image5_thumb.jpg'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "There are several ways to get a value of an attribute. First, one can use\nXPath syntax:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a/@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html', 'image2.html', 'image3.html', 'image4.html', 'image5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "XPath syntax has a few advantages: it is a standard XPath feature, and\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">@attributes</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy also provides an extension to CSS selectors ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">::attr(...)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html', 'image2.html', 'image3.html', 'image4.html', 'image5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "In addition to that, there is a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.attrib</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">a</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"href\"</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">a</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a\"</span><span class=\"p\">)]</span>\n<span class=\"go\">['image1.html', 'image2.html', 'image3.html', 'image4.html', 'image5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This property is also available on SelectorList; it returns a dictionary\nwith attributes of a first matching element. It is convenient to use when\na selector is expected to give a single result (e.g. when selecting by element\nID, or when selecting an unique element on a page):"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"base\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span>\n<span class=\"go\">{'href': 'http://example.com/'}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"base\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"href\"</span><span class=\"p\">]</span>\n<span class=\"go\">'http://example.com/'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": ".attrib"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.attrib</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">attrib</span>\n<span class=\"go\">{}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Selector"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example used to extract image names from the "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[contains(@href, \"image\")]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">re</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"Name:\\s*(.*)\"</span><span class=\"p\">)</span>\n<span class=\"go\">['My image 1 ',</span>\n<span class=\"go\">'My image 2 ',</span>\n<span class=\"go\">'My image 3 ',</span>\n<span class=\"go\">'My image 4 ',</span>\n<span class=\"go\">'My image 5 ']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "There’s an additional helper reciprocating "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract_first()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re_first()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[contains(@href, \"image\")]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">re_first</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"Name:\\s*(.*)\"</span><span class=\"p\">)</span>\n<span class=\"go\">'My image 1 '</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If you’re a long-time Scrapy user, you’re probably familiar\nwith "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract_first()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "However, Scrapy usage docs are now written using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.getall()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The following examples show how these methods map to each other."
+    },
+    {
+      "type": "text",
+      "content": "SelectorList.get()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SelectorList.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SelectorList.extract_first()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'image1.html'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">extract_first</span><span class=\"p\">()</span>\n<span class=\"go\">'image1.html'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "SelectorList.getall()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SelectorList.getall()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SelectorList.extract()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html', 'image2.html', 'image3.html', 'image4.html', 'image5.html']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">extract</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html', 'image2.html', 'image3.html', 'image4.html', 'image5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Selector.get()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector.extract()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'image1.html'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">extract</span><span class=\"p\">()</span>\n<span class=\"go\">'image1.html'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "For consistency, there is also "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector.getall()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"a::attr(href)\"</span><span class=\"p\">)[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['image1.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "So, the main difference is that output of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.getall()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.getall()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.extract_first()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here are some tips which may help you to use XPath with Scrapy selectors\neffectively. If you are not much familiar with XPath yet,\nyou may want to take a look first at this "
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Some of the tips are based on "
+    },
+    {
+      "type": "text",
+      "content": "Keep in mind that if you are nesting selectors and use an XPath that starts\nwith "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">/</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, suppose you want to extract all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;p&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;div&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;div&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">divs</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//div\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "At first, you may be tempted to use the following approach, which is wrong, as\nit actually extracts all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;p&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;div&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">divs</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//p\"</span><span class=\"p\">):</span>  <span class=\"c1\"># this is wrong - gets all &lt;p&gt; from the whole document</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">())</span>\n<span class=\"gp\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is the proper way to do it (note the dot prefixing the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.//p</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">divs</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\".//p\"</span><span class=\"p\">):</span>  <span class=\"c1\"># extracts all &lt;p&gt; inside</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">())</span>\n<span class=\"gp\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Another common case would be to extract all direct "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;p&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">divs</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"p\"</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">p</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">())</span>\n<span class=\"gp\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "For more details about relative XPaths see the "
+    },
+    {
+      "type": "text",
+      "content": "Because an element can contain multiple CSS classes, the XPath way to select elements\nby class is the rather verbose:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"o\">*</span><span class=\"p\">[</span><span class=\"n\">contains</span><span class=\"p\">(</span><span class=\"n\">concat</span><span class=\"p\">(</span><span class=\"s1\">' '</span><span class=\"p\">,</span> <span class=\"n\">normalize</span><span class=\"o\">-</span><span class=\"n\">space</span><span class=\"p\">(</span><span class=\"nd\">@class</span><span class=\"p\">),</span> <span class=\"s1\">' '</span><span class=\"p\">),</span> <span class=\"s1\">' someclass '</span><span class=\"p\">)]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If you use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">@class='someclass'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">contains(@class,</span> <span class=\"pre\">'someclass')</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">someclass</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "As it turns out, Scrapy selectors allow you to chain selectors, so most of the time\nyou can just select by class using CSS and then switch to XPath when needed:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span>\n<span class=\"gp\">... </span>    <span class=\"n\">text</span><span class=\"o\">=</span><span class=\"s1\">'&lt;div class=\"hero shout\"&gt;&lt;time datetime=\"2014-07-23 19:00\"&gt;Special date&lt;/time&gt;&lt;/div&gt;'</span>\n<span class=\"gp\">... </span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\".shout\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"./time/@datetime\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['2014-07-23 19:00']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is cleaner than using the verbose XPath trick shown above. Just remember\nto use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "//node[1]"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">//node[1]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "(//node)[1]"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">(//node)[1]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span>\n<span class=\"gp\">... </span>    <span class=\"n\">text</span><span class=\"o\">=</span><span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;ul class=\"list\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;1&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;2&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;3&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/ul&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;ul class=\"list\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;4&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;5&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li&gt;6&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/ul&gt;\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">xp</span> <span class=\"o\">=</span> <span class=\"k\">lambda</span> <span class=\"n\">x</span><span class=\"p\">:</span> <span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This gets all first "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;li&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">xp</span><span class=\"p\">(</span><span class=\"s2\">\"//li[1]\"</span><span class=\"p\">)</span>\n<span class=\"go\">['&lt;li&gt;1&lt;/li&gt;', '&lt;li&gt;4&lt;/li&gt;']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "And this gets the first "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;li&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">xp</span><span class=\"p\">(</span><span class=\"s2\">\"(//li)[1]\"</span><span class=\"p\">)</span>\n<span class=\"go\">['&lt;li&gt;1&lt;/li&gt;']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This gets all first "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;li&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;ul&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">xp</span><span class=\"p\">(</span><span class=\"s2\">\"//ul/li[1]\"</span><span class=\"p\">)</span>\n<span class=\"go\">['&lt;li&gt;1&lt;/li&gt;', '&lt;li&gt;4&lt;/li&gt;']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "And this gets the first "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;li&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;ul&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">xp</span><span class=\"p\">(</span><span class=\"s2\">\"(//ul/li)[1]\"</span><span class=\"p\">)</span>\n<span class=\"go\">['&lt;li&gt;1&lt;/li&gt;']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "When you need to use the text content as argument to an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.//text()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This is because the expression "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.//text()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">contains()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">starts-with()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span>\n<span class=\"gp\">... </span>    <span class=\"n\">text</span><span class=\"o\">=</span><span class=\"s1\">'&lt;a href=\"#\"&gt;Click here to go to the &lt;strong&gt;Next Page&lt;/strong&gt;&lt;/a&gt;'</span>\n<span class=\"gp\">... </span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Converting a "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a//text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># take a peek at the node-set</span>\n<span class=\"go\">['Click here to go to the ', 'Next Page']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"string(//a[1]//text())\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># convert it to string</span>\n<span class=\"go\">['Click here to go to the ']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "A "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a[1]\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># select the first node</span>\n<span class=\"go\">['&lt;a href=\"#\"&gt;Click here to go to the &lt;strong&gt;Next Page&lt;/strong&gt;&lt;/a&gt;']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"string(//a[1])\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># convert it to string</span>\n<span class=\"go\">['Click here to go to the Next Page']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "So, using the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.//text()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a[contains(.//text(), 'Next Page')]\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">[]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "But using the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a[contains(., 'Next Page')]\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['&lt;a href=\"#\"&gt;Click here to go to the &lt;strong&gt;Next Page&lt;/strong&gt;&lt;/a&gt;']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "XPath allows you to reference variables in your XPath expressions, using\nthe "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">$somevariable</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">?</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example to match an element based on its “id” attribute value,\nwithout hard-coding it (that was shown previously):"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># `$val` used in the expression, a `val` argument needs to be passed</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//div[@id=$val]/a/text()\"</span><span class=\"p\">,</span> <span class=\"n\">val</span><span class=\"o\">=</span><span class=\"s2\">\"images\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'Name: My image 1 '</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s another example, to find the “id” attribute of a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;div&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;a&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">5</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//div[count(a)=$cnt]/@id\"</span><span class=\"p\">,</span> <span class=\"n\">cnt</span><span class=\"o\">=</span><span class=\"mi\">5</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n<span class=\"go\">'images'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "All variable references must have a binding value when calling "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">ValueError:</span> <span class=\"pre\">XPath</span> <span class=\"pre\">error:</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "parsel"
+    },
+    {
+      "type": "text",
+      "content": "When dealing with scraping projects, it is often quite convenient to get rid of\nnamespaces altogether and just work with element names, to write more\nsimple/convenient XPaths. You can use the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">Selector.remove_namespaces()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Let’s show an example that illustrates this with the Python Insider blog atom feed."
+    },
+    {
+      "type": "text",
+      "content": "First, we open the shell with the url we want to scrape:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$<span class=\"w\"> </span>scrapy<span class=\"w\"> </span>shell<span class=\"w\"> </span>https://feeds.feedburner.com/PythonInsider\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is how the file starts:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>&lt;?xml<span class=\"w\"> </span><span class=\"nv\">version</span><span class=\"o\">=</span><span class=\"s2\">\"1.0\"</span><span class=\"w\"> </span><span class=\"nv\">encoding</span><span class=\"o\">=</span><span class=\"s2\">\"UTF-8\"</span>?&gt;\n&lt;?xml-stylesheet<span class=\"w\"> </span>...\n&lt;feed<span class=\"w\"> </span><span class=\"nv\">xmlns</span><span class=\"o\">=</span><span class=\"s2\">\"http://www.w3.org/2005/Atom\"</span>\n<span class=\"w\">      </span>xmlns:openSearch<span class=\"o\">=</span><span class=\"s2\">\"http://a9.com/-/spec/opensearchrss/1.0/\"</span>\n<span class=\"w\">      </span>xmlns:blogger<span class=\"o\">=</span><span class=\"s2\">\"http://schemas.google.com/blogger/2008\"</span>\n<span class=\"w\">      </span>xmlns:georss<span class=\"o\">=</span><span class=\"s2\">\"http://www.georss.org/georss\"</span>\n<span class=\"w\">      </span>xmlns:gd<span class=\"o\">=</span><span class=\"s2\">\"http://schemas.google.com/g/2005\"</span>\n<span class=\"w\">      </span>xmlns:thr<span class=\"o\">=</span><span class=\"s2\">\"http://purl.org/syndication/thread/1.0\"</span>\n<span class=\"w\">      </span>xmlns:feedburner<span class=\"o\">=</span><span class=\"s2\">\"http://rssnamespace.org/feedburner/ext/1.0\"</span>&gt;\n<span class=\"w\">  </span>...\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can see several namespace declarations including a default\n“"
+    },
+    {
+      "type": "text",
+      "content": "Once in the shell we can try selecting all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;link&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//link\"</span><span class=\"p\">)</span>\n<span class=\"go\">[]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "But once we call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">Selector.remove_namespaces()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">remove_namespaces</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//link\"</span><span class=\"p\">)</span>\n<span class=\"go\">[&lt;Selector query='//link' data='&lt;link rel=\"alternate\" type=\"text/html\" h'&gt;,</span>\n<span class=\"go\">    &lt;Selector query='//link' data='&lt;link rel=\"next\" type=\"application/atom+'&gt;,</span>\n<span class=\"go\">    ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If you wonder why the namespace removal procedure isn’t always called by default\ninstead of having to call it manually, this is because of two reasons, which, in order\nof relevance, are:"
+    },
+    {
+      "type": "text",
+      "content": "Removing namespaces requires to iterate and modify all nodes in the\ndocument, which is a reasonably expensive operation to perform by default\nfor all documents crawled by Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "There could be some cases where using namespaces is actually required, in\ncase some element names clash between namespaces. These cases are very rare\nthough."
+    },
+    {
+      "type": "text",
+      "content": "Being built atop "
+    },
+    {
+      "type": "text",
+      "content": "prefix"
+    },
+    {
+      "type": "text",
+      "content": "namespace"
+    },
+    {
+      "type": "text",
+      "content": "usage"
+    },
+    {
+      "type": "text",
+      "content": "re"
+    },
+    {
+      "type": "text",
+      "content": "http://exslt.org/regular-expressions"
+    },
+    {
+      "type": "text",
+      "content": "regular expressions"
+    },
+    {
+      "type": "text",
+      "content": "set"
+    },
+    {
+      "type": "text",
+      "content": "http://exslt.org/sets"
+    },
+    {
+      "type": "text",
+      "content": "set manipulation"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">test()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">starts-with()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">contains()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example selecting links in list item with a “class” attribute ending with a digit:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Selector</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">doc</span> <span class=\"o\">=</span> <span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;ul&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li class=\"item-0\"&gt;&lt;a href=\"link1.html\"&gt;first item&lt;/a&gt;&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li class=\"item-1\"&gt;&lt;a href=\"link2.html\"&gt;second item&lt;/a&gt;&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li class=\"item-inactive\"&gt;&lt;a href=\"link3.html\"&gt;third item&lt;/a&gt;&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li class=\"item-1\"&gt;&lt;a href=\"link4.html\"&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;li class=\"item-0\"&gt;&lt;a href=\"link5.html\"&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/ul&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"o\">=</span><span class=\"n\">doc</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"s2\">\"html\"</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//li//@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['link1.html', 'link2.html', 'link3.html', 'link4.html', 'link5.html']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//li[re:test(@class, \"item-\\d$\")]//@href'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n<span class=\"go\">['link1.html', 'link2.html', 'link4.html', 'link5.html']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "C library "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">libxslt</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">re</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "These can be handy for excluding parts of a document tree before\nextracting text elements for example."
+    },
+    {
+      "type": "text",
+      "content": "Example extracting microdata (sample content taken from "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">doc</span> <span class=\"o\">=</span> <span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;div itemscope itemtype=\"http://schema.org/Product\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;span itemprop=\"name\"&gt;Kenmore White 17\" Microwave&lt;/span&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;img src=\"kenmore-microwave-17in.jpg\" alt='Kenmore 17\" Microwave' /&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;div itemprop=\"aggregateRating\"</span>\n<span class=\"gp\">... </span><span class=\"s2\">    itemscope itemtype=\"http://schema.org/AggregateRating\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">   Rated &lt;span itemprop=\"ratingValue\"&gt;3.5&lt;/span&gt;/5</span>\n<span class=\"gp\">... </span><span class=\"s2\">   based on &lt;span itemprop=\"reviewCount\"&gt;11&lt;/span&gt; customer reviews</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;div itemprop=\"offers\" itemscope itemtype=\"http://schema.org/Offer\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;span itemprop=\"price\"&gt;$55.00&lt;/span&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;link itemprop=\"availability\" href=\"http://schema.org/InStock\" /&gt;In stock</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  Product description:</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;span itemprop=\"description\"&gt;0.7 cubic feet countertop microwave.</span>\n<span class=\"gp\">... </span><span class=\"s2\">  Has six preset cooking categories and convenience features like</span>\n<span class=\"gp\">... </span><span class=\"s2\">  Add-A-Minute and Child Lock.&lt;/span&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  Customer reviews:</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;div itemprop=\"review\" itemscope itemtype=\"http://schema.org/Review\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;span itemprop=\"name\"&gt;Not a happy camper&lt;/span&gt; -</span>\n<span class=\"gp\">... </span><span class=\"s2\">    by &lt;span itemprop=\"author\"&gt;Ellie&lt;/span&gt;,</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;meta itemprop=\"datePublished\" content=\"2011-04-01\"&gt;April 1, 2011</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;div itemprop=\"reviewRating\" itemscope itemtype=\"http://schema.org/Rating\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;meta itemprop=\"worstRating\" content = \"1\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;span itemprop=\"ratingValue\"&gt;1&lt;/span&gt;/</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;span itemprop=\"bestRating\"&gt;5&lt;/span&gt;stars</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;span itemprop=\"description\"&gt;The lamp burned out and now I have to replace</span>\n<span class=\"gp\">... </span><span class=\"s2\">    it. &lt;/span&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;div itemprop=\"review\" itemscope itemtype=\"http://schema.org/Review\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;span itemprop=\"name\"&gt;Value purchase&lt;/span&gt; -</span>\n<span class=\"gp\">... </span><span class=\"s2\">    by &lt;span itemprop=\"author\"&gt;Lucas&lt;/span&gt;,</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;meta itemprop=\"datePublished\" content=\"2011-03-25\"&gt;March 25, 2011</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;div itemprop=\"reviewRating\" itemscope itemtype=\"http://schema.org/Rating\"&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;meta itemprop=\"worstRating\" content = \"1\"/&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;span itemprop=\"ratingValue\"&gt;4&lt;/span&gt;/</span>\n<span class=\"gp\">... </span><span class=\"s2\">      &lt;span itemprop=\"bestRating\"&gt;5&lt;/span&gt;stars</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;span itemprop=\"description\"&gt;Great microwave for the price. It is small and</span>\n<span class=\"gp\">... </span><span class=\"s2\">    fits in my apartment.&lt;/span&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  &lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">  ...</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;/div&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"o\">=</span><span class=\"n\">doc</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"s2\">\"html\"</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">scope</span> <span class=\"ow\">in</span> <span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//div[@itemscope]\"</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"current scope:\"</span><span class=\"p\">,</span> <span class=\"n\">scope</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"@itemtype\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">())</span>\n<span class=\"gp\">... </span>    <span class=\"n\">props</span> <span class=\"o\">=</span> <span class=\"n\">scope</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span>\n<span class=\"gp\">... </span><span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"sd\">                set:difference(./descendant::*/@itemprop,</span>\n<span class=\"gp\">... </span><span class=\"sd\">                               .//*[@itemscope]/*/@itemprop)\"\"\"</span>\n<span class=\"gp\">... </span>    <span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"    properties: </span><span class=\"si\">{</span><span class=\"n\">props</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Product']</span>\n<span class=\"go\">    properties: ['name', 'aggregateRating', 'offers', 'description', 'review', 'review']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/AggregateRating']</span>\n<span class=\"go\">    properties: ['ratingValue', 'reviewCount']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Offer']</span>\n<span class=\"go\">    properties: ['price', 'availability']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Review']</span>\n<span class=\"go\">    properties: ['name', 'author', 'datePublished', 'reviewRating', 'description']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Rating']</span>\n<span class=\"go\">    properties: ['worstRating', 'ratingValue', 'bestRating']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Review']</span>\n<span class=\"go\">    properties: ['name', 'author', 'datePublished', 'reviewRating', 'description']</span>\n\n<span class=\"go\">current scope: ['http://schema.org/Rating']</span>\n<span class=\"go\">    properties: ['worstRating', 'ratingValue', 'bestRating']</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Here we first iterate over "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">itemscope</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">itemprops</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">itemscope</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy selectors also provide a sorely missed XPath extension function\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">has-class</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For the following HTML:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">HtmlResponse</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">(</span>\n<span class=\"gp\">... </span>    <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"s2\">\"http://example.com\"</span><span class=\"p\">,</span>\n<span class=\"gp\">... </span>    <span class=\"n\">body</span><span class=\"o\">=</span><span class=\"s2\">\"\"\"</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;html&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;body&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;p class=\"foo bar-baz\"&gt;First&lt;/p&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;p class=\"foo\"&gt;Second&lt;/p&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;p class=\"bar\"&gt;Third&lt;/p&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">        &lt;p&gt;Fourth&lt;/p&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">    &lt;/body&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">&lt;/html&gt;</span>\n<span class=\"gp\">... </span><span class=\"s2\">\"\"\"</span><span class=\"p\">,</span>\n<span class=\"gp\">... </span>    <span class=\"n\">encoding</span><span class=\"o\">=</span><span class=\"s2\">\"utf-8\"</span><span class=\"p\">,</span>\n<span class=\"gp\">... </span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can use it like this:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//p[has-class(\"foo\")]'</span><span class=\"p\">)</span>\n<span class=\"go\">[&lt;Selector query='//p[has-class(\"foo\")]' data='&lt;p class=\"foo bar-baz\"&gt;First&lt;/p&gt;'&gt;,</span>\n<span class=\"go\">&lt;Selector query='//p[has-class(\"foo\")]' data='&lt;p class=\"foo\"&gt;Second&lt;/p&gt;'&gt;]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//p[has-class(\"foo\", \"bar-baz\")]'</span><span class=\"p\">)</span>\n<span class=\"go\">[&lt;Selector query='//p[has-class(\"foo\", \"bar-baz\")]' data='&lt;p class=\"foo bar-baz\"&gt;First&lt;/p&gt;'&gt;]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//p[has-class(\"foo\", \"bar\")]'</span><span class=\"p\">)</span>\n<span class=\"go\">[]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "So XPath "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">//p[has-class(\"foo\",</span> <span class=\"pre\">\"bar-baz\")]</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">p.foo.bar-baz</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Parsel also simplifies adding your own XPath extensions."
+    },
+    {
+      "type": "text",
+      "content": "Register a custom extension function to use in XPath expressions."
+    },
+    {
+      "type": "text",
+      "content": "The function "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">func</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">fname</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">context</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">func</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See more "
+    },
+    {
+      "type": "text",
+      "content": "An instance of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HtmlResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">XmlResponse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "text"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">text</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">text</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "type"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">type</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"html\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"xml\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"json\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">type</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"html\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">text</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">type</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"html\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"html\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HtmlResponse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"xml\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"xml\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">XmlResponse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"json\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"json\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">TextResponse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "\"html\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"html\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Otherwise, if "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">type</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Find nodes matching the xpath "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "query"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "namespaces"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">namespaces</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">prefix:</span> <span class=\"pre\">namespace-uri</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">register_namespace(prefix,</span> <span class=\"pre\">uri)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">register_namespace()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Any additional named arguments can be used to pass values for XPath\nvariables in the XPath expression, e.g.:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[href=$url]'</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"s2\">\"http://www.example.com\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "For convenience, this method can be called as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.xpath()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Apply the given CSS selector and return a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "query"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In the background, CSS queries are translated into XPath queries using\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "For convenience, this method can be called as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.css()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Find objects matching the JMESPath "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "query"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Any additional named arguments are passed to the underlying\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">jmespath.search</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">jmespath</span><span class=\"p\">(</span><span class=\"s1\">'author.name'</span><span class=\"p\">,</span> <span class=\"n\">options</span><span class=\"o\">=</span><span class=\"n\">jmespath</span><span class=\"o\">.</span><span class=\"n\">Options</span><span class=\"p\">(</span><span class=\"n\">dict_cls</span><span class=\"o\">=</span><span class=\"n\">collections</span><span class=\"o\">.</span><span class=\"n\">OrderedDict</span><span class=\"p\">))</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "For convenience, this method can be called as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response.jmespath()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Serialize and return the matched nodes."
+    },
+    {
+      "type": "text",
+      "content": "For HTML and XML, the result is always a string, and percent-encoded\ncontent is unquoted."
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Return the attributes dictionary for underlying element."
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Apply the given regex and return a list of strings with the\nmatches."
+    },
+    {
+      "type": "text",
+      "content": "regex"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">regex</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">re.compile(regex)</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "By default, character entity references are replaced by their\ncorresponding character (except for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;amp;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;lt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">replace_entities</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Apply the given regex and return the first string which matches. If\nthere is no match, return the default value ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "By default, character entity references are replaced by their\ncorresponding character (except for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;amp;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;lt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">replace_entities</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Register the given namespace to be used in this "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Remove all namespaces, allowing to traverse the document using\nnamespace-less xpaths. See "
+    },
+    {
+      "type": "text",
+      "content": "Return "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Serialize and return the matched node in a 1-element list of strings."
+    },
+    {
+      "type": "text",
+      "content": "This method is added to Selector for consistency; it is more useful\nwith SelectorList. See also: "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">list</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.xpath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "xpath"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">xpath</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">Selector.xpath()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "namespaces"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">namespaces</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">prefix:</span> <span class=\"pre\">namespace-uri</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">register_namespace(prefix,</span> <span class=\"pre\">uri)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">register_namespace()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Any additional named arguments can be used to pass values for XPath\nvariables in the XPath expression, e.g.:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//a[href=$url]'</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"s2\">\"http://www.example.com\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.css()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "query"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">Selector.css()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.jmespath()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "query"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">Selector.jmespath()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Any additional named arguments are passed to the underlying\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">jmespath.search</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">selector</span><span class=\"o\">.</span><span class=\"n\">jmespath</span><span class=\"p\">(</span><span class=\"s1\">'author.name'</span><span class=\"p\">,</span> <span class=\"n\">options</span><span class=\"o\">=</span><span class=\"n\">jmespath</span><span class=\"o\">.</span><span class=\"n\">Options</span><span class=\"p\">(</span><span class=\"n\">dict_cls</span><span class=\"o\">=</span><span class=\"n\">collections</span><span class=\"o\">.</span><span class=\"n\">OrderedDict</span><span class=\"p\">))</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Return the result of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.get()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "By default, character entity references are replaced by their\ncorresponding character (except for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;amp;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;lt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">replace_entities</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Call the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.re()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "By default, character entity references are replaced by their\ncorresponding character (except for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;amp;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&amp;lt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">replace_entities</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return the attributes dictionary for the first element.\nIf the list is empty, return an empty dict."
+    },
+    {
+      "type": "text",
+      "content": "See also: "
+    },
+    {
+      "type": "text",
+      "content": "Here are some "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HtmlResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">html_response</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Select all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;h1&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//h1\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Extract the text of all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;h1&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//h1\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># this includes the h1 tag</span>\n<span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//h1/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>  <span class=\"c1\"># this excludes the h1 tag</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Iterate over all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;p&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">for</span> <span class=\"n\">node</span> <span class=\"ow\">in</span> <span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//p\"</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"o\">.</span><span class=\"n\">attrib</span><span class=\"p\">[</span><span class=\"s2\">\"class\"</span><span class=\"p\">])</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Here are some examples to illustrate concepts for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">XmlResponse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span> <span class=\"o\">=</span> <span class=\"n\">Selector</span><span class=\"p\">(</span><span class=\"n\">xml_response</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Select all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;product&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//product\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Extract all prices from a "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">register_namespace</span><span class=\"p\">(</span><span class=\"s2\">\"g\"</span><span class=\"p\">,</span> <span class=\"s2\">\"http://base.google.com/ns/1.0\"</span><span class=\"p\">)</span>\n<span class=\"n\">sel</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//g:price\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">()</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

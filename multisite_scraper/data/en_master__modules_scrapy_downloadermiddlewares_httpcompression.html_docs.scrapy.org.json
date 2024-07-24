@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/httpcompression.html",
+  "title": "scrapy.downloadermiddlewares.httpcompression — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpcompression"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.httpcompression"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">warnings</span>\n<span class=\"kn\">from</span> <span class=\"nn\">itertools</span> <span class=\"kn\">import</span> <span class=\"n\">chain</span>\n<span class=\"kn\">from</span> <span class=\"nn\">logging</span> <span class=\"kn\">import</span> <span class=\"n\">getLogger</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">Dict</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">,</span> <span class=\"n\">Optional</span><span class=\"p\">,</span> <span class=\"n\">Tuple</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">,</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">TextResponse</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.responsetypes</span> <span class=\"kn\">import</span> <span class=\"n\">responsetypes</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils._compression</span> <span class=\"kn\">import</span> <span class=\"p\">(</span>\n    <span class=\"n\">_DecompressionMaxSizeExceeded</span><span class=\"p\">,</span>\n    <span class=\"n\">_inflate</span><span class=\"p\">,</span>\n    <span class=\"n\">_unbrotli</span><span class=\"p\">,</span>\n    <span class=\"n\">_unzstd</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.deprecate</span> <span class=\"kn\">import</span> <span class=\"n\">ScrapyDeprecationWarning</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.gz</span> <span class=\"kn\">import</span> <span class=\"n\">gunzip</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.statscollectors</span> <span class=\"kn\">import</span> <span class=\"n\">StatsCollector</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n<span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"sa\">b</span><span class=\"s2\">\"gzip\"</span><span class=\"p\">,</span> <span class=\"sa\">b</span><span class=\"s2\">\"deflate\"</span><span class=\"p\">]</span>\n\n<span class=\"k\">try</span><span class=\"p\">:</span>\n    <span class=\"k\">try</span><span class=\"p\">:</span>\n        <span class=\"kn\">import</span> <span class=\"nn\">brotli</span>  <span class=\"c1\"># noqa: F401</span>\n    <span class=\"k\">except</span> <span class=\"ne\">ImportError</span><span class=\"p\">:</span>\n        <span class=\"kn\">import</span> <span class=\"nn\">brotlicffi</span>  <span class=\"c1\"># noqa: F401</span>\n<span class=\"k\">except</span> <span class=\"ne\">ImportError</span><span class=\"p\">:</span>\n    <span class=\"k\">pass</span>\n<span class=\"k\">else</span><span class=\"p\">:</span>\n    <span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\"br\"</span><span class=\"p\">)</span>\n\n<span class=\"k\">try</span><span class=\"p\">:</span>\n    <span class=\"kn\">import</span> <span class=\"nn\">zstandard</span>  <span class=\"c1\"># noqa: F401</span>\n<span class=\"k\">except</span> <span class=\"ne\">ImportError</span><span class=\"p\">:</span>\n    <span class=\"k\">pass</span>\n<span class=\"k\">else</span><span class=\"p\">:</span>\n    <span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\"zstd\"</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"HttpCompressionMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">HttpCompressionMiddleware</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"This middleware allows compressed (gzip, deflate) traffic to be</span>\n<span class=\"sd\">    sent/received from web sites\"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span>\n        <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">StatsCollector</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n        <span class=\"o\">*</span><span class=\"p\">,</span>\n        <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Crawler</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n    <span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">crawler</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_max_size</span> <span class=\"o\">=</span> <span class=\"mi\">1073741824</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_warn_size</span> <span class=\"o\">=</span> <span class=\"mi\">33554432</span>\n            <span class=\"k\">return</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_max_size</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"DOWNLOAD_MAXSIZE\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_warn_size</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"DOWNLOAD_WARNSIZE\"</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">open_spider</span><span class=\"p\">,</span> <span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"COMPRESSION_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">=</span><span class=\"n\">crawler</span><span class=\"p\">)</span>\n        <span class=\"k\">except</span> <span class=\"ne\">TypeError</span><span class=\"p\">:</span>\n            <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"HttpCompressionMiddleware subclasses must either modify \"</span>\n                <span class=\"s2\">\"their '__init__' method to support a 'crawler' parameter or \"</span>\n                <span class=\"s2\">\"reimplement their 'from_crawler' method.\"</span><span class=\"p\">,</span>\n                <span class=\"n\">ScrapyDeprecationWarning</span><span class=\"p\">,</span>\n            <span class=\"p\">)</span>\n            <span class=\"n\">mw</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">()</span>\n            <span class=\"n\">mw</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n            <span class=\"n\">mw</span><span class=\"o\">.</span><span class=\"n\">_max_size</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"DOWNLOAD_MAXSIZE\"</span><span class=\"p\">)</span>\n            <span class=\"n\">mw</span><span class=\"o\">.</span><span class=\"n\">_warn_size</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"DOWNLOAD_WARNSIZE\"</span><span class=\"p\">)</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">mw</span><span class=\"o\">.</span><span class=\"n\">open_spider</span><span class=\"p\">,</span> <span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">mw</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">open_spider</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"nb\">hasattr</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"download_maxsize\"</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_max_size</span> <span class=\"o\">=</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">download_maxsize</span>\n        <span class=\"k\">if</span> <span class=\"nb\">hasattr</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"download_warnsize\"</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_warn_size</span> <span class=\"o\">=</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">download_warnsize</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"Accept-Encoding\"</span><span class=\"p\">,</span> <span class=\"sa\">b</span><span class=\"s2\">\", \"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"p\">))</span>\n        <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">method</span> <span class=\"o\">==</span> <span class=\"s2\">\"HEAD\"</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">):</span>\n            <span class=\"n\">content_encoding</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"Content-Encoding\"</span><span class=\"p\">)</span>\n            <span class=\"k\">if</span> <span class=\"n\">content_encoding</span><span class=\"p\">:</span>\n                <span class=\"n\">max_size</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"download_maxsize\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_max_size</span><span class=\"p\">)</span>\n                <span class=\"n\">warn_size</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"download_warnsize\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_warn_size</span><span class=\"p\">)</span>\n                <span class=\"k\">try</span><span class=\"p\">:</span>\n                    <span class=\"n\">decoded_body</span><span class=\"p\">,</span> <span class=\"n\">content_encoding</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_handle_encoding</span><span class=\"p\">(</span>\n                        <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">content_encoding</span><span class=\"p\">,</span> <span class=\"n\">max_size</span>\n                    <span class=\"p\">)</span>\n                <span class=\"k\">except</span> <span class=\"n\">_DecompressionMaxSizeExceeded</span><span class=\"p\">:</span>\n                    <span class=\"k\">raise</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">(</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"Ignored response </span><span class=\"si\">{</span><span class=\"n\">response</span><span class=\"si\">}</span><span class=\"s2\"> because its body \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"(</span><span class=\"si\">{</span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s2\"> B compressed) exceeded \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"DOWNLOAD_MAXSIZE (</span><span class=\"si\">{</span><span class=\"n\">max_size</span><span class=\"si\">}</span><span class=\"s2\"> B) during \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"decompression.\"</span>\n                    <span class=\"p\">)</span>\n                <span class=\"k\">if</span> <span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">warn_size</span> <span class=\"o\">&lt;=</span> <span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">decoded_body</span><span class=\"p\">):</span>\n                    <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">warning</span><span class=\"p\">(</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">response</span><span class=\"si\">}</span><span class=\"s2\"> body size after decompression \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"(</span><span class=\"si\">{</span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">decoded_body</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s2\"> B) is larger than the \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"download warning size (</span><span class=\"si\">{</span><span class=\"n\">warn_size</span><span class=\"si\">}</span><span class=\"s2\"> B).\"</span>\n                    <span class=\"p\">)</span>\n                <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Content-Encoding\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">content_encoding</span>\n                <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"p\">:</span>\n                    <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span>\n                        <span class=\"s2\">\"httpcompression/response_bytes\"</span><span class=\"p\">,</span>\n                        <span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">decoded_body</span><span class=\"p\">),</span>\n                        <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">,</span>\n                    <span class=\"p\">)</span>\n                    <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span>\n                        <span class=\"s2\">\"httpcompression/response_count\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span>\n                    <span class=\"p\">)</span>\n                <span class=\"n\">respcls</span> <span class=\"o\">=</span> <span class=\"n\">responsetypes</span><span class=\"o\">.</span><span class=\"n\">from_args</span><span class=\"p\">(</span>\n                    <span class=\"n\">headers</span><span class=\"o\">=</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">body</span><span class=\"o\">=</span><span class=\"n\">decoded_body</span>\n                <span class=\"p\">)</span>\n                <span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Dict</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">\"body\"</span><span class=\"p\">:</span> <span class=\"n\">decoded_body</span><span class=\"p\">}</span>\n                <span class=\"k\">if</span> <span class=\"nb\">issubclass</span><span class=\"p\">(</span><span class=\"n\">respcls</span><span class=\"p\">,</span> <span class=\"n\">TextResponse</span><span class=\"p\">):</span>\n                    <span class=\"c1\"># force recalculating the encoding until we make sure the</span>\n                    <span class=\"c1\"># responsetypes guessing is reliable</span>\n                    <span class=\"n\">kwargs</span><span class=\"p\">[</span><span class=\"s2\">\"encoding\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n                <span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">replace</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"o\">=</span><span class=\"n\">respcls</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n                <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">content_encoding</span><span class=\"p\">:</span>\n                    <span class=\"k\">del</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Content-Encoding\"</span><span class=\"p\">]</span>\n\n        <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_handle_encoding</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">body</span><span class=\"p\">:</span> <span class=\"nb\">bytes</span><span class=\"p\">,</span> <span class=\"n\">content_encoding</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">],</span> <span class=\"n\">max_size</span><span class=\"p\">:</span> <span class=\"nb\">int</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]]:</span>\n        <span class=\"n\">to_decode</span><span class=\"p\">,</span> <span class=\"n\">to_keep</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_split_encodings</span><span class=\"p\">(</span><span class=\"n\">content_encoding</span><span class=\"p\">)</span>\n        <span class=\"k\">for</span> <span class=\"n\">encoding</span> <span class=\"ow\">in</span> <span class=\"n\">to_decode</span><span class=\"p\">:</span>\n            <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_decode</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">encoding</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">to_keep</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_split_encodings</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">content_encoding</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">],</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]]:</span>\n        <span class=\"n\">to_keep</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"n\">encoding</span><span class=\"o\">.</span><span class=\"n\">strip</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">lower</span><span class=\"p\">()</span>\n            <span class=\"k\">for</span> <span class=\"n\">encoding</span> <span class=\"ow\">in</span> <span class=\"n\">chain</span><span class=\"o\">.</span><span class=\"n\">from_iterable</span><span class=\"p\">(</span>\n                <span class=\"n\">encodings</span><span class=\"o\">.</span><span class=\"n\">split</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\",\"</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">encodings</span> <span class=\"ow\">in</span> <span class=\"n\">content_encoding</span>\n            <span class=\"p\">)</span>\n        <span class=\"p\">]</span>\n        <span class=\"n\">to_decode</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">bytes</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n        <span class=\"k\">while</span> <span class=\"n\">to_keep</span><span class=\"p\">:</span>\n            <span class=\"n\">encoding</span> <span class=\"o\">=</span> <span class=\"n\">to_keep</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">()</span>\n            <span class=\"k\">if</span> <span class=\"n\">encoding</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"p\">:</span>\n                <span class=\"n\">to_keep</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">encoding</span><span class=\"p\">)</span>\n                <span class=\"k\">return</span> <span class=\"n\">to_decode</span><span class=\"p\">,</span> <span class=\"n\">to_keep</span>\n            <span class=\"n\">to_decode</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">encoding</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">to_decode</span><span class=\"p\">,</span> <span class=\"n\">to_keep</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_decode</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">body</span><span class=\"p\">:</span> <span class=\"nb\">bytes</span><span class=\"p\">,</span> <span class=\"n\">encoding</span><span class=\"p\">:</span> <span class=\"nb\">bytes</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"p\">:</span> <span class=\"nb\">int</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">bytes</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"n\">encoding</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"sa\">b</span><span class=\"s2\">\"gzip\"</span><span class=\"p\">,</span> <span class=\"sa\">b</span><span class=\"s2\">\"x-gzip\"</span><span class=\"p\">}:</span>\n            <span class=\"k\">return</span> <span class=\"n\">gunzip</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"o\">=</span><span class=\"n\">max_size</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">encoding</span> <span class=\"o\">==</span> <span class=\"sa\">b</span><span class=\"s2\">\"deflate\"</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">_inflate</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"o\">=</span><span class=\"n\">max_size</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">encoding</span> <span class=\"o\">==</span> <span class=\"sa\">b</span><span class=\"s2\">\"br\"</span> <span class=\"ow\">and</span> <span class=\"sa\">b</span><span class=\"s2\">\"br\"</span> <span class=\"ow\">in</span> <span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">_unbrotli</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"o\">=</span><span class=\"n\">max_size</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">encoding</span> <span class=\"o\">==</span> <span class=\"sa\">b</span><span class=\"s2\">\"zstd\"</span> <span class=\"ow\">and</span> <span class=\"sa\">b</span><span class=\"s2\">\"zstd\"</span> <span class=\"ow\">in</span> <span class=\"n\">ACCEPTED_ENCODINGS</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">_unzstd</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">max_size</span><span class=\"o\">=</span><span class=\"n\">max_size</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">body</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

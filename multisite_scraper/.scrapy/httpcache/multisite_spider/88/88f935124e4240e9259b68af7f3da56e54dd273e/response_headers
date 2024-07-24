@@ -1,0 +1,24 @@
+Content-Length: 0
+Date: Wed, 24 Jul 2024 05:22:36 GMT
+Content-Type: text/html; charset=utf-8
+Location: https://docs.scrapy.org/en/latest/
+Cf-Ray: 8a817932ab4718f3-FRA
+Cf-Cache-Status: HIT
+Age: 1079
+Cache-Control: max-age=1200
+Content-Language: en
+Vary: Accept-Language, Cookie, Accept-Encoding
+Cdn-Cache-Control: public
+Cross-Origin-Opener-Policy: same-origin
+Referrer-Policy: no-referrer-when-downgrade
+X-Backend: web-i-057aaa8ad1a19f172
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Redirect: system
+X-Rtd-Version-Method: path
+X-Served: Django-Proxito
+Set-Cookie: _cfuvid=AI9HNnVg2uBU9IJdbvkyqUUKjQj.PTF8d5jtJGCcq9I-1721798556607-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

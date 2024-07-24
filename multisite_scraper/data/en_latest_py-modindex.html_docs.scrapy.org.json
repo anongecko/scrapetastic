@@ -1,0 +1,466 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/py-modindex.html",
+  "title": "Python Module Index — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Python Module Index"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Python Module Index"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.contracts</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.contracts.default</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.core.scheduler</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.crawler</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.ajaxcrawl</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.cookies</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.defaultheaders</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.downloadtimeout</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.httpauth</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.httpcache</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.httpcompression</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.httpproxy</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.offsite</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.redirect</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.retry</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.robotstxt</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.stats</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.downloadermiddlewares.useragent</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.exceptions</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.exporters</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.closespider</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.corestats</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.debug</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.httpcache</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.logstats</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.memdebug</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.memusage</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.periodic_log</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.statsmailer</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.extensions.telnet</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.http</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.item</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.link</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.linkextractors</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.linkextractors.lxmlhtml</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.loader</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.mail</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.pipelines.files</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.pipelines.images</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.robotstxt</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.selector</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.settings</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.signalmanager</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.signals</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spiderloader</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spidermiddlewares</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spidermiddlewares.depth</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spidermiddlewares.httperror</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spidermiddlewares.referer</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.spidermiddlewares.urllength</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.statscollectors</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.utils.log</code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref\">scrapy.utils.trackref</code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

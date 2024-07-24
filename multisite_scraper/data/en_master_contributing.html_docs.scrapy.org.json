@@ -1,0 +1,798 @@
+{
+  "url": "https://docs.scrapy.org/en/master/contributing.html",
+  "title": "Contributing to Scrapy — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Reporting bugs"
+    },
+    {
+      "type": "text",
+      "content": "Writing patches"
+    },
+    {
+      "type": "text",
+      "content": "Submitting patches"
+    },
+    {
+      "type": "text",
+      "content": "Coding style"
+    },
+    {
+      "type": "text",
+      "content": "Pre-commit"
+    },
+    {
+      "type": "text",
+      "content": "Documentation policies"
+    },
+    {
+      "type": "text",
+      "content": "Tests"
+    },
+    {
+      "type": "text",
+      "content": "Running tests"
+    },
+    {
+      "type": "text",
+      "content": "Writing tests"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Important"
+    },
+    {
+      "type": "text",
+      "content": "Double check that you are reading the most recent version of this document at\n"
+    },
+    {
+      "type": "text",
+      "content": "There are many ways to contribute to Scrapy. Here are some of them:"
+    },
+    {
+      "type": "text",
+      "content": "Report bugs and request features in the "
+    },
+    {
+      "type": "text",
+      "content": "Report bugs and request features in the "
+    },
+    {
+      "type": "text",
+      "content": "Submit patches for new functionalities and/or bug fixes. Please read\n"
+    },
+    {
+      "type": "text",
+      "content": "Submit patches for new functionalities and/or bug fixes. Please read\n"
+    },
+    {
+      "type": "text",
+      "content": "Blog about Scrapy. Tell the world how you’re using Scrapy. This will help\nnewcomers with more examples and will help the Scrapy project to increase its\nvisibility."
+    },
+    {
+      "type": "text",
+      "content": "Blog about Scrapy. Tell the world how you’re using Scrapy. This will help\nnewcomers with more examples and will help the Scrapy project to increase its\nvisibility."
+    },
+    {
+      "type": "text",
+      "content": "Join the "
+    },
+    {
+      "type": "text",
+      "content": "Join the "
+    },
+    {
+      "type": "text",
+      "content": "Answer Scrapy questions at\n"
+    },
+    {
+      "type": "text",
+      "content": "Answer Scrapy questions at\n"
+    },
+    {
+      "type": "text",
+      "content": "Reporting bugs"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Please report security issues "
+    },
+    {
+      "type": "text",
+      "content": "Well-written bug reports are very helpful, so keep in mind the following\nguidelines when you’re going to report a new bug."
+    },
+    {
+      "type": "text",
+      "content": "check the "
+    },
+    {
+      "type": "text",
+      "content": "check the "
+    },
+    {
+      "type": "text",
+      "content": "if you have a general question about Scrapy usage, please ask it at\n"
+    },
+    {
+      "type": "text",
+      "content": "if you have a general question about Scrapy usage, please ask it at\n"
+    },
+    {
+      "type": "text",
+      "content": "check the "
+    },
+    {
+      "type": "text",
+      "content": "check the "
+    },
+    {
+      "type": "text",
+      "content": "search the "
+    },
+    {
+      "type": "text",
+      "content": "search the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">#scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "write "
+    },
+    {
+      "type": "text",
+      "content": "write "
+    },
+    {
+      "type": "text",
+      "content": "the most awesome way to provide a complete reproducible example is to\nsend a pull request which adds a failing test case to the\nScrapy testing suite (see "
+    },
+    {
+      "type": "text",
+      "content": "the most awesome way to provide a complete reproducible example is to\nsend a pull request which adds a failing test case to the\nScrapy testing suite (see "
+    },
+    {
+      "type": "text",
+      "content": "include the output of "
+    },
+    {
+      "type": "text",
+      "content": "include the output of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">version</span> <span class=\"pre\">-v</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Writing patches"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy has a list of "
+    },
+    {
+      "type": "text",
+      "content": "The better a patch is written, the higher the chances that it’ll get accepted and the sooner it will be merged."
+    },
+    {
+      "type": "text",
+      "content": "Well-written patches should:"
+    },
+    {
+      "type": "text",
+      "content": "contain the minimum amount of code required for the specific change. Small\npatches are easier to review and merge. So, if you’re doing more than one\nchange (or bug fix), please consider submitting one patch per change. Do not\ncollapse multiple changes into a single patch. For big changes consider using\na patch queue."
+    },
+    {
+      "type": "text",
+      "content": "contain the minimum amount of code required for the specific change. Small\npatches are easier to review and merge. So, if you’re doing more than one\nchange (or bug fix), please consider submitting one patch per change. Do not\ncollapse multiple changes into a single patch. For big changes consider using\na patch queue."
+    },
+    {
+      "type": "text",
+      "content": "pass all unit-tests. See "
+    },
+    {
+      "type": "text",
+      "content": "pass all unit-tests. See "
+    },
+    {
+      "type": "text",
+      "content": "include one (or more) test cases that check the bug fixed or the new\nfunctionality added. See "
+    },
+    {
+      "type": "text",
+      "content": "include one (or more) test cases that check the bug fixed or the new\nfunctionality added. See "
+    },
+    {
+      "type": "text",
+      "content": "if you’re adding or changing a public (documented) API, please include\nthe documentation changes in the same patch.  See "
+    },
+    {
+      "type": "text",
+      "content": "if you’re adding or changing a public (documented) API, please include\nthe documentation changes in the same patch.  See "
+    },
+    {
+      "type": "text",
+      "content": "if you’re adding a private API, please add a regular expression to the\n"
+    },
+    {
+      "type": "text",
+      "content": "if you’re adding a private API, please add a regular expression to the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">coverage_ignore_pyobjects</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">docs/conf.py</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To see if your private API is skipped properly, generate a documentation\ncoverage report as follows:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span> <span class=\"o\">-</span><span class=\"n\">e</span> <span class=\"n\">docs</span><span class=\"o\">-</span><span class=\"n\">coverage</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "if you are removing deprecated code, first make sure that at least 1 year\n(12 months) has passed since the release that introduced the deprecation.\nSee "
+    },
+    {
+      "type": "text",
+      "content": "if you are removing deprecated code, first make sure that at least 1 year\n(12 months) has passed since the release that introduced the deprecation.\nSee "
+    },
+    {
+      "type": "text",
+      "content": "Submitting patches"
+    },
+    {
+      "type": "text",
+      "content": "The best way to submit a patch is to issue a "
+    },
+    {
+      "type": "text",
+      "content": "Remember to explain what was fixed or the new functionality (what it is, why\nit’s needed, etc). The more info you include, the easier will be for core\ndevelopers to understand and accept your patch."
+    },
+    {
+      "type": "text",
+      "content": "You can also discuss the new functionality (or bug fix) before creating the\npatch, but it’s always good to have a patch ready to illustrate your arguments\nand show that you have put some additional thought into the subject. A good\nstarting point is to send a pull request on GitHub. It can be simple enough to\nillustrate your idea, and leave documentation/tests for later, after the idea\nhas been validated and proven useful. Alternatively, you can start a\nconversation in the "
+    },
+    {
+      "type": "text",
+      "content": "Sometimes there is an existing pull request for the problem you’d like to\nsolve, which is stalled for some reason. Often the pull request is in a\nright direction, but changes are requested by Scrapy maintainers, and the\noriginal pull request author hasn’t had time to address them.\nIn this case consider picking up this pull request: open\na new pull request with all commits from the original pull request, as well as\nadditional changes to address the raised issues. Doing so helps a lot; it is\nnot considered rude as long as the original author is acknowledged by keeping\nhis/her commits."
+    },
+    {
+      "type": "text",
+      "content": "You can pull an existing pull request to a local branch\nby running "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">git</span> <span class=\"pre\">fetch</span> <span class=\"pre\">upstream</span> <span class=\"pre\">pull/$PR_NUMBER/head:$BRANCH_NAME_TO_CREATE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">$PR_NUMBER</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">$BRANCH_NAME_TO_CREATE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "When writing GitHub pull requests, try to keep titles short but descriptive.\nE.g. For bug #411: “Scrapy hangs if an exception raises in start_requests”\nprefer “Fix hanging when exception occurs in start_requests (#411)”\ninstead of “Fix for #411”. Complete titles make it easy to skim through\nthe issue tracker."
+    },
+    {
+      "type": "text",
+      "content": "Finally, try to keep aesthetic changes ("
+    },
+    {
+      "type": "text",
+      "content": "Coding style"
+    },
+    {
+      "type": "text",
+      "content": "Please follow these coding conventions when writing code for inclusion in\nScrapy:"
+    },
+    {
+      "type": "text",
+      "content": "We use "
+    },
+    {
+      "type": "text",
+      "content": "We use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tox</span> <span class=\"pre\">-e</span> <span class=\"pre\">pre-commit</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Don’t put your name in the code you contribute; git provides enough\nmetadata to identify author of the code.\nSee "
+    },
+    {
+      "type": "text",
+      "content": "Don’t put your name in the code you contribute; git provides enough\nmetadata to identify author of the code.\nSee "
+    },
+    {
+      "type": "text",
+      "content": "Pre-commit"
+    },
+    {
+      "type": "text",
+      "content": "We use "
+    },
+    {
+      "type": "text",
+      "content": "After your create a local clone of your fork of the Scrapy repository:"
+    },
+    {
+      "type": "text",
+      "content": "Install pre-commit"
+    },
+    {
+      "type": "text",
+      "content": "Install pre-commit"
+    },
+    {
+      "type": "text",
+      "content": "On the root of your local clone of the Scrapy repository, run the following\ncommand:"
+    },
+    {
+      "type": "text",
+      "content": "On the root of your local clone of the Scrapy repository, run the following\ncommand:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>pre-commit<span class=\"w\"> </span>install\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Now pre-commit will check your changes every time you create a Git commit. Upon\nfinding issues, pre-commit aborts your commit, and either fixes those issues\nautomatically, or only reports them to you. If it fixes those issues\nautomatically, creating your commit again should succeed. Otherwise, you may\nneed to address the corresponding issues manually first."
+    },
+    {
+      "type": "text",
+      "content": "Documentation policies"
+    },
+    {
+      "type": "text",
+      "content": "For reference documentation of API members (classes, methods, etc.) use\ndocstrings and make sure that the Sphinx documentation uses the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">autodoc</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Other types of documentation, such as tutorials or topics, should be covered in\nfiles within the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">docs/</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In any case, if something is covered in a docstring, use the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">autodoc</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">docs/</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Documentation updates that cover new or modified features must use Sphinx’s\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref rst rst-dir docutils literal notranslate\"><span class=\"pre\">versionadded</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref rst rst-dir docutils literal notranslate\"><span class=\"pre\">versionchanged</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">VERSION</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Documentation about deprecated features must be removed as those features are\ndeprecated, so that new readers do not run into it. New deprecations and\ndeprecation removals are documented in the "
+    },
+    {
+      "type": "text",
+      "content": "Tests"
+    },
+    {
+      "type": "text",
+      "content": "Tests are implemented using the "
+    },
+    {
+      "type": "text",
+      "content": "Running tests"
+    },
+    {
+      "type": "text",
+      "content": "To run all tests:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To run a specific test (say "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tests/test_loader.py</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "tox"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tox</span> <span class=\"pre\">--</span> <span class=\"pre\">tests/test_loader.py</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To run the tests on a specific "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-e</span> <span class=\"pre\">&lt;name&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tox.ini</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span> <span class=\"o\">-</span><span class=\"n\">e</span> <span class=\"n\">py310</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can also specify a comma-separated list of environments, and use "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span> <span class=\"o\">-</span><span class=\"n\">e</span> <span class=\"n\">py39</span><span class=\"p\">,</span><span class=\"n\">py310</span> <span class=\"o\">-</span><span class=\"n\">p</span> <span class=\"n\">auto</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To pass command-line options to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tox.ini</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">tests</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span> <span class=\"o\">--</span> <span class=\"n\">scrapy</span> <span class=\"n\">tests</span> <span class=\"o\">-</span><span class=\"n\">x</span>  <span class=\"c1\"># stop after first failure</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can also use the "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tox</span> <span class=\"o\">-</span><span class=\"n\">e</span> <span class=\"n\">py310</span> <span class=\"o\">--</span> <span class=\"n\">scrapy</span> <span class=\"n\">tests</span> <span class=\"o\">-</span><span class=\"n\">n</span> <span class=\"n\">auto</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To see coverage report install "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span> <span class=\"pre\">install</span> <span class=\"pre\">coverage</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "coverage"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">coverage</span> <span class=\"pre\">report</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "see output of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">coverage</span> <span class=\"pre\">--help</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Writing tests"
+    },
+    {
+      "type": "text",
+      "content": "All functionality (including new features and bug fixes) must include a test\ncase to check that it works as expected, so please include tests for your\npatches if you want them to get accepted sooner."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy uses unit-tests, which are located in the "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">loader</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "And their unit-tests are in:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">tests</span><span class=\"o\">/</span><span class=\"n\">test_loader</span><span class=\"o\">.</span><span class=\"n\">py</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

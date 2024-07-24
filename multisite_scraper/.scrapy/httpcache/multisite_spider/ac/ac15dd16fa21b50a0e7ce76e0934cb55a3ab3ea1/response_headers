@@ -1,0 +1,30 @@
+Content-Length: 53978
+Date: Wed, 24 Jul 2024 05:26:27 GMT
+Content-Type: image/png
+Cf-Ray: 8a817ed55e2b18f3-FRA
+Cf-Cache-Status: MISS
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Etag: "e2954a386344f0c1a065b4e0bc384a21"
+Last-Modified: Fri, 03 Feb 2023 09:36:13 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: RXHpz3uIMg3hbKGx83cdVoRhds/ASibAbIVSbvhAOdvYG24LyUg4tAwPgMFhl/d6OYnvA5eUUpw=
+X-Amz-Request-Id: KWFKJ2KQQXK5QPP0
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0d5df9d4ecfb92f2c
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/_images/scrapy_architecture_02.png
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_images/scrapy_architecture_02.png
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=ftn909GmiU8AjOKw_rHLrDXiKYqgmhJ9T0Rap0h1QiI-1721798787729-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

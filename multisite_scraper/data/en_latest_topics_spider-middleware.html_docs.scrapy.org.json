@@ -1,0 +1,1274 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/topics/spider-middleware.html",
+  "title": "Spider Middleware — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Activating a spider middleware"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own spider middleware"
+    },
+    {
+      "type": "text",
+      "content": "Built-in spider middleware reference"
+    },
+    {
+      "type": "text",
+      "content": "DepthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpErrorMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpErrorMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "RefererMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "RefererMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "UrlLengthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "The spider middleware is a framework of hooks into Scrapy’s spider processing\nmechanism where you can plug custom functionality to process the responses that\nare sent to "
+    },
+    {
+      "type": "text",
+      "content": "Activating a spider middleware"
+    },
+    {
+      "type": "text",
+      "content": "To activate a spider middleware component, add it to the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">SPIDER_MIDDLEWARES</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"myproject.middlewares.CustomSpiderMiddleware\"</span><span class=\"p\">:</span> <span class=\"mi\">543</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_input()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To decide which order to assign to your middleware see the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to disable a builtin middleware (the ones defined in\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">SPIDER_MIDDLEWARES</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"scrapy.spidermiddlewares.referer.RefererMiddleware\"</span><span class=\"p\">:</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"myproject.middlewares.CustomRefererSpiderMiddleware\"</span><span class=\"p\">:</span> <span class=\"mi\">700</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Finally, keep in mind that some middlewares may need to be enabled through a\nparticular setting. See each middleware documentation for more info."
+    },
+    {
+      "type": "text",
+      "content": "Writing your own spider middleware"
+    },
+    {
+      "type": "text",
+      "content": "Each spider middleware is a Python class that defines one or more of the\nmethods defined below."
+    },
+    {
+      "type": "text",
+      "content": "The main entry point is the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">from_crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method is called for each response that goes through the spider\nmiddleware and into the spider, for processing."
+    },
+    {
+      "type": "text",
+      "content": "process_spider_input()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_input()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it raises an exception, Scrapy won’t bother calling any other spider\nmiddleware "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_input()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method is called with the results returned from the Spider, after\nit has processed the response."
+    },
+    {
+      "type": "text",
+      "content": "process_spider_output()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Changed in version 2.7: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Consider defining this method as an "
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "result"
+    },
+    {
+      "type": "text",
+      "content": "result"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.7."
+    },
+    {
+      "type": "text",
+      "content": "If defined, this method must be an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method is called when a spider or "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "process_spider_exception()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns an iterable the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">Exception</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method is called with the start requests of the spider, and works\nsimilarly to the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It receives an iterable (in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_requests</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "When implementing this method in your spider middleware, you\nshould always return an iterable (that follows the input one) and\nnot consume all "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_requests</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "start_requests"
+    },
+    {
+      "type": "text",
+      "content": "start_requests"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If present, this classmethod is called to create a middleware instance\nfrom a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in spider middleware reference"
+    },
+    {
+      "type": "text",
+      "content": "This page describes all spider middleware components that come with Scrapy. For\ninformation on how to use them and how to write your own spider middleware, see\nthe "
+    },
+    {
+      "type": "text",
+      "content": "For a list of the components enabled by default (and their orders) see the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DepthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "DepthMiddleware is used for tracking the depth of each Request inside the\nsite being scraped. It works by setting "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request.meta['depth']</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It can be used to limit the maximum depth to scrape, control Request\npriority based on their depth, and things like that."
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">DepthMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_LIMIT"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_LIMIT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DEPTH_LIMIT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_STATS_VERBOSE"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_STATS_VERBOSE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DEPTH_STATS_VERBOSE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_PRIORITY"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_PRIORITY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DEPTH_PRIORITY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HttpErrorMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Filter out unsuccessful (erroneous) HTTP responses so that spiders don’t\nhave to deal with them, which (most of the time) imposes an overhead,\nconsumes more resources, and makes the spider logic more complex."
+    },
+    {
+      "type": "text",
+      "content": "According to the "
+    },
+    {
+      "type": "text",
+      "content": "If you still want to process response codes outside that range, you can\nspecify which response codes the spider is able to handle using the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_list</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPERROR_ALLOWED_CODES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, if you want your spider to handle 404 responses you can do\nthis:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">CrawlSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">CrawlSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">handle_httpstatus_list</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"mi\">404</span><span class=\"p\">]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_list</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_all</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_all</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Keep in mind, however, that it’s usually a bad idea to handle non-200\nresponses, unless you really know what you’re doing."
+    },
+    {
+      "type": "text",
+      "content": "For more information see: "
+    },
+    {
+      "type": "text",
+      "content": "HttpErrorMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "HTTPERROR_ALLOWED_CODES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Pass all responses with non-200 status codes contained in this list."
+    },
+    {
+      "type": "text",
+      "content": "HTTPERROR_ALLOW_ALL"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Pass all responses, regardless of its status code."
+    },
+    {
+      "type": "text",
+      "content": "RefererMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Populates Request "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Referer</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RefererMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "REFERER_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether to enable referer middleware."
+    },
+    {
+      "type": "text",
+      "content": "REFERRER_POLICY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'scrapy.spidermiddlewares.referer.DefaultReferrerPolicy'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Referrer Policy"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "You can also set the Referrer Policy per request,\nusing the special "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"referrer_policy\"</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">REFERRER_POLICY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Acceptable values for REFERRER_POLICY"
+    },
+    {
+      "type": "text",
+      "content": "either a path to a "
+    },
+    {
+      "type": "text",
+      "content": "either a path to a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.ReferrerPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "or one of the standard W3C-defined string values,"
+    },
+    {
+      "type": "text",
+      "content": "or one of the standard W3C-defined string values,"
+    },
+    {
+      "type": "text",
+      "content": "or the special "
+    },
+    {
+      "type": "text",
+      "content": "or the special "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"scrapy-default\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "String value"
+    },
+    {
+      "type": "text",
+      "content": "Class name (as a string)"
+    },
+    {
+      "type": "text",
+      "content": "\"scrapy-default\""
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"scrapy-default\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.DefaultReferrerPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.DefaultReferrerPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“no-referrer”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.NoReferrerPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.NoReferrerPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“no-referrer-when-downgrade”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“same-origin”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.SameOriginPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.SameOriginPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“origin”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.OriginPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.OriginPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“strict-origin”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.StrictOriginPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.StrictOriginPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“origin-when-cross-origin”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“strict-origin-when-cross-origin”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“unsafe-url”"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer.UnsafeUrlPolicy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.spidermiddlewares.referer.UnsafeUrlPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A variant of “no-referrer-when-downgrade”,\nwith the addition that “Referer” is not sent if the parent request was\nusing "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">file://</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">s3://</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy’s default referrer policy — just like "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http(s)://</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">https://</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "“same-origin”"
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-no-referrer"
+    },
+    {
+      "type": "text",
+      "content": "The simplest policy is “no-referrer”, which specifies that no referrer information\nis to be sent along with requests made from a particular request client to any origin.\nThe header will be omitted entirely."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-no-referrer-when-downgrade"
+    },
+    {
+      "type": "text",
+      "content": "The “no-referrer-when-downgrade” policy sends a full URL along with requests\nfrom a TLS-protected environment settings object to a potentially trustworthy URL,\nand requests from clients which are not TLS-protected to any origin."
+    },
+    {
+      "type": "text",
+      "content": "Requests from TLS-protected clients to non-potentially trustworthy URLs,\non the other hand, will contain no referrer information.\nA Referer HTTP header will not be sent."
+    },
+    {
+      "type": "text",
+      "content": "This is a user agent’s default behavior, if no policy is otherwise specified."
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "“no-referrer-when-downgrade” policy is the W3C-recommended default,\nand is used by major web browsers."
+    },
+    {
+      "type": "text",
+      "content": "However, it is NOT Scrapy’s default referrer policy (see "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">DefaultReferrerPolicy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-same-origin"
+    },
+    {
+      "type": "text",
+      "content": "The “same-origin” policy specifies that a full URL, stripped for use as a referrer,\nis sent as referrer information when making same-origin requests from a particular request client."
+    },
+    {
+      "type": "text",
+      "content": "Cross-origin requests, on the other hand, will contain no referrer information.\nA Referer HTTP header will not be sent."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-origin"
+    },
+    {
+      "type": "text",
+      "content": "The “origin” policy specifies that only the ASCII serialization\nof the origin of the request client is sent as referrer information\nwhen making both same-origin requests and cross-origin requests\nfrom a particular request client."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin"
+    },
+    {
+      "type": "text",
+      "content": "The “strict-origin” policy sends the ASCII serialization\nof the origin of the request client when making requests:\n- from a TLS-protected environment settings object to a potentially trustworthy URL, and\n- from non-TLS-protected environment settings objects to any origin."
+    },
+    {
+      "type": "text",
+      "content": "Requests from TLS-protected request clients to non- potentially trustworthy URLs,\non the other hand, will contain no referrer information.\nA Referer HTTP header will not be sent."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-origin-when-cross-origin"
+    },
+    {
+      "type": "text",
+      "content": "The “origin-when-cross-origin” policy specifies that a full URL,\nstripped for use as a referrer, is sent as referrer information\nwhen making same-origin requests from a particular request client,\nand only the ASCII serialization of the origin of the request client\nis sent as referrer information when making cross-origin requests\nfrom a particular request client."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin-when-cross-origin"
+    },
+    {
+      "type": "text",
+      "content": "The “strict-origin-when-cross-origin” policy specifies that a full URL,\nstripped for use as a referrer, is sent as referrer information\nwhen making same-origin requests from a particular request client,\nand only the ASCII serialization of the origin of the request client\nwhen making cross-origin requests:"
+    },
+    {
+      "type": "text",
+      "content": "from a TLS-protected environment settings object to a potentially trustworthy URL, and"
+    },
+    {
+      "type": "text",
+      "content": "from a TLS-protected environment settings object to a potentially trustworthy URL, and"
+    },
+    {
+      "type": "text",
+      "content": "from non-TLS-protected environment settings objects to any origin."
+    },
+    {
+      "type": "text",
+      "content": "from non-TLS-protected environment settings objects to any origin."
+    },
+    {
+      "type": "text",
+      "content": "Requests from TLS-protected clients to non- potentially trustworthy URLs,\non the other hand, will contain no referrer information.\nA Referer HTTP header will not be sent."
+    },
+    {
+      "type": "text",
+      "content": "https://www.w3.org/TR/referrer-policy/#referrer-policy-unsafe-url"
+    },
+    {
+      "type": "text",
+      "content": "The “unsafe-url” policy specifies that a full URL, stripped for use as a referrer,\nis sent along with both cross-origin requests\nand same-origin requests made from a particular request client."
+    },
+    {
+      "type": "text",
+      "content": "Note: The policy’s name doesn’t lie; it is unsafe.\nThis policy will leak origins and paths from TLS-protected resources\nto insecure origins.\nCarefully consider the impact of setting such a policy for potentially sensitive documents."
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "“unsafe-url” policy is NOT recommended."
+    },
+    {
+      "type": "text",
+      "content": "UrlLengthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Filters out requests with URLs longer than URLLENGTH_LIMIT"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">UrlLengthMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "URLLENGTH_LIMIT"
+    },
+    {
+      "type": "text",
+      "content": "URLLENGTH_LIMIT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">URLLENGTH_LIMIT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

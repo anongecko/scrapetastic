@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/statscollectors.html",
+  "title": "scrapy.statscollectors — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.statscollectors"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.statscollectors"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">Scrapy extension for collecting scraping stats</span>\n<span class=\"sd\">\"\"\"</span>\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">import</span> <span class=\"nn\">pprint</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">Dict</span><span class=\"p\">,</span> <span class=\"n\">Optional</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"n\">StatsT</span> <span class=\"o\">=</span> <span class=\"n\">Dict</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">]</span>\n\n\n<div class=\"viewcode-block\" id=\"StatsCollector\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">StatsCollector</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"s2\">\"Crawler\"</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_dump</span><span class=\"p\">:</span> <span class=\"nb\">bool</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"STATS_DUMP\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">:</span> <span class=\"n\">StatsT</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.get_value\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.get_value\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">get_value</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">default</span><span class=\"p\">:</span> <span class=\"n\">Any</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Any</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">default</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.get_stats\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.get_stats\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">get_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">StatsT</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.set_value\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.set_value\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">set_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">value</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.set_stats\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.set_stats\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">set_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsT</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.inc_value\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.inc_value\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">inc_value</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">start</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span>\n        <span class=\"n\">d</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">start</span><span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"n\">count</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.max_value\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.max_value\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">max_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"nb\">max</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">),</span> <span class=\"n\">value</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.min_value\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.min_value\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">min_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"nb\">min</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">),</span> <span class=\"n\">value</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.clear_stats\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.clear_stats\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">clear_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">clear</span><span class=\"p\">()</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.open_spider\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.open_spider\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">open_spider</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span></div>\n\n<div class=\"viewcode-block\" id=\"StatsCollector.close_spider\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.statscollectors.StatsCollector.close_spider\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">close_spider</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">reason</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_dump</span><span class=\"p\">:</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Dumping Scrapy stats:</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span> <span class=\"o\">+</span> <span class=\"n\">pprint</span><span class=\"o\">.</span><span class=\"n\">pformat</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">),</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_persist_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span></div>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_persist_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsT</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span></div>\n\n\n<div class=\"viewcode-block\" id=\"MemoryStatsCollector\"><a class=\"viewcode-back\" href=\"../../topics/stats.html#scrapy.statscollectors.MemoryStatsCollector\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">MemoryStatsCollector</span><span class=\"p\">(</span><span class=\"n\">StatsCollector</span><span class=\"p\">):</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"s2\">\"Crawler\"</span><span class=\"p\">):</span>\n        <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_stats</span><span class=\"p\">:</span> <span class=\"n\">Dict</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">StatsT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_persist_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsT</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_stats</span><span class=\"p\">[</span><span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">stats</span></div>\n\n\n<div class=\"viewcode-block\" id=\"DummyStatsCollector\"><a class=\"viewcode-back\" href=\"../../topics/stats.html#scrapy.statscollectors.DummyStatsCollector\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">DummyStatsCollector</span><span class=\"p\">(</span><span class=\"n\">StatsCollector</span><span class=\"p\">):</span>\n    <span class=\"k\">def</span> <span class=\"nf\">get_value</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">default</span><span class=\"p\">:</span> <span class=\"n\">Any</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Any</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"n\">default</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">set_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">set_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsT</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">inc_value</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">start</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">max_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">min_value</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">pass</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

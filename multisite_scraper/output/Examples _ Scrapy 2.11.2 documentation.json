@@ -1,0 +1,50 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/intro/examples.html",
+  "title": "Examples — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "The best way to learn is with examples, and Scrapy is no exception. For this\nreason, there is an example Scrapy project named "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "If you’re familiar with git, you can checkout the code. Otherwise you can\ndownload the project as a zip file by clicking\n"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

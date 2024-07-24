@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/robotstxt.html",
+  "title": "scrapy.downloadermiddlewares.robotstxt — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.robotstxt"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.robotstxt"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">This is a middleware to respect robots.txt policies. To activate it you must</span>\n<span class=\"sd\">enable this middleware and enable the ROBOTSTXT_OBEY setting.</span>\n\n<span class=\"sd\">\"\"\"</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Dict</span><span class=\"p\">,</span> <span class=\"n\">Optional</span><span class=\"p\">,</span> <span class=\"n\">TypeVar</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.internet.defer</span> <span class=\"kn\">import</span> <span class=\"n\">Deferred</span><span class=\"p\">,</span> <span class=\"n\">maybeDeferred</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">,</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.request</span> <span class=\"kn\">import</span> <span class=\"n\">NO_CALLBACK</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.httpobj</span> <span class=\"kn\">import</span> <span class=\"n\">urlparse_cached</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.log</span> <span class=\"kn\">import</span> <span class=\"n\">failure_to_exc_info</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.misc</span> <span class=\"kn\">import</span> <span class=\"n\">load_object</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">twisted.python.failure</span> <span class=\"kn\">import</span> <span class=\"n\">Failure</span>\n\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.robotstxt</span> <span class=\"kn\">import</span> <span class=\"n\">RobotParser</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n<span class=\"n\">_T</span> <span class=\"o\">=</span> <span class=\"n\">TypeVar</span><span class=\"p\">(</span><span class=\"s2\">\"_T\"</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"RobotsTxtMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">RobotsTxtMiddleware</span><span class=\"p\">:</span>\n    <span class=\"n\">DOWNLOAD_PRIORITY</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"mi\">1000</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"ROBOTSTXT_OBEY\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_default_useragent</span><span class=\"p\">:</span> <span class=\"nb\">str</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"USER_AGENT\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Scrapy\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_robotstxt_useragent</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"ROBOTSTXT_USER_AGENT\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span>\n        <span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">:</span> <span class=\"n\">Dict</span><span class=\"p\">[</span>\n            <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">,</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">]],</span> <span class=\"kc\">None</span><span class=\"p\">]</span>\n        <span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parserimpl</span><span class=\"p\">:</span> <span class=\"n\">RobotParser</span> <span class=\"o\">=</span> <span class=\"n\">load_object</span><span class=\"p\">(</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"ROBOTSTXT_PARSER\"</span><span class=\"p\">)</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"c1\"># check if parser dependencies are met, this should throw an error otherwise.</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parserimpl</span><span class=\"o\">.</span><span class=\"n\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"sa\">b</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"kc\">None</span><span class=\"p\">]]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_obey_robotstxt\"</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"o\">.</span><span class=\"n\">startswith</span><span class=\"p\">(</span><span class=\"s2\">\"data:\"</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"o\">.</span><span class=\"n\">startswith</span><span class=\"p\">(</span><span class=\"s2\">\"file:\"</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n        <span class=\"n\">d</span><span class=\"p\">:</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">]]</span> <span class=\"o\">=</span> <span class=\"n\">maybeDeferred</span><span class=\"p\">(</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">robot_parser</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span>  <span class=\"c1\"># type: ignore[arg-type]</span>\n        <span class=\"p\">)</span>\n        <span class=\"n\">d2</span><span class=\"p\">:</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"kc\">None</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">addCallback</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">process_request_2</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">d2</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request_2</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">rp</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">],</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"n\">rp</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span>\n\n        <span class=\"n\">useragent</span><span class=\"p\">:</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"nb\">bytes</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_robotstxt_useragent</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">useragent</span><span class=\"p\">:</span>\n            <span class=\"n\">useragent</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\"User-Agent\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_default_useragent</span><span class=\"p\">)</span>\n            <span class=\"k\">assert</span> <span class=\"n\">useragent</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">rp</span><span class=\"o\">.</span><span class=\"n\">allowed</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">useragent</span><span class=\"p\">):</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Forbidden by robots.txt: </span><span class=\"si\">%(request)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">},</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n            <span class=\"k\">assert</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"robotstxt/forbidden\"</span><span class=\"p\">)</span>\n            <span class=\"k\">raise</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">(</span><span class=\"s2\">\"Forbidden by robots.txt\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">robot_parser</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">,</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">]],</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span>\n        <span class=\"n\">netloc</span> <span class=\"o\">=</span> <span class=\"n\">url</span><span class=\"o\">.</span><span class=\"n\">netloc</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">netloc</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">Deferred</span><span class=\"p\">()</span>\n            <span class=\"n\">robotsurl</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">url</span><span class=\"o\">.</span><span class=\"n\">scheme</span><span class=\"si\">}</span><span class=\"s2\">://</span><span class=\"si\">{</span><span class=\"n\">url</span><span class=\"o\">.</span><span class=\"n\">netloc</span><span class=\"si\">}</span><span class=\"s2\">/robots.txt\"</span>\n            <span class=\"n\">robotsreq</span> <span class=\"o\">=</span> <span class=\"n\">Request</span><span class=\"p\">(</span>\n                <span class=\"n\">robotsurl</span><span class=\"p\">,</span>\n                <span class=\"n\">priority</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">DOWNLOAD_PRIORITY</span><span class=\"p\">,</span>\n                <span class=\"n\">meta</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"dont_obey_robotstxt\"</span><span class=\"p\">:</span> <span class=\"kc\">True</span><span class=\"p\">},</span>\n                <span class=\"n\">callback</span><span class=\"o\">=</span><span class=\"n\">NO_CALLBACK</span><span class=\"p\">,</span>\n            <span class=\"p\">)</span>\n            <span class=\"k\">assert</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span>\n            <span class=\"k\">assert</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n            <span class=\"n\">dfd</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">download</span><span class=\"p\">(</span><span class=\"n\">robotsreq</span><span class=\"p\">)</span>\n            <span class=\"n\">dfd</span><span class=\"o\">.</span><span class=\"n\">addCallback</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parse_robots</span><span class=\"p\">,</span> <span class=\"n\">netloc</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"n\">dfd</span><span class=\"o\">.</span><span class=\"n\">addErrback</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_logerror</span><span class=\"p\">,</span> <span class=\"n\">robotsreq</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"n\">dfd</span><span class=\"o\">.</span><span class=\"n\">addErrback</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_robots_error</span><span class=\"p\">,</span> <span class=\"n\">netloc</span><span class=\"p\">)</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"robotstxt/request_count\"</span><span class=\"p\">)</span>\n\n        <span class=\"n\">parser</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">parser</span><span class=\"p\">,</span> <span class=\"n\">Deferred</span><span class=\"p\">):</span>\n            <span class=\"n\">d</span><span class=\"p\">:</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">]]</span> <span class=\"o\">=</span> <span class=\"n\">Deferred</span><span class=\"p\">()</span>\n\n            <span class=\"k\">def</span> <span class=\"nf\">cb</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">])</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">RobotParser</span><span class=\"p\">]:</span>\n                <span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">callback</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span>\n                <span class=\"k\">return</span> <span class=\"n\">result</span>\n\n            <span class=\"n\">parser</span><span class=\"o\">.</span><span class=\"n\">addCallback</span><span class=\"p\">(</span><span class=\"n\">cb</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">d</span>\n        <span class=\"k\">return</span> <span class=\"n\">parser</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_logerror</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">failure</span><span class=\"p\">:</span> <span class=\"n\">Failure</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Failure</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"n\">failure</span><span class=\"o\">.</span><span class=\"n\">type</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">:</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">error</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Error downloading </span><span class=\"si\">%(request)s</span><span class=\"s2\">: </span><span class=\"si\">%(f_exception)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"s2\">\"f_exception\"</span><span class=\"p\">:</span> <span class=\"n\">failure</span><span class=\"o\">.</span><span class=\"n\">value</span><span class=\"p\">},</span>\n                <span class=\"n\">exc_info</span><span class=\"o\">=</span><span class=\"n\">failure_to_exc_info</span><span class=\"p\">(</span><span class=\"n\">failure</span><span class=\"p\">),</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">failure</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_parse_robots</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">netloc</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">assert</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"robotstxt/response_count\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span>\n            <span class=\"sa\">f</span><span class=\"s2\">\"robotstxt/response_status_count/</span><span class=\"si\">{</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n        <span class=\"p\">)</span>\n        <span class=\"n\">rp</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parserimpl</span><span class=\"o\">.</span><span class=\"n\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">)</span>\n        <span class=\"n\">rp_dfd</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span>\n        <span class=\"k\">assert</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">rp_dfd</span><span class=\"p\">,</span> <span class=\"n\">Deferred</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">rp</span>\n        <span class=\"n\">rp_dfd</span><span class=\"o\">.</span><span class=\"n\">callback</span><span class=\"p\">(</span><span class=\"n\">rp</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_robots_error</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">failure</span><span class=\"p\">:</span> <span class=\"n\">Failure</span><span class=\"p\">,</span> <span class=\"n\">netloc</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"n\">failure</span><span class=\"o\">.</span><span class=\"n\">type</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">:</span>\n            <span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"robotstxt/exception_count/</span><span class=\"si\">{</span><span class=\"n\">failure</span><span class=\"o\">.</span><span class=\"n\">type</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n            <span class=\"k\">assert</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">)</span>\n        <span class=\"n\">rp_dfd</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span>\n        <span class=\"k\">assert</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">rp_dfd</span><span class=\"p\">,</span> <span class=\"n\">Deferred</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_parsers</span><span class=\"p\">[</span><span class=\"n\">netloc</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n        <span class=\"n\">rp_dfd</span><span class=\"o\">.</span><span class=\"n\">callback</span><span class=\"p\">(</span><span class=\"kc\">None</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

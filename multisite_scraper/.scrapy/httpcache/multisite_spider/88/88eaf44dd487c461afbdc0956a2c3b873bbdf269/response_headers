@@ -1,0 +1,22 @@
+Date: Wed, 24 Jul 2024 05:04:36 GMT
+Content-Type: text/plain
+Cf-Ray: 8a815ed4696e8ef5-FRA
+Cf-Cache-Status: EXPIRED
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Content-Language: en
+Last-Modified: Wed, 24 Jul 2024 04:56:10 GMT
+Vary: Accept-Encoding, Accept-Language, Cookie
+Cdn-Cache-Control: public
+Cross-Origin-Opener-Policy: same-origin
+Referrer-Policy: no-referrer-when-downgrade
+X-Backend: web-i-0d5df9d4ecfb92f2c
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Project: 
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Version-Method: path
+X-Served: Django-Proxito
+Set-Cookie: _cfuvid=yoDRe3L79MPnkCHpmImnG66Q.iQLpRsLssX21hq8p9g-1721797476775-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

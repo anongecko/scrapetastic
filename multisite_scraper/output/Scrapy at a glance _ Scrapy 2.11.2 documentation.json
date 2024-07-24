@@ -1,0 +1,194 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/intro/overview.html",
+  "title": "Scrapy at a glance — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy (/ˈskreɪpaɪ/) is an application framework for crawling web sites and extracting\nstructured data which can be used for a wide range of useful applications, like\ndata mining, information processing or historical archival."
+    },
+    {
+      "type": "text",
+      "content": "Even though Scrapy was originally designed for "
+    },
+    {
+      "type": "text",
+      "content": "In order to show you what Scrapy brings to the table, we’ll walk you through an\nexample of a Scrapy Spider using the simplest way to run a spider."
+    },
+    {
+      "type": "text",
+      "content": "Here’s the code for a spider that scrapes famous quotes from website\n"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">QuotesSpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"quotes\"</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"s2\">\"https://quotes.toscrape.com/tag/humor/\"</span><span class=\"p\">,</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">quote</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"div.quote\"</span><span class=\"p\">):</span>\n            <span class=\"k\">yield</span> <span class=\"p\">{</span>\n                <span class=\"s2\">\"author\"</span><span class=\"p\">:</span> <span class=\"n\">quote</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"span/small/text()\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n                <span class=\"s2\">\"text\"</span><span class=\"p\">:</span> <span class=\"n\">quote</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"span.text::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n            <span class=\"p\">}</span>\n\n        <span class=\"n\">next_page</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s1\">'li.next a::attr(\"href\")'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"k\">if</span> <span class=\"n\">next_page</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"k\">yield</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">follow</span><span class=\"p\">(</span><span class=\"n\">next_page</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Put this in a text file, name it something like "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">quotes_spider.py</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">runspider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span> <span class=\"n\">runspider</span> <span class=\"n\">quotes_spider</span><span class=\"o\">.</span><span class=\"n\">py</span> <span class=\"o\">-</span><span class=\"n\">o</span> <span class=\"n\">quotes</span><span class=\"o\">.</span><span class=\"n\">jsonl</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "When this finishes you will have in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">quotes.jsonl</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"p\">{</span><span class=\"s2\">\"author\"</span><span class=\"p\">:</span> <span class=\"s2\">\"Jane Austen\"</span><span class=\"p\">,</span> <span class=\"s2\">\"text\"</span><span class=\"p\">:</span> <span class=\"s2\">\"</span><span class=\"se\">\\u201c</span><span class=\"s2\">The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.</span><span class=\"se\">\\u201d</span><span class=\"s2\">\"</span><span class=\"p\">}</span>\n<span class=\"p\">{</span><span class=\"s2\">\"author\"</span><span class=\"p\">:</span> <span class=\"s2\">\"Steve Martin\"</span><span class=\"p\">,</span> <span class=\"s2\">\"text\"</span><span class=\"p\">:</span> <span class=\"s2\">\"</span><span class=\"se\">\\u201c</span><span class=\"s2\">A day without sunshine is like, you know, night.</span><span class=\"se\">\\u201d</span><span class=\"s2\">\"</span><span class=\"p\">}</span>\n<span class=\"p\">{</span><span class=\"s2\">\"author\"</span><span class=\"p\">:</span> <span class=\"s2\">\"Garrison Keillor\"</span><span class=\"p\">,</span> <span class=\"s2\">\"text\"</span><span class=\"p\">:</span> <span class=\"s2\">\"</span><span class=\"se\">\\u201c</span><span class=\"s2\">Anyone who thinks sitting in church can make you a Christian must also think that sitting in a garage can make you a car.</span><span class=\"se\">\\u201d</span><span class=\"s2\">\"</span><span class=\"p\">}</span>\n<span class=\"o\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "When you ran the command "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">runspider</span> <span class=\"pre\">quotes_spider.py</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The crawl started by making requests to the URLs defined in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here you will notice one of the main advantages of Scrapy: requests are\n"
+    },
+    {
+      "type": "text",
+      "content": "While this enables you to do very fast crawls (sending multiple concurrent\nrequests at the same time, in a fault-tolerant way) Scrapy also gives you\ncontrol over the politeness of the crawl through "
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "This is using "
+    },
+    {
+      "type": "text",
+      "content": "You’ve seen how to extract and store items from a website using Scrapy, but\nthis is just the surface. Scrapy provides a lot of powerful features for making\nscraping easy and efficient, such as:"
+    },
+    {
+      "type": "text",
+      "content": "Built-in support for "
+    },
+    {
+      "type": "text",
+      "content": "An "
+    },
+    {
+      "type": "text",
+      "content": "Built-in support for "
+    },
+    {
+      "type": "text",
+      "content": "Robust encoding support and auto-detection, for dealing with foreign,\nnon-standard and broken encoding declarations."
+    },
+    {
+      "type": "text",
+      "content": "Strong extensibility support"
+    },
+    {
+      "type": "text",
+      "content": "Wide range of built-in extensions and middlewares for handling:"
+    },
+    {
+      "type": "text",
+      "content": "cookies and session handling"
+    },
+    {
+      "type": "text",
+      "content": "HTTP features like compression, authentication, caching"
+    },
+    {
+      "type": "text",
+      "content": "user-agent spoofing"
+    },
+    {
+      "type": "text",
+      "content": "robots.txt"
+    },
+    {
+      "type": "text",
+      "content": "crawl depth restriction"
+    },
+    {
+      "type": "text",
+      "content": "and more"
+    },
+    {
+      "type": "text",
+      "content": "A "
+    },
+    {
+      "type": "text",
+      "content": "Plus other goodies like reusable spiders to crawl sites from "
+    },
+    {
+      "type": "text",
+      "content": "The next steps for you are to "
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

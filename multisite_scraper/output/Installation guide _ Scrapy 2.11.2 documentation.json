@@ -1,0 +1,446 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/intro/install.html",
+  "title": "Installation guide — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy requires Python 3.8+, either the CPython implementation (default) or\nthe PyPy implementation (see "
+    },
+    {
+      "type": "text",
+      "content": "If you’re using "
+    },
+    {
+      "type": "text",
+      "content": "To install Scrapy using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">conda</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">conda</span> <span class=\"n\">install</span> <span class=\"o\">-</span><span class=\"n\">c</span> <span class=\"n\">conda</span><span class=\"o\">-</span><span class=\"n\">forge</span> <span class=\"n\">scrapy</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Alternatively, if you’re already familiar with installation of Python packages,\nyou can install Scrapy and its dependencies from PyPI with:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">pip</span> <span class=\"n\">install</span> <span class=\"n\">Scrapy</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "We strongly recommend that you install Scrapy in "
+    },
+    {
+      "type": "text",
+      "content": "Note that sometimes this may require solving compilation issues for some Scrapy\ndependencies depending on your operating system, so be sure to check the\n"
+    },
+    {
+      "type": "text",
+      "content": "For more detailed and platform specifics instructions, as well as\ntroubleshooting information, read on."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy is written in pure Python and depends on a few key Python packages (among others):"
+    },
+    {
+      "type": "text",
+      "content": "lxml"
+    },
+    {
+      "type": "text",
+      "content": "parsel"
+    },
+    {
+      "type": "text",
+      "content": "w3lib"
+    },
+    {
+      "type": "text",
+      "content": "twisted"
+    },
+    {
+      "type": "text",
+      "content": "cryptography"
+    },
+    {
+      "type": "text",
+      "content": "Some of these packages themselves depend on non-Python packages\nthat might require additional installation steps depending on your platform.\nPlease check "
+    },
+    {
+      "type": "text",
+      "content": "In case of any trouble related to these dependencies,\nplease refer to their respective installation instructions:"
+    },
+    {
+      "type": "text",
+      "content": "lxml installation"
+    },
+    {
+      "type": "text",
+      "content": "cryptography installation"
+    },
+    {
+      "type": "text",
+      "content": "TL;DR: We recommend installing Scrapy inside a virtual environment\non all platforms."
+    },
+    {
+      "type": "text",
+      "content": "Python packages can be installed either globally (a.k.a system wide),\nor in user-space. We do not recommend installing Scrapy system wide."
+    },
+    {
+      "type": "text",
+      "content": "Instead, we recommend that you install Scrapy within a so-called\n“virtual environment” ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">venv</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sudo</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See "
+    },
+    {
+      "type": "text",
+      "content": "Once you have created a virtual environment, you can install Scrapy inside it with "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Though it’s possible to install Scrapy on Windows using pip, we recommend you\nto install "
+    },
+    {
+      "type": "text",
+      "content": "Once you’ve installed "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">conda</span> <span class=\"n\">install</span> <span class=\"o\">-</span><span class=\"n\">c</span> <span class=\"n\">conda</span><span class=\"o\">-</span><span class=\"n\">forge</span> <span class=\"n\">scrapy</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To install Scrapy on Windows using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "This installation method requires “Microsoft Visual C++” for installing some\nScrapy dependencies, which demands significantly more disk space than Anaconda."
+    },
+    {
+      "type": "text",
+      "content": "Download and execute "
+    },
+    {
+      "type": "text",
+      "content": "Run the Visual Studio Installer."
+    },
+    {
+      "type": "text",
+      "content": "Under the Workloads section, select "
+    },
+    {
+      "type": "text",
+      "content": "Check the installation details and make sure following packages are selected as optional components:"
+    },
+    {
+      "type": "text",
+      "content": "MSVC"
+    },
+    {
+      "type": "text",
+      "content": "Windows SDK"
+    },
+    {
+      "type": "text",
+      "content": "Install the Visual Studio Build Tools."
+    },
+    {
+      "type": "text",
+      "content": "Now, you should be able to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy is currently tested with recent-enough versions of lxml,\ntwisted and pyOpenSSL, and is compatible with recent Ubuntu distributions.\nBut it should support older versions of Ubuntu too, like Ubuntu 14.04,\nalbeit with potential issues with TLS connections."
+    },
+    {
+      "type": "text",
+      "content": "Don’t"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">python-scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To install Scrapy on Ubuntu (or Ubuntu-based) systems, you need to install\nthese dependencies:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sudo</span> <span class=\"n\">apt</span><span class=\"o\">-</span><span class=\"n\">get</span> <span class=\"n\">install</span> <span class=\"n\">python3</span> <span class=\"n\">python3</span><span class=\"o\">-</span><span class=\"n\">dev</span> <span class=\"n\">python3</span><span class=\"o\">-</span><span class=\"n\">pip</span> <span class=\"n\">libxml2</span><span class=\"o\">-</span><span class=\"n\">dev</span> <span class=\"n\">libxslt1</span><span class=\"o\">-</span><span class=\"n\">dev</span> <span class=\"n\">zlib1g</span><span class=\"o\">-</span><span class=\"n\">dev</span> <span class=\"n\">libffi</span><span class=\"o\">-</span><span class=\"n\">dev</span> <span class=\"n\">libssl</span><span class=\"o\">-</span><span class=\"n\">dev</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "python3-dev"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">python3-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">zlib1g-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">libxml2-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">libxslt1-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">lxml</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "libssl-dev"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">libssl-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">libffi-dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">cryptography</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Inside a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">pip</span> <span class=\"n\">install</span> <span class=\"n\">scrapy</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "The same non-Python dependencies can be used to install Scrapy in Debian\nJessie (8.0) and above."
+    },
+    {
+      "type": "text",
+      "content": "Building Scrapy’s dependencies requires the presence of a C compiler and\ndevelopment headers. On macOS this is typically provided by Apple’s Xcode\ndevelopment tools. To install the Xcode command line tools open a terminal\nwindow and run:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">xcode</span><span class=\"o\">-</span><span class=\"n\">select</span> <span class=\"o\">--</span><span class=\"n\">install</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "There’s a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "(Recommended)"
+    },
+    {
+      "type": "text",
+      "content": "Install "
+    },
+    {
+      "type": "text",
+      "content": "Update your "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">PATH</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.bashrc</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.zshrc</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">echo</span> <span class=\"s2\">\"export PATH=/usr/local/bin:/usr/local/sbin:$PATH\"</span> <span class=\"o\">&gt;&gt;</span> <span class=\"o\">~/.</span><span class=\"n\">bashrc</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Reload "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">.bashrc</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">source</span> <span class=\"o\">~/.</span><span class=\"n\">bashrc</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Install python:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">brew</span> <span class=\"n\">install</span> <span class=\"n\">python</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Latest versions of python have "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">brew</span> <span class=\"n\">update</span><span class=\"p\">;</span> <span class=\"n\">brew</span> <span class=\"n\">upgrade</span> <span class=\"n\">python</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "(Optional)"
+    },
+    {
+      "type": "text",
+      "content": "This method is a workaround for the above macOS issue, but it’s an overall\ngood practice for managing dependencies and can complement the first method."
+    },
+    {
+      "type": "text",
+      "content": "After any of these workarounds you should be able to install Scrapy:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">pip</span> <span class=\"n\">install</span> <span class=\"n\">Scrapy</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "We recommend using the latest PyPy version.\nFor PyPy3, only Linux installation was tested."
+    },
+    {
+      "type": "text",
+      "content": "Most Scrapy dependencies now have binary wheels for CPython, but not for PyPy.\nThis means that these dependencies will be built during installation.\nOn macOS, you are likely to face an issue with building the Cryptography\ndependency. The solution to this problem is described\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">brew</span> <span class=\"pre\">install</span> <span class=\"pre\">openssl</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You can check that Scrapy is installed correctly by running "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">bench</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">TypeError:</span> <span class=\"pre\">...</span> <span class=\"pre\">got</span> <span class=\"pre\">2</span> <span class=\"pre\">unexpected</span> <span class=\"pre\">keyword</span> <span class=\"pre\">arguments</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span> <span class=\"pre\">install</span> <span class=\"pre\">'PyPyDispatcher&gt;=2.1.0'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "After you install or upgrade Scrapy, Twisted or pyOpenSSL, you may get an\nexception with the following traceback:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>[…]\n  File \"[…]/site-packages/twisted/protocols/tls.py\", line 63, in &lt;module&gt;\n    from twisted.internet._sslverify import _setAcceptableProtocols\n  File \"[…]/site-packages/twisted/internet/_sslverify.py\", line 38, in &lt;module&gt;\n    TLSVersion.TLSv1_1: SSL.OP_NO_TLSv1_1,\nAttributeError: 'module' object has no attribute 'OP_NO_TLSv1_1'\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The reason you get this exception is that your system or virtual environment\nhas a version of pyOpenSSL that your version of Twisted does not support."
+    },
+    {
+      "type": "text",
+      "content": "To install a version of pyOpenSSL that your version of Twisted supports,\nreinstall Twisted with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"code docutils literal notranslate\"><span class=\"pre\">tls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">pip</span> <span class=\"n\">install</span> <span class=\"n\">twisted</span><span class=\"p\">[</span><span class=\"n\">tls</span><span class=\"p\">]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "For details, see "
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

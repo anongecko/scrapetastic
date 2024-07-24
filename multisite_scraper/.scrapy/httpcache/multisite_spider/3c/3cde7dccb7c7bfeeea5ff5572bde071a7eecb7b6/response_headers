@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:23:43 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817ad109c718f3-FRA
+Cf-Cache-Status: HIT
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"87e0e9e6cd448e4098aafae9cd6c418c"
+Last-Modified: Wed, 26 Jun 2024 12:46:58 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: T48XtDhxem1ihgrVCc2j7eY0l2UxW1DitNNlWbZw9I0DC0AZXkojljFqxG9BpXju8iaToix7DPU=
+X-Amz-Meta-Mtime: 1719405965.369668911
+X-Amz-Request-Id: 0YS031QQMPGT957V
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-03177afe684a43c42
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/latest/topics/djangoitem.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/djangoitem.html
+X-Rtd-Version: latest
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=YjKG1Ko_UveVyDu08KgZdd_j0JAenY0eACbIWOcRJhw-1721798623043-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

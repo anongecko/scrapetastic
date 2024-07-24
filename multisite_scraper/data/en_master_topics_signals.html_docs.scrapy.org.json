@@ -1,0 +1,1314 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/signals.html",
+  "title": "Signals — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Deferred signal handlers"
+    },
+    {
+      "type": "text",
+      "content": "Built-in signals reference"
+    },
+    {
+      "type": "text",
+      "content": "Engine signals"
+    },
+    {
+      "type": "text",
+      "content": "engine_started"
+    },
+    {
+      "type": "text",
+      "content": "engine_stopped"
+    },
+    {
+      "type": "text",
+      "content": "Item signals"
+    },
+    {
+      "type": "text",
+      "content": "item_scraped"
+    },
+    {
+      "type": "text",
+      "content": "item_dropped"
+    },
+    {
+      "type": "text",
+      "content": "item_error"
+    },
+    {
+      "type": "text",
+      "content": "Spider signals"
+    },
+    {
+      "type": "text",
+      "content": "spider_closed"
+    },
+    {
+      "type": "text",
+      "content": "spider_opened"
+    },
+    {
+      "type": "text",
+      "content": "spider_idle"
+    },
+    {
+      "type": "text",
+      "content": "spider_error"
+    },
+    {
+      "type": "text",
+      "content": "feed_slot_closed"
+    },
+    {
+      "type": "text",
+      "content": "feed_exporter_closed"
+    },
+    {
+      "type": "text",
+      "content": "Request signals"
+    },
+    {
+      "type": "text",
+      "content": "request_scheduled"
+    },
+    {
+      "type": "text",
+      "content": "request_dropped"
+    },
+    {
+      "type": "text",
+      "content": "request_reached_downloader"
+    },
+    {
+      "type": "text",
+      "content": "request_left_downloader"
+    },
+    {
+      "type": "text",
+      "content": "bytes_received"
+    },
+    {
+      "type": "text",
+      "content": "headers_received"
+    },
+    {
+      "type": "text",
+      "content": "Response signals"
+    },
+    {
+      "type": "text",
+      "content": "response_received"
+    },
+    {
+      "type": "text",
+      "content": "response_downloaded"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy uses signals extensively to notify when certain events occur. You can\ncatch some of those signals in your Scrapy project (using an "
+    },
+    {
+      "type": "text",
+      "content": "Even though signals provide several arguments, the handlers that catch them\ndon’t need to accept all of them - the signal dispatching mechanism will only\ndeliver the arguments that the handler receives."
+    },
+    {
+      "type": "text",
+      "content": "You can connect to signals (or send your own) through the\n"
+    },
+    {
+      "type": "text",
+      "content": "Here is a simple example showing how you can catch signals and perform some action:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">DmozSpider</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"dmoz\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"dmoz.org\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"s2\">\"http://www.dmoz.org/Computers/Programming/Languages/Python/Books/\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/\"</span><span class=\"p\">,</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"n\">spider</span> <span class=\"o\">=</span> <span class=\"nb\">super</span><span class=\"p\">(</span><span class=\"n\">DmozSpider</span><span class=\"p\">,</span> <span class=\"bp\">cls</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">from_crawler</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">spider</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"Spider closed: </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Deferred signal handlers"
+    },
+    {
+      "type": "text",
+      "content": "Some signals support returning "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Let’s take an example using "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">SignalSpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"signals\"</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"https://quotes.toscrape.com/page/1/\"</span><span class=\"p\">]</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"n\">spider</span> <span class=\"o\">=</span> <span class=\"nb\">super</span><span class=\"p\">(</span><span class=\"n\">SignalSpider</span><span class=\"p\">,</span> <span class=\"bp\">cls</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">from_crawler</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">spider</span>\n\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">item_scraped</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">):</span>\n        <span class=\"c1\"># Send the scraped item to the server</span>\n        <span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">treq</span><span class=\"o\">.</span><span class=\"n\">post</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"http://example.com/post\"</span><span class=\"p\">,</span>\n            <span class=\"n\">json</span><span class=\"o\">.</span><span class=\"n\">dumps</span><span class=\"p\">(</span><span class=\"n\">item</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">encode</span><span class=\"p\">(</span><span class=\"s2\">\"ascii\"</span><span class=\"p\">),</span>\n            <span class=\"n\">headers</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"sa\">b</span><span class=\"s2\">\"Content-Type\"</span><span class=\"p\">:</span> <span class=\"p\">[</span><span class=\"sa\">b</span><span class=\"s2\">\"application/json\"</span><span class=\"p\">]},</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">quote</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"div.quote\"</span><span class=\"p\">):</span>\n            <span class=\"k\">yield</span> <span class=\"p\">{</span>\n                <span class=\"s2\">\"text\"</span><span class=\"p\">:</span> <span class=\"n\">quote</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"span.text::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n                <span class=\"s2\">\"author\"</span><span class=\"p\">:</span> <span class=\"n\">quote</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"small.author::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n                <span class=\"s2\">\"tags\"</span><span class=\"p\">:</span> <span class=\"n\">quote</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"div.tags a.tag::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">(),</span>\n            <span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "See the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in signals reference"
+    },
+    {
+      "type": "text",
+      "content": "Here’s the list of Scrapy built-in signals and their meaning."
+    },
+    {
+      "type": "text",
+      "content": "Engine signals"
+    },
+    {
+      "type": "text",
+      "content": "engine_started"
+    },
+    {
+      "type": "text",
+      "content": "Sent when the Scrapy engine has started crawling."
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "This signal may be fired "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_opened</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_opened</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "engine_stopped"
+    },
+    {
+      "type": "text",
+      "content": "Sent when the Scrapy engine is stopped (for example, when a crawling\nprocess has finished)."
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "Item signals"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "As at max "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">CONCURRENT_ITEMS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">DeferredList</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">DeferredList</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "item_scraped"
+    },
+    {
+      "type": "text",
+      "content": "Sent when an item has been scraped, after it has passed all the\n"
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "item_dropped"
+    },
+    {
+      "type": "text",
+      "content": "Sent after an item has been dropped from the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">DropItem</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">DropItem</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">DropItem</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "item_error"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">DropItem</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "item"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "failure"
+    },
+    {
+      "type": "text",
+      "content": "failure"
+    },
+    {
+      "type": "text",
+      "content": "Spider signals"
+    },
+    {
+      "type": "text",
+      "content": "spider_closed"
+    },
+    {
+      "type": "text",
+      "content": "Sent after a spider has been closed. This can be used to release per-spider\nresources reserved on "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_opened</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "reason"
+    },
+    {
+      "type": "text",
+      "content": "reason"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'finished'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">close_spider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">reason</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'cancelled'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'shutdown'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider_opened"
+    },
+    {
+      "type": "text",
+      "content": "Sent after a spider has been opened for crawling. This is typically used to\nreserve per-spider resources, but can be used for any task that needs to be\nperformed when a spider is opened."
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider_idle"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a spider has gone idle, which means the spider has no further:"
+    },
+    {
+      "type": "text",
+      "content": "requests waiting to be downloaded"
+    },
+    {
+      "type": "text",
+      "content": "requests waiting to be downloaded"
+    },
+    {
+      "type": "text",
+      "content": "requests scheduled"
+    },
+    {
+      "type": "text",
+      "content": "requests scheduled"
+    },
+    {
+      "type": "text",
+      "content": "items being processed in the item pipeline"
+    },
+    {
+      "type": "text",
+      "content": "items being processed in the item pipeline"
+    },
+    {
+      "type": "text",
+      "content": "If the idle state persists after all handlers of this signal have finished,\nthe engine starts closing the spider. After the spider has finished\nclosing, the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_closed</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You may raise a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">DontCloseSpider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Alternatively, you may raise a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">CloseSpider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Scheduling some requests in your "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_idle</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider_error"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a spider callback generates an error (i.e. raises an exception)."
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "failure"
+    },
+    {
+      "type": "text",
+      "content": "failure"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "feed_slot_closed"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a "
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "slot"
+    },
+    {
+      "type": "text",
+      "content": "feed_exporter_closed"
+    },
+    {
+      "type": "text",
+      "content": "Sent when the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_closed</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal supports returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "Request signals"
+    },
+    {
+      "type": "text",
+      "content": "request_scheduled"
+    },
+    {
+      "type": "text",
+      "content": "Sent when the engine is asked to schedule a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Raise "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.11.2: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request_dropped"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request_reached_downloader"
+    },
+    {
+      "type": "text",
+      "content": "Sent when a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request_left_downloader"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.0."
+    },
+    {
+      "type": "text",
+      "content": "Sent when a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "bytes_received"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.2."
+    },
+    {
+      "type": "text",
+      "content": "Sent by the HTTP 1.1 and S3 download handlers when a group of bytes is\nreceived for a specific request. This signal might be fired multiple\ntimes for the same request, with partial data each time. For instance,\na possible scenario for a 25 kb response would be two signals fired\nwith 10 kb of data, and a final one with 5 kb of data."
+    },
+    {
+      "type": "text",
+      "content": "Handlers for this signal can stop the download of a response while it\nis in progress by raising the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">StopDownload</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "data"
+    },
+    {
+      "type": "text",
+      "content": "data"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">bytes</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "headers_received"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.5."
+    },
+    {
+      "type": "text",
+      "content": "Sent by the HTTP 1.1 and S3 download handlers when the response headers are\navailable for a given request, before downloading any additional content."
+    },
+    {
+      "type": "text",
+      "content": "Handlers for this signal can stop the download of a response while it\nis in progress by raising the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">StopDownload</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "headers"
+    },
+    {
+      "type": "text",
+      "content": "headers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.http.headers.Headers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "body_length"
+    },
+    {
+      "type": "text",
+      "content": "body_length"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Response signals"
+    },
+    {
+      "type": "text",
+      "content": "response_received"
+    },
+    {
+      "type": "text",
+      "content": "Sent when the engine receives a new "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response_downloaded"
+    },
+    {
+      "type": "text",
+      "content": "Sent by the downloader right after a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">HTTPResponse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This signal does not support returning deferreds from its handlers."
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

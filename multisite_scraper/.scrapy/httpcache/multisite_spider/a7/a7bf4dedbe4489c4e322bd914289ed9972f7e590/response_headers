@@ -1,0 +1,27 @@
+Content-Length: 1895983
+Date: Wed, 24 Jul 2024 05:24:35 GMT
+Content-Type: application/pdf
+Cf-Ray: 8a817c16989d18f3-FRA
+Cf-Cache-Status: EXPIRED
+Accept-Ranges: bytes
+Cache-Control: max-age=1200
+Content-Disposition: filename=docs-scrapy-org-en-master.pdf
+Etag: "a5703a3e171bc8ea579b2c897999266f"
+Last-Modified: Wed, 24 Jul 2024 04:42:21 GMT
+Vary: Accept-Encoding
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: 2gLX11FkjCn22TFna0o9uQ4GT83g5HjcCu9R2kUM9mSv6iDp9BeiowTjPrR9fDC9WiJRFM3nTlY=
+X-Amz-Meta-Mtime: 1721796131.017659377
+X-Amz-Request-Id: F67VWATS5PCN39ZM
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-08708e03940fb9261
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/pdf/scrapy/master/scrapy.pdf
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=sbREbKUvTJHUaTLkSh2Sf7bBHM.EX.rNGKKm_4WRsBI-1721798675321-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

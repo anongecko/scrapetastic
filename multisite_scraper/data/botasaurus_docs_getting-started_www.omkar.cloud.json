@@ -1,0 +1,106 @@
+{
+  "url": "https://www.omkar.cloud/botasaurus/docs/getting-started/",
+  "title": "Getting Started | 🤖 Botasaurus Framework 🤖",
+  "content": [
+    {
+      "type": "text",
+      "content": "What is Botasaurus?"
+    },
+    {
+      "type": "text",
+      "content": "Getting Started"
+    },
+    {
+      "type": "text",
+      "content": "Google Maps Scraping Tutorial"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Getting Started"
+    },
+    {
+      "type": "text",
+      "content": "Getting Started"
+    },
+    {
+      "type": "text",
+      "content": "To use Botasaurus effectively, it is helpful to have a familiarity with Python and Selenium concepts."
+    },
+    {
+      "type": "text",
+      "content": "This section will guide you through the steps to create a new Botasaurus project using starter template, which is recommended for most Greenfield automation projects."
+    },
+    {
+      "type": "text",
+      "content": "Clone Starter Template"
+    },
+    {
+      "type": "code",
+      "content": "<pre tabindex=\"0\" class=\"prism-code language-bash codeBlock_bY9V thin-scrollbar\"><code class=\"codeBlockLines_e6Vv\"><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token function\" style=\"color:rgb(80, 250, 123)\">git</span><span class=\"token plain\"> clone https://github.com/omkarcloud/botasaurus-starter my-botasaurus-project</span><br></span></code></pre>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"codeBlockLines_e6Vv\"><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token function\" style=\"color:rgb(80, 250, 123)\">git</span><span class=\"token plain\"> clone https://github.com/omkarcloud/botasaurus-starter my-botasaurus-project</span><br></span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Then change into "
+    },
+    {
+      "type": "code",
+      "content": "<code>my-botasaurus-project</code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre tabindex=\"0\" class=\"prism-code language-bash codeBlock_bY9V thin-scrollbar\"><code class=\"codeBlockLines_e6Vv\"><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token builtin class-name\" style=\"color:rgb(189, 147, 249)\">cd</span><span class=\"token plain\"> my-botasaurus-project</span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">python -m pip </span><span class=\"token function\" style=\"color:rgb(80, 250, 123)\">install</span><span class=\"token plain\"> -r requirements.txt</span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">code </span><span class=\"token builtin class-name\" style=\"color:rgb(189, 147, 249)\">.</span><span class=\"token plain\"> </span><span class=\"token comment\" style=\"color:rgb(98, 114, 164)\"># Optionally, open the project in VSCode</span><span class=\"token plain\"></span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">python main.py</span><br></span></code></pre>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"codeBlockLines_e6Vv\"><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token builtin class-name\" style=\"color:rgb(189, 147, 249)\">cd</span><span class=\"token plain\"> my-botasaurus-project</span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">python -m pip </span><span class=\"token function\" style=\"color:rgb(80, 250, 123)\">install</span><span class=\"token plain\"> -r requirements.txt</span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">code </span><span class=\"token builtin class-name\" style=\"color:rgb(189, 147, 249)\">.</span><span class=\"token plain\"> </span><span class=\"token comment\" style=\"color:rgb(98, 114, 164)\"># Optionally, open the project in VSCode</span><span class=\"token plain\"></span><br></span><span class=\"token-line\" style=\"color:#F8F8F2\"><span class=\"token plain\">python main.py</span><br></span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Once started it will scrape data and store the results in "
+    },
+    {
+      "type": "code",
+      "content": "<code>output/finished.json</code>"
+    },
+    {
+      "type": "text",
+      "content": "You can edit the "
+    },
+    {
+      "type": "code",
+      "content": "<code>task.py</code>"
+    },
+    {
+      "type": "text",
+      "content": "Next Steps"
+    },
+    {
+      "type": "text",
+      "content": "If you are new to Botasaurus, we encourage you to learn about Botasaurus "
+    },
+    {
+      "type": "text",
+      "content": "Next Steps"
+    },
+    {
+      "type": "text",
+      "content": "What is Botasaurus?"
+    },
+    {
+      "type": "text",
+      "content": "GitHub Discuss"
+    },
+    {
+      "type": "text",
+      "content": "GitHub"
+    }
+  ]
+}

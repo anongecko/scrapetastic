@@ -1,0 +1,586 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/asyncio.html",
+  "title": "asyncio — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Installing the asyncio reactor"
+    },
+    {
+      "type": "text",
+      "content": "Handling a pre-installed reactor"
+    },
+    {
+      "type": "text",
+      "content": "Awaiting on Deferreds"
+    },
+    {
+      "type": "text",
+      "content": "deferred_to_future()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">deferred_to_future()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "maybe_deferred_to_future()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">maybe_deferred_to_future()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Enforcing asyncio as a requirement"
+    },
+    {
+      "type": "text",
+      "content": "Windows-specific notes"
+    },
+    {
+      "type": "text",
+      "content": "Using custom asyncio loops"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.0."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy has partial support for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Installing the asyncio reactor"
+    },
+    {
+      "type": "text",
+      "content": "To enable "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">TWISTED_REACTOR</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'twisted.internet.asyncioreactor.AsyncioSelectorReactor'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you are using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerRunner</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">AsyncioSelectorReactor</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">install_reactor()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">install_reactor</span><span class=\"p\">(</span><span class=\"s1\">'twisted.internet.asyncioreactor.AsyncioSelectorReactor'</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Handling a pre-installed reactor"
+    },
+    {
+      "type": "text",
+      "content": "twisted.internet.reactor"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">twisted.internet.reactor</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you "
+    },
+    {
+      "type": "text",
+      "content": "You can usually fix the issue by moving those offending module-level Twisted\nimports to the method or function definitions where they are used. For example,\nif you have something like:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">reactor</span>\n\n\n<span class=\"k\">def</span> <span class=\"nf\">my_function</span><span class=\"p\">():</span>\n    <span class=\"n\">reactor</span><span class=\"o\">.</span><span class=\"n\">callLater</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Switch to something like:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">def</span> <span class=\"nf\">my_function</span><span class=\"p\">():</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">reactor</span>\n\n    <span class=\"n\">reactor</span><span class=\"o\">.</span><span class=\"n\">callLater</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Alternatively, you can try to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">install_reactor()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Awaiting on Deferreds"
+    },
+    {
+      "type": "text",
+      "content": "When the asyncio reactor isn’t installed, you can await on Deferreds in the\ncoroutines directly. When it is installed, this is not possible anymore, due to\nspecifics of the Scrapy coroutine integration (the coroutines are wrapped into\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">asyncio.Future</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.6.0."
+    },
+    {
+      "type": "text",
+      "content": "Return an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">asyncio.Future</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "When "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Future</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Future</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"o\">...</span>\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"n\">additional_request</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s1\">'https://example.org/price'</span><span class=\"p\">)</span>\n        <span class=\"n\">deferred</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">download</span><span class=\"p\">(</span><span class=\"n\">additional_request</span><span class=\"p\">)</span>\n        <span class=\"n\">additional_response</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">deferred_to_future</span><span class=\"p\">(</span><span class=\"n\">deferred</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.6.0."
+    },
+    {
+      "type": "text",
+      "content": "Return "
+    },
+    {
+      "type": "text",
+      "content": "What you can await in Scrapy callables defined as coroutines depends on the\nvalue of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">TWISTED_REACTOR</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "When not using the asyncio reactor, you can only await on\n"
+    },
+    {
+      "type": "text",
+      "content": "When not using the asyncio reactor, you can only await on\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "When "
+    },
+    {
+      "type": "text",
+      "content": "When "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">asyncio.Future</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to write code that uses "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"o\">...</span>\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"n\">additional_request</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s1\">'https://example.org/price'</span><span class=\"p\">)</span>\n        <span class=\"n\">deferred</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">download</span><span class=\"p\">(</span><span class=\"n\">additional_request</span><span class=\"p\">)</span>\n        <span class=\"n\">additional_response</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">maybe_deferred_to_future</span><span class=\"p\">(</span><span class=\"n\">deferred</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Tip"
+    },
+    {
+      "type": "text",
+      "content": "If you need to use these functions in code that aims to be compatible\nwith lower versions of Scrapy that do not provide these functions,\ndown to Scrapy 2.0 (earlier versions do not support\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Enforcing asyncio as a requirement"
+    },
+    {
+      "type": "text",
+      "content": "If you are writing a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">scrapy.utils.reactor.is_asyncio_reactor_installed()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.reactor</span> <span class=\"kn\">import</span> <span class=\"n\">is_asyncio_reactor_installed</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MyComponent</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">is_asyncio_reactor_installed</span><span class=\"p\">():</span>\n            <span class=\"k\">raise</span> <span class=\"ne\">ValueError</span><span class=\"p\">(</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">MyComponent</span><span class=\"o\">.</span><span class=\"vm\">__qualname__</span><span class=\"si\">}</span><span class=\"s2\"> requires the asyncio Twisted \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"reactor. Make sure you have it configured in the \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"TWISTED_REACTOR setting. See the asyncio documentation \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"of Scrapy for more information.\"</span>\n            <span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Windows-specific notes"
+    },
+    {
+      "type": "text",
+      "content": "The Windows implementation of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">ProactorEventLoop</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorEventLoop</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorEventLoop</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy changes the event loop class to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SelectorEventLoop</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">TWISTED_REACTOR</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">install_reactor()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Other libraries you use may require\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">ProactorEventLoop</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Using custom asyncio loops"
+    },
+    {
+      "type": "text",
+      "content": "You can also use custom asyncio event loops with the asyncio reactor. Set the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ASYNCIO_EVENT_LOOP</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

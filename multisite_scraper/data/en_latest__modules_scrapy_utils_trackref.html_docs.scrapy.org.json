@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/utils/trackref.html",
+  "title": "scrapy.utils.trackref — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.utils.trackref"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.utils.trackref"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"This module provides some functions and classes to record and report</span>\n<span class=\"sd\">references to live object instances.</span>\n\n<span class=\"sd\">If you want live objects for a particular class to be tracked, you only have to</span>\n<span class=\"sd\">subclass from object_ref (instead of object).</span>\n\n<span class=\"sd\">About performance: This library has a minimal performance impact when enabled,</span>\n<span class=\"sd\">and no performance penalty at all when disabled (as object_ref becomes just an</span>\n<span class=\"sd\">alias to object in that case).</span>\n<span class=\"sd\">\"\"\"</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">collections</span> <span class=\"kn\">import</span> <span class=\"n\">defaultdict</span>\n<span class=\"kn\">from</span> <span class=\"nn\">operator</span> <span class=\"kn\">import</span> <span class=\"n\">itemgetter</span>\n<span class=\"kn\">from</span> <span class=\"nn\">time</span> <span class=\"kn\">import</span> <span class=\"n\">time</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">DefaultDict</span><span class=\"p\">,</span> <span class=\"n\">Iterable</span>\n<span class=\"kn\">from</span> <span class=\"nn\">weakref</span> <span class=\"kn\">import</span> <span class=\"n\">WeakKeyDictionary</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n\n<span class=\"n\">NoneType</span> <span class=\"o\">=</span> <span class=\"nb\">type</span><span class=\"p\">(</span><span class=\"kc\">None</span><span class=\"p\">)</span>\n<span class=\"n\">live_refs</span><span class=\"p\">:</span> <span class=\"n\">DefaultDict</span><span class=\"p\">[</span><span class=\"nb\">type</span><span class=\"p\">,</span> <span class=\"n\">WeakKeyDictionary</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">defaultdict</span><span class=\"p\">(</span><span class=\"n\">WeakKeyDictionary</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"object_ref\"><a class=\"viewcode-back\" href=\"../../../topics/leaks.html#scrapy.utils.trackref.object_ref\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">object_ref</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Inherit from this class to a keep a record of live instances\"\"\"</span>\n\n    <span class=\"vm\">__slots__</span> <span class=\"o\">=</span> <span class=\"p\">()</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__new__</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"s2\">\"Self\"</span><span class=\"p\">:</span>\n        <span class=\"n\">obj</span> <span class=\"o\">=</span> <span class=\"nb\">object</span><span class=\"o\">.</span><span class=\"fm\">__new__</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">)</span>\n        <span class=\"n\">live_refs</span><span class=\"p\">[</span><span class=\"bp\">cls</span><span class=\"p\">][</span><span class=\"n\">obj</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">time</span><span class=\"p\">()</span>\n        <span class=\"k\">return</span> <span class=\"n\">obj</span></div>\n\n\n<span class=\"c1\"># using Any as it's hard to type type(None)</span>\n<span class=\"k\">def</span> <span class=\"nf\">format_live_refs</span><span class=\"p\">(</span><span class=\"n\">ignore</span><span class=\"p\">:</span> <span class=\"n\">Any</span> <span class=\"o\">=</span> <span class=\"n\">NoneType</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">str</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Return a tabular representation of tracked objects\"\"\"</span>\n    <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">\"Live References</span><span class=\"se\">\\n\\n</span><span class=\"s2\">\"</span>\n    <span class=\"n\">now</span> <span class=\"o\">=</span> <span class=\"n\">time</span><span class=\"p\">()</span>\n    <span class=\"k\">for</span> <span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">wdict</span> <span class=\"ow\">in</span> <span class=\"nb\">sorted</span><span class=\"p\">(</span><span class=\"n\">live_refs</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">(),</span> <span class=\"n\">key</span><span class=\"o\">=</span><span class=\"k\">lambda</span> <span class=\"n\">x</span><span class=\"p\">:</span> <span class=\"n\">x</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"vm\">__name__</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">wdict</span><span class=\"p\">:</span>\n            <span class=\"k\">continue</span>\n        <span class=\"k\">if</span> <span class=\"nb\">issubclass</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">ignore</span><span class=\"p\">):</span>\n            <span class=\"k\">continue</span>\n        <span class=\"n\">oldest</span> <span class=\"o\">=</span> <span class=\"nb\">min</span><span class=\"p\">(</span><span class=\"n\">wdict</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">())</span>\n        <span class=\"n\">s</span> <span class=\"o\">+=</span> <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"bp\">cls</span><span class=\"o\">.</span><span class=\"vm\">__name__</span><span class=\"si\">:</span><span class=\"s2\">&lt;30</span><span class=\"si\">}</span><span class=\"s2\"> </span><span class=\"si\">{</span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">wdict</span><span class=\"p\">)</span><span class=\"si\">:</span><span class=\"s2\">6</span><span class=\"si\">}</span><span class=\"s2\">   oldest: </span><span class=\"si\">{</span><span class=\"nb\">int</span><span class=\"p\">(</span><span class=\"n\">now</span><span class=\"w\"> </span><span class=\"o\">-</span><span class=\"w\"> </span><span class=\"n\">oldest</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s2\">s ago</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n    <span class=\"k\">return</span> <span class=\"n\">s</span>\n\n\n<div class=\"viewcode-block\" id=\"print_live_refs\"><a class=\"viewcode-back\" href=\"../../../topics/leaks.html#scrapy.utils.trackref.print_live_refs\">[docs]</a><span class=\"k\">def</span> <span class=\"nf\">print_live_refs</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">a</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kw</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Print tracked objects\"\"\"</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">format_live_refs</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kw</span><span class=\"p\">))</span></div>\n\n\n<div class=\"viewcode-block\" id=\"get_oldest\"><a class=\"viewcode-back\" href=\"../../../topics/leaks.html#scrapy.utils.trackref.get_oldest\">[docs]</a><span class=\"k\">def</span> <span class=\"nf\">get_oldest</span><span class=\"p\">(</span><span class=\"n\">class_name</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Any</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Get the oldest object for a specific class name\"\"\"</span>\n    <span class=\"k\">for</span> <span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">wdict</span> <span class=\"ow\">in</span> <span class=\"n\">live_refs</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n        <span class=\"k\">if</span> <span class=\"bp\">cls</span><span class=\"o\">.</span><span class=\"vm\">__name__</span> <span class=\"o\">==</span> <span class=\"n\">class_name</span><span class=\"p\">:</span>\n            <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">wdict</span><span class=\"p\">:</span>\n                <span class=\"k\">break</span>\n            <span class=\"k\">return</span> <span class=\"nb\">min</span><span class=\"p\">(</span><span class=\"n\">wdict</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">(),</span> <span class=\"n\">key</span><span class=\"o\">=</span><span class=\"n\">itemgetter</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">))[</span><span class=\"mi\">0</span><span class=\"p\">]</span></div>\n\n\n<div class=\"viewcode-block\" id=\"iter_all\"><a class=\"viewcode-back\" href=\"../../../topics/leaks.html#scrapy.utils.trackref.iter_all\">[docs]</a><span class=\"k\">def</span> <span class=\"nf\">iter_all</span><span class=\"p\">(</span><span class=\"n\">class_name</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Iterable</span><span class=\"p\">[</span><span class=\"n\">Any</span><span class=\"p\">]:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Iterate over all objects of the same class by its class name\"\"\"</span>\n    <span class=\"k\">for</span> <span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">wdict</span> <span class=\"ow\">in</span> <span class=\"n\">live_refs</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n        <span class=\"k\">if</span> <span class=\"bp\">cls</span><span class=\"o\">.</span><span class=\"vm\">__name__</span> <span class=\"o\">==</span> <span class=\"n\">class_name</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">wdict</span><span class=\"o\">.</span><span class=\"n\">keys</span><span class=\"p\">()</span>\n    <span class=\"k\">return</span> <span class=\"p\">[]</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

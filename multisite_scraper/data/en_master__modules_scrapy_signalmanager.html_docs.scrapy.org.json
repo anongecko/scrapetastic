@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/signalmanager.html",
+  "title": "scrapy.signalmanager — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.signalmanager"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.signalmanager"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">,</span> <span class=\"n\">Tuple</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">pydispatch</span> <span class=\"kn\">import</span> <span class=\"n\">dispatcher</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils</span> <span class=\"kn\">import</span> <span class=\"n\">signal</span> <span class=\"k\">as</span> <span class=\"n\">_signal</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">twisted.internet.defer</span> <span class=\"kn\">import</span> <span class=\"n\">Deferred</span>\n\n\n<div class=\"viewcode-block\" id=\"SignalManager\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">SignalManager</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">:</span> <span class=\"n\">Any</span> <span class=\"o\">=</span> <span class=\"n\">dispatcher</span><span class=\"o\">.</span><span class=\"n\">Anonymous</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">:</span> <span class=\"n\">Any</span> <span class=\"o\">=</span> <span class=\"n\">sender</span>\n\n<div class=\"viewcode-block\" id=\"SignalManager.connect\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager.connect\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">receiver</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Connect a receiver function to a signal.</span>\n\n<span class=\"sd\">        The signal can be any object, although Scrapy comes with some</span>\n<span class=\"sd\">        predefined signals that are documented in the :ref:`topics-signals`</span>\n<span class=\"sd\">        section.</span>\n\n<span class=\"sd\">        :param receiver: the function to be connected</span>\n<span class=\"sd\">        :type receiver: collections.abc.Callable</span>\n\n<span class=\"sd\">        :param signal: the signal to connect to</span>\n<span class=\"sd\">        :type signal: object</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">kwargs</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"sender\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">)</span>\n        <span class=\"n\">dispatcher</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">receiver</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SignalManager.disconnect\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager.disconnect\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">disconnect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">receiver</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Disconnect a receiver function from a signal. This has the</span>\n<span class=\"sd\">        opposite effect of the :meth:`connect` method, and the arguments</span>\n<span class=\"sd\">        are the same.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">kwargs</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"sender\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">)</span>\n        <span class=\"n\">dispatcher</span><span class=\"o\">.</span><span class=\"n\">disconnect</span><span class=\"p\">(</span><span class=\"n\">receiver</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SignalManager.send_catch_log\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager.send_catch_log\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">send_catch_log</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">]]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Send a signal, catch exceptions and log them.</span>\n\n<span class=\"sd\">        The keyword arguments are passed to the signal handlers (connected</span>\n<span class=\"sd\">        through the :meth:`connect` method).</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">kwargs</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"sender\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">_signal</span><span class=\"o\">.</span><span class=\"n\">send_catch_log</span><span class=\"p\">(</span><span class=\"n\">signal</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SignalManager.send_catch_log_deferred\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager.send_catch_log_deferred\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">send_catch_log_deferred</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Deferred</span><span class=\"p\">[</span><span class=\"n\">List</span><span class=\"p\">[</span><span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">]]]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Like :meth:`send_catch_log` but supports returning</span>\n<span class=\"sd\">        :class:`~twisted.internet.defer.Deferred` objects from signal handlers.</span>\n\n<span class=\"sd\">        Returns a Deferred that gets fired once all signal handlers</span>\n<span class=\"sd\">        deferreds were fired. Send a signal, catch exceptions and log them.</span>\n\n<span class=\"sd\">        The keyword arguments are passed to the signal handlers (connected</span>\n<span class=\"sd\">        through the :meth:`connect` method).</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">kwargs</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"sender\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">_signal</span><span class=\"o\">.</span><span class=\"n\">send_catch_log_deferred</span><span class=\"p\">(</span><span class=\"n\">signal</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SignalManager.disconnect_all\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.signalmanager.SignalManager.disconnect_all\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">disconnect_all</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Disconnect all receivers from the given signal.</span>\n\n<span class=\"sd\">        :param signal: the signal to disconnect from</span>\n<span class=\"sd\">        :type signal: object</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">kwargs</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"sender\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">sender</span><span class=\"p\">)</span>\n        <span class=\"n\">_signal</span><span class=\"o\">.</span><span class=\"n\">disconnect_all</span><span class=\"p\">(</span><span class=\"n\">signal</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span></div></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

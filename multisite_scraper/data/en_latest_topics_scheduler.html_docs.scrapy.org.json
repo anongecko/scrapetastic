@@ -1,0 +1,738 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/topics/scheduler.html",
+  "title": "Scheduler — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Overriding the default scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Minimal scheduler interface"
+    },
+    {
+      "type": "text",
+      "content": "Default Scrapy scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "The scheduler component receives requests from the "
+    },
+    {
+      "type": "text",
+      "content": "Overriding the default scheduler"
+    },
+    {
+      "type": "text",
+      "content": "You can use your own custom scheduler class by supplying its full\nPython path in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Minimal scheduler interface"
+    },
+    {
+      "type": "text",
+      "content": "The scheduler component is responsible for storing requests received from\nthe engine, and feeding them back upon request (also to the engine)."
+    },
+    {
+      "type": "text",
+      "content": "The original sources of said requests are:"
+    },
+    {
+      "type": "text",
+      "content": "Spider: "
+    },
+    {
+      "type": "text",
+      "content": "Spider: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_requests</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Spider middleware: "
+    },
+    {
+      "type": "text",
+      "content": "Spider middleware: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_exception</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Downloader middleware: "
+    },
+    {
+      "type": "text",
+      "content": "Downloader middleware: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_exception</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The order in which the scheduler returns its stored requests (via the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">next_request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The methods defined in this class constitute the minimal interface that the Scrapy engine will interact with."
+    },
+    {
+      "type": "text",
+      "content": "Called when the spider is closed by the engine. It receives the reason why the crawl\nfinished as argument and it’s useful to execute cleaning code."
+    },
+    {
+      "type": "text",
+      "content": "reason"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">str</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Process a request received by the engine."
+    },
+    {
+      "type": "text",
+      "content": "Return "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request_dropped</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Factory method which receives the current "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "True"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return the next "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returning "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">next_request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">has_pending_requests</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Called when the spider is opened by the engine. It receives the spider\ninstance as argument and it’s useful to execute initialization code."
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Default Scrapy scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Default Scrapy scheduler. This implementation also handles duplication\nfiltering via the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">dupefilter</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This scheduler stores requests into several priority queues (defined by the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_PRIORITY_QUEUE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_MEMORY_QUEUE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_DISK_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Request prioritization is almost entirely delegated to the priority queue. The only\nprioritization performed by this scheduler is using the disk-based queue if present\n(i.e. if the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">JOBDIR</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "dupefilter"
+    },
+    {
+      "type": "text",
+      "content": "dupefilter"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.dupefilters.BaseDupeFilter</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DUPEFILTER_CLASS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "jobdir"
+    },
+    {
+      "type": "text",
+      "content": "jobdir"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">str</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">JOBDIR</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "dqclass"
+    },
+    {
+      "type": "text",
+      "content": "dqclass"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_DISK_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "mqclass"
+    },
+    {
+      "type": "text",
+      "content": "mqclass"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_MEMORY_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "logunser"
+    },
+    {
+      "type": "text",
+      "content": "logunser"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_DEBUG</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "stats"
+    },
+    {
+      "type": "text",
+      "content": "stats"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.statscollectors.StatsCollector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">STATS_CLASS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "pqclass"
+    },
+    {
+      "type": "text",
+      "content": "pqclass"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_PRIORITY_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.crawler.Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return the total amount of enqueued requests"
+    },
+    {
+      "type": "text",
+      "content": "dump pending requests to disk if there is a disk queue"
+    },
+    {
+      "type": "text",
+      "content": "dump pending requests to disk if there is a disk queue"
+    },
+    {
+      "type": "text",
+      "content": "return the result of the dupefilter’s "
+    },
+    {
+      "type": "text",
+      "content": "return the result of the dupefilter’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">close</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Unless the received request is filtered out by the Dupefilter, attempt to push\nit into the disk queue, falling back to pushing it into the memory queue."
+    },
+    {
+      "type": "text",
+      "content": "Increment the appropriate stats, such as: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/enqueued</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/enqueued/disk</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/enqueued/memory</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Factory method, initializes the scheduler with arguments taken from the crawl settings"
+    },
+    {
+      "type": "text",
+      "content": "True"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Increment the appropriate stats, such as: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/dequeued</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/dequeued/disk</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scheduler/dequeued/memory</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "initialize the memory queue"
+    },
+    {
+      "type": "text",
+      "content": "initialize the memory queue"
+    },
+    {
+      "type": "text",
+      "content": "initialize the disk queue if the "
+    },
+    {
+      "type": "text",
+      "content": "initialize the disk queue if the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">jobdir</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "return the result of the dupefilter’s "
+    },
+    {
+      "type": "text",
+      "content": "return the result of the dupefilter’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">open</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

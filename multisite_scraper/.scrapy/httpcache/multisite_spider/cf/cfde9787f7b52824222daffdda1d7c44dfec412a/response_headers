@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:24:01 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817b44f9c518f3-FRA
+Cf-Cache-Status: REVALIDATED
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"8f88cc1e3a1b4749e7f44ba0e86220e7"
+Last-Modified: Wed, 26 Jun 2024 12:46:58 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: W7xZMSebWgr3U5R2v3kMq9RkvMDM78UAc7mKjwaiYFHdCFPZfy3Upz22KeumA6feKGXTknzJXbQ=
+X-Amz-Meta-Mtime: 1719405971.201689029
+X-Amz-Request-Id: 8E9QCPDV8R9WP18S
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0240da4e6a5fde1d6
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/latest/_modules/scrapy/core/scheduler.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_modules/scrapy/core/scheduler.html
+X-Rtd-Version: latest
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=ErEFG4k.f1V5Gmplc5mjq8vSiiv2c2nMaRnZDJbEJzc-1721798641961-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

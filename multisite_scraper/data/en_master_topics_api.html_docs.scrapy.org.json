@@ -1,0 +1,2170 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/api.html",
+  "title": "Core API — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "Crawler API"
+    },
+    {
+      "type": "text",
+      "content": "Crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.request_fingerprinter"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.request_fingerprinter</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.settings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.signals"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.signals</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.stats"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.stats</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.extensions"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.extensions</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.engine"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.engine</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.crawl()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawler.stop()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Crawler.stop()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner.crawl()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner.crawlers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.crawlers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner.create_crawler()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.create_crawler()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner.join()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.join()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner.stop()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.stop()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.crawl()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.crawlers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.crawlers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.create_crawler()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.create_crawler()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.join()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.join()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.start()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.start()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess.stop()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.stop()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Settings API"
+    },
+    {
+      "type": "text",
+      "content": "SETTINGS_PRIORITIES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "get_settings_priority()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">get_settings_priority()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.copy()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.copy()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.copy_to_dict()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.copy_to_dict()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.freeze()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.freeze()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.frozencopy()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.frozencopy()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.get()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.get()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getbool()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getbool()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getdict()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getdict()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getdictorlist()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getdictorlist()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getfloat()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getfloat()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getint()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getint()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getlist()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getlist()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getpriority()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getpriority()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.getwithbase()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.getwithbase()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.maxpriority()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.maxpriority()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.pop()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.pop()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.set()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.set()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.setdefault()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.setdefault()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.setmodule()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.setmodule()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings.update()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">BaseSettings.update()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader API"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SpiderLoader</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader.from_settings()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SpiderLoader.from_settings()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader.load()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SpiderLoader.load()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader.list()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SpiderLoader.list()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader.find_by_request()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SpiderLoader.find_by_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Signals API"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager.connect()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager.connect()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager.disconnect()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager.disconnect()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager.disconnect_all()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager.disconnect_all()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager.send_catch_log()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager.send_catch_log()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager.send_catch_log_deferred()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SignalManager.send_catch_log_deferred()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collector API"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.get_value()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.get_value()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.get_stats()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.get_stats()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.set_value()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.set_value()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.set_stats()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.set_stats()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.inc_value()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.inc_value()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.max_value()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.max_value()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.min_value()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.min_value()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.clear_stats()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.clear_stats()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.open_spider()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.open_spider()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector.close_spider()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">StatsCollector.close_spider()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "This section documents the Scrapy core API, and it’s intended for developers of\nextensions and middlewares."
+    },
+    {
+      "type": "text",
+      "content": "Crawler API"
+    },
+    {
+      "type": "text",
+      "content": "The main entry point to Scrapy API is the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">from_crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The Extension Manager is responsible for loading and keeping track of installed\nextensions and it’s configured through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The Crawler object must be instantiated with a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.Spider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.settings.Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The request fingerprint builder of this crawler."
+    },
+    {
+      "type": "text",
+      "content": "This is used from extensions and middlewares to build short, unique\nidentifiers for requests. See "
+    },
+    {
+      "type": "text",
+      "content": "The settings manager of this crawler."
+    },
+    {
+      "type": "text",
+      "content": "This is used by extensions & middlewares to access the Scrapy settings\nof this crawler."
+    },
+    {
+      "type": "text",
+      "content": "For an introduction on Scrapy settings see "
+    },
+    {
+      "type": "text",
+      "content": "For the API see "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The signals manager of this crawler."
+    },
+    {
+      "type": "text",
+      "content": "This is used by extensions & middlewares to hook themselves into Scrapy\nfunctionality."
+    },
+    {
+      "type": "text",
+      "content": "For an introduction on signals see "
+    },
+    {
+      "type": "text",
+      "content": "For the API see "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">SignalManager</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The stats collector of this crawler."
+    },
+    {
+      "type": "text",
+      "content": "This is used from extensions & middlewares to record stats of their\nbehaviour, or access stats collected by other extensions."
+    },
+    {
+      "type": "text",
+      "content": "For an introduction on stats collection see "
+    },
+    {
+      "type": "text",
+      "content": "For the API see "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">StatsCollector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The extension manager that keeps track of enabled extensions."
+    },
+    {
+      "type": "text",
+      "content": "Most extensions won’t need to access this attribute."
+    },
+    {
+      "type": "text",
+      "content": "For an introduction on extensions and a list of available extensions on\nScrapy see "
+    },
+    {
+      "type": "text",
+      "content": "The execution engine, which coordinates the core crawling logic\nbetween the scheduler, downloader and spiders."
+    },
+    {
+      "type": "text",
+      "content": "Some extension may want to access the Scrapy engine, to inspect  or\nmodify the downloader and scheduler behaviour, although this is an\nadvanced use and this API is not yet stable."
+    },
+    {
+      "type": "text",
+      "content": "Spider currently being crawled. This is an instance of the spider class\nprovided while constructing the crawler, and it is created after the\narguments given in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Starts the crawler by instantiating its spider class with the given\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">args</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">kwargs</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when the crawl is finished."
+    },
+    {
+      "type": "text",
+      "content": "Starts a graceful stop of the crawler and returns a deferred that is\nfired when the crawler is stopped."
+    },
+    {
+      "type": "text",
+      "content": "This is a convenient helper class that keeps track of, manages and runs\ncrawlers inside an already setup "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">reactor</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The CrawlerRunner object must be instantiated with a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This class shouldn’t be needed (since Scrapy is responsible of using it\naccordingly) unless writing scripts that manually handle the crawling\nprocess. See "
+    },
+    {
+      "type": "text",
+      "content": "Run a crawler with the provided arguments."
+    },
+    {
+      "type": "text",
+      "content": "It will call the given Crawler’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when the crawling is finished."
+    },
+    {
+      "type": "text",
+      "content": "crawler_or_spidercls"
+    },
+    {
+      "type": "text",
+      "content": "crawler_or_spidercls"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "args"
+    },
+    {
+      "type": "text",
+      "content": "args"
+    },
+    {
+      "type": "text",
+      "content": "kwargs"
+    },
+    {
+      "type": "text",
+      "content": "kwargs"
+    },
+    {
+      "type": "text",
+      "content": "Set of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">crawlers</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when all managed "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">crawlers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Stops simultaneously all the crawling jobs taking place."
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when they all have ended."
+    },
+    {
+      "type": "text",
+      "content": "Bases: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerRunner</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A class to run multiple scrapy crawlers in a process simultaneously."
+    },
+    {
+      "type": "text",
+      "content": "This class extends "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerRunner</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">reactor</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This utility should be a better fit than\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerRunner</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">reactor</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The CrawlerProcess object must be instantiated with a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "install_root_handler"
+    },
+    {
+      "type": "text",
+      "content": "This class shouldn’t be needed (since Scrapy is responsible of using it\naccordingly) unless writing scripts that manually handle the crawling\nprocess. See "
+    },
+    {
+      "type": "text",
+      "content": "Run a crawler with the provided arguments."
+    },
+    {
+      "type": "text",
+      "content": "It will call the given Crawler’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when the crawling is finished."
+    },
+    {
+      "type": "text",
+      "content": "crawler_or_spidercls"
+    },
+    {
+      "type": "text",
+      "content": "crawler_or_spidercls"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "args"
+    },
+    {
+      "type": "text",
+      "content": "args"
+    },
+    {
+      "type": "text",
+      "content": "kwargs"
+    },
+    {
+      "type": "text",
+      "content": "kwargs"
+    },
+    {
+      "type": "text",
+      "content": "Set of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">crawlers</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">crawl()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler_or_spidercls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when all managed "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">crawlers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method starts a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">reactor</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">REACTOR_THREADPOOL_MAXSIZE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DNSCACHE_ENABLED</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DNSCACHE_SIZE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">stop_after_crawl</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">join()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "stop_after_crawl"
+    },
+    {
+      "type": "text",
+      "content": "stop_after_crawl"
+    },
+    {
+      "type": "text",
+      "content": "install_signal_handlers"
+    },
+    {
+      "type": "text",
+      "content": "install_signal_handlers"
+    },
+    {
+      "type": "text",
+      "content": "Stops simultaneously all the crawling jobs taking place."
+    },
+    {
+      "type": "text",
+      "content": "Returns a deferred that is fired when they all have ended."
+    },
+    {
+      "type": "text",
+      "content": "Settings API"
+    },
+    {
+      "type": "text",
+      "content": "Dictionary that sets the key name and priority level of the default\nsettings priorities used in Scrapy."
+    },
+    {
+      "type": "text",
+      "content": "Each item defines a settings entry point, giving it a code name for\nidentification and an integer priority. Greater priorities take more\nprecedence over lesser ones when setting and retrieving values in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">SETTINGS_PRIORITIES</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"default\"</span><span class=\"p\">:</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"command\"</span><span class=\"p\">:</span> <span class=\"mi\">10</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"addon\"</span><span class=\"p\">:</span> <span class=\"mi\">15</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"project\"</span><span class=\"p\">:</span> <span class=\"mi\">20</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"mi\">30</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"cmdline\"</span><span class=\"p\">:</span> <span class=\"mi\">40</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "For a detailed explanation on each settings sources, see:\n"
+    },
+    {
+      "type": "text",
+      "content": "Small helper function that looks up a given string priority in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Bases: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This object stores Scrapy settings for the configuration of internal\ncomponents, and can be used for any further customization."
+    },
+    {
+      "type": "text",
+      "content": "It is a direct subclass and supports all methods of\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Instances of this class behave like dictionaries, but store priorities\nalong with their "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">(key,</span> <span class=\"pre\">value)</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Key-value entries can be passed on initialization with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">values</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">priority</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">values</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">priority</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Once the object is created, new settings can be loaded or updated with the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">set()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">get()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Make a deep copy of current settings."
+    },
+    {
+      "type": "text",
+      "content": "This method returns a new instance of the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Modifications to the new object won’t be reflected on the original\nsettings."
+    },
+    {
+      "type": "text",
+      "content": "Make a copy of current settings and convert to a dict."
+    },
+    {
+      "type": "text",
+      "content": "This method returns a new dict populated with the same values\nand their priorities as the current settings."
+    },
+    {
+      "type": "text",
+      "content": "Modifications to the returned dict won’t be reflected on the original\nsettings."
+    },
+    {
+      "type": "text",
+      "content": "This method can be useful for example for printing settings\nin Scrapy shell."
+    },
+    {
+      "type": "text",
+      "content": "Disable further changes to the current settings."
+    },
+    {
+      "type": "text",
+      "content": "After calling this method, the present state of the settings will become\nimmutable. Trying to change values through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">set()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return an immutable copy of the current settings."
+    },
+    {
+      "type": "text",
+      "content": "Alias for a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">freeze()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">copy()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value without affecting its original type."
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as a boolean."
+    },
+    {
+      "type": "text",
+      "content": "1"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'1'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'True'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'0'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'False'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, settings populated through environment variables set to\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'0'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as a dictionary. If the setting original type is a\ndictionary, a copy of it will be returned. If it is a string it will be\nevaluated as a JSON dictionary. In the case that it is a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">get()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as either a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">dict</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">list</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If the setting is already a dict or a list, a copy of it will be\nreturned."
+    },
+    {
+      "type": "text",
+      "content": "If it is a string it will be evaluated as JSON, or as a comma-separated\nlist of strings as a fallback."
+    },
+    {
+      "type": "text",
+      "content": "For example, settings populated from the command line will return:"
+    },
+    {
+      "type": "text",
+      "content": "{'key1':"
+    },
+    {
+      "type": "text",
+      "content": "{'key1':"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">{'key1':</span> <span class=\"pre\">'value1',</span> <span class=\"pre\">'key2':</span> <span class=\"pre\">'value2'}</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'{\"key1\":</span> <span class=\"pre\">\"value1\",</span> <span class=\"pre\">\"key2\":</span> <span class=\"pre\">\"value2\"}'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "['one',"
+    },
+    {
+      "type": "text",
+      "content": "['one',"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">['one',</span> <span class=\"pre\">'two']</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'[\"one\",</span> <span class=\"pre\">\"two\"]'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'one,two'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as a float."
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as an int."
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Get a setting value as a list. If the setting original type is a list, a\ncopy of it will be returned. If it’s a string it will be split by “,”."
+    },
+    {
+      "type": "text",
+      "content": "For example, settings populated through environment variables set to\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'one,two'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "default"
+    },
+    {
+      "type": "text",
+      "content": "Return the current numerical priority value of a setting, or "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "Get a composition of a dictionary-like setting and its "
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "Return the numerical value of the highest priority present throughout\nall settings, or the numerical value for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">default</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If key is not found, d is returned if given, otherwise KeyError is raised."
+    },
+    {
+      "type": "text",
+      "content": "Store a key/value attribute with a given priority."
+    },
+    {
+      "type": "text",
+      "content": "Settings should be populated "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">configure()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "name"
+    },
+    {
+      "type": "text",
+      "content": "value"
+    },
+    {
+      "type": "text",
+      "content": "value"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Store settings from a module with a given priority."
+    },
+    {
+      "type": "text",
+      "content": "This is a helper function that calls\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">set()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">module</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">priority</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Store key/value pairs with a given priority."
+    },
+    {
+      "type": "text",
+      "content": "This is a helper function that calls\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">set()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">values</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">priority</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">values</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">json.loads()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">priority</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "values"
+    },
+    {
+      "type": "text",
+      "content": "values"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">BaseSettings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "text",
+      "content": "priority"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">SETTINGS_PRIORITIES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader API"
+    },
+    {
+      "type": "text",
+      "content": "This class is in charge of retrieving and handling the spider classes\ndefined across the project."
+    },
+    {
+      "type": "text",
+      "content": "Custom spider loaders can be employed by specifying their path in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_LOADER_CLASS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">scrapy.interfaces.ISpiderLoader</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This class method is used by Scrapy to create an instance of the class.\nIt’s called with the current project settings, and it loads the spiders\nfound recursively in the modules of the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MODULES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "settings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Get the Spider class with the given name. It’ll look into the previously\nloaded spiders for a spider class with name "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">spider_name</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider_name"
+    },
+    {
+      "type": "text",
+      "content": "Get the names of the available spiders in the project."
+    },
+    {
+      "type": "text",
+      "content": "List the spiders’ names that can handle the given request. Will try to\nmatch the request’s url against the domains of the spiders."
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Signals API"
+    },
+    {
+      "type": "text",
+      "content": "Connect a receiver function to a signal."
+    },
+    {
+      "type": "text",
+      "content": "The signal can be any object, although Scrapy comes with some\npredefined signals that are documented in the "
+    },
+    {
+      "type": "text",
+      "content": "receiver"
+    },
+    {
+      "type": "text",
+      "content": "receiver"
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "Disconnect a receiver function from a signal. This has the\nopposite effect of the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">connect()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Disconnect all receivers from the given signal."
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "Send a signal, catch exceptions and log them."
+    },
+    {
+      "type": "text",
+      "content": "The keyword arguments are passed to the signal handlers (connected\nthrough the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">connect()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Like "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">send_catch_log()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Deferred</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a Deferred that gets fired once all signal handlers\ndeferreds were fired. Send a signal, catch exceptions and log them."
+    },
+    {
+      "type": "text",
+      "content": "The keyword arguments are passed to the signal handlers (connected\nthrough the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">connect()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collector API"
+    },
+    {
+      "type": "text",
+      "content": "There are several Stats Collectors available under the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">scrapy.statscollectors</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">StatsCollector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return the value for the given stats key or default if it doesn’t exist."
+    },
+    {
+      "type": "text",
+      "content": "Get all stats from the currently running spider as a dict."
+    },
+    {
+      "type": "text",
+      "content": "Set the given value for the given stats key."
+    },
+    {
+      "type": "text",
+      "content": "Override the current stats with the dict passed in "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">stats</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Increment the value of the given stats key, by the given count,\nassuming the start value given (when it’s not set)."
+    },
+    {
+      "type": "text",
+      "content": "Set the given value for the given key only if current value for the\nsame key is lower than value. If there is no current value for the\ngiven key, the value is always set."
+    },
+    {
+      "type": "text",
+      "content": "Set the given value for the given key only if current value for the\nsame key is greater than value. If there is no current value for the\ngiven key, the value is always set."
+    },
+    {
+      "type": "text",
+      "content": "Clear all stats."
+    },
+    {
+      "type": "text",
+      "content": "The following methods are not part of the stats collection api but instead\nused when implementing custom stats collectors:"
+    },
+    {
+      "type": "text",
+      "content": "Open the given spider for stats collection."
+    },
+    {
+      "type": "text",
+      "content": "Close the given spider. After this is called, no more specific stats\ncan be accessed or collected."
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

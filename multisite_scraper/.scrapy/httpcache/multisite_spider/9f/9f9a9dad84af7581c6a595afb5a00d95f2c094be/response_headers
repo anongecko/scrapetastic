@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:26:39 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817f1dce8818f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"2f5c1a924737d770e3ac85ea26be6a1c"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: 3cB29FKs4na6PM+/BQXOK/M6YnbLJBCiUbrl+/GBHtrRu1yl8cy+/q8+NmdWVVJpoXKQhxKjT0E=
+X-Amz-Meta-Mtime: 1721796078.957586216
+X-Amz-Request-Id: KGCMT5E6V086VHQT
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0d5df9d4ecfb92f2c
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/_modules/scrapy/robotstxt.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_modules/scrapy/robotstxt.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=esZH6sKPgM0bjQxh8DjbGhGGT7e7hVjTaXFodgqrDw8-1721798799267-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

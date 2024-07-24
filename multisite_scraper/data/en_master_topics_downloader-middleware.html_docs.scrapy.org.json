@@ -1,0 +1,3546 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/downloader-middleware.html",
+  "title": "Downloader Middleware — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Activating a downloader middleware"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own downloader middleware"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware.process_request()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderMiddleware.process_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware.process_response()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderMiddleware.process_response()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware.process_exception()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderMiddleware.process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware.from_crawler()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderMiddleware.from_crawler()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in downloader middleware reference"
+    },
+    {
+      "type": "text",
+      "content": "CookiesMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "CookiesMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CookiesMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Multiple cookie sessions per spider"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "DefaultHeadersMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "DefaultHeadersMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DefaultHeadersMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloadTimeoutMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "DownloadTimeoutMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloadTimeoutMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HttpAuthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpAuthMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">HttpAuthMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HttpCacheMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpCacheMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">HttpCacheMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Dummy policy (default)"
+    },
+    {
+      "type": "text",
+      "content": "RFC2616 policy"
+    },
+    {
+      "type": "text",
+      "content": "Filesystem storage backend (default)"
+    },
+    {
+      "type": "text",
+      "content": "DBM storage backend"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own storage backend"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCache middleware settings"
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">HttpCompressionMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">HttpProxyMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "OffsiteMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "OffsiteMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">OffsiteMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">RedirectMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MetaRefreshMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">RetryMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "get_retry_request()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">get_retry_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "RobotsTxtMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "RobotsTxtMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">RobotsTxtMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Protego parser"
+    },
+    {
+      "type": "text",
+      "content": "RobotFileParser"
+    },
+    {
+      "type": "text",
+      "content": "Reppy parser"
+    },
+    {
+      "type": "text",
+      "content": "Robotexclusionrulesparser"
+    },
+    {
+      "type": "text",
+      "content": "Implementing support for a new parser"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderStats"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderStats"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DownloaderStats</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "UserAgentMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "UserAgentMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">UserAgentMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">AjaxCrawlMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "The downloader middleware is a framework of hooks into Scrapy’s\nrequest/response processing.  It’s a light, low-level system for globally\naltering Scrapy’s requests and responses."
+    },
+    {
+      "type": "text",
+      "content": "Activating a downloader middleware"
+    },
+    {
+      "type": "text",
+      "content": "To activate a downloader middleware component, add it to the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">DOWNLOADER_MIDDLEWARES</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"myproject.middlewares.CustomDownloaderMiddleware\"</span><span class=\"p\">:</span> <span class=\"mi\">543</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To decide which order to assign to your middleware see the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to disable a built-in middleware (the ones defined in\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">DOWNLOADER_MIDDLEWARES</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s2\">\"myproject.middlewares.CustomDownloaderMiddleware\"</span><span class=\"p\">:</span> <span class=\"mi\">543</span><span class=\"p\">,</span>\n    <span class=\"s2\">\"scrapy.downloadermiddlewares.useragent.UserAgentMiddleware\"</span><span class=\"p\">:</span> <span class=\"kc\">None</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Finally, keep in mind that some middlewares may need to be enabled through a\nparticular setting. See each middleware documentation for more info."
+    },
+    {
+      "type": "text",
+      "content": "Writing your own downloader middleware"
+    },
+    {
+      "type": "text",
+      "content": "Each downloader middleware is a Python class that defines one or more of the\nmethods defined below."
+    },
+    {
+      "type": "text",
+      "content": "The main entry point is the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">from_crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Any of the downloader middleware methods may also return a deferred."
+    },
+    {
+      "type": "text",
+      "content": "This method is called for each request that goes through the download\nmiddleware."
+    },
+    {
+      "type": "text",
+      "content": "process_request()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it raises an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request.errback</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "process_response()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it raises an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request.errback</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy calls "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">IgnoreRequest</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "process_exception()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If it returns a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "text",
+      "content": "exception"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Exception</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If present, this classmethod is called to create a middleware instance\nfrom a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in downloader middleware reference"
+    },
+    {
+      "type": "text",
+      "content": "This page describes all downloader middleware components that come with\nScrapy. For information on how to use them and how to write your own downloader\nmiddleware, see the "
+    },
+    {
+      "type": "text",
+      "content": "For a list of the components enabled by default (and their orders) see the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES_BASE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "CookiesMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware enables working with sites that require cookies, such as\nthose that use sessions. It keeps track of cookies sent by web servers, and\nsends them back on subsequent requests (from that spider), just like web\nbrowsers do."
+    },
+    {
+      "type": "text",
+      "content": "Caution"
+    },
+    {
+      "type": "text",
+      "content": "When non-UTF8 encoded byte sequences are passed to a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">CookiesMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Caution"
+    },
+    {
+      "type": "text",
+      "content": "Cookies set via the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Cookie</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request.cookies</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The following settings can be used to configure the cookie middleware:"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_ENABLED"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">COOKIES_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_DEBUG"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">COOKIES_DEBUG</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Multiple cookie sessions per spider"
+    },
+    {
+      "type": "text",
+      "content": "There is support for keeping multiple cookie sessions per spider by using the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">cookiejar</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">for</span> <span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">url</span> <span class=\"ow\">in</span> <span class=\"nb\">enumerate</span><span class=\"p\">(</span><span class=\"n\">urls</span><span class=\"p\">):</span>\n    <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">meta</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"cookiejar\"</span><span class=\"p\">:</span> <span class=\"n\">i</span><span class=\"p\">},</span> <span class=\"n\">callback</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse_page</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Keep in mind that the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">cookiejar</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">def</span> <span class=\"nf\">parse_page</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n    <span class=\"c1\"># do some processing</span>\n    <span class=\"k\">return</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span>\n        <span class=\"s2\">\"http://www.example.com/otherpage\"</span><span class=\"p\">,</span>\n        <span class=\"n\">meta</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"cookiejar\"</span><span class=\"p\">:</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"cookiejar\"</span><span class=\"p\">]},</span>\n        <span class=\"n\">callback</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse_other_page</span><span class=\"p\">,</span>\n    <span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether to enable the cookies middleware. If disabled, no cookies will be sent\nto web servers."
+    },
+    {
+      "type": "text",
+      "content": "Notice that despite the value of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">COOKIES_ENABLED</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request.</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">meta['dont_merge_cookies']</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For more detailed information see the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">cookies</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If enabled, Scrapy will log all cookies sent in requests (i.e. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Cookie</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Set-Cookie</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example of a log with "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">COOKIES_DEBUG</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"mi\">2011</span><span class=\"o\">-</span><span class=\"mi\">04</span><span class=\"o\">-</span><span class=\"mi\">06</span> <span class=\"mi\">14</span><span class=\"p\">:</span><span class=\"mi\">35</span><span class=\"p\">:</span><span class=\"mi\">10</span><span class=\"o\">-</span><span class=\"mi\">0300</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">core</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"p\">]</span> <span class=\"n\">INFO</span><span class=\"p\">:</span> <span class=\"n\">Spider</span> <span class=\"n\">opened</span>\n<span class=\"mi\">2011</span><span class=\"o\">-</span><span class=\"mi\">04</span><span class=\"o\">-</span><span class=\"mi\">06</span> <span class=\"mi\">14</span><span class=\"p\">:</span><span class=\"mi\">35</span><span class=\"p\">:</span><span class=\"mi\">10</span><span class=\"o\">-</span><span class=\"mi\">0300</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">downloadermiddlewares</span><span class=\"o\">.</span><span class=\"n\">cookies</span><span class=\"p\">]</span> <span class=\"n\">DEBUG</span><span class=\"p\">:</span> <span class=\"n\">Sending</span> <span class=\"n\">cookies</span> <span class=\"n\">to</span><span class=\"p\">:</span> <span class=\"o\">&lt;</span><span class=\"n\">GET</span> <span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">www</span><span class=\"o\">.</span><span class=\"n\">diningcity</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/</span><span class=\"n\">netherlands</span><span class=\"o\">/</span><span class=\"n\">index</span><span class=\"o\">.</span><span class=\"n\">html</span><span class=\"o\">&gt;</span>\n        <span class=\"n\">Cookie</span><span class=\"p\">:</span> <span class=\"n\">clientlanguage_nl</span><span class=\"o\">=</span><span class=\"n\">en_EN</span>\n<span class=\"mi\">2011</span><span class=\"o\">-</span><span class=\"mi\">04</span><span class=\"o\">-</span><span class=\"mi\">06</span> <span class=\"mi\">14</span><span class=\"p\">:</span><span class=\"mi\">35</span><span class=\"p\">:</span><span class=\"mi\">14</span><span class=\"o\">-</span><span class=\"mi\">0300</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">downloadermiddlewares</span><span class=\"o\">.</span><span class=\"n\">cookies</span><span class=\"p\">]</span> <span class=\"n\">DEBUG</span><span class=\"p\">:</span> <span class=\"n\">Received</span> <span class=\"n\">cookies</span> <span class=\"n\">from</span><span class=\"p\">:</span> <span class=\"o\">&lt;</span><span class=\"mi\">200</span> <span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">www</span><span class=\"o\">.</span><span class=\"n\">diningcity</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/</span><span class=\"n\">netherlands</span><span class=\"o\">/</span><span class=\"n\">index</span><span class=\"o\">.</span><span class=\"n\">html</span><span class=\"o\">&gt;</span>\n        <span class=\"n\">Set</span><span class=\"o\">-</span><span class=\"n\">Cookie</span><span class=\"p\">:</span> <span class=\"n\">JSESSIONID</span><span class=\"o\">=</span><span class=\"n\">B</span><span class=\"o\">~</span><span class=\"n\">FA4DC0C496C8762AE4F1A620EAB34F38</span><span class=\"p\">;</span> <span class=\"n\">Path</span><span class=\"o\">=/</span>\n        <span class=\"n\">Set</span><span class=\"o\">-</span><span class=\"n\">Cookie</span><span class=\"p\">:</span> <span class=\"n\">ip_isocode</span><span class=\"o\">=</span><span class=\"n\">US</span>\n        <span class=\"n\">Set</span><span class=\"o\">-</span><span class=\"n\">Cookie</span><span class=\"p\">:</span> <span class=\"n\">clientlanguage_nl</span><span class=\"o\">=</span><span class=\"n\">en_EN</span><span class=\"p\">;</span> <span class=\"n\">Expires</span><span class=\"o\">=</span><span class=\"n\">Thu</span><span class=\"p\">,</span> <span class=\"mi\">07</span><span class=\"o\">-</span><span class=\"n\">Apr</span><span class=\"o\">-</span><span class=\"mi\">2011</span> <span class=\"mi\">21</span><span class=\"p\">:</span><span class=\"mi\">21</span><span class=\"p\">:</span><span class=\"mi\">34</span> <span class=\"n\">GMT</span><span class=\"p\">;</span> <span class=\"n\">Path</span><span class=\"o\">=/</span>\n<span class=\"mi\">2011</span><span class=\"o\">-</span><span class=\"mi\">04</span><span class=\"o\">-</span><span class=\"mi\">06</span> <span class=\"mi\">14</span><span class=\"p\">:</span><span class=\"mi\">49</span><span class=\"p\">:</span><span class=\"mi\">50</span><span class=\"o\">-</span><span class=\"mi\">0300</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">core</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"p\">]</span> <span class=\"n\">DEBUG</span><span class=\"p\">:</span> <span class=\"n\">Crawled</span> <span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span><span class=\"n\">GET</span> <span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">www</span><span class=\"o\">.</span><span class=\"n\">diningcity</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/</span><span class=\"n\">netherlands</span><span class=\"o\">/</span><span class=\"n\">index</span><span class=\"o\">.</span><span class=\"n\">html</span><span class=\"o\">&gt;</span> <span class=\"p\">(</span><span class=\"n\">referer</span><span class=\"p\">:</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n<span class=\"p\">[</span><span class=\"o\">...</span><span class=\"p\">]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "DefaultHeadersMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware sets all default requests headers specified in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DEFAULT_REQUEST_HEADERS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DownloadTimeoutMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware sets the download timeout for requests specified in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_TIMEOUT</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">download_timeout</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "You can also set download timeout per-request using\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">download_timeout</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HttpAuthMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware authenticates all requests generated from certain spiders\nusing "
+    },
+    {
+      "type": "text",
+      "content": "To enable HTTP authentication for a spider, set the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_user</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_pass</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_auth_domain</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_auth_domain</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "In previous Scrapy versions HttpAuthMiddleware sent the authentication\ndata with all requests, which is a security problem if the spider\nmakes requests to several different domains. Currently if the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_auth_domain</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">CrawlSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">SomeIntranetSiteSpider</span><span class=\"p\">(</span><span class=\"n\">CrawlSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">http_user</span> <span class=\"o\">=</span> <span class=\"s2\">\"someuser\"</span>\n    <span class=\"n\">http_pass</span> <span class=\"o\">=</span> <span class=\"s2\">\"somepass\"</span>\n    <span class=\"n\">http_auth_domain</span> <span class=\"o\">=</span> <span class=\"s2\">\"intranet.example.com\"</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"intranet.example.com\"</span>\n\n    <span class=\"c1\"># .. rest of the spider code omitted ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "HttpCacheMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware provides low-level cache to all HTTP requests and responses.\nIt has to be combined with a cache storage backend as well as a cache policy."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy ships with the following HTTP cache storage backends:"
+    },
+    {
+      "type": "text",
+      "content": "Filesystem storage backend (default)"
+    },
+    {
+      "type": "text",
+      "content": "Filesystem storage backend (default)"
+    },
+    {
+      "type": "text",
+      "content": "DBM storage backend"
+    },
+    {
+      "type": "text",
+      "content": "DBM storage backend"
+    },
+    {
+      "type": "text",
+      "content": "You can change the HTTP cache storage backend with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPCACHE_STORAGE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy ships with two HTTP cache policies:"
+    },
+    {
+      "type": "text",
+      "content": "RFC2616 policy"
+    },
+    {
+      "type": "text",
+      "content": "RFC2616 policy"
+    },
+    {
+      "type": "text",
+      "content": "Dummy policy (default)"
+    },
+    {
+      "type": "text",
+      "content": "Dummy policy (default)"
+    },
+    {
+      "type": "text",
+      "content": "You can change the HTTP cache policy with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPCACHE_POLICY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You can also avoid caching a response on every policy using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">dont_cache</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Dummy policy (default)"
+    },
+    {
+      "type": "text",
+      "content": "This policy has no awareness of any HTTP Cache-Control directives.\nEvery request and its corresponding response are cached.  When the same\nrequest is seen again, the response is returned without transferring\nanything from the Internet."
+    },
+    {
+      "type": "text",
+      "content": "The Dummy policy is useful for testing spiders faster (without having\nto wait for downloads every time) and for trying your spider offline,\nwhen an Internet connection is not available. The goal is to be able to\n“replay” a spider run "
+    },
+    {
+      "type": "text",
+      "content": "RFC2616 policy"
+    },
+    {
+      "type": "text",
+      "content": "This policy provides a RFC2616 compliant HTTP cache, i.e. with HTTP\nCache-Control awareness, aimed at production and used in continuous\nruns to avoid downloading unmodified data (to save bandwidth and speed up\ncrawls)."
+    },
+    {
+      "type": "text",
+      "content": "What is implemented:"
+    },
+    {
+      "type": "text",
+      "content": "Do not attempt to store responses/requests with "
+    },
+    {
+      "type": "text",
+      "content": "Do not attempt to store responses/requests with "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">no-store</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Do not serve responses from cache if "
+    },
+    {
+      "type": "text",
+      "content": "Do not serve responses from cache if "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">no-cache</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">max-age</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Expires</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "text",
+      "content": "Compute freshness lifetime from "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Last-Modified</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Compute current age from "
+    },
+    {
+      "type": "text",
+      "content": "Compute current age from "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Age</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Compute current age from "
+    },
+    {
+      "type": "text",
+      "content": "Compute current age from "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Date</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Revalidate stale responses based on "
+    },
+    {
+      "type": "text",
+      "content": "Revalidate stale responses based on "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Last-Modified</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Revalidate stale responses based on "
+    },
+    {
+      "type": "text",
+      "content": "Revalidate stale responses based on "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">ETag</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Date</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Support "
+    },
+    {
+      "type": "text",
+      "content": "Support "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">max-stale</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This allows spiders to be configured with the full RFC2616 cache policy,\nbut avoid revalidation on a request-by-request basis, while remaining\nconformant with the HTTP spec."
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "text",
+      "content": "Add "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Cache-Control:</span> <span class=\"pre\">max-stale=600</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See also: RFC2616, 14.9.3"
+    },
+    {
+      "type": "text",
+      "content": "What is missing:"
+    },
+    {
+      "type": "text",
+      "content": "Pragma:"
+    },
+    {
+      "type": "text",
+      "content": "Pragma:"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Pragma:</span> <span class=\"pre\">no-cache</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Vary"
+    },
+    {
+      "type": "text",
+      "content": "Vary"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Vary</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Invalidation after updates or deletes "
+    },
+    {
+      "type": "text",
+      "content": "Invalidation after updates or deletes "
+    },
+    {
+      "type": "text",
+      "content": "… probably others .."
+    },
+    {
+      "type": "text",
+      "content": "… probably others .."
+    },
+    {
+      "type": "text",
+      "content": "Filesystem storage backend (default)"
+    },
+    {
+      "type": "text",
+      "content": "File system storage backend is available for the HTTP cache middleware."
+    },
+    {
+      "type": "text",
+      "content": "Each request/response pair is stored in a different directory containing\nthe following files:"
+    },
+    {
+      "type": "text",
+      "content": "request_body"
+    },
+    {
+      "type": "text",
+      "content": "request_body"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request_body</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request_headers"
+    },
+    {
+      "type": "text",
+      "content": "request_headers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">request_headers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response_body"
+    },
+    {
+      "type": "text",
+      "content": "response_body"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response_body</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response_headers"
+    },
+    {
+      "type": "text",
+      "content": "response_headers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">response_headers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "meta"
+    },
+    {
+      "type": "text",
+      "content": "meta"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">repr()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "pickled_meta"
+    },
+    {
+      "type": "text",
+      "content": "pickled_meta"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pickled_meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">meta</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The directory name is made from the request fingerprint (see\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.utils.request.fingerprint</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"o\">/</span><span class=\"n\">path</span><span class=\"o\">/</span><span class=\"n\">to</span><span class=\"o\">/</span><span class=\"n\">cache</span><span class=\"o\">/</span><span class=\"nb\">dir</span><span class=\"o\">/</span><span class=\"n\">example</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/</span><span class=\"mi\">72</span><span class=\"o\">/</span><span class=\"mi\">72811</span><span class=\"n\">f648e718090f041317756c03adb0ada46c7</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "DBM storage backend"
+    },
+    {
+      "type": "text",
+      "content": "A "
+    },
+    {
+      "type": "text",
+      "content": "By default, it uses the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">dbm</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPCACHE_DBM_MODULE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own storage backend"
+    },
+    {
+      "type": "text",
+      "content": "You can implement a cache storage backend by creating a Python class that\ndefines the methods described below."
+    },
+    {
+      "type": "text",
+      "content": "This method gets called after a spider has been opened for crawling. It handles\nthe "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">open_spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method gets called after a spider has been closed. It handles\nthe "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">close_spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return response if present in cache, or "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Store the given response in the cache."
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "text",
+      "content": "request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In order to use your storage backend, set:"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_STORAGE"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_STORAGE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">HTTPCACHE_STORAGE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCache middleware settings"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HttpCacheMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the HTTP cache will be enabled."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_EXPIRATION_SECS"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Expiration time for cached requests, in seconds."
+    },
+    {
+      "type": "text",
+      "content": "Cached requests older than this time will be re-downloaded. If zero, cached\nrequests will never expire."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_DIR"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'httpcache'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The directory to use for storing the (low-level) HTTP cache. If empty, the HTTP\ncache will be disabled. If a relative path is given, is taken relative to the\nproject data dir. For more info see: "
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_HTTP_CODES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Don’t cache response with these HTTP codes."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_MISSING"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If enabled, requests not found in the cache will be ignored instead of downloaded."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_SCHEMES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">['file']</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Don’t cache responses with these URI schemes."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_STORAGE"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'scrapy.extensions.httpcache.FilesystemCacheStorage'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The class which implements the cache storage backend."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_DBM_MODULE"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'dbm'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The database module to use in the "
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_POLICY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'scrapy.extensions.httpcache.DummyPolicy'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The class which implements the cache policy."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_GZIP"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If enabled, will compress all cached data with gzip.\nThis setting is specific to the Filesystem backend."
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_ALWAYS_STORE"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If enabled, will cache pages unconditionally."
+    },
+    {
+      "type": "text",
+      "content": "A spider may wish to have all responses available in the cache, for\nfuture use with "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Cache-Control:</span> <span class=\"pre\">max-stale</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This setting still respects "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Cache-Control:</span> <span class=\"pre\">no-store</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">no-store</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "List of Cache-Control directives in responses to be ignored."
+    },
+    {
+      "type": "text",
+      "content": "Sites often set “no-store”, “no-cache”, “must-revalidate”, etc., but get\nupset at the traffic a spider can generate if it actually respects those\ndirectives. This allows to selectively ignore Cache-Control directives\nthat are known to be unimportant for the sites being crawled."
+    },
+    {
+      "type": "text",
+      "content": "We assume that the spider will not issue Cache-Control directives\nin requests unless it actually needs them, so directives in requests are\nnot filtered."
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware allows compressed (gzip, deflate) traffic to be\nsent/received from web sites."
+    },
+    {
+      "type": "text",
+      "content": "This middleware also supports decoding "
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "COMPRESSION_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the Compression middleware will be enabled."
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware sets the HTTP proxy to use for requests, by setting the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">proxy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Like the Python standard library module "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">urllib.request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "http_proxy"
+    },
+    {
+      "type": "text",
+      "content": "http_proxy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_proxy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "https_proxy"
+    },
+    {
+      "type": "text",
+      "content": "https_proxy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">https_proxy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "no_proxy"
+    },
+    {
+      "type": "text",
+      "content": "no_proxy"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">no_proxy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You can also set the meta key "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">proxy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http://some_proxy_server:port</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http://username:password@some_proxy_server:port</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http_proxy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">https_proxy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">no_proxy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "OffsiteMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.11.2."
+    },
+    {
+      "type": "text",
+      "content": "Filters out Requests for URLs outside the domains covered by the spider."
+    },
+    {
+      "type": "text",
+      "content": "This middleware filters out every request whose host names aren’t in the\nspider’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">allowed_domains</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">www.example.org</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">bob.www.example.org</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">www2.example.com</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">example.com</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "When your spider returns a request for a domain not belonging to those\ncovered by the spider, this middleware will log a debug message similar to\nthis one:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">DEBUG</span><span class=\"p\">:</span> <span class=\"n\">Filtered</span> <span class=\"n\">offsite</span> <span class=\"n\">request</span> <span class=\"n\">to</span> <span class=\"s1\">'offsite.example'</span><span class=\"p\">:</span> <span class=\"o\">&lt;</span><span class=\"n\">GET</span> <span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">offsite</span><span class=\"o\">.</span><span class=\"n\">example</span><span class=\"o\">/</span><span class=\"n\">some</span><span class=\"o\">/</span><span class=\"n\">page</span><span class=\"o\">.</span><span class=\"n\">html</span><span class=\"o\">&gt;</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "To avoid filling the log with too much noise, it will only print one of\nthese messages for each new domain filtered. So, for example, if another\nrequest for "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">offsite.example</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">other.example</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If the spider doesn’t define an\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">allowed_domains</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If the request has the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">dont_filter</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware handles redirection of requests based on response status."
+    },
+    {
+      "type": "text",
+      "content": "The urls which the request goes through (while being redirected) can be found\nin the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">redirect_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The reason behind each redirect in "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">redirect_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">redirect_reasons</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[301,</span> <span class=\"pre\">302,</span> <span class=\"pre\">307,</span> <span class=\"pre\">'meta</span> <span class=\"pre\">refresh']</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The format of a reason depends on the middleware that handled the corresponding\nredirect. For example, "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RedirectMiddleware</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">MetaRefreshMiddleware</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'meta</span> <span class=\"pre\">refresh'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RedirectMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_ENABLED"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">REDIRECT_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_MAX_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_MAX_TIMES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">REDIRECT_MAX_TIMES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">dont_redirect</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to handle some redirect status codes in your spider, you can\nspecify these in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_list</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, if you want the redirect middleware to ignore 301 and 302\nresponses (and pass them through to your spider) you can do this:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">CrawlSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">handle_httpstatus_list</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"mi\">301</span><span class=\"p\">,</span> <span class=\"mi\">302</span><span class=\"p\">]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_list</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">handle_httpstatus_all</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the Redirect middleware will be enabled."
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_MAX_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">20</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The maximum number of redirections that will be followed for a single request.\nAfter this maximum, the request’s response is returned as is."
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware handles redirection of requests based on meta-refresh html tag."
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">MetaRefreshMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_ENABLED"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_IGNORE_TAGS"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_IGNORE_TAGS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_IGNORE_TAGS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_MAXDELAY"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_MAXDELAY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_MAXDELAY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This middleware obey "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">REDIRECT_MAX_TIMES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">dont_redirect</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">redirect_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">redirect_reasons</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RedirectMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the Meta Refresh middleware will be enabled."
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_IGNORE_TAGS"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Meta tags within these tags are ignored."
+    },
+    {
+      "type": "text",
+      "content": "Changed in version 2.0: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_IGNORE_TAGS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[\"script\",</span> <span class=\"pre\">\"noscript\"]</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Changed in version 2.11.2: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_IGNORE_TAGS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[\"noscript\"]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Changed in version VERSION: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">METAREFRESH_IGNORE_TAGS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[]</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">['noscript']</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_MAXDELAY"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">100</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The maximum meta-refresh delay (in seconds) to follow the redirection.\nSome sites use meta-refresh for redirecting to a session expired page, so we\nrestrict automatic redirection to the maximum delay."
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "A middleware to retry failed requests that are potentially caused by\ntemporary problems such as a connection timeout or HTTP 500 error."
+    },
+    {
+      "type": "text",
+      "content": "Failed pages are collected on the scraping process and rescheduled at the\nend, once the spider has finished crawling all regular (non failed) pages."
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RetryMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_ENABLED"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_ENABLED</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_TIMES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_TIMES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_HTTP_CODES"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_HTTP_CODES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_HTTP_CODES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_EXCEPTIONS"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_EXCEPTIONS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_EXCEPTIONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">dont_retry</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To retry requests from a spider callback, you can use the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">get_retry_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Returns a new "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, in a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n    <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">text</span><span class=\"p\">:</span>\n        <span class=\"n\">new_request_or_none</span> <span class=\"o\">=</span> <span class=\"n\">get_retry_request</span><span class=\"p\">(</span>\n            <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">request</span><span class=\"p\">,</span>\n            <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"p\">,</span>\n            <span class=\"n\">reason</span><span class=\"o\">=</span><span class=\"s1\">'empty'</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">new_request_or_none</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "spider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">logging.debug()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "reason"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Exception</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "max_retry_times"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">max_retry_times</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">max_retry_times</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_TIMES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "priority_adjust"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_PRIORITY_ADJUST</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "logger"
+    },
+    {
+      "type": "text",
+      "content": "stats_base_key"
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the Retry middleware will be enabled."
+    },
+    {
+      "type": "text",
+      "content": "RETRY_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">2</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Maximum number of times to retry, in addition to the first download."
+    },
+    {
+      "type": "text",
+      "content": "Maximum number of retries can also be specified per-request using\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">max_retry_times</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-reqmeta docutils literal notranslate\"><span class=\"pre\">max_retry_times</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_TIMES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_HTTP_CODES"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[500,</span> <span class=\"pre\">502,</span> <span class=\"pre\">503,</span> <span class=\"pre\">504,</span> <span class=\"pre\">522,</span> <span class=\"pre\">524,</span> <span class=\"pre\">408,</span> <span class=\"pre\">429]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Which HTTP response codes to retry. Other errors (DNS lookup issues,\nconnections lost, etc) are always retried."
+    },
+    {
+      "type": "text",
+      "content": "In some cases you may want to add 400 to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_HTTP_CODES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_EXCEPTIONS"
+    },
+    {
+      "type": "text",
+      "content": "Default:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"p\">[</span>\n    <span class=\"s1\">'twisted.internet.defer.TimeoutError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.TimeoutError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.DNSLookupError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.ConnectionRefusedError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.ConnectionDone'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.ConnectError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.ConnectionLost'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.internet.error.TCPTimedOutError'</span><span class=\"p\">,</span>\n    <span class=\"s1\">'twisted.web.client.ResponseFailed'</span><span class=\"p\">,</span>\n    <span class=\"ne\">IOError</span><span class=\"p\">,</span>\n    <span class=\"s1\">'scrapy.core.downloader.handlers.http11.TunnelError'</span><span class=\"p\">,</span>\n<span class=\"p\">]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "List of exceptions to retry."
+    },
+    {
+      "type": "text",
+      "content": "Each list entry may be an exception type or its import path as a string."
+    },
+    {
+      "type": "text",
+      "content": "An exception will not be caught when the exception type is not in\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_EXCEPTIONS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">RETRY_TIMES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_PRIORITY_ADJUST"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-1</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Adjust retry request priority relative to original request:"
+    },
+    {
+      "type": "text",
+      "content": "a positive priority adjust means higher priority."
+    },
+    {
+      "type": "text",
+      "content": "a positive priority adjust means higher priority."
+    },
+    {
+      "type": "text",
+      "content": "a negative priority adjust (default) means lower priority."
+    },
+    {
+      "type": "text",
+      "content": "a negative priority adjust (default) means lower priority."
+    },
+    {
+      "type": "text",
+      "content": "RobotsTxtMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "This middleware filters out requests forbidden by the robots.txt exclusion\nstandard."
+    },
+    {
+      "type": "text",
+      "content": "To make sure Scrapy respects robots.txt make sure the middleware is enabled\nand the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_OBEY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_USER_AGENT</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">USER_AGENT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This middleware has to be combined with a "
+    },
+    {
+      "type": "text",
+      "content": "Scrapy ships with support for the following "
+    },
+    {
+      "type": "text",
+      "content": "Protego"
+    },
+    {
+      "type": "text",
+      "content": "Protego"
+    },
+    {
+      "type": "text",
+      "content": "RobotFileParser"
+    },
+    {
+      "type": "text",
+      "content": "RobotFileParser"
+    },
+    {
+      "type": "text",
+      "content": "Robotexclusionrulesparser"
+    },
+    {
+      "type": "text",
+      "content": "Robotexclusionrulesparser"
+    },
+    {
+      "type": "text",
+      "content": "Reppy"
+    },
+    {
+      "type": "text",
+      "content": "Reppy"
+    },
+    {
+      "type": "text",
+      "content": "You can change the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_PARSER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">Request.meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">dont_obey_robotstxt</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_OBEY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Parsers vary in several aspects:"
+    },
+    {
+      "type": "text",
+      "content": "Language of implementation"
+    },
+    {
+      "type": "text",
+      "content": "Language of implementation"
+    },
+    {
+      "type": "text",
+      "content": "Supported specification"
+    },
+    {
+      "type": "text",
+      "content": "Supported specification"
+    },
+    {
+      "type": "text",
+      "content": "Support for wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "Support for wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "Usage of "
+    },
+    {
+      "type": "text",
+      "content": "Usage of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Allow</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Disallow</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Performance comparison of different parsers is available at "
+    },
+    {
+      "type": "text",
+      "content": "Protego parser"
+    },
+    {
+      "type": "text",
+      "content": "Based on "
+    },
+    {
+      "type": "text",
+      "content": "implemented in Python"
+    },
+    {
+      "type": "text",
+      "content": "implemented in Python"
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "uses the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "uses the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy uses this parser by default."
+    },
+    {
+      "type": "text",
+      "content": "RobotFileParser"
+    },
+    {
+      "type": "text",
+      "content": "Based on "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RobotFileParser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "is Python’s built-in "
+    },
+    {
+      "type": "text",
+      "content": "is Python’s built-in "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "lacks support for wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "lacks support for wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "doesn’t use the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "doesn’t use the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "It is faster than Protego and backward-compatible with versions of Scrapy before 1.8.0."
+    },
+    {
+      "type": "text",
+      "content": "In order to use this parser, set:"
+    },
+    {
+      "type": "text",
+      "content": "ROBOTSTXT_PARSER"
+    },
+    {
+      "type": "text",
+      "content": "ROBOTSTXT_PARSER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_PARSER</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.robotstxt.PythonRobotParser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Reppy parser"
+    },
+    {
+      "type": "text",
+      "content": "Based on "
+    },
+    {
+      "type": "text",
+      "content": "is a Python wrapper around "
+    },
+    {
+      "type": "text",
+      "content": "is a Python wrapper around "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "uses the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "uses the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "Native implementation, provides better speed than Protego."
+    },
+    {
+      "type": "text",
+      "content": "In order to use this parser:"
+    },
+    {
+      "type": "text",
+      "content": "Install "
+    },
+    {
+      "type": "text",
+      "content": "Install "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span> <span class=\"pre\">install</span> <span class=\"pre\">reppy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "Upstream issue #122"
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_PARSER</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.robotstxt.ReppyRobotParser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Robotexclusionrulesparser"
+    },
+    {
+      "type": "text",
+      "content": "Based on "
+    },
+    {
+      "type": "text",
+      "content": "implemented in Python"
+    },
+    {
+      "type": "text",
+      "content": "implemented in Python"
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "is compliant with "
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "supports wildcard matching"
+    },
+    {
+      "type": "text",
+      "content": "doesn’t use the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "doesn’t use the length based rule"
+    },
+    {
+      "type": "text",
+      "content": "In order to use this parser:"
+    },
+    {
+      "type": "text",
+      "content": "Install "
+    },
+    {
+      "type": "text",
+      "content": "Install "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">pip</span> <span class=\"pre\">install</span> <span class=\"pre\">robotexclusionrulesparser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "text",
+      "content": "Set "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ROBOTSTXT_PARSER</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.robotstxt.RerpRobotParser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Implementing support for a new parser"
+    },
+    {
+      "type": "text",
+      "content": "You can implement support for a new "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">RobotParser</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Return "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">user_agent</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "url"
+    },
+    {
+      "type": "text",
+      "content": "url"
+    },
+    {
+      "type": "text",
+      "content": "user_agent"
+    },
+    {
+      "type": "text",
+      "content": "user_agent"
+    },
+    {
+      "type": "text",
+      "content": "Parse the content of a "
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "robotstxt_body"
+    },
+    {
+      "type": "text",
+      "content": "robotstxt_body"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderStats"
+    },
+    {
+      "type": "text",
+      "content": "Middleware that stores stats of all requests, responses and exceptions that\npass through it."
+    },
+    {
+      "type": "text",
+      "content": "To use this middleware you must enable the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_STATS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "UserAgentMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Middleware that allows spiders to override the default user agent."
+    },
+    {
+      "type": "text",
+      "content": "In order for a spider to override the default user agent, its "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">user_agent</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware"
+    },
+    {
+      "type": "text",
+      "content": "Middleware that finds ‘AJAX crawlable’ page variants based\non meta-fragment html tag. See\n"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy finds ‘AJAX crawlable’ pages for URLs like\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'http://example.com/!#foo=bar'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'!#'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware Settings"
+    },
+    {
+      "type": "text",
+      "content": "AJAXCRAWL_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether the AjaxCrawlMiddleware will be enabled. You may want to\nenable it for "
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware settings"
+    },
+    {
+      "type": "text",
+      "content": "HTTPPROXY_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Whether or not to enable the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HttpProxyMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "HTTPPROXY_AUTH_ENCODING"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">\"latin-1\"</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The default encoding for proxy authentication on "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HttpProxyMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

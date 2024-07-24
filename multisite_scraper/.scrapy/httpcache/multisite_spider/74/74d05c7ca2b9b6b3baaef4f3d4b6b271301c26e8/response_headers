@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:24:09 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817b739f3418f3-FRA
+Cf-Cache-Status: REVALIDATED
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"35a062e24dfadc730d9bc2647ec01645"
+Last-Modified: Wed, 26 Jun 2024 12:46:58 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: cLgmJkN+JDjPvj1e1STWiPwPyjYFikmiPXcaDUeDB4gajOnysc2hq7feIFUUOXcJ07aSb4ksTys=
+X-Amz-Meta-Mtime: 1719405976.121706001
+X-Amz-Request-Id: CFMCCQ0C486GX3GA
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0f5c0ba0e84876d88
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/latest/_modules/scrapy/spidermiddlewares/urllength.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_modules/scrapy/spidermiddlewares/urllength.html
+X-Rtd-Version: latest
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=_9Fr91ARPkkdofSg8rJsnXK5VNcABOJZ2PH7cJXz7aw-1721798649116-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

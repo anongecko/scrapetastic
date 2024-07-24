@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:25:04 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817ccd0bf218f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"279ece76dce2c3bb19eeacb2c540218b"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: rRP8Usp/i49GdTtuXII4bFCGo+fjCugLp5CiW35AjIKegHbgDHS91Q8XIrkAgyKvOACjcdnQBjA=
+X-Amz-Meta-Mtime: 1721796076.461583224
+X-Amz-Request-Id: G4YQ6KKXC2KXENR4
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0e88fe8c077f7586a
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/topics/signals.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/signals.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=bZerrL1qy6VyoN9UO7sC1nM.NlmUNRDtp4hEjDppaBE-1721798704492-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

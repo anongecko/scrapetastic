@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:24:45 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817c571bf018f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"36d73736d805c60b99b22dd91dfc7cd4"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: ugSKUgK5IkpCbvclY+PZYaymJt0HRPSNCJkjXYgmVFDhPvJeJ2PPm+GGbc1u/0wLcdgqku+Ocp4=
+X-Amz-Meta-Mtime: 1721796072.801578837
+X-Amz-Request-Id: 6WPYA0DD1FZAVJH7
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0d5df9d4ecfb92f2c
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/news.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /news.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=FAf6Pg6hN3xo4a2WEBlrTo5VNyLOqWq60jMGgmyz6As-1721798685581-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

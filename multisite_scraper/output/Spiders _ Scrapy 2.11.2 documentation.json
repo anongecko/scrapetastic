@@ -1,0 +1,1246 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/topics/spiders.html",
+  "title": "Spiders — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Spiders are classes which define how a certain site (or a group of sites) will be\nscraped, including how to perform the crawl (i.e. follow links) and how to\nextract structured data from their pages (i.e. scraping items). In other words,\nSpiders are the place where you define the custom behaviour for crawling and\nparsing pages for a particular site (or, in some cases, a group of sites)."
+    },
+    {
+      "type": "text",
+      "content": "For spiders, the scraping cycle goes through something like this:"
+    },
+    {
+      "type": "text",
+      "content": "You start by generating the initial Requests to crawl the first URLs, and\nspecify a callback function to be called with the response downloaded from\nthose requests."
+    },
+    {
+      "type": "text",
+      "content": "The first requests to perform are obtained by calling the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">start_requests()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In the callback function, you parse the response (web page) and return\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In callback functions, you parse the page contents, typically using\n"
+    },
+    {
+      "type": "text",
+      "content": "Finally, the items returned from the spider will be typically persisted to a\ndatabase (in some "
+    },
+    {
+      "type": "text",
+      "content": "Even though this cycle applies (more or less) to any kind of spider, there are\ndifferent kinds of default spiders bundled into Scrapy for different purposes.\nWe will talk about those types here."
+    },
+    {
+      "type": "text",
+      "content": "This is the simplest spider, and the one from which every other spider\nmust inherit (including spiders that come bundled with Scrapy, as well as spiders\nthat you write yourself). It doesn’t provide any special functionality. It just\nprovides a default "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">start_requests()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A string which defines the name for this spider. The spider name is how\nthe spider is located (and instantiated) by Scrapy, so it must be\nunique. However, nothing prevents you from instantiating more than one\ninstance of the same spider. This is the most important spider attribute\nand it’s required."
+    },
+    {
+      "type": "text",
+      "content": "If the spider scrapes a single domain, a common practice is to name the\nspider after the domain, with or without the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">mywebsite.com</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">mywebsite</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "An optional list of strings containing domains that this spider is\nallowed to crawl. Requests for URLs not belonging to the domain names\nspecified in this list (or their subdomains) won’t be followed if\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">OffsiteMiddleware</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Let’s say your target url is "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">https://www.example.com/1.html</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'example.com'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A list of URLs where the spider will begin to crawl from, when no\nparticular URLs are specified. So, the first pages downloaded will be those\nlisted here. The subsequent "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A dictionary of settings that will be overridden from the project wide\nconfiguration when running this spider. It must be defined as a class\nattribute since the settings are updated before instantiation."
+    },
+    {
+      "type": "text",
+      "content": "For a list of available built-in settings see:\n"
+    },
+    {
+      "type": "text",
+      "content": "This attribute is set by the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">from_crawler()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Crawlers encapsulate a lot of components in the project for their single\nentry access (such as extensions, middlewares, signals managers, etc).\nSee "
+    },
+    {
+      "type": "text",
+      "content": "Configuration for running this spider. This is a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Python logger created with the Spider’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">name</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A dict you can use to persist some spider state between batches.\nSee "
+    },
+    {
+      "type": "text",
+      "content": "This is the class method used by Scrapy to create your spiders."
+    },
+    {
+      "type": "text",
+      "content": "You probably won’t need to override this directly because the default\nimplementation acts as a proxy to the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">__init__()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">args</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">kwargs</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Nonetheless, this method sets the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Changed in version 2.11: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">crawler.settings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The final settings and the initialized\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">start_requests()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">engine_started</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "args"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">__init__()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "kwargs"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">__init__()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It takes a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "While per-spider settings can be set in\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">custom_settings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'spider'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">custom_settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, suppose a spider needs to modify "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">FEEDS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"myspider\"</span>\n    <span class=\"n\">custom_feed</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"s2\">\"/home/user/documents/items.json\"</span><span class=\"p\">:</span> <span class=\"p\">{</span>\n            <span class=\"s2\">\"format\"</span><span class=\"p\">:</span> <span class=\"s2\">\"json\"</span><span class=\"p\">,</span>\n            <span class=\"s2\">\"indent\"</span><span class=\"p\">:</span> <span class=\"mi\">4</span><span class=\"p\">,</span>\n        <span class=\"p\">}</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">update_settings</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n        <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"FEEDS\"</span><span class=\"p\">,</span> <span class=\"p\">{})</span><span class=\"o\">.</span><span class=\"n\">update</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"o\">.</span><span class=\"n\">custom_feed</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This method must return an iterable with the first Requests to crawl for\nthis spider. It is called by Scrapy when the spider is opened for\nscraping. Scrapy calls it only once, so it is safe to implement\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">start_requests()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The default implementation generates "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request(url,</span> <span class=\"pre\">dont_filter=True)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you want to change the Requests used to start scraping a domain, this is\nthe method to override. For example, if you need to start by logging in using\na POST request, you could do:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"myspider\"</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">start_requests</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"k\">return</span> <span class=\"p\">[</span>\n            <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">FormRequest</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"http://www.example.com/login\"</span><span class=\"p\">,</span>\n                <span class=\"n\">formdata</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"user\"</span><span class=\"p\">:</span> <span class=\"s2\">\"john\"</span><span class=\"p\">,</span> <span class=\"s2\">\"pass\"</span><span class=\"p\">:</span> <span class=\"s2\">\"secret\"</span><span class=\"p\">},</span>\n                <span class=\"n\">callback</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">logged_in</span><span class=\"p\">,</span>\n            <span class=\"p\">)</span>\n        <span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">logged_in</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"c1\"># here you would extract links to follow and return Requests for</span>\n        <span class=\"c1\"># each of them, with another callback</span>\n        <span class=\"k\">pass</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is the default callback used by Scrapy to process downloaded\nresponses, when their requests don’t specify a callback."
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method, as well as any other Request callback, must return a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "response"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Wrapper that sends a log message through the Spider’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">logger</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Called when the spider closes. This method provides a shortcut to\nsignals.connect() for the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_closed</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Let’s see an example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"s2\">\"http://www.example.com/1.html\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"http://www.example.com/2.html\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"http://www.example.com/3.html\"</span><span class=\"p\">,</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"A response from </span><span class=\"si\">%s</span><span class=\"s2\"> just arrived!\"</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Return multiple Requests and items from a single callback:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"s2\">\"http://www.example.com/1.html\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"http://www.example.com/2.html\"</span><span class=\"p\">,</span>\n        <span class=\"s2\">\"http://www.example.com/3.html\"</span><span class=\"p\">,</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">h3</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//h3\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">():</span>\n            <span class=\"k\">yield</span> <span class=\"p\">{</span><span class=\"s2\">\"title\"</span><span class=\"p\">:</span> <span class=\"n\">h3</span><span class=\"p\">}</span>\n\n        <span class=\"k\">for</span> <span class=\"n\">href</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a/@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">():</span>\n            <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">urljoin</span><span class=\"p\">(</span><span class=\"n\">href</span><span class=\"p\">),</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Instead of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">start_requests()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Item</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n<span class=\"kn\">from</span> <span class=\"nn\">myproject.items</span> <span class=\"kn\">import</span> <span class=\"n\">MyItem</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">start_requests</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"http://www.example.com/1.html\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n        <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"http://www.example.com/2.html\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n        <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"http://www.example.com/3.html\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">h3</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//h3\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">():</span>\n            <span class=\"k\">yield</span> <span class=\"n\">MyItem</span><span class=\"p\">(</span><span class=\"n\">title</span><span class=\"o\">=</span><span class=\"n\">h3</span><span class=\"p\">)</span>\n\n        <span class=\"k\">for</span> <span class=\"n\">href</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"//a/@href\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">():</span>\n            <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">urljoin</span><span class=\"p\">(</span><span class=\"n\">href</span><span class=\"p\">),</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Spiders can receive arguments that modify their behaviour. Some common uses for\nspider arguments are to define the start URLs or to restrict the crawl to\ncertain sections of the site, but they can be used to configure any\nfunctionality of the spider."
+    },
+    {
+      "type": "text",
+      "content": "Spider arguments are passed through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">crawl</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-a</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span> <span class=\"n\">crawl</span> <span class=\"n\">myspider</span> <span class=\"o\">-</span><span class=\"n\">a</span> <span class=\"n\">category</span><span class=\"o\">=</span><span class=\"n\">electronics</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Spiders can access arguments in their "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"myspider\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">category</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"nb\">super</span><span class=\"p\">(</span><span class=\"n\">MySpider</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"sa\">f</span><span class=\"s2\">\"http://www.example.com/categories/</span><span class=\"si\">{</span><span class=\"n\">category</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">]</span>\n        <span class=\"c1\"># ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The default "
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"myspider\"</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">start_requests</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"k\">yield</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"http://www.example.com/categories/</span><span class=\"si\">{</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">category</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If you are "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerProcess.crawl</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlerRunner.crawl</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">process</span> <span class=\"o\">=</span> <span class=\"n\">CrawlerProcess</span><span class=\"p\">()</span>\n<span class=\"n\">process</span><span class=\"o\">.</span><span class=\"n\">crawl</span><span class=\"p\">(</span><span class=\"n\">MySpider</span><span class=\"p\">,</span> <span class=\"n\">category</span><span class=\"o\">=</span><span class=\"s2\">\"electronics\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Keep in mind that spider arguments are only strings.\nThe spider will not do any parsing on its own.\nIf you were to set the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">ast.literal_eval()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">json.loads()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A valid use case is to set the http auth credentials\nused by "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">HttpAuthMiddleware</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">UserAgentMiddleware</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span> <span class=\"n\">crawl</span> <span class=\"n\">myspider</span> <span class=\"o\">-</span><span class=\"n\">a</span> <span class=\"n\">http_user</span><span class=\"o\">=</span><span class=\"n\">myuser</span> <span class=\"o\">-</span><span class=\"n\">a</span> <span class=\"n\">http_pass</span><span class=\"o\">=</span><span class=\"n\">mypassword</span> <span class=\"o\">-</span><span class=\"n\">a</span> <span class=\"n\">user_agent</span><span class=\"o\">=</span><span class=\"n\">mybot</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Spider arguments can also be passed through the Scrapyd "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">schedule.json</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy comes with some useful generic spiders that you can use to subclass\nyour spiders from. Their aim is to provide convenient functionality for a few\ncommon scraping cases, like following all links on a site based on certain\nrules, crawling from "
+    },
+    {
+      "type": "text",
+      "content": "For the examples used in the following spiders, we’ll assume you have a project\nwith a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">TestItem</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">myproject.items</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">TestItem</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Item</span><span class=\"p\">):</span>\n    <span class=\"nb\">id</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Field</span><span class=\"p\">()</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Field</span><span class=\"p\">()</span>\n    <span class=\"n\">description</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Field</span><span class=\"p\">()</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is the most commonly used spider for crawling regular websites, as it\nprovides a convenient mechanism for following links by defining a set of rules.\nIt may not be the best suited for your particular web sites or project, but\nit’s generic enough for several cases, so you can start from it and override it\nas needed for more custom functionality, or just implement your own spider."
+    },
+    {
+      "type": "text",
+      "content": "Apart from the attributes inherited from Spider (that you must\nspecify), this class supports a new attribute:"
+    },
+    {
+      "type": "text",
+      "content": "Which is a list of one (or more) "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Rule</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Rule</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This spider also exposes an overridable method:"
+    },
+    {
+      "type": "text",
+      "content": "This method is called for each response produced for the URLs in\nthe spider’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "link_extractor"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">link_extractor</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">link_text</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "callback"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">callback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">link_text</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "cb_kwargs"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">cb_kwargs</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "follow"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">follow</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">callback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">follow</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "process_links"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_links</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">link_extractor</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "process_request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">None</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "errback"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">errback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Twisted</span> <span class=\"pre\">Failure</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "Because of its internal implementation, you must explicitly set\ncallbacks for new requests when writing "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlSpider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.0: "
+    },
+    {
+      "type": "text",
+      "content": "Let’s now take a look at an example CrawlSpider with rules:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">CrawlSpider</span><span class=\"p\">,</span> <span class=\"n\">Rule</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.linkextractors</span> <span class=\"kn\">import</span> <span class=\"n\">LinkExtractor</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">CrawlSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com\"</span><span class=\"p\">]</span>\n\n    <span class=\"n\">rules</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n        <span class=\"c1\"># Extract links matching 'category.php' (but not matching 'subsection.php')</span>\n        <span class=\"c1\"># and follow links from them (since no callback means follow=True by default).</span>\n        <span class=\"n\">Rule</span><span class=\"p\">(</span><span class=\"n\">LinkExtractor</span><span class=\"p\">(</span><span class=\"n\">allow</span><span class=\"o\">=</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"category\\.php\"</span><span class=\"p\">,),</span> <span class=\"n\">deny</span><span class=\"o\">=</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"subsection\\.php\"</span><span class=\"p\">,))),</span>\n        <span class=\"c1\"># Extract links matching 'item.php' and parse them with the spider's method parse_item</span>\n        <span class=\"n\">Rule</span><span class=\"p\">(</span><span class=\"n\">LinkExtractor</span><span class=\"p\">(</span><span class=\"n\">allow</span><span class=\"o\">=</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"item\\.php\"</span><span class=\"p\">,)),</span> <span class=\"n\">callback</span><span class=\"o\">=</span><span class=\"s2\">\"parse_item\"</span><span class=\"p\">),</span>\n    <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"Hi, this is an item page! </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">)</span>\n        <span class=\"n\">item</span> <span class=\"o\">=</span> <span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Item</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//td[@id=\"item_id\"]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">re</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s2\">\"ID: (\\d+)\"</span><span class=\"p\">)</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"name\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//td[@id=\"item_name\"]/text()'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"description\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span>\n            <span class=\"s1\">'//td[@id=\"item_description\"]/text()'</span>\n        <span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"link_text\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"link_text\"</span><span class=\"p\">]</span>\n        <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s1\">'//td[@id=\"additional_data\"]/@href'</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"k\">return</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">follow</span><span class=\"p\">(</span>\n            <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse_additional_page</span><span class=\"p\">,</span> <span class=\"n\">cb_kwargs</span><span class=\"o\">=</span><span class=\"nb\">dict</span><span class=\"p\">(</span><span class=\"n\">item</span><span class=\"o\">=</span><span class=\"n\">item</span><span class=\"p\">)</span>\n        <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_additional_page</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">):</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"additional_data\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span>\n            <span class=\"s1\">'//p[@id=\"additional_data\"]/text()'</span>\n        <span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"k\">return</span> <span class=\"n\">item</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This spider would start crawling example.com’s home page, collecting category\nlinks, and item links, parsing the latter with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse_item</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Item</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "XMLFeedSpider is designed for parsing XML feeds by iterating through them by a\ncertain node name.  The iterator can be chosen from: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">iternodes</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">xml</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">html</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">iternodes</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">xml</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">html</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">html</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "To set the iterator and the tag name, you must define the following class\nattributes:"
+    },
+    {
+      "type": "text",
+      "content": "A string which defines the iterator to use. It can be either:"
+    },
+    {
+      "type": "text",
+      "content": "'iternodes'"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'iternodes'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "'html'"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'html'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "'xml'"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'xml'</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It defaults to: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'iternodes'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A string with the name of the node (or element) to iterate in. Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">itertag</span> <span class=\"o\">=</span> <span class=\"s1\">'product'</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "A list of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">(prefix,</span> <span class=\"pre\">uri)</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">prefix</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">uri</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">register_namespace()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You can then specify nodes with namespaces in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">itertag</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">YourSpider</span><span class=\"p\">(</span><span class=\"n\">XMLFeedSpider</span><span class=\"p\">):</span>\n\n    <span class=\"n\">namespaces</span> <span class=\"o\">=</span> <span class=\"p\">[(</span><span class=\"s1\">'n'</span><span class=\"p\">,</span> <span class=\"s1\">'http://www.sitemaps.org/schemas/sitemap/0.9'</span><span class=\"p\">)]</span>\n    <span class=\"n\">itertag</span> <span class=\"o\">=</span> <span class=\"s1\">'n:url'</span>\n    <span class=\"c1\"># ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Apart from these new attributes, this spider has the following overridable\nmethods too:"
+    },
+    {
+      "type": "text",
+      "content": "A method that receives the response as soon as it arrives from the spider\nmiddleware, before the spider starts parsing it. It can be used to modify\nthe response body before parsing it. This method receives a response and\nalso returns a response (it could be the same or another one)."
+    },
+    {
+      "type": "text",
+      "content": "This method is called for the nodes matching the provided tag name\n("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">itertag</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Selector</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This method is called for each result (item or request) returned by the\nspider, and it’s intended to perform any last time processing required\nbefore returning the results to the framework core, for example setting the\nitem IDs. It receives a list of results and the response which originated\nthose results. It must return a list of results (items or requests)."
+    },
+    {
+      "type": "text",
+      "content": "Warning"
+    },
+    {
+      "type": "text",
+      "content": "Because of its internal implementation, you must explicitly set\ncallbacks for new requests when writing "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">XMLFeedSpider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "These spiders are pretty easy to use, let’s have a look at one example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">XMLFeedSpider</span>\n<span class=\"kn\">from</span> <span class=\"nn\">myproject.items</span> <span class=\"kn\">import</span> <span class=\"n\">TestItem</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">XMLFeedSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/feed.xml\"</span><span class=\"p\">]</span>\n    <span class=\"n\">iterator</span> <span class=\"o\">=</span> <span class=\"s2\">\"iternodes\"</span>  <span class=\"c1\"># This is actually unnecessary, since it's the default value</span>\n    <span class=\"n\">itertag</span> <span class=\"o\">=</span> <span class=\"s2\">\"item\"</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_node</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">node</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"Hi, this is a &lt;</span><span class=\"si\">%s</span><span class=\"s2\">&gt; node!: </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">itertag</span><span class=\"p\">,</span> <span class=\"s2\">\"\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"o\">.</span><span class=\"n\">getall</span><span class=\"p\">())</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"n\">item</span> <span class=\"o\">=</span> <span class=\"n\">TestItem</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">node</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"@id\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"name\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">node</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"name\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"description\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">node</span><span class=\"o\">.</span><span class=\"n\">xpath</span><span class=\"p\">(</span><span class=\"s2\">\"description\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">()</span>\n        <span class=\"k\">return</span> <span class=\"n\">item</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Basically what we did up there was to create a spider that downloads a feed from\nthe given "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">item</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Item</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This spider is very similar to the XMLFeedSpider, except that it iterates\nover rows, instead of nodes. The method that gets called in each iteration\nis "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">parse_row()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A string with the separator character for each field in the CSV file\nDefaults to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">','</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A string with the enclosure character for each field in the CSV file\nDefaults to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">'\"'</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A list of the column names in the CSV file."
+    },
+    {
+      "type": "text",
+      "content": "Receives a response and a dict (representing each row) with a key for each\nprovided (or detected) header of the CSV file.  This spider also gives the\nopportunity to override "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">adapt_response</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_results</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Let’s see an example similar to the previous one, but using a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CSVFeedSpider</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">CSVFeedSpider</span>\n<span class=\"kn\">from</span> <span class=\"nn\">myproject.items</span> <span class=\"kn\">import</span> <span class=\"n\">TestItem</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">CSVFeedSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"example.com\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/feed.csv\"</span><span class=\"p\">]</span>\n    <span class=\"n\">delimiter</span> <span class=\"o\">=</span> <span class=\"s2\">\";\"</span>\n    <span class=\"n\">quotechar</span> <span class=\"o\">=</span> <span class=\"s2\">\"'\"</span>\n    <span class=\"n\">headers</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">,</span> <span class=\"s2\">\"name\"</span><span class=\"p\">,</span> <span class=\"s2\">\"description\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_row</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">row</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"s2\">\"Hi, this is a row!: </span><span class=\"si\">%r</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">row</span><span class=\"p\">)</span>\n\n        <span class=\"n\">item</span> <span class=\"o\">=</span> <span class=\"n\">TestItem</span><span class=\"p\">()</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">row</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">]</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"name\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">row</span><span class=\"p\">[</span><span class=\"s2\">\"name\"</span><span class=\"p\">]</span>\n        <span class=\"n\">item</span><span class=\"p\">[</span><span class=\"s2\">\"description\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">row</span><span class=\"p\">[</span><span class=\"s2\">\"description\"</span><span class=\"p\">]</span>\n        <span class=\"k\">return</span> <span class=\"n\">item</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "SitemapSpider allows you to crawl a site by discovering the URLs using\n"
+    },
+    {
+      "type": "text",
+      "content": "It supports nested sitemaps and discovering sitemap urls from\n"
+    },
+    {
+      "type": "text",
+      "content": "A list of urls pointing to the sitemaps whose urls you want to crawl."
+    },
+    {
+      "type": "text",
+      "content": "You can also point to a "
+    },
+    {
+      "type": "text",
+      "content": "A list of tuples "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">(regex,</span> <span class=\"pre\">callback)</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "regex"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">regex</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">regex</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "callback is the callback to use for processing the urls that match\nthe regular expression. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">callback</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">sitemap_rules</span> <span class=\"o\">=</span> <span class=\"p\">[(</span><span class=\"s1\">'/product/'</span><span class=\"p\">,</span> <span class=\"s1\">'parse_product'</span><span class=\"p\">)]</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Rules are applied in order, and only the first one that matches will be\nused."
+    },
+    {
+      "type": "text",
+      "content": "If you omit this attribute, all urls found in sitemaps will be\nprocessed with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A list of regexes of sitemap that should be followed. This is only\nfor sites that use "
+    },
+    {
+      "type": "text",
+      "content": "By default, all sitemaps are followed."
+    },
+    {
+      "type": "text",
+      "content": "Specifies if alternate links for one "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"o\">&lt;</span><span class=\"n\">url</span><span class=\"o\">&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">loc</span><span class=\"o\">&gt;</span><span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">example</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/&lt;/</span><span class=\"n\">loc</span><span class=\"o\">&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">xhtml</span><span class=\"p\">:</span><span class=\"n\">link</span> <span class=\"n\">rel</span><span class=\"o\">=</span><span class=\"s2\">\"alternate\"</span> <span class=\"n\">hreflang</span><span class=\"o\">=</span><span class=\"s2\">\"de\"</span> <span class=\"n\">href</span><span class=\"o\">=</span><span class=\"s2\">\"http://example.com/de\"</span><span class=\"o\">/&gt;</span>\n<span class=\"o\">&lt;/</span><span class=\"n\">url</span><span class=\"o\">&gt;</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "With "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sitemap_alternate_links</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sitemap_alternate_links</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">http://example.com/</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Default is "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sitemap_alternate_links</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This is a filter function that could be overridden to select sitemap entries\nbased on their attributes."
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"o\">&lt;</span><span class=\"n\">url</span><span class=\"o\">&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">loc</span><span class=\"o\">&gt;</span><span class=\"n\">http</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">example</span><span class=\"o\">.</span><span class=\"n\">com</span><span class=\"o\">/&lt;/</span><span class=\"n\">loc</span><span class=\"o\">&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">lastmod</span><span class=\"o\">&gt;</span><span class=\"mi\">2005</span><span class=\"o\">-</span><span class=\"mi\">01</span><span class=\"o\">-</span><span class=\"mi\">01</span><span class=\"o\">&lt;/</span><span class=\"n\">lastmod</span><span class=\"o\">&gt;</span>\n<span class=\"o\">&lt;/</span><span class=\"n\">url</span><span class=\"o\">&gt;</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "We can define a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sitemap_filter</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">entries</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">datetime</span> <span class=\"kn\">import</span> <span class=\"n\">datetime</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">SitemapSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">FilteredSitemapSpider</span><span class=\"p\">(</span><span class=\"n\">SitemapSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"filtered_sitemap_spider\"</span>\n    <span class=\"n\">allowed_domains</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"example.com\"</span><span class=\"p\">]</span>\n    <span class=\"n\">sitemap_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://example.com/sitemap.xml\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">sitemap_filter</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">entries</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">entry</span> <span class=\"ow\">in</span> <span class=\"n\">entries</span><span class=\"p\">:</span>\n            <span class=\"n\">date_time</span> <span class=\"o\">=</span> <span class=\"n\">datetime</span><span class=\"o\">.</span><span class=\"n\">strptime</span><span class=\"p\">(</span><span class=\"n\">entry</span><span class=\"p\">[</span><span class=\"s2\">\"lastmod\"</span><span class=\"p\">],</span> <span class=\"s2\">\"%Y-%m-</span><span class=\"si\">%d</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n            <span class=\"k\">if</span> <span class=\"n\">date_time</span><span class=\"o\">.</span><span class=\"n\">year</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">2005</span><span class=\"p\">:</span>\n                <span class=\"k\">yield</span> <span class=\"n\">entry</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This would retrieve only "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">entries</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Entries are dict objects extracted from the sitemap document.\nUsually, the key is the tag name and the value is the text inside it."
+    },
+    {
+      "type": "text",
+      "content": "It’s important to notice that:"
+    },
+    {
+      "type": "text",
+      "content": "as the loc attribute is required, entries without this tag are discarded"
+    },
+    {
+      "type": "text",
+      "content": "alternate links are stored in a list with the key "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">alternate</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">sitemap_alternate_links</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "namespaces are removed, so lxml tags named as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">{namespace}tagname</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">tagname</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you omit this method, all entries found in sitemaps will be\nprocessed, observing other attributes and their settings."
+    },
+    {
+      "type": "text",
+      "content": "Simplest example: process all urls discovered through sitemaps using the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">SitemapSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">SitemapSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">sitemap_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/sitemap.xml\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape item here ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Process some urls with certain callback and other urls with a different\ncallback:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">SitemapSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">SitemapSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">sitemap_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/sitemap.xml\"</span><span class=\"p\">]</span>\n    <span class=\"n\">sitemap_rules</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"p\">(</span><span class=\"s2\">\"/product/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"parse_product\"</span><span class=\"p\">),</span>\n        <span class=\"p\">(</span><span class=\"s2\">\"/category/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"parse_category\"</span><span class=\"p\">),</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_product</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape product ...</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_category</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape category ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Follow sitemaps defined in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">/sitemap_shop</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">SitemapSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">SitemapSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">sitemap_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/robots.txt\"</span><span class=\"p\">]</span>\n    <span class=\"n\">sitemap_rules</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"p\">(</span><span class=\"s2\">\"/shop/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"parse_shop\"</span><span class=\"p\">),</span>\n    <span class=\"p\">]</span>\n    <span class=\"n\">sitemap_follow</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"/sitemap_shops\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_shop</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape shop here ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Combine SitemapSpider with other sources of urls:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">SitemapSpider</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpider</span><span class=\"p\">(</span><span class=\"n\">SitemapSpider</span><span class=\"p\">):</span>\n    <span class=\"n\">sitemap_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/robots.txt\"</span><span class=\"p\">]</span>\n    <span class=\"n\">sitemap_rules</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"p\">(</span><span class=\"s2\">\"/shop/\"</span><span class=\"p\">,</span> <span class=\"s2\">\"parse_shop\"</span><span class=\"p\">),</span>\n    <span class=\"p\">]</span>\n\n    <span class=\"n\">other_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"http://www.example.com/about\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">start_requests</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"n\">requests</span> <span class=\"o\">=</span> <span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">super</span><span class=\"p\">(</span><span class=\"n\">MySpider</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">start_requests</span><span class=\"p\">())</span>\n        <span class=\"n\">requests</span> <span class=\"o\">+=</span> <span class=\"p\">[</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">parse_other</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">other_urls</span><span class=\"p\">]</span>\n        <span class=\"k\">return</span> <span class=\"n\">requests</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_shop</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape shop here ...</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">parse_other</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">pass</span>  <span class=\"c1\"># ... scrape other here ...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

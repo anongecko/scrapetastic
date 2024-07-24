@@ -1,0 +1,418 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/jobs.html",
+  "title": "Jobs: pausing and resuming crawls — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Job directory"
+    },
+    {
+      "type": "text",
+      "content": "How to use it"
+    },
+    {
+      "type": "text",
+      "content": "Keeping persistent state between batches"
+    },
+    {
+      "type": "text",
+      "content": "Persistence gotchas"
+    },
+    {
+      "type": "text",
+      "content": "Cookies expiration"
+    },
+    {
+      "type": "text",
+      "content": "Request serialization"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Sometimes, for big sites, it’s desirable to pause crawls and be able to resume\nthem later."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy supports this functionality out of the box by providing the following\nfacilities:"
+    },
+    {
+      "type": "text",
+      "content": "a scheduler that persists scheduled requests on disk"
+    },
+    {
+      "type": "text",
+      "content": "a scheduler that persists scheduled requests on disk"
+    },
+    {
+      "type": "text",
+      "content": "a duplicates filter that persists visited requests on disk"
+    },
+    {
+      "type": "text",
+      "content": "a duplicates filter that persists visited requests on disk"
+    },
+    {
+      "type": "text",
+      "content": "an extension that keeps some spider state (key/value pairs) persistent\nbetween batches"
+    },
+    {
+      "type": "text",
+      "content": "an extension that keeps some spider state (key/value pairs) persistent\nbetween batches"
+    },
+    {
+      "type": "text",
+      "content": "Job directory"
+    },
+    {
+      "type": "text",
+      "content": "To enable persistence support you just need to define a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">JOBDIR</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "How to use it"
+    },
+    {
+      "type": "text",
+      "content": "To start a spider with persistence support enabled, run it like this:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span> <span class=\"n\">crawl</span> <span class=\"n\">somespider</span> <span class=\"o\">-</span><span class=\"n\">s</span> <span class=\"n\">JOBDIR</span><span class=\"o\">=</span><span class=\"n\">crawls</span><span class=\"o\">/</span><span class=\"n\">somespider</span><span class=\"o\">-</span><span class=\"mi\">1</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Then, you can stop the spider safely at any time (by pressing Ctrl-C or sending\na signal), and resume it later by issuing the same command:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">scrapy</span> <span class=\"n\">crawl</span> <span class=\"n\">somespider</span> <span class=\"o\">-</span><span class=\"n\">s</span> <span class=\"n\">JOBDIR</span><span class=\"o\">=</span><span class=\"n\">crawls</span><span class=\"o\">/</span><span class=\"n\">somespider</span><span class=\"o\">-</span><span class=\"mi\">1</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Keeping persistent state between batches"
+    },
+    {
+      "type": "text",
+      "content": "Sometimes you’ll want to keep some persistent spider state between pause/resume\nbatches. You can use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">spider.state</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Here’s an example of a callback that uses the spider state (other spider code\nis omitted for brevity):"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">def</span> <span class=\"nf\">parse_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n    <span class=\"c1\"># parse item here</span>\n    <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">state</span><span class=\"p\">[</span><span class=\"s2\">\"items_count\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">state</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"items_count\"</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Persistence gotchas"
+    },
+    {
+      "type": "text",
+      "content": "There are a few things to keep in mind if you want to be able to use the Scrapy\npersistence support:"
+    },
+    {
+      "type": "text",
+      "content": "Cookies expiration"
+    },
+    {
+      "type": "text",
+      "content": "Cookies may expire. So, if you don’t resume your spider quickly the requests\nscheduled may no longer work. This won’t be an issue if your spider doesn’t rely\non cookies."
+    },
+    {
+      "type": "text",
+      "content": "Request serialization"
+    },
+    {
+      "type": "text",
+      "content": "For persistence to work, "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">pickle</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">callback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">errback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">__init__</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Spider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you wish to log the requests that couldn’t be serialized, you can set the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_DEBUG</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

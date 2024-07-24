@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:25:16 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817d178b0f18f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"9415c1b56816e0e8eab8e65dcc0fe0ab"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: CBERYRsIu6mSX4A1rGwUANhIJUSMBiANS6/zE358hsycBSEbZ/OCoRiB5XyVnQvU4mpB1xclwIY=
+X-Amz-Meta-Mtime: 1721796073.865580112
+X-Amz-Request-Id: J6MS8A561WAQ426V
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-06e8ba60f823ee1e2
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/topics/downloader-middleware.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/downloader-middleware.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=y7jsBswsxedhm5484RskWXoQIbp9x6YdTNF2b8rprGI-1721798716368-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

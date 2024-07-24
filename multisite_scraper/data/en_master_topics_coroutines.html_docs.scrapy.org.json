@@ -1,0 +1,686 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/coroutines.html",
+  "title": "Coroutines — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "Supported callables"
+    },
+    {
+      "type": "text",
+      "content": "General usage"
+    },
+    {
+      "type": "text",
+      "content": "Inline requests"
+    },
+    {
+      "type": "text",
+      "content": "Mixing synchronous and asynchronous spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "Universal spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.0."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy has "
+    },
+    {
+      "type": "text",
+      "content": "Supported callables"
+    },
+    {
+      "type": "text",
+      "content": "The following callables may be defined as coroutines using "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">async</span> <span class=\"pre\">def</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">await</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">async</span> <span class=\"pre\">for</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">async</span> <span class=\"pre\">with</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Request"
+    },
+    {
+      "type": "text",
+      "content": "Request"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If you are using any custom or third-party "
+    },
+    {
+      "type": "text",
+      "content": "Changed in version 2.7: "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_item()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The\n"
+    },
+    {
+      "type": "text",
+      "content": "The\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_exception()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Signal handlers that support deferreds"
+    },
+    {
+      "type": "text",
+      "content": "Signal handlers that support deferreds"
+    },
+    {
+      "type": "text",
+      "content": "The\n"
+    },
+    {
+      "type": "text",
+      "content": "The\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "It must be defined as an "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "See also "
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.7."
+    },
+    {
+      "type": "text",
+      "content": "General usage"
+    },
+    {
+      "type": "text",
+      "content": "There are several use cases for coroutines in Scrapy."
+    },
+    {
+      "type": "text",
+      "content": "Code that would return Deferreds when written for previous Scrapy versions,\nsuch as downloader middlewares and signal handlers, can be rewritten to be\nshorter and cleaner:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">itemadapter</span> <span class=\"kn\">import</span> <span class=\"n\">ItemAdapter</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">DbPipeline</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">_update_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">):</span>\n        <span class=\"n\">adapter</span> <span class=\"o\">=</span> <span class=\"n\">ItemAdapter</span><span class=\"p\">(</span><span class=\"n\">item</span><span class=\"p\">)</span>\n        <span class=\"n\">adapter</span><span class=\"p\">[</span><span class=\"s2\">\"field\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">data</span>\n        <span class=\"k\">return</span> <span class=\"n\">item</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">adapter</span> <span class=\"o\">=</span> <span class=\"n\">ItemAdapter</span><span class=\"p\">(</span><span class=\"n\">item</span><span class=\"p\">)</span>\n        <span class=\"n\">dfd</span> <span class=\"o\">=</span> <span class=\"n\">db</span><span class=\"o\">.</span><span class=\"n\">get_some_data</span><span class=\"p\">(</span><span class=\"n\">adapter</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">])</span>\n        <span class=\"n\">dfd</span><span class=\"o\">.</span><span class=\"n\">addCallback</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_update_item</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">dfd</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "becomes:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">itemadapter</span> <span class=\"kn\">import</span> <span class=\"n\">ItemAdapter</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">DbPipeline</span><span class=\"p\">:</span>\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">process_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">adapter</span> <span class=\"o\">=</span> <span class=\"n\">ItemAdapter</span><span class=\"p\">(</span><span class=\"n\">item</span><span class=\"p\">)</span>\n        <span class=\"n\">adapter</span><span class=\"p\">[</span><span class=\"s2\">\"field\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">db</span><span class=\"o\">.</span><span class=\"n\">get_some_data</span><span class=\"p\">(</span><span class=\"n\">adapter</span><span class=\"p\">[</span><span class=\"s2\">\"id\"</span><span class=\"p\">])</span>\n        <span class=\"k\">return</span> <span class=\"n\">item</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines may be used to call asynchronous code. This includes other\ncoroutines, functions that return Deferreds and functions that return\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Future</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MySpiderDeferred</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"c1\"># ...</span>\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"n\">additional_response</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">treq</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"https://additional.url\"</span><span class=\"p\">)</span>\n        <span class=\"n\">additional_data</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">treq</span><span class=\"o\">.</span><span class=\"n\">content</span><span class=\"p\">(</span><span class=\"n\">additional_response</span><span class=\"p\">)</span>\n        <span class=\"c1\"># ... use response and additional_data to yield items and requests</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MySpiderAsyncio</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"c1\"># ...</span>\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">):</span>\n        <span class=\"k\">async</span> <span class=\"k\">with</span> <span class=\"n\">aiohttp</span><span class=\"o\">.</span><span class=\"n\">ClientSession</span><span class=\"p\">()</span> <span class=\"k\">as</span> <span class=\"n\">session</span><span class=\"p\">:</span>\n            <span class=\"k\">async</span> <span class=\"k\">with</span> <span class=\"n\">session</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"https://additional.url\"</span><span class=\"p\">)</span> <span class=\"k\">as</span> <span class=\"n\">additional_response</span><span class=\"p\">:</span>\n                <span class=\"n\">additional_data</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">additional_response</span><span class=\"o\">.</span><span class=\"n\">text</span><span class=\"p\">()</span>\n        <span class=\"c1\"># ... use response and additional_data to yield items and requests</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "Many libraries that use coroutines, such as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "If you want to "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">await</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Common use cases for asynchronous code include:"
+    },
+    {
+      "type": "text",
+      "content": "requesting data from websites, databases and other services (in callbacks,\npipelines and middlewares);"
+    },
+    {
+      "type": "text",
+      "content": "requesting data from websites, databases and other services (in callbacks,\npipelines and middlewares);"
+    },
+    {
+      "type": "text",
+      "content": "storing data in databases (in pipelines and middlewares);"
+    },
+    {
+      "type": "text",
+      "content": "storing data in databases (in pipelines and middlewares);"
+    },
+    {
+      "type": "text",
+      "content": "delaying the spider initialization until some external event (in the\n"
+    },
+    {
+      "type": "text",
+      "content": "delaying the spider initialization until some external event (in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-signal docutils literal notranslate\"><span class=\"pre\">spider_opened</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "calling asynchronous Scrapy methods like "
+    },
+    {
+      "type": "text",
+      "content": "calling asynchronous Scrapy methods like "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">ExecutionEngine.download()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Inline requests"
+    },
+    {
+      "type": "text",
+      "content": "The spider below shows how to send a request and await its response all from\nwithin a spider callback:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">Request</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.defer</span> <span class=\"kn\">import</span> <span class=\"n\">maybe_deferred_to_future</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">SingleRequestSpider</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"single\"</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"https://example.org/product\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"n\">additional_request</span> <span class=\"o\">=</span> <span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"https://example.org/price\"</span><span class=\"p\">)</span>\n        <span class=\"n\">deferred</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">download</span><span class=\"p\">(</span><span class=\"n\">additional_request</span><span class=\"p\">)</span>\n        <span class=\"n\">additional_response</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">maybe_deferred_to_future</span><span class=\"p\">(</span><span class=\"n\">deferred</span><span class=\"p\">)</span>\n        <span class=\"k\">yield</span> <span class=\"p\">{</span>\n            <span class=\"s2\">\"h1\"</span><span class=\"p\">:</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"h1\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n            <span class=\"s2\">\"price\"</span><span class=\"p\">:</span> <span class=\"n\">additional_response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"#price\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n        <span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can also send multiple requests in parallel:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">Request</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.defer</span> <span class=\"kn\">import</span> <span class=\"n\">maybe_deferred_to_future</span>\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.internet.defer</span> <span class=\"kn\">import</span> <span class=\"n\">DeferredList</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MultipleRequestsSpider</span><span class=\"p\">(</span><span class=\"n\">Spider</span><span class=\"p\">):</span>\n    <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">\"multiple\"</span>\n    <span class=\"n\">start_urls</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"https://example.com/product\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"n\">additional_requests</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"https://example.com/price\"</span><span class=\"p\">),</span>\n            <span class=\"n\">Request</span><span class=\"p\">(</span><span class=\"s2\">\"https://example.com/color\"</span><span class=\"p\">),</span>\n        <span class=\"p\">]</span>\n        <span class=\"n\">deferreds</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n        <span class=\"k\">for</span> <span class=\"n\">r</span> <span class=\"ow\">in</span> <span class=\"n\">additional_requests</span><span class=\"p\">:</span>\n            <span class=\"n\">deferred</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">download</span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"p\">)</span>\n            <span class=\"n\">deferreds</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">deferred</span><span class=\"p\">)</span>\n        <span class=\"n\">responses</span> <span class=\"o\">=</span> <span class=\"k\">await</span> <span class=\"n\">maybe_deferred_to_future</span><span class=\"p\">(</span><span class=\"n\">DeferredList</span><span class=\"p\">(</span><span class=\"n\">deferreds</span><span class=\"p\">))</span>\n        <span class=\"k\">yield</span> <span class=\"p\">{</span>\n            <span class=\"s2\">\"h1\"</span><span class=\"p\">:</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\"h1::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n            <span class=\"s2\">\"price\"</span><span class=\"p\">:</span> <span class=\"n\">responses</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">][</span><span class=\"mi\">1</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\".price::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n            <span class=\"s2\">\"price2\"</span><span class=\"p\">:</span> <span class=\"n\">responses</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">][</span><span class=\"mi\">1</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">css</span><span class=\"p\">(</span><span class=\"s2\">\".color::text\"</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(),</span>\n        <span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Mixing synchronous and asynchronous spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.7."
+    },
+    {
+      "type": "text",
+      "content": "The output of a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy supports mixing "
+    },
+    {
+      "type": "text",
+      "content": "However, if any of the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The whole output of the previous "
+    },
+    {
+      "type": "text",
+      "content": "The whole output of the previous "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If an exception raises while awaiting the output of the previous\n"
+    },
+    {
+      "type": "text",
+      "content": "If an exception raises while awaiting the output of the previous\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This contrasts with the regular behavior, where all items yielded before\nan exception raises are processed."
+    },
+    {
+      "type": "text",
+      "content": "Asynchronous-to-synchronous conversions are supported for backward\ncompatibility, but they are deprecated and will stop working in a future\nversion of Scrapy."
+    },
+    {
+      "type": "text",
+      "content": "To avoid asynchronous-to-synchronous conversions, when defining "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Request</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "When using third-party spider middlewares that only define a\nsynchronous "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Universal spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.7."
+    },
+    {
+      "type": "text",
+      "content": "To allow writing a spider middleware that supports asynchronous execution of\nits "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output_async</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">UniversalSpiderMiddleware</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">process_spider_output</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">for</span> <span class=\"n\">r</span> <span class=\"ow\">in</span> <span class=\"n\">result</span><span class=\"p\">:</span>\n            <span class=\"c1\"># ... do something with r</span>\n            <span class=\"k\">yield</span> <span class=\"n\">r</span>\n\n    <span class=\"k\">async</span> <span class=\"k\">def</span> <span class=\"nf\">process_spider_output_async</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">async</span> <span class=\"k\">for</span> <span class=\"n\">r</span> <span class=\"ow\">in</span> <span class=\"n\">result</span><span class=\"p\">:</span>\n            <span class=\"c1\"># ... do something with r</span>\n            <span class=\"k\">yield</span> <span class=\"n\">r</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "This is an interim measure to allow, for a time, to write code that\nworks in Scrapy 2.7 and later without requiring\nasynchronous-to-synchronous conversions, and works in earlier Scrapy\nversions as well."
+    },
+    {
+      "type": "text",
+      "content": "In some future version of Scrapy, however, this feature will be\ndeprecated and, eventually, in a later version of Scrapy, this\nfeature will be removed, and all spider middlewares will be expected\nto define their "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">process_spider_output</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

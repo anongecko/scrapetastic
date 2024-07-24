@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/extensions/closespider.html",
+  "title": "scrapy.extensions.closespider — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.closespider"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.extensions.closespider"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"CloseSpider is an extension that forces spiders to be closed after certain</span>\n<span class=\"sd\">conditions are met.</span>\n\n<span class=\"sd\">See documentation in docs/topics/extensions.rst</span>\n<span class=\"sd\">\"\"\"</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">collections</span> <span class=\"kn\">import</span> <span class=\"n\">defaultdict</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"CloseSpider\"><a class=\"viewcode-back\" href=\"../../../topics/extensions.html#scrapy.extensions.closespider.CloseSpider\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">CloseSpider</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"s2\">\"timeout\"</span><span class=\"p\">:</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getfloat</span><span class=\"p\">(</span><span class=\"s2\">\"CLOSESPIDER_TIMEOUT\"</span><span class=\"p\">),</span>\n            <span class=\"s2\">\"itemcount\"</span><span class=\"p\">:</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"CLOSESPIDER_ITEMCOUNT\"</span><span class=\"p\">),</span>\n            <span class=\"s2\">\"pagecount\"</span><span class=\"p\">:</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"CLOSESPIDER_PAGECOUNT\"</span><span class=\"p\">),</span>\n            <span class=\"s2\">\"errorcount\"</span><span class=\"p\">:</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"CLOSESPIDER_ERRORCOUNT\"</span><span class=\"p\">),</span>\n            <span class=\"s2\">\"timeout_no_item\"</span><span class=\"p\">:</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"CLOSESPIDER_TIMEOUT_NO_ITEM\"</span><span class=\"p\">),</span>\n        <span class=\"p\">}</span>\n\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"nb\">any</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">()):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span> <span class=\"o\">=</span> <span class=\"n\">defaultdict</span><span class=\"p\">(</span><span class=\"nb\">int</span><span class=\"p\">)</span>\n\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"errorcount\"</span><span class=\"p\">):</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">error_count</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_error</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"pagecount\"</span><span class=\"p\">):</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">page_count</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">response_received</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"timeout\"</span><span class=\"p\">):</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"itemcount\"</span><span class=\"p\">):</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"timeout_no_item\"</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">timeout_no_item</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"p\">[</span><span class=\"s2\">\"timeout_no_item\"</span><span class=\"p\">]</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_in_period</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span>\n                <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_opened_no_item</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span>\n            <span class=\"p\">)</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span>\n                <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">item_scraped_no_item</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">item_scraped</span>\n            <span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">error_count</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">failure</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"errorcount\"</span><span class=\"p\">]</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"errorcount\"</span><span class=\"p\">]</span> <span class=\"o\">==</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"p\">[</span><span class=\"s2\">\"errorcount\"</span><span class=\"p\">]:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"closespider_errorcount\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">page_count</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"pagecount\"</span><span class=\"p\">]</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"pagecount\"</span><span class=\"p\">]</span> <span class=\"o\">==</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"p\">[</span><span class=\"s2\">\"pagecount\"</span><span class=\"p\">]:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"closespider_pagecount\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">reactor</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span> <span class=\"o\">=</span> <span class=\"n\">reactor</span><span class=\"o\">.</span><span class=\"n\">callLater</span><span class=\"p\">(</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"p\">[</span><span class=\"s2\">\"timeout\"</span><span class=\"p\">],</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">,</span>\n            <span class=\"n\">spider</span><span class=\"p\">,</span>\n            <span class=\"n\">reason</span><span class=\"o\">=</span><span class=\"s2\">\"closespider_timeout\"</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">item_scraped</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"itemcount\"</span><span class=\"p\">]</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">counter</span><span class=\"p\">[</span><span class=\"s2\">\"itemcount\"</span><span class=\"p\">]</span> <span class=\"o\">==</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">close_on</span><span class=\"p\">[</span><span class=\"s2\">\"itemcount\"</span><span class=\"p\">]:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"closespider_itemcount\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">task</span> <span class=\"o\">=</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"s2\">\"task\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">task</span> <span class=\"ow\">and</span> <span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">active</span><span class=\"p\">():</span>\n            <span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">cancel</span><span class=\"p\">()</span>\n\n        <span class=\"n\">task_no_item</span> <span class=\"o\">=</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"s2\">\"task_no_item\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">task_no_item</span> <span class=\"ow\">and</span> <span class=\"n\">task_no_item</span><span class=\"o\">.</span><span class=\"n\">running</span><span class=\"p\">:</span>\n            <span class=\"n\">task_no_item</span><span class=\"o\">.</span><span class=\"n\">stop</span><span class=\"p\">()</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened_no_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">task</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task_no_item</span> <span class=\"o\">=</span> <span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">LoopingCall</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_count_items_produced</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task_no_item</span><span class=\"o\">.</span><span class=\"n\">start</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">timeout_no_item</span><span class=\"p\">,</span> <span class=\"n\">now</span><span class=\"o\">=</span><span class=\"kc\">False</span><span class=\"p\">)</span>\n\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span>\n            <span class=\"sa\">f</span><span class=\"s2\">\"Spider will stop when no items are produced after \"</span>\n            <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">timeout_no_item</span><span class=\"si\">}</span><span class=\"s2\"> seconds.\"</span>\n        <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">item_scraped_no_item</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">item</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_in_period</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_count_items_produced</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_in_period</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">1</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">items_in_period</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n        <span class=\"k\">else</span><span class=\"p\">:</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"Closing spider since no items were produced in the last \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">timeout_no_item</span><span class=\"si\">}</span><span class=\"s2\"> seconds.\"</span>\n            <span class=\"p\">)</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">engine</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"closespider_timeout_no_item\"</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

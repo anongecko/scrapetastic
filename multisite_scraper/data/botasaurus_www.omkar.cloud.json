@@ -1,0 +1,50 @@
+{
+  "url": "https://www.omkar.cloud/botasaurus/",
+  "title": "Botasaurus Framework | 🤖 Botasaurus Framework 🤖",
+  "content": [
+    {
+      "type": "text",
+      "content": "🤖 Botasaurus Framework 🤖"
+    },
+    {
+      "type": "text",
+      "content": "Botasaurus is a Swiss Army knife 🔪 for web scraping and browser automation 🤖 that helps you create bots fast. ⚡️"
+    },
+    {
+      "type": "text",
+      "content": "Anti-blocking"
+    },
+    {
+      "type": "text",
+      "content": "Botasaurus adds "
+    },
+    {
+      "type": "text",
+      "content": "Helpful Utils"
+    },
+    {
+      "type": "text",
+      "content": "Botasaurus includes tools for "
+    },
+    {
+      "type": "text",
+      "content": "Debug Support"
+    },
+    {
+      "type": "text",
+      "content": "Botasaurus automatically prevents the browser from closing when an exception occurs, making it easier to debug your scripts."
+    },
+    {
+      "type": "text",
+      "content": "What is Botasaurus?"
+    },
+    {
+      "type": "text",
+      "content": "GitHub Discuss"
+    },
+    {
+      "type": "text",
+      "content": "GitHub"
+    }
+  ]
+}

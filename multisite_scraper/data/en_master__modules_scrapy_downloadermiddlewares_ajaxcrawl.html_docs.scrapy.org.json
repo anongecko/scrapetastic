@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/ajaxcrawl.html",
+  "title": "scrapy.downloadermiddlewares.ajaxcrawl — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.ajaxcrawl"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.ajaxcrawl"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">import</span> <span class=\"nn\">re</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">w3lib</span> <span class=\"kn\">import</span> <span class=\"n\">html</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">,</span> <span class=\"n\">Response</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.settings</span> <span class=\"kn\">import</span> <span class=\"n\">BaseSettings</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"AjaxCrawlMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">AjaxCrawlMiddleware</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">    Handle 'AJAX crawlable' pages marked as crawlable via meta tag.</span>\n<span class=\"sd\">    For more info see https://developers.google.com/webmasters/ajax-crawling/docs/getting-started.</span>\n<span class=\"sd\">    \"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"AJAXCRAWL_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n\n        <span class=\"c1\"># XXX: Google parses at least first 100k bytes; scrapy's redirect</span>\n        <span class=\"c1\"># middleware parses first 4k. 4k turns out to be insufficient</span>\n        <span class=\"c1\"># for this middleware, and parsing 100k could be slow.</span>\n        <span class=\"c1\"># We use something in between (32K) by default.</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">lookup_bytes</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"AJAXCRAWL_MAXSIZE\"</span><span class=\"p\">,</span> <span class=\"mi\">32768</span><span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"o\">!=</span> <span class=\"mi\">200</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">method</span> <span class=\"o\">!=</span> <span class=\"s2\">\"GET\"</span><span class=\"p\">:</span>\n            <span class=\"c1\"># other HTTP methods are either not safe or don't have a body</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">if</span> <span class=\"s2\">\"ajax_crawlable\"</span> <span class=\"ow\">in</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">:</span>  <span class=\"c1\"># prevent loops</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_has_ajax_crawlable_variant</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"c1\"># scrapy already handles #! links properly</span>\n        <span class=\"n\">ajax_crawl_request</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">replace</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"o\">=</span><span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span> <span class=\"o\">+</span> <span class=\"s2\">\"#!\"</span><span class=\"p\">)</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"Downloading AJAX crawlable </span><span class=\"si\">%(ajax_crawl_request)s</span><span class=\"s2\"> instead of </span><span class=\"si\">%(request)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n            <span class=\"p\">{</span><span class=\"s2\">\"ajax_crawl_request\"</span><span class=\"p\">:</span> <span class=\"n\">ajax_crawl_request</span><span class=\"p\">,</span> <span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">},</span>\n            <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"n\">ajax_crawl_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"ajax_crawlable\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">True</span>\n        <span class=\"k\">return</span> <span class=\"n\">ajax_crawl_request</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_has_ajax_crawlable_variant</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">bool</span><span class=\"p\">:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Return True if a page without hash fragment could be \"AJAX crawlable\"</span>\n<span class=\"sd\">        according to https://developers.google.com/webmasters/ajax-crawling/docs/getting-started.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">text</span><span class=\"p\">[:</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">lookup_bytes</span><span class=\"p\">]</span>\n        <span class=\"k\">return</span> <span class=\"n\">_has_ajaxcrawlable_meta</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">)</span></div>\n\n\n<span class=\"c1\"># XXX: move it to w3lib?</span>\n<span class=\"n\">_ajax_crawlable_re</span><span class=\"p\">:</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">Pattern</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">re</span><span class=\"o\">.</span><span class=\"n\">compile</span><span class=\"p\">(</span>\n    <span class=\"sa\">r</span><span class=\"s1\">'&lt;meta\\s+name=[\"</span><span class=\"se\">\\'</span><span class=\"s1\">]fragment[\"</span><span class=\"se\">\\'</span><span class=\"s1\">]\\s+content=[\"</span><span class=\"se\">\\'</span><span class=\"s1\">]![\"</span><span class=\"se\">\\'</span><span class=\"s1\">]/?&gt;'</span>\n<span class=\"p\">)</span>\n\n\n<span class=\"k\">def</span> <span class=\"nf\">_has_ajaxcrawlable_meta</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">bool</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">    &gt;&gt;&gt; _has_ajaxcrawlable_meta('&lt;html&gt;&lt;head&gt;&lt;meta name=\"fragment\"  content=\"!\"/&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;')</span>\n<span class=\"sd\">    True</span>\n<span class=\"sd\">    &gt;&gt;&gt; _has_ajaxcrawlable_meta(\"&lt;html&gt;&lt;head&gt;&lt;meta name='fragment' content='!'&gt;&lt;/head&gt;&lt;/html&gt;\")</span>\n<span class=\"sd\">    True</span>\n<span class=\"sd\">    &gt;&gt;&gt; _has_ajaxcrawlable_meta('&lt;html&gt;&lt;head&gt;&lt;!--&lt;meta name=\"fragment\"  content=\"!\"/&gt;--&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;')</span>\n<span class=\"sd\">    False</span>\n<span class=\"sd\">    &gt;&gt;&gt; _has_ajaxcrawlable_meta('&lt;html&gt;&lt;/html&gt;')</span>\n<span class=\"sd\">    False</span>\n<span class=\"sd\">    \"\"\"</span>\n\n    <span class=\"c1\"># Stripping scripts and comments is slow (about 20x slower than</span>\n    <span class=\"c1\"># just checking if a string is in text); this is a quick fail-fast</span>\n    <span class=\"c1\"># path that should work for most pages.</span>\n    <span class=\"k\">if</span> <span class=\"s2\">\"fragment\"</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">text</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"kc\">False</span>\n    <span class=\"k\">if</span> <span class=\"s2\">\"content\"</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">text</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"kc\">False</span>\n\n    <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">html</span><span class=\"o\">.</span><span class=\"n\">remove_tags_with_content</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"s2\">\"script\"</span><span class=\"p\">,</span> <span class=\"s2\">\"noscript\"</span><span class=\"p\">))</span>\n    <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">html</span><span class=\"o\">.</span><span class=\"n\">replace_entities</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n    <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">html</span><span class=\"o\">.</span><span class=\"n\">remove_comments</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">_ajax_crawlable_re</span><span class=\"o\">.</span><span class=\"n\">search</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

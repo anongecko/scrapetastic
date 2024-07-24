@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:05:06 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a815f8cdb308ef5-FRA
+Cf-Cache-Status: HIT
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"22940529415555c98e48b62fa38b257e"
+Last-Modified: Wed, 26 Jun 2024 12:46:58 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: zl9XukYSS0v9d4jaAaaaXWCu93rGs2cwM8l3xnej1vY+WBcGdEi9qjLBAx+s3laiGhaMe7fUKao=
+X-Amz-Meta-Mtime: 1719405969.721683924
+X-Amz-Request-Id: B908K24J7DJXXEWF
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-06a13b09b583b5f10
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/latest/topics/spiders.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/spiders.html
+X-Rtd-Version: latest
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=.NSURf0Ni9J6j.UwE6aPkhEzH5cSrMcUH1w0A_QLXuk-1721797506521-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

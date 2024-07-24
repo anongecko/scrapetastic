@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/redirect.html",
+  "title": "scrapy.downloadermiddlewares.redirect — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.redirect"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.redirect"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">,</span> <span class=\"n\">Union</span><span class=\"p\">,</span> <span class=\"n\">cast</span>\n<span class=\"kn\">from</span> <span class=\"nn\">urllib.parse</span> <span class=\"kn\">import</span> <span class=\"n\">urljoin</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">w3lib.url</span> <span class=\"kn\">import</span> <span class=\"n\">safe_url_string</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">,</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">,</span> <span class=\"n\">Response</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.httpobj</span> <span class=\"kn\">import</span> <span class=\"n\">urlparse_cached</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.response</span> <span class=\"kn\">import</span> <span class=\"n\">get_meta_refresh</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.settings</span> <span class=\"kn\">import</span> <span class=\"n\">BaseSettings</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"k\">def</span> <span class=\"nf\">_build_redirect_request</span><span class=\"p\">(</span>\n    <span class=\"n\">source_request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">:</span> <span class=\"n\">Any</span>\n<span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Request</span><span class=\"p\">:</span>\n    <span class=\"n\">redirect_request</span> <span class=\"o\">=</span> <span class=\"n\">source_request</span><span class=\"o\">.</span><span class=\"n\">replace</span><span class=\"p\">(</span>\n        <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"n\">url</span><span class=\"p\">,</span>\n        <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">,</span>\n        <span class=\"bp\">cls</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">,</span>\n        <span class=\"n\">cookies</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">,</span>\n    <span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"s2\">\"_scheme_proxy\"</span> <span class=\"ow\">in</span> <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">:</span>\n        <span class=\"n\">source_request_scheme</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">source_request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span>\n        <span class=\"n\">redirect_request_scheme</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">redirect_request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span>\n        <span class=\"k\">if</span> <span class=\"n\">source_request_scheme</span> <span class=\"o\">!=</span> <span class=\"n\">redirect_request_scheme</span><span class=\"p\">:</span>\n            <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"_scheme_proxy\"</span><span class=\"p\">)</span>\n            <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"proxy\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n            <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"_auth_proxy\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n            <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\"Proxy-Authorization\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n    <span class=\"n\">has_cookie_header</span> <span class=\"o\">=</span> <span class=\"s2\">\"Cookie\"</span> <span class=\"ow\">in</span> <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span>\n    <span class=\"n\">has_authorization_header</span> <span class=\"o\">=</span> <span class=\"s2\">\"Authorization\"</span> <span class=\"ow\">in</span> <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span>\n    <span class=\"k\">if</span> <span class=\"n\">has_cookie_header</span> <span class=\"ow\">or</span> <span class=\"n\">has_authorization_header</span><span class=\"p\">:</span>\n        <span class=\"n\">default_ports</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">\"http\"</span><span class=\"p\">:</span> <span class=\"mi\">80</span><span class=\"p\">,</span> <span class=\"s2\">\"https\"</span><span class=\"p\">:</span> <span class=\"mi\">443</span><span class=\"p\">}</span>\n\n        <span class=\"n\">parsed_source_request</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">source_request</span><span class=\"p\">)</span>\n        <span class=\"n\">source_scheme</span><span class=\"p\">,</span> <span class=\"n\">source_host</span><span class=\"p\">,</span> <span class=\"n\">source_port</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n            <span class=\"n\">parsed_source_request</span><span class=\"o\">.</span><span class=\"n\">scheme</span><span class=\"p\">,</span>\n            <span class=\"n\">parsed_source_request</span><span class=\"o\">.</span><span class=\"n\">hostname</span><span class=\"p\">,</span>\n            <span class=\"n\">parsed_source_request</span><span class=\"o\">.</span><span class=\"n\">port</span>\n            <span class=\"ow\">or</span> <span class=\"n\">default_ports</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">parsed_source_request</span><span class=\"o\">.</span><span class=\"n\">scheme</span><span class=\"p\">),</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"n\">parsed_redirect_request</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">redirect_request</span><span class=\"p\">)</span>\n        <span class=\"n\">redirect_scheme</span><span class=\"p\">,</span> <span class=\"n\">redirect_host</span><span class=\"p\">,</span> <span class=\"n\">redirect_port</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n            <span class=\"n\">parsed_redirect_request</span><span class=\"o\">.</span><span class=\"n\">scheme</span><span class=\"p\">,</span>\n            <span class=\"n\">parsed_redirect_request</span><span class=\"o\">.</span><span class=\"n\">hostname</span><span class=\"p\">,</span>\n            <span class=\"n\">parsed_redirect_request</span><span class=\"o\">.</span><span class=\"n\">port</span>\n            <span class=\"ow\">or</span> <span class=\"n\">default_ports</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">parsed_redirect_request</span><span class=\"o\">.</span><span class=\"n\">scheme</span><span class=\"p\">),</span>\n        <span class=\"p\">)</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">has_cookie_header</span> <span class=\"ow\">and</span> <span class=\"p\">(</span>\n            <span class=\"n\">redirect_scheme</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"n\">source_scheme</span><span class=\"p\">,</span> <span class=\"s2\">\"https\"</span><span class=\"p\">}</span>\n            <span class=\"ow\">or</span> <span class=\"n\">source_host</span> <span class=\"o\">!=</span> <span class=\"n\">redirect_host</span>\n        <span class=\"p\">):</span>\n            <span class=\"k\">del</span> <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Cookie\"</span><span class=\"p\">]</span>\n\n        <span class=\"c1\"># https://fetch.spec.whatwg.org/#ref-for-cors-non-wildcard-request-header-name</span>\n        <span class=\"k\">if</span> <span class=\"n\">has_authorization_header</span> <span class=\"ow\">and</span> <span class=\"p\">(</span>\n            <span class=\"n\">source_scheme</span> <span class=\"o\">!=</span> <span class=\"n\">redirect_scheme</span>\n            <span class=\"ow\">or</span> <span class=\"n\">source_host</span> <span class=\"o\">!=</span> <span class=\"n\">redirect_host</span>\n            <span class=\"ow\">or</span> <span class=\"n\">source_port</span> <span class=\"o\">!=</span> <span class=\"n\">redirect_port</span>\n        <span class=\"p\">):</span>\n            <span class=\"k\">del</span> <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Authorization\"</span><span class=\"p\">]</span>\n\n    <span class=\"k\">return</span> <span class=\"n\">redirect_request</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">BaseRedirectMiddleware</span><span class=\"p\">:</span>\n    <span class=\"n\">enabled_setting</span><span class=\"p\">:</span> <span class=\"nb\">str</span> <span class=\"o\">=</span> <span class=\"s2\">\"REDIRECT_ENABLED\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">enabled_setting</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">max_redirect_times</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"REDIRECT_MAX_TIMES\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">priority_adjust</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"REDIRECT_PRIORITY_ADJUST\"</span><span class=\"p\">)</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_redirect</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">redirected</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">,</span> <span class=\"n\">reason</span><span class=\"p\">:</span> <span class=\"n\">Any</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Request</span><span class=\"p\">:</span>\n        <span class=\"n\">ttl</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"redirect_ttl\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">max_redirect_times</span><span class=\"p\">)</span>\n        <span class=\"n\">redirects</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"redirect_times\"</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">ttl</span> <span class=\"ow\">and</span> <span class=\"n\">redirects</span> <span class=\"o\">&lt;=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">max_redirect_times</span><span class=\"p\">:</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"redirect_times\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">redirects</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"redirect_ttl\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">ttl</span> <span class=\"o\">-</span> <span class=\"mi\">1</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"redirect_urls\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"redirect_urls\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span> <span class=\"o\">+</span> <span class=\"p\">[</span>\n                <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span>\n            <span class=\"p\">]</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"redirect_reasons\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"redirect_reasons\"</span><span class=\"p\">,</span> <span class=\"p\">[]</span>\n            <span class=\"p\">)</span> <span class=\"o\">+</span> <span class=\"p\">[</span><span class=\"n\">reason</span><span class=\"p\">]</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">dont_filter</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">dont_filter</span>\n            <span class=\"n\">redirected</span><span class=\"o\">.</span><span class=\"n\">priority</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">priority</span> <span class=\"o\">+</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">priority_adjust</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Redirecting (</span><span class=\"si\">%(reason)s</span><span class=\"s2\">) to </span><span class=\"si\">%(redirected)s</span><span class=\"s2\"> from </span><span class=\"si\">%(request)s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"reason\"</span><span class=\"p\">:</span> <span class=\"n\">reason</span><span class=\"p\">,</span> <span class=\"s2\">\"redirected\"</span><span class=\"p\">:</span> <span class=\"n\">redirected</span><span class=\"p\">,</span> <span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">},</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">redirected</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"Discarding </span><span class=\"si\">%(request)s</span><span class=\"s2\">: max redirections reached\"</span><span class=\"p\">,</span>\n            <span class=\"p\">{</span><span class=\"s2\">\"request\"</span><span class=\"p\">:</span> <span class=\"n\">request</span><span class=\"p\">},</span>\n            <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n        <span class=\"p\">)</span>\n        <span class=\"k\">raise</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">(</span><span class=\"s2\">\"max redirections reached\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_redirect_request_using_get</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">redirect_url</span><span class=\"p\">:</span> <span class=\"nb\">str</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Request</span><span class=\"p\">:</span>\n        <span class=\"n\">redirect_request</span> <span class=\"o\">=</span> <span class=\"n\">_build_redirect_request</span><span class=\"p\">(</span>\n            <span class=\"n\">request</span><span class=\"p\">,</span>\n            <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"n\">redirect_url</span><span class=\"p\">,</span>\n            <span class=\"n\">method</span><span class=\"o\">=</span><span class=\"s2\">\"GET\"</span><span class=\"p\">,</span>\n            <span class=\"n\">body</span><span class=\"o\">=</span><span class=\"s2\">\"\"</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n        <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"Content-Type\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"n\">redirect_request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"Content-Length\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">redirect_request</span>\n\n\n<div class=\"viewcode-block\" id=\"RedirectMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.redirect.RedirectMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">RedirectMiddleware</span><span class=\"p\">(</span><span class=\"n\">BaseRedirectMiddleware</span><span class=\"p\">):</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">    Handle redirection of requests based on response status</span>\n<span class=\"sd\">    and meta-refresh html tag.</span>\n<span class=\"sd\">    \"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"p\">(</span>\n            <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_redirect\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">)</span>\n            <span class=\"ow\">or</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"handle_httpstatus_list\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n            <span class=\"ow\">or</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"handle_httpstatus_list\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n            <span class=\"ow\">or</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"handle_httpstatus_all\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">)</span>\n        <span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"n\">allowed_status</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"mi\">301</span><span class=\"p\">,</span> <span class=\"mi\">302</span><span class=\"p\">,</span> <span class=\"mi\">303</span><span class=\"p\">,</span> <span class=\"mi\">307</span><span class=\"p\">,</span> <span class=\"mi\">308</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"s2\">\"Location\"</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span> <span class=\"ow\">or</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">allowed_status</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">assert</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Location\"</span><span class=\"p\">]</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span>\n        <span class=\"n\">location</span> <span class=\"o\">=</span> <span class=\"n\">safe_url_string</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Location\"</span><span class=\"p\">])</span>\n        <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Location\"</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">startswith</span><span class=\"p\">(</span><span class=\"sa\">b</span><span class=\"s2\">\"//\"</span><span class=\"p\">):</span>\n            <span class=\"n\">request_scheme</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span>\n            <span class=\"n\">location</span> <span class=\"o\">=</span> <span class=\"n\">request_scheme</span> <span class=\"o\">+</span> <span class=\"s2\">\"://\"</span> <span class=\"o\">+</span> <span class=\"n\">location</span><span class=\"o\">.</span><span class=\"n\">lstrip</span><span class=\"p\">(</span><span class=\"s2\">\"/\"</span><span class=\"p\">)</span>\n\n        <span class=\"n\">redirected_url</span> <span class=\"o\">=</span> <span class=\"n\">urljoin</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">location</span><span class=\"p\">)</span>\n        <span class=\"n\">redirected</span> <span class=\"o\">=</span> <span class=\"n\">_build_redirect_request</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"o\">=</span><span class=\"n\">redirected_url</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">redirected</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"s2\">\"http\"</span><span class=\"p\">,</span> <span class=\"s2\">\"https\"</span><span class=\"p\">}:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"p\">(</span><span class=\"mi\">301</span><span class=\"p\">,</span> <span class=\"mi\">307</span><span class=\"p\">,</span> <span class=\"mi\">308</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">method</span> <span class=\"o\">==</span> <span class=\"s2\">\"HEAD\"</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_redirect</span><span class=\"p\">(</span><span class=\"n\">redirected</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span><span class=\"p\">)</span>\n\n        <span class=\"n\">redirected</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_redirect_request_using_get</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">redirected_url</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_redirect</span><span class=\"p\">(</span><span class=\"n\">redirected</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span><span class=\"p\">)</span></div>\n\n\n<div class=\"viewcode-block\" id=\"MetaRefreshMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">MetaRefreshMiddleware</span><span class=\"p\">(</span><span class=\"n\">BaseRedirectMiddleware</span><span class=\"p\">):</span>\n    <span class=\"n\">enabled_setting</span> <span class=\"o\">=</span> <span class=\"s2\">\"METAREFRESH_ENABLED\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">):</span>\n        <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_ignore_tags</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"METAREFRESH_IGNORE_TAGS\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_maxdelay</span><span class=\"p\">:</span> <span class=\"nb\">int</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getint</span><span class=\"p\">(</span><span class=\"s2\">\"METAREFRESH_MAXDELAY\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"p\">(</span>\n            <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_redirect\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">)</span>\n            <span class=\"ow\">or</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">method</span> <span class=\"o\">==</span> <span class=\"s2\">\"HEAD\"</span>\n            <span class=\"ow\">or</span> <span class=\"ow\">not</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">HtmlResponse</span><span class=\"p\">)</span>\n            <span class=\"ow\">or</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"s2\">\"http\"</span><span class=\"p\">,</span> <span class=\"s2\">\"https\"</span><span class=\"p\">}</span>\n        <span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"n\">interval</span><span class=\"p\">,</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">get_meta_refresh</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">ignore_tags</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_ignore_tags</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">url</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n        <span class=\"n\">redirected</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_redirect_request_using_get</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">redirected</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"s2\">\"http\"</span><span class=\"p\">,</span> <span class=\"s2\">\"https\"</span><span class=\"p\">}:</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n        <span class=\"k\">if</span> <span class=\"n\">cast</span><span class=\"p\">(</span><span class=\"nb\">float</span><span class=\"p\">,</span> <span class=\"n\">interval</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_maxdelay</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_redirect</span><span class=\"p\">(</span><span class=\"n\">redirected</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"meta refresh\"</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">response</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

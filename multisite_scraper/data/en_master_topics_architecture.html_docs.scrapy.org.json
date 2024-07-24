@@ -1,0 +1,582 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/architecture.html",
+  "title": "Architecture overview — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Overview"
+    },
+    {
+      "type": "text",
+      "content": "Data flow"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Engine"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Downloader"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Downloader middlewares"
+    },
+    {
+      "type": "text",
+      "content": "Spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "Event-driven networking"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "This document describes the architecture of Scrapy and how its components\ninteract."
+    },
+    {
+      "type": "text",
+      "content": "Overview"
+    },
+    {
+      "type": "text",
+      "content": "The following diagram shows an overview of the Scrapy architecture with its\ncomponents and an outline of the data flow that takes place inside the system\n(shown by the red arrows). A brief description of the components is included\nbelow with links for more detailed information about them. The data flow is\nalso described below."
+    },
+    {
+      "type": "text",
+      "content": "Data flow"
+    },
+    {
+      "type": "text",
+      "content": "The data flow in Scrapy is controlled by the execution engine, and goes like\nthis:"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_request()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Once the page finishes downloading the\n"
+    },
+    {
+      "type": "text",
+      "content": "Once the page finishes downloading the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_response()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_input()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-meth docutils literal notranslate\"><span class=\"pre\">process_spider_output()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "The process repeats (from step 3) until there are no more requests from the\n"
+    },
+    {
+      "type": "text",
+      "content": "The process repeats (from step 3) until there are no more requests from the\n"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Engine"
+    },
+    {
+      "type": "text",
+      "content": "The engine is responsible for controlling the data flow between all components\nof the system, and triggering events when certain actions occur. See the\n"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "text",
+      "content": "Downloader"
+    },
+    {
+      "type": "text",
+      "content": "The Downloader is responsible for fetching web pages and feeding them to the\nengine which, in turn, feeds them to the spiders."
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders are custom classes written by Scrapy users to parse responses and\nextract "
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "The Item Pipeline is responsible for processing the items once they have been\nextracted (or scraped) by the spiders. Typical tasks include cleansing,\nvalidation and persistence (like storing the item in a database). For more\ninformation see "
+    },
+    {
+      "type": "text",
+      "content": "Downloader middlewares"
+    },
+    {
+      "type": "text",
+      "content": "Downloader middlewares are specific hooks that sit between the Engine and the\nDownloader and process requests when they pass from the Engine to the\nDownloader, and responses that pass from Downloader to the Engine."
+    },
+    {
+      "type": "text",
+      "content": "Use a Downloader middleware if you need to do one of the following:"
+    },
+    {
+      "type": "text",
+      "content": "process a request just before it is sent to the Downloader\n(i.e. right before Scrapy sends the request to the website);"
+    },
+    {
+      "type": "text",
+      "content": "process a request just before it is sent to the Downloader\n(i.e. right before Scrapy sends the request to the website);"
+    },
+    {
+      "type": "text",
+      "content": "change received response before passing it to a spider;"
+    },
+    {
+      "type": "text",
+      "content": "change received response before passing it to a spider;"
+    },
+    {
+      "type": "text",
+      "content": "send a new Request instead of passing received response to a spider;"
+    },
+    {
+      "type": "text",
+      "content": "send a new Request instead of passing received response to a spider;"
+    },
+    {
+      "type": "text",
+      "content": "pass response to a spider without fetching a web page;"
+    },
+    {
+      "type": "text",
+      "content": "pass response to a spider without fetching a web page;"
+    },
+    {
+      "type": "text",
+      "content": "silently drop some requests."
+    },
+    {
+      "type": "text",
+      "content": "silently drop some requests."
+    },
+    {
+      "type": "text",
+      "content": "For more information see "
+    },
+    {
+      "type": "text",
+      "content": "Spider middlewares"
+    },
+    {
+      "type": "text",
+      "content": "Spider middlewares are specific hooks that sit between the Engine and the\nSpiders and are able to process spider input (responses) and output (items and\nrequests)."
+    },
+    {
+      "type": "text",
+      "content": "Use a Spider middleware if you need to"
+    },
+    {
+      "type": "text",
+      "content": "post-process output of spider callbacks - change/add/remove requests or items;"
+    },
+    {
+      "type": "text",
+      "content": "post-process output of spider callbacks - change/add/remove requests or items;"
+    },
+    {
+      "type": "text",
+      "content": "post-process start_requests;"
+    },
+    {
+      "type": "text",
+      "content": "post-process start_requests;"
+    },
+    {
+      "type": "text",
+      "content": "handle spider exceptions;"
+    },
+    {
+      "type": "text",
+      "content": "handle spider exceptions;"
+    },
+    {
+      "type": "text",
+      "content": "call errback instead of callback for some of the requests based on response\ncontent."
+    },
+    {
+      "type": "text",
+      "content": "call errback instead of callback for some of the requests based on response\ncontent."
+    },
+    {
+      "type": "text",
+      "content": "For more information see "
+    },
+    {
+      "type": "text",
+      "content": "Event-driven networking"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy is written with "
+    },
+    {
+      "type": "text",
+      "content": "For more information about asynchronous programming and Twisted see these\nlinks:"
+    },
+    {
+      "type": "text",
+      "content": "Introduction to Deferreds"
+    },
+    {
+      "type": "text",
+      "content": "Introduction to Deferreds"
+    },
+    {
+      "type": "text",
+      "content": "Twisted - hello, asynchronous programming"
+    },
+    {
+      "type": "text",
+      "content": "Twisted - hello, asynchronous programming"
+    },
+    {
+      "type": "text",
+      "content": "Twisted Introduction - Krondo"
+    },
+    {
+      "type": "text",
+      "content": "Twisted Introduction - Krondo"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

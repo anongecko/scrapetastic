@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/httpcache.html",
+  "title": "scrapy.downloadermiddlewares.httpcache — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpcache"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.httpcache"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">email.utils</span> <span class=\"kn\">import</span> <span class=\"n\">formatdate</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Optional</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">defer</span>\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.internet.error</span> <span class=\"kn\">import</span> <span class=\"p\">(</span>\n    <span class=\"n\">ConnectError</span><span class=\"p\">,</span>\n    <span class=\"n\">ConnectionDone</span><span class=\"p\">,</span>\n    <span class=\"n\">ConnectionLost</span><span class=\"p\">,</span>\n    <span class=\"ne\">ConnectionRefusedError</span><span class=\"p\">,</span>\n    <span class=\"n\">DNSLookupError</span><span class=\"p\">,</span>\n    <span class=\"n\">TCPTimedOutError</span><span class=\"p\">,</span>\n    <span class=\"ne\">TimeoutError</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.web.client</span> <span class=\"kn\">import</span> <span class=\"n\">ResponseFailed</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">,</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.misc</span> <span class=\"kn\">import</span> <span class=\"n\">load_object</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.request</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.response</span> <span class=\"kn\">import</span> <span class=\"n\">Response</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.settings</span> <span class=\"kn\">import</span> <span class=\"n\">Settings</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.spiders</span> <span class=\"kn\">import</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.statscollectors</span> <span class=\"kn\">import</span> <span class=\"n\">StatsCollector</span>\n\n\n<div class=\"viewcode-block\" id=\"HttpCacheMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">HttpCacheMiddleware</span><span class=\"p\">:</span>\n    <span class=\"n\">DOWNLOAD_EXCEPTIONS</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n        <span class=\"n\">defer</span><span class=\"o\">.</span><span class=\"n\">TimeoutError</span><span class=\"p\">,</span>\n        <span class=\"ne\">TimeoutError</span><span class=\"p\">,</span>\n        <span class=\"n\">DNSLookupError</span><span class=\"p\">,</span>\n        <span class=\"ne\">ConnectionRefusedError</span><span class=\"p\">,</span>\n        <span class=\"n\">ConnectionDone</span><span class=\"p\">,</span>\n        <span class=\"n\">ConnectError</span><span class=\"p\">,</span>\n        <span class=\"n\">ConnectionLost</span><span class=\"p\">,</span>\n        <span class=\"n\">TCPTimedOutError</span><span class=\"p\">,</span>\n        <span class=\"n\">ResponseFailed</span><span class=\"p\">,</span>\n        <span class=\"ne\">OSError</span><span class=\"p\">,</span>\n    <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">Settings</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">:</span> <span class=\"n\">StatsCollector</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"HTTPCACHE_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">policy</span> <span class=\"o\">=</span> <span class=\"n\">load_object</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"p\">[</span><span class=\"s2\">\"HTTPCACHE_POLICY\"</span><span class=\"p\">])(</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">storage</span> <span class=\"o\">=</span> <span class=\"n\">load_object</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"p\">[</span><span class=\"s2\">\"HTTPCACHE_STORAGE\"</span><span class=\"p\">])(</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ignore_missing</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"HTTPCACHE_IGNORE_MISSING\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">assert</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span>\n        <span class=\"n\">o</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">o</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">storage</span><span class=\"o\">.</span><span class=\"n\">open_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">storage</span><span class=\"o\">.</span><span class=\"n\">close_spider</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_cache\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n        <span class=\"c1\"># Skip uncacheable requests</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">policy</span><span class=\"o\">.</span><span class=\"n\">should_cache_request</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">):</span>\n            <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"_dont_cache\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">True</span>  <span class=\"c1\"># flag as uncacheable</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n        <span class=\"c1\"># Look for cached response and check if expired</span>\n        <span class=\"n\">cachedresponse</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Response</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">storage</span><span class=\"o\">.</span><span class=\"n\">retrieve_response</span><span class=\"p\">(</span>\n            <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">request</span>\n        <span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">cachedresponse</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/miss\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ignore_missing</span><span class=\"p\">:</span>\n                <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/ignore\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n                <span class=\"k\">raise</span> <span class=\"n\">IgnoreRequest</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Ignored request not in cache: </span><span class=\"si\">{</span><span class=\"n\">request</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>  <span class=\"c1\"># first time request</span>\n\n        <span class=\"c1\"># Return cached response only if not expired</span>\n        <span class=\"n\">cachedresponse</span><span class=\"o\">.</span><span class=\"n\">flags</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"s2\">\"cached\"</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">policy</span><span class=\"o\">.</span><span class=\"n\">is_cached_response_fresh</span><span class=\"p\">(</span><span class=\"n\">cachedresponse</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/hit\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">cachedresponse</span>\n\n        <span class=\"c1\"># Keep a reference to cached response to avoid a second cache lookup on</span>\n        <span class=\"c1\"># process_response hook</span>\n        <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"cached_response\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">cachedresponse</span>\n\n        <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_cache\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"c1\"># Skip cached responses and uncacheable requests</span>\n        <span class=\"k\">if</span> <span class=\"s2\">\"cached\"</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">flags</span> <span class=\"ow\">or</span> <span class=\"s2\">\"_dont_cache\"</span> <span class=\"ow\">in</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"p\">:</span>\n            <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"_dont_cache\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"c1\"># RFC2616 requires origin server to set Date header,</span>\n        <span class=\"c1\"># https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18</span>\n        <span class=\"k\">if</span> <span class=\"s2\">\"Date\"</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">:</span>\n            <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"p\">[</span><span class=\"s2\">\"Date\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">formatdate</span><span class=\"p\">(</span><span class=\"n\">usegmt</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)</span>\n\n        <span class=\"c1\"># Do not validate first-hand responses</span>\n        <span class=\"n\">cachedresponse</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Response</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"cached_response\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">cachedresponse</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/firsthand\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_cache_response</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">cachedresponse</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">policy</span><span class=\"o\">.</span><span class=\"n\">is_cached_response_valid</span><span class=\"p\">(</span><span class=\"n\">cachedresponse</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/revalidate\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">cachedresponse</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/invalidate\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_cache_response</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">cachedresponse</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_exception</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">exception</span><span class=\"p\">:</span> <span class=\"ne\">Exception</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"n\">cachedresponse</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Response</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"cached_response\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">cachedresponse</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span> <span class=\"ow\">and</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span>\n            <span class=\"n\">exception</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">DOWNLOAD_EXCEPTIONS</span>\n        <span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/errorrecovery\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"n\">cachedresponse</span>\n        <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_cache_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span>\n        <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">,</span>\n        <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span>\n        <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span>\n        <span class=\"n\">cachedresponse</span><span class=\"p\">:</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"n\">Response</span><span class=\"p\">],</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">policy</span><span class=\"o\">.</span><span class=\"n\">should_cache_response</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/store\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">storage</span><span class=\"o\">.</span><span class=\"n\">store_response</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n        <span class=\"k\">else</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httpcache/uncacheable\"</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"o\">=</span><span class=\"n\">spider</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

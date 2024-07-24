@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:26:10 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817e6c38f118f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"0b1274896ca25eaffe5f8d693bf1aaac"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: rGQaz4T+tx5pCxMyXw9yJMR7R1ay+iEP3vJv+/4WqdYJp9ECoQvTvTz/MuZ2A7bT7KrxtzZsZ3w=
+X-Amz-Meta-Mtime: 1721796079.08558637
+X-Amz-Request-Id: 76HZSX7KWMV8TMHG
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0e88fe8c077f7586a
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/_modules/scrapy/spiderloader.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_modules/scrapy/spiderloader.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=9stYVgBd42f1s_lOrkpd5oi.m6q85Oa9IS7098E1NuE-1721798770883-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

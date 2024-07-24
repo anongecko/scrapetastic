@@ -1,0 +1,546 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/index.html",
+  "title": "Scrapy 2.11 documentation — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy 2.11 documentation"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Scrapy 2.11 documentation"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy is a fast high-level "
+    },
+    {
+      "type": "text",
+      "content": "Getting help"
+    },
+    {
+      "type": "text",
+      "content": "Having trouble? We’d like to help!"
+    },
+    {
+      "type": "text",
+      "content": "Try the "
+    },
+    {
+      "type": "text",
+      "content": "Try the "
+    },
+    {
+      "type": "text",
+      "content": "Looking for specific information? Try the "
+    },
+    {
+      "type": "text",
+      "content": "Looking for specific information? Try the "
+    },
+    {
+      "type": "text",
+      "content": "Ask or search questions in "
+    },
+    {
+      "type": "text",
+      "content": "Ask or search questions in "
+    },
+    {
+      "type": "text",
+      "content": "Ask or search questions in the "
+    },
+    {
+      "type": "text",
+      "content": "Ask or search questions in the "
+    },
+    {
+      "type": "text",
+      "content": "Search for questions on the archives of the "
+    },
+    {
+      "type": "text",
+      "content": "Search for questions on the archives of the "
+    },
+    {
+      "type": "text",
+      "content": "Ask a question in the "
+    },
+    {
+      "type": "text",
+      "content": "Ask a question in the "
+    },
+    {
+      "type": "text",
+      "content": "Report bugs with Scrapy in our "
+    },
+    {
+      "type": "text",
+      "content": "Report bugs with Scrapy in our "
+    },
+    {
+      "type": "text",
+      "content": "Join the Discord community "
+    },
+    {
+      "type": "text",
+      "content": "Join the Discord community "
+    },
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Understand what Scrapy is and how it can help you."
+    },
+    {
+      "type": "text",
+      "content": "Get Scrapy installed on your computer."
+    },
+    {
+      "type": "text",
+      "content": "Write your first Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Learn more by playing with a pre-made Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Learn about the command-line tool used to manage your Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Write the rules to crawl your websites."
+    },
+    {
+      "type": "text",
+      "content": "Extract the data from web pages using XPath."
+    },
+    {
+      "type": "text",
+      "content": "Test your extraction code in an interactive environment."
+    },
+    {
+      "type": "text",
+      "content": "Define the data you want to scrape."
+    },
+    {
+      "type": "text",
+      "content": "Populate your items with the extracted data."
+    },
+    {
+      "type": "text",
+      "content": "Post-process and store your scraped data."
+    },
+    {
+      "type": "text",
+      "content": "Output your scraped data using different formats and storages."
+    },
+    {
+      "type": "text",
+      "content": "Understand the classes used to represent HTTP requests and responses."
+    },
+    {
+      "type": "text",
+      "content": "Convenient classes to extract links to follow from pages."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to configure Scrapy and see all "
+    },
+    {
+      "type": "text",
+      "content": "See all available exceptions and their meaning."
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Learn how to use Python’s builtin logging on Scrapy."
+    },
+    {
+      "type": "text",
+      "content": "Collect statistics about your scraping crawler."
+    },
+    {
+      "type": "text",
+      "content": "Send email notifications when certain events occur."
+    },
+    {
+      "type": "text",
+      "content": "Inspect a running crawler using a built-in Python console."
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Get answers to most frequently asked questions."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to debug common problems of your Scrapy spider."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to use contracts for testing your spiders."
+    },
+    {
+      "type": "text",
+      "content": "Get familiar with some Scrapy common practices."
+    },
+    {
+      "type": "text",
+      "content": "Tune Scrapy for crawling a lot domains in parallel."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to scrape with your browser’s developer tools."
+    },
+    {
+      "type": "text",
+      "content": "Read webpage data that is loaded dynamically."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to find and get rid of memory leaks in your crawler."
+    },
+    {
+      "type": "text",
+      "content": "Download files and/or images associated with your scraped items."
+    },
+    {
+      "type": "text",
+      "content": "Deploying your Scrapy spiders and run them in a remote server."
+    },
+    {
+      "type": "text",
+      "content": "Adjust crawl rate dynamically based on load."
+    },
+    {
+      "type": "text",
+      "content": "Check how Scrapy performs on your hardware."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to pause and resume crawls for large spiders."
+    },
+    {
+      "type": "text",
+      "content": "Use the "
+    },
+    {
+      "type": "text",
+      "content": "Use "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-mod docutils literal notranslate\"><span class=\"pre\">asyncio</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Understand the Scrapy architecture."
+    },
+    {
+      "type": "text",
+      "content": "Enable and configure third-party extensions."
+    },
+    {
+      "type": "text",
+      "content": "Customize how pages get requested and downloaded."
+    },
+    {
+      "type": "text",
+      "content": "Customize the input and output of your spiders."
+    },
+    {
+      "type": "text",
+      "content": "Extend Scrapy with your custom functionality"
+    },
+    {
+      "type": "text",
+      "content": "See all available signals and how to work with them."
+    },
+    {
+      "type": "text",
+      "content": "Understand the scheduler component."
+    },
+    {
+      "type": "text",
+      "content": "Quickly export your scraped items to a file (XML, CSV, etc)."
+    },
+    {
+      "type": "text",
+      "content": "Learn the common API and some good practices when building custom Scrapy\ncomponents."
+    },
+    {
+      "type": "text",
+      "content": "Use it on extensions and middlewares to extend Scrapy functionality."
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "See what has changed in recent Scrapy versions."
+    },
+    {
+      "type": "text",
+      "content": "Learn how to contribute to the Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Understand Scrapy versioning and API stability."
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

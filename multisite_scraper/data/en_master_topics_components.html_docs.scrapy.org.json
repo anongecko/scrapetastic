@@ -1,0 +1,478 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/components.html",
+  "title": "Components — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Enforcing component requirements"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "A Scrapy component is any class whose objects are created using\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">scrapy.utils.misc.create_instance()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "That includes the classes that you may assign to the following settings:"
+    },
+    {
+      "type": "text",
+      "content": "DNS_RESOLVER"
+    },
+    {
+      "type": "text",
+      "content": "DNS_RESOLVER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DNS_RESOLVER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_HANDLERS"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_HANDLERS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_HANDLERS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENTCONTEXTFACTORY"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENTCONTEXTFACTORY"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_CLIENTCONTEXTFACTORY</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_MIDDLEWARES"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_MIDDLEWARES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DOWNLOADER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "DUPEFILTER_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "DUPEFILTER_CLASS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">DUPEFILTER_CLASS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "EXTENSIONS"
+    },
+    {
+      "type": "text",
+      "content": "EXTENSIONS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EXTENSIONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORTERS"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORTERS"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">FEED_EXPORTERS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGES"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">FEED_STORAGES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "ITEM_PIPELINES"
+    },
+    {
+      "type": "text",
+      "content": "ITEM_PIPELINES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ITEM_PIPELINES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_DISK_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_DISK_QUEUE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_DISK_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_MEMORY_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_MEMORY_QUEUE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_MEMORY_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_PRIORITY_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_PRIORITY_QUEUE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SCHEDULER_PRIORITY_QUEUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_MIDDLEWARES"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_MIDDLEWARES"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">SPIDER_MIDDLEWARES</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Third-party Scrapy components may also let you define additional Scrapy\ncomponents, usually configurable through "
+    },
+    {
+      "type": "text",
+      "content": "Enforcing component requirements"
+    },
+    {
+      "type": "text",
+      "content": "Sometimes, your components may only be intended to work under certain\nconditions. For example, they may require a minimum version of Scrapy to work as\nintended, or they may require certain settings to have specific values."
+    },
+    {
+      "type": "text",
+      "content": "In addition to describing those conditions in the documentation of your\ncomponent, it is a good practice to raise an exception from the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">__init__</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In the case of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">scrapy.exceptions.NotConfigured</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">RuntimeError</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">ValueError</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "If your requirement is a minimum Scrapy version, you may use\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-attr docutils literal notranslate\"><span class=\"pre\">scrapy.__version__</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">packaging.version</span> <span class=\"kn\">import</span> <span class=\"n\">parse</span> <span class=\"k\">as</span> <span class=\"n\">parse_version</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">scrapy</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MyComponent</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"n\">parse_version</span><span class=\"p\">(</span><span class=\"n\">scrapy</span><span class=\"o\">.</span><span class=\"n\">__version__</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">parse_version</span><span class=\"p\">(</span><span class=\"s2\">\"2.7\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"ne\">RuntimeError</span><span class=\"p\">(</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">MyComponent</span><span class=\"o\">.</span><span class=\"vm\">__qualname__</span><span class=\"si\">}</span><span class=\"s2\"> requires Scrapy 2.7 or \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"later, which allow defining the process_spider_output \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"method of spider middlewares as an asynchronous \"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"generator.\"</span>\n            <span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

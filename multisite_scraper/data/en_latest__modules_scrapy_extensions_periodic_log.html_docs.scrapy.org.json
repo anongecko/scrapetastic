@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/extensions/periodic_log.html",
+  "title": "scrapy.extensions.periodic_log — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.periodic_log"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.extensions.periodic_log"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">datetime</span> <span class=\"kn\">import</span> <span class=\"n\">datetime</span><span class=\"p\">,</span> <span class=\"n\">timezone</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">twisted.internet</span> <span class=\"kn\">import</span> <span class=\"n\">task</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.serialize</span> <span class=\"kn\">import</span> <span class=\"n\">ScrapyJSONEncoder</span>\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"PeriodicLog\"><a class=\"viewcode-back\" href=\"../../../topics/extensions.html#scrapy.extensions.periodic_log.PeriodicLog\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">PeriodicLog</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"Log basic scraping stats periodically\"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span>\n        <span class=\"n\">stats</span><span class=\"p\">,</span>\n        <span class=\"n\">interval</span><span class=\"o\">=</span><span class=\"mf\">60.0</span><span class=\"p\">,</span>\n        <span class=\"n\">ext_stats</span><span class=\"o\">=</span><span class=\"p\">{},</span>\n        <span class=\"n\">ext_delta</span><span class=\"o\">=</span><span class=\"p\">{},</span>\n        <span class=\"n\">ext_timing_enabled</span><span class=\"o\">=</span><span class=\"kc\">False</span><span class=\"p\">,</span>\n    <span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">interval</span> <span class=\"o\">=</span> <span class=\"n\">interval</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">multiplier</span> <span class=\"o\">=</span> <span class=\"mf\">60.0</span> <span class=\"o\">/</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">interval</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">encoder</span> <span class=\"o\">=</span> <span class=\"n\">ScrapyJSONEncoder</span><span class=\"p\">(</span><span class=\"n\">sort_keys</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">,</span> <span class=\"n\">indent</span><span class=\"o\">=</span><span class=\"mi\">4</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_enabled</span> <span class=\"o\">=</span> <span class=\"nb\">bool</span><span class=\"p\">(</span><span class=\"n\">ext_stats</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_include</span> <span class=\"o\">=</span> <span class=\"n\">ext_stats</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"include\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_exclude</span> <span class=\"o\">=</span> <span class=\"n\">ext_stats</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"exclude\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_enabled</span> <span class=\"o\">=</span> <span class=\"nb\">bool</span><span class=\"p\">(</span><span class=\"n\">ext_delta</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_include</span> <span class=\"o\">=</span> <span class=\"n\">ext_delta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"include\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_exclude</span> <span class=\"o\">=</span> <span class=\"n\">ext_delta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"exclude\"</span><span class=\"p\">,</span> <span class=\"p\">[])</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_timing_enabled</span> <span class=\"o\">=</span> <span class=\"n\">ext_timing_enabled</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"n\">interval</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getfloat</span><span class=\"p\">(</span><span class=\"s2\">\"LOGSTATS_INTERVAL\"</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">interval</span><span class=\"p\">:</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"n\">ext_stats</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getdict</span><span class=\"p\">(</span><span class=\"s2\">\"PERIODIC_LOG_STATS\"</span><span class=\"p\">)</span>\n        <span class=\"k\">except</span> <span class=\"p\">(</span><span class=\"ne\">TypeError</span><span class=\"p\">,</span> <span class=\"ne\">ValueError</span><span class=\"p\">):</span>\n            <span class=\"n\">ext_stats</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"enabled\"</span><span class=\"p\">:</span> <span class=\"kc\">True</span><span class=\"p\">}</span>\n                <span class=\"k\">if</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"PERIODIC_LOG_STATS\"</span><span class=\"p\">)</span>\n                <span class=\"k\">else</span> <span class=\"kc\">None</span>\n            <span class=\"p\">)</span>\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"n\">ext_delta</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getdict</span><span class=\"p\">(</span><span class=\"s2\">\"PERIODIC_LOG_DELTA\"</span><span class=\"p\">)</span>\n        <span class=\"k\">except</span> <span class=\"p\">(</span><span class=\"ne\">TypeError</span><span class=\"p\">,</span> <span class=\"ne\">ValueError</span><span class=\"p\">):</span>\n            <span class=\"n\">ext_delta</span> <span class=\"o\">=</span> <span class=\"p\">(</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"enabled\"</span><span class=\"p\">:</span> <span class=\"kc\">True</span><span class=\"p\">}</span>\n                <span class=\"k\">if</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"PERIODIC_LOG_DELTA\"</span><span class=\"p\">)</span>\n                <span class=\"k\">else</span> <span class=\"kc\">None</span>\n            <span class=\"p\">)</span>\n\n        <span class=\"n\">ext_timing_enabled</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span>\n            <span class=\"s2\">\"PERIODIC_LOG_TIMING_ENABLED\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span>\n        <span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"p\">(</span><span class=\"n\">ext_stats</span> <span class=\"ow\">or</span> <span class=\"n\">ext_delta</span> <span class=\"ow\">or</span> <span class=\"n\">ext_timing_enabled</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"n\">o</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">(</span>\n            <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"p\">,</span>\n            <span class=\"n\">interval</span><span class=\"p\">,</span>\n            <span class=\"n\">ext_stats</span><span class=\"p\">,</span>\n            <span class=\"n\">ext_delta</span><span class=\"p\">,</span>\n            <span class=\"n\">ext_timing_enabled</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_opened</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">o</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_opened</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">time_prev</span> <span class=\"o\">=</span> <span class=\"n\">datetime</span><span class=\"o\">.</span><span class=\"n\">now</span><span class=\"p\">(</span><span class=\"n\">tz</span><span class=\"o\">=</span><span class=\"n\">timezone</span><span class=\"o\">.</span><span class=\"n\">utc</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">delta_prev</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats_prev</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span> <span class=\"o\">=</span> <span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">LoopingCall</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">log</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">start</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">interval</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">log</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_timing_enabled</span><span class=\"p\">:</span>\n            <span class=\"n\">data</span><span class=\"o\">.</span><span class=\"n\">update</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">log_timing</span><span class=\"p\">())</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_enabled</span><span class=\"p\">:</span>\n            <span class=\"n\">data</span><span class=\"o\">.</span><span class=\"n\">update</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">log_delta</span><span class=\"p\">())</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_enabled</span><span class=\"p\">:</span>\n            <span class=\"n\">data</span><span class=\"o\">.</span><span class=\"n\">update</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">log_crawler_stats</span><span class=\"p\">())</span>\n        <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">encoder</span><span class=\"o\">.</span><span class=\"n\">encode</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">))</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">log_delta</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"n\">num_stats</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"n\">k</span><span class=\"p\">:</span> <span class=\"n\">v</span>\n            <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">()</span>\n            <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">v</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"nb\">int</span><span class=\"p\">,</span> <span class=\"nb\">float</span><span class=\"p\">))</span>\n            <span class=\"ow\">and</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">param_allowed</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_include</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_delta_exclude</span><span class=\"p\">)</span>\n        <span class=\"p\">}</span>\n        <span class=\"n\">delta</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">k</span><span class=\"p\">:</span> <span class=\"n\">v</span> <span class=\"o\">-</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">delta_prev</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">num_stats</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">()}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">delta_prev</span> <span class=\"o\">=</span> <span class=\"n\">num_stats</span>\n        <span class=\"k\">return</span> <span class=\"p\">{</span><span class=\"s2\">\"delta\"</span><span class=\"p\">:</span> <span class=\"n\">delta</span><span class=\"p\">}</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">log_timing</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"n\">now</span> <span class=\"o\">=</span> <span class=\"n\">datetime</span><span class=\"o\">.</span><span class=\"n\">now</span><span class=\"p\">(</span><span class=\"n\">tz</span><span class=\"o\">=</span><span class=\"n\">timezone</span><span class=\"o\">.</span><span class=\"n\">utc</span><span class=\"p\">)</span>\n        <span class=\"n\">time</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"s2\">\"log_interval\"</span><span class=\"p\">:</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">interval</span><span class=\"p\">,</span>\n            <span class=\"s2\">\"start_time\"</span><span class=\"p\">:</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">[</span><span class=\"s2\">\"start_time\"</span><span class=\"p\">],</span>\n            <span class=\"s2\">\"utcnow\"</span><span class=\"p\">:</span> <span class=\"n\">now</span><span class=\"p\">,</span>\n            <span class=\"s2\">\"log_interval_real\"</span><span class=\"p\">:</span> <span class=\"p\">(</span><span class=\"n\">now</span> <span class=\"o\">-</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">time_prev</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">total_seconds</span><span class=\"p\">(),</span>\n            <span class=\"s2\">\"elapsed\"</span><span class=\"p\">:</span> <span class=\"p\">(</span><span class=\"n\">now</span> <span class=\"o\">-</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"p\">[</span><span class=\"s2\">\"start_time\"</span><span class=\"p\">])</span><span class=\"o\">.</span><span class=\"n\">total_seconds</span><span class=\"p\">(),</span>\n        <span class=\"p\">}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">time_prev</span> <span class=\"o\">=</span> <span class=\"n\">now</span>\n        <span class=\"k\">return</span> <span class=\"p\">{</span><span class=\"s2\">\"time\"</span><span class=\"p\">:</span> <span class=\"n\">time</span><span class=\"p\">}</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">log_crawler_stats</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">):</span>\n        <span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"n\">k</span><span class=\"p\">:</span> <span class=\"n\">v</span>\n            <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">_stats</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">()</span>\n            <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">param_allowed</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_include</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">ext_stats_exclude</span><span class=\"p\">)</span>\n        <span class=\"p\">}</span>\n        <span class=\"k\">return</span> <span class=\"p\">{</span><span class=\"s2\">\"stats\"</span><span class=\"p\">:</span> <span class=\"n\">stats</span><span class=\"p\">}</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">param_allowed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stat_name</span><span class=\"p\">,</span> <span class=\"n\">include</span><span class=\"p\">,</span> <span class=\"n\">exclude</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">include</span> <span class=\"ow\">and</span> <span class=\"ow\">not</span> <span class=\"n\">exclude</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"kc\">True</span>\n        <span class=\"k\">for</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">exclude</span><span class=\"p\">:</span>\n            <span class=\"k\">if</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">stat_name</span><span class=\"p\">:</span>\n                <span class=\"k\">return</span> <span class=\"kc\">False</span>\n        <span class=\"k\">if</span> <span class=\"n\">exclude</span> <span class=\"ow\">and</span> <span class=\"ow\">not</span> <span class=\"n\">include</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"kc\">True</span>\n        <span class=\"k\">for</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">include</span><span class=\"p\">:</span>\n            <span class=\"k\">if</span> <span class=\"n\">p</span> <span class=\"ow\">in</span> <span class=\"n\">stat_name</span><span class=\"p\">:</span>\n                <span class=\"k\">return</span> <span class=\"kc\">True</span>\n        <span class=\"k\">return</span> <span class=\"kc\">False</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"n\">reason</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">log</span><span class=\"p\">()</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span> <span class=\"ow\">and</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">running</span><span class=\"p\">:</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">task</span><span class=\"o\">.</span><span class=\"n\">stop</span><span class=\"p\">()</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

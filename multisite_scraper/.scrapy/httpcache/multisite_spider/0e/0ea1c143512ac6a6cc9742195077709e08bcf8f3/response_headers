@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:25:12 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a817cfe8ac018f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"634d4f0aa7d8d40e598bf9f301972870"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: /DRYq03fKpnc4/aCWYXi37KrLuhgBku86igpIINQmgnsh+Yrahq0yn1L+1kx9wqUKouyvje28hw=
+X-Amz-Meta-Mtime: 1721796076.549583329
+X-Amz-Request-Id: TZXE5XN0D774HNCQ
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-06e8ba60f823ee1e2
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/topics/spider-middleware.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /topics/spider-middleware.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=lE_R7T80SkYtMBZvv6C1p5aU9kt0HRGuK2EQ7Dt18HY-1721798712371-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

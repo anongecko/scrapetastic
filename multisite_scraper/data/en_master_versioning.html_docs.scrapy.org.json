@@ -1,0 +1,370 @@
+{
+  "url": "https://docs.scrapy.org/en/master/versioning.html",
+  "title": "Versioning and API stability — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": "Versioning"
+    },
+    {
+      "type": "text",
+      "content": "API stability"
+    },
+    {
+      "type": "text",
+      "content": "Deprecation policy"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": "Versioning"
+    },
+    {
+      "type": "text",
+      "content": "There are 3 numbers in a Scrapy version: "
+    },
+    {
+      "type": "text",
+      "content": "A"
+    },
+    {
+      "type": "text",
+      "content": "A"
+    },
+    {
+      "type": "text",
+      "content": "B"
+    },
+    {
+      "type": "text",
+      "content": "B"
+    },
+    {
+      "type": "text",
+      "content": "C"
+    },
+    {
+      "type": "text",
+      "content": "C"
+    },
+    {
+      "type": "text",
+      "content": "Backward-incompatibilities are explicitly mentioned in the "
+    },
+    {
+      "type": "text",
+      "content": "Development releases do not follow 3-numbers version and are generally\nreleased as "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">dev</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">1.3dev</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "content": "With Scrapy 0.* series, Scrapy used "
+    },
+    {
+      "type": "text",
+      "content": "Starting with Scrapy 1.0, all releases should be considered production-ready."
+    },
+    {
+      "type": "text",
+      "content": "For example:"
+    },
+    {
+      "type": "text",
+      "content": "1.1.1"
+    },
+    {
+      "type": "text",
+      "content": "1.1.1"
+    },
+    {
+      "type": "text",
+      "content": "API stability"
+    },
+    {
+      "type": "text",
+      "content": "API stability was one of the major goals for the "
+    },
+    {
+      "type": "text",
+      "content": "Methods or functions that start with a single dash ("
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">_</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Also, keep in mind that stable doesn’t mean complete: stable APIs could grow\nnew methods or functionality but the existing methods should keep working the\nsame way."
+    },
+    {
+      "type": "text",
+      "content": "Deprecation policy"
+    },
+    {
+      "type": "text",
+      "content": "We aim to maintain support for deprecated Scrapy features for at least 1 year."
+    },
+    {
+      "type": "text",
+      "content": "For example, if a feature is deprecated in a Scrapy version released on\nJune 15th 2020, that feature should continue to work in versions released on\nJune 14th 2021 or before that."
+    },
+    {
+      "type": "text",
+      "content": "Any new Scrapy release after a year "
+    },
+    {
+      "type": "text",
+      "content": "All deprecated features removed in a Scrapy release are explicitly mentioned in\nthe "
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

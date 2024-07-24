@@ -1,0 +1,502 @@
+{
+  "url": "https://docs.scrapy.org/en/master/topics/addons.html",
+  "title": "Add-ons — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Activating and configuring add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own add-ons"
+    },
+    {
+      "type": "text",
+      "content": "update_settings()"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings()</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Fallbacks"
+    },
+    {
+      "type": "text",
+      "content": "Add-on examples"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy’s add-on system is a framework which unifies managing and configuring\ncomponents that extend Scrapy’s core functionality, such as middlewares,\nextensions, or pipelines. It provides users with a plug-and-play experience in\nScrapy extension management, and grants extensive configuration control to\ndevelopers."
+    },
+    {
+      "type": "text",
+      "content": "Activating and configuring add-ons"
+    },
+    {
+      "type": "text",
+      "content": "During "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">ADDONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">ADDONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This is an example where two add-ons are enabled in a project’s\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">settings.py</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">ADDONS</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"s1\">'path.to.someaddon'</span><span class=\"p\">:</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n    <span class=\"n\">SomeAddonClass</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Writing your own add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons are Python classes that include the following method:"
+    },
+    {
+      "type": "text",
+      "content": "This method is called during the initialization of the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "settings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "They can also have the following method:"
+    },
+    {
+      "type": "text",
+      "content": "If present, this class method is called to create an add-on instance\nfrom a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "crawler"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">Crawler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The settings set by the add-on should use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">addon</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-func docutils literal notranslate\"><span class=\"pre\">scrapy.settings.BaseSettings.set()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">\"DNSCACHE_ENABLED\"</span><span class=\"p\">,</span> <span class=\"kc\">True</span><span class=\"p\">,</span> <span class=\"s2\">\"addon\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This allows users to override these settings in the project or spider\nconfiguration. This is not possible with settings that are mutable objects,\nsuch as the dict that is a value of "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ITEM_PIPELINES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">ITEM_PIPELINES</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"MYADDON_ENABLE_PIPELINE\"</span><span class=\"p\">):</span>\n            <span class=\"n\">settings</span><span class=\"p\">[</span><span class=\"s2\">\"ITEM_PIPELINES\"</span><span class=\"p\">][</span><span class=\"s2\">\"path.to.mypipeline\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "If the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-exc docutils literal notranslate\"><span class=\"pre\">scrapy.exceptions.NotConfigured</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Fallbacks"
+    },
+    {
+      "type": "text",
+      "content": "Some components provided by add-ons need to fall back to “default”\nimplementations, e.g. a custom download handler needs to send the request that\nit doesn’t handle via the default download handler, or a stats collector that\nincludes some additional processing but otherwise uses the default stats\ncollector. And it’s possible that a project needs to use several custom\ncomponents of the same type, e.g. two custom download handlers that support\ndifferent kinds of custom requests and still need to use the default download\nhandler for other requests. To make such use cases easier to configure, we\nrecommend that such custom components should be written in the following way:"
+    },
+    {
+      "type": "text",
+      "content": "The custom component (e.g. "
+    },
+    {
+      "type": "text",
+      "content": "The custom component (e.g. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MyDownloadHandler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.core.downloader.handlers.http.HTTPDownloadHandler</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MY_FALLBACK_DOWNLOAD_HANDLER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The add-ons that include these components should read the current value of\nthe default setting (e.g. "
+    },
+    {
+      "type": "text",
+      "content": "The add-ons that include these components should read the current value of\nthe default setting (e.g. "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">DOWNLOAD_HANDLERS</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">update_settings()</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MY_FALLBACK_DOWNLOAD_HANDLER</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">MyDownloadHandler</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This way, if there are several add-ons that want to modify the same setting,\nall of them will fallback to the component from the previous one and then to\nthe Scrapy default. The order of that depends on the priority order in the\n"
+    },
+    {
+      "type": "text",
+      "content": "This way, if there are several add-ons that want to modify the same setting,\nall of them will fallback to the component from the previous one and then to\nthe Scrapy default. The order of that depends on the priority order in the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">ADDONS</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Add-on examples"
+    },
+    {
+      "type": "text",
+      "content": "Set some basic configuration:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"n\">settings</span><span class=\"p\">[</span><span class=\"s2\">\"ITEM_PIPELINES\"</span><span class=\"p\">][</span><span class=\"s2\">\"path.to.mypipeline\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n        <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">\"DNSCACHE_ENABLED\"</span><span class=\"p\">,</span> <span class=\"kc\">True</span><span class=\"p\">,</span> <span class=\"s2\">\"addon\"</span><span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Check dependencies:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"kn\">import</span> <span class=\"nn\">boto</span>\n        <span class=\"k\">except</span> <span class=\"ne\">ImportError</span><span class=\"p\">:</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span><span class=\"p\">(</span><span class=\"s2\">\"MyAddon requires the boto library\"</span><span class=\"p\">)</span>\n        <span class=\"o\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Access the crawler instance:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"fm\">__init__</span><span class=\"p\">()</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">crawler</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span> <span class=\"o\">...</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Use a fallback component:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">scrapy.core.downloader.handlers.http</span> <span class=\"kn\">import</span> <span class=\"n\">HTTPDownloadHandler</span>\n\n\n<span class=\"n\">FALLBACK_SETTING</span> <span class=\"o\">=</span> <span class=\"s2\">\"MY_FALLBACK_DOWNLOAD_HANDLER\"</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MyHandler</span><span class=\"p\">:</span>\n    <span class=\"n\">lazy</span> <span class=\"o\">=</span> <span class=\"kc\">False</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"n\">dhcls</span> <span class=\"o\">=</span> <span class=\"n\">load_object</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">FALLBACK_SETTING</span><span class=\"p\">))</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_fallback_handler</span> <span class=\"o\">=</span> <span class=\"n\">create_instance</span><span class=\"p\">(</span>\n            <span class=\"n\">dhcls</span><span class=\"p\">,</span>\n            <span class=\"n\">settings</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">,</span>\n            <span class=\"n\">crawler</span><span class=\"o\">=</span><span class=\"n\">crawler</span><span class=\"p\">,</span>\n        <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">download_request</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"my_params\"</span><span class=\"p\">):</span>\n            <span class=\"c1\"># handle the request</span>\n            <span class=\"o\">...</span>\n        <span class=\"k\">else</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_fallback_handler</span><span class=\"o\">.</span><span class=\"n\">download_request</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">MyAddon</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"nf\">update_settings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">FALLBACK_SETTING</span><span class=\"p\">):</span>\n            <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">set</span><span class=\"p\">(</span>\n                <span class=\"n\">FALLBACK_SETTING</span><span class=\"p\">,</span>\n                <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getwithbase</span><span class=\"p\">(</span><span class=\"s2\">\"DOWNLOAD_HANDLERS\"</span><span class=\"p\">)[</span><span class=\"s2\">\"https\"</span><span class=\"p\">],</span>\n                <span class=\"s2\">\"addon\"</span><span class=\"p\">,</span>\n            <span class=\"p\">)</span>\n        <span class=\"n\">settings</span><span class=\"p\">[</span><span class=\"s2\">\"DOWNLOAD_HANDLERS\"</span><span class=\"p\">][</span><span class=\"s2\">\"https\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">MyHandler</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

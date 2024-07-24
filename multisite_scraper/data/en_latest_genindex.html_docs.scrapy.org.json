@@ -1,0 +1,5538 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/genindex.html",
+  "title": "Index — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Index"
+    },
+    {
+      "type": "text",
+      "content": "\n              "
+    },
+    {
+      "type": "text",
+      "content": "Index"
+    },
+    {
+      "type": "text",
+      "content": "_"
+    },
+    {
+      "type": "text",
+      "content": "__bool__() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "__init__()"
+    },
+    {
+      "type": "text",
+      "content": "__len__() (scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "A"
+    },
+    {
+      "type": "text",
+      "content": "accepts() (scrapy.extensions.feedexport.ItemFilter method)"
+    },
+    {
+      "type": "text",
+      "content": "adapt_response() (scrapy.spiders.XMLFeedSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "add_css() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "add_jmes() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "add_value() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "add_xpath() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    ADDONS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "adjust_request_args() (scrapy.contracts.Contract method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    AJAXCRAWL_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "AjaxCrawlMiddleware (class in scrapy.downloadermiddlewares.ajaxcrawl)"
+    },
+    {
+      "type": "text",
+      "content": "allowed() (scrapy.robotstxt.RobotParser method)"
+    },
+    {
+      "type": "text",
+      "content": "allowed_domains (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    ASYNCIO_EVENT_LOOP\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "attrib (scrapy.selector.Selector attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList attribute)"
+    },
+    {
+      "type": "text",
+      "content": "attributes (scrapy.http.JsonRequest attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.TextResponse attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    AUTOTHROTTLE_DEBUG\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AUTOTHROTTLE_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AUTOTHROTTLE_MAX_DELAY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AUTOTHROTTLE_START_DELAY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AUTOTHROTTLE_TARGET_CONCURRENCY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_ACCESS_KEY_ID\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_ENDPOINT_URL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_REGION_NAME\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_SECRET_ACCESS_KEY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_SESSION_TOKEN\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_USE_SSL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    AWS_VERIFY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "B"
+    },
+    {
+      "type": "text",
+      "content": "BaseItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "BaseScheduler (class in scrapy.core.scheduler)"
+    },
+    {
+      "type": "text",
+      "content": "BaseSettings (class in scrapy.settings)"
+    },
+    {
+      "type": "text",
+      "content": "\n    bench\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "\n    bindaddress\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "body (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    BOT_NAME\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    bytes_received\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "bytes_received() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "Bz2Plugin (class in scrapy.extensions.postprocessing)"
+    },
+    {
+      "type": "text",
+      "content": "C"
+    },
+    {
+      "type": "text",
+      "content": "CacheStorage (class in scrapy.extensions.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "CallbackKeywordArgumentsContract (class in scrapy.contracts.default)"
+    },
+    {
+      "type": "text",
+      "content": "cb_kwargs (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "certificate (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    check\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "clear_stats() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "close()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.BaseScheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "close_spider()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.extensions.httpcache.CacheStorage method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "closed() (scrapy.Spider method)"
+    },
+    {
+      "type": "text",
+      "content": "CloseSpider"
+    },
+    {
+      "type": "text",
+      "content": "(class in scrapy.extensions.closespider)"
+    },
+    {
+      "type": "text",
+      "content": "\n    CLOSESPIDER_ERRORCOUNT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CLOSESPIDER_ITEMCOUNT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CLOSESPIDER_PAGECOUNT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CLOSESPIDER_TIMEOUT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CLOSESPIDER_TIMEOUT_NO_ITEM\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    command\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "bench"
+    },
+    {
+      "type": "text",
+      "content": "check"
+    },
+    {
+      "type": "text",
+      "content": "crawl"
+    },
+    {
+      "type": "text",
+      "content": "edit"
+    },
+    {
+      "type": "text",
+      "content": "fetch"
+    },
+    {
+      "type": "text",
+      "content": "genspider"
+    },
+    {
+      "type": "text",
+      "content": "list"
+    },
+    {
+      "type": "text",
+      "content": "parse"
+    },
+    {
+      "type": "text",
+      "content": "runspider"
+    },
+    {
+      "type": "text",
+      "content": "settings"
+    },
+    {
+      "type": "text",
+      "content": "shell"
+    },
+    {
+      "type": "text",
+      "content": "startproject"
+    },
+    {
+      "type": "text",
+      "content": "version"
+    },
+    {
+      "type": "text",
+      "content": "view"
+    },
+    {
+      "type": "text",
+      "content": "\n    COMMANDS_MODULE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    COMPRESSION_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CONCURRENT_ITEMS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CONCURRENT_REQUESTS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CONCURRENT_REQUESTS_PER_DOMAIN\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    CONCURRENT_REQUESTS_PER_IP\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "configure_logging() (in module scrapy.utils.log)"
+    },
+    {
+      "type": "text",
+      "content": "connect() (scrapy.signalmanager.SignalManager method)"
+    },
+    {
+      "type": "text",
+      "content": "context (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "Contract (class in scrapy.contracts)"
+    },
+    {
+      "type": "text",
+      "content": "ContractFail (class in scrapy.exceptions)"
+    },
+    {
+      "type": "text",
+      "content": "\n    cookiejar\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    COOKIES_DEBUG\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    COOKIES_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "CookiesMiddleware (class in scrapy.downloadermiddlewares.cookies)"
+    },
+    {
+      "type": "text",
+      "content": "copy() (scrapy.http.Request method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.scrapy.Item.Item method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "copy_to_dict() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "CoreStats (class in scrapy.extensions.corestats)"
+    },
+    {
+      "type": "text",
+      "content": "\n    crawl\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "crawl() (scrapy.crawler.Crawler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerProcess method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerRunner method)"
+    },
+    {
+      "type": "text",
+      "content": "crawled() (scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "Crawler (class in scrapy.crawler)"
+    },
+    {
+      "type": "text",
+      "content": "crawler (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerProcess (class in scrapy.crawler)"
+    },
+    {
+      "type": "text",
+      "content": "CrawlerRunner (class in scrapy.crawler)"
+    },
+    {
+      "type": "text",
+      "content": "crawlers (scrapy.crawler.CrawlerProcess property)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerRunner property)"
+    },
+    {
+      "type": "text",
+      "content": "CrawlSpider (class in scrapy.spiders)"
+    },
+    {
+      "type": "text",
+      "content": "create_crawler() (scrapy.crawler.CrawlerProcess method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerRunner method)"
+    },
+    {
+      "type": "text",
+      "content": "css() (scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "CSVFeedSpider (class in scrapy.spiders)"
+    },
+    {
+      "type": "text",
+      "content": "CsvItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "csviter() (in module scrapy.utils.iterators)"
+    },
+    {
+      "type": "text",
+      "content": "curl_to_request_kwargs() (in module scrapy.utils.curl)"
+    },
+    {
+      "type": "text",
+      "content": "custom_settings (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "D"
+    },
+    {
+      "type": "text",
+      "content": "DbmCacheStorage (class in scrapy.extensions.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "Debugger (class in scrapy.extensions.periodic_log)"
+    },
+    {
+      "type": "text",
+      "content": "deepcopy() (scrapy.scrapy.Item.Item method)"
+    },
+    {
+      "type": "text",
+      "content": "default_input_processor (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DEFAULT_ITEM_CLASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "default_item_class (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "default_output_processor (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DEFAULT_REQUEST_HEADERS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "default_selector_class (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "DefaultHeadersMiddleware (class in scrapy.downloadermiddlewares.defaultheaders)"
+    },
+    {
+      "type": "text",
+      "content": "DefaultReferrerPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "deferred_to_future() (in module scrapy.utils.defer)"
+    },
+    {
+      "type": "text",
+      "content": "delimiter (scrapy.spiders.CSVFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DEPTH_LIMIT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DEPTH_PRIORITY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DEPTH_STATS_VERBOSE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "DepthMiddleware (class in scrapy.spidermiddlewares.depth)"
+    },
+    {
+      "type": "text",
+      "content": "disconnect() (scrapy.signalmanager.SignalManager method)"
+    },
+    {
+      "type": "text",
+      "content": "disconnect_all() (scrapy.signalmanager.SignalManager method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DNS_RESOLVER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DNS_TIMEOUT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DNSCACHE_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DNSCACHE_SIZE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    dont_cache\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    dont_merge_cookies\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    dont_obey_robotstxt\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    dont_redirect\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    dont_retry\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "DontCloseSpider"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_DELAY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "download_error() (scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_FAIL_ON_DATALOSS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    download_fail_on_dataloss\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_HANDLERS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_HANDLERS_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    download_latency\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_MAXSIZE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    download_maxsize\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_SLOTS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_TIMEOUT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    download_timeout\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOAD_WARNSIZE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    download_warnsize\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_CLIENT_TLS_CIPHERS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_CLIENT_TLS_METHOD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_CLIENTCONTEXTFACTORY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_HTTPCLIENTFACTORY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_MIDDLEWARES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_MIDDLEWARES_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DOWNLOADER_STATS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderMiddleware (class in scrapy.downloadermiddlewares)"
+    },
+    {
+      "type": "text",
+      "content": "DownloaderStats (class in scrapy.downloadermiddlewares.stats)"
+    },
+    {
+      "type": "text",
+      "content": "DownloadTimeoutMiddleware (class in scrapy.downloadermiddlewares.downloadtimeout)"
+    },
+    {
+      "type": "text",
+      "content": "DropItem"
+    },
+    {
+      "type": "text",
+      "content": "dropped() (scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "DummyPolicy (class in scrapy.extensions.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "DummyStatsCollector (class in scrapy.statscollectors)"
+    },
+    {
+      "type": "text",
+      "content": "\n    DUPEFILTER_CLASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    DUPEFILTER_DEBUG\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "E"
+    },
+    {
+      "type": "text",
+      "content": "\n    edit\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "\n    EDITOR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "encoding (scrapy.exporters.BaseItemExporter attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.TextResponse attribute)"
+    },
+    {
+      "type": "text",
+      "content": "engine (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    engine_started\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "engine_started() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    engine_stopped\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "engine_stopped() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "enqueue_request() (scrapy.core.scheduler.BaseScheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "export_empty_fields (scrapy.exporters.BaseItemExporter attribute)"
+    },
+    {
+      "type": "text",
+      "content": "export_item() (scrapy.exporters.BaseItemExporter method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    EXTENSIONS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "extensions (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    EXTENSIONS_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "extract_links() (scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor method)"
+    },
+    {
+      "type": "text",
+      "content": "F"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORT_BATCH_ITEM_COUNT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORT_ENCODING\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORT_FIELDS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORT_INDENT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    feed_exporter_closed\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "feed_exporter_closed() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORTERS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_EXPORTERS_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    feed_slot_closed\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "feed_slot_closed() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORAGE_FTP_ACTIVE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORAGE_GCS_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORAGE_S3_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORAGES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORAGES_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_STORE_EMPTY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_TEMPDIR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEED_URI_PARAMS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FEEDS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    fetch\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "fields (scrapy.item.scrapy.Item attribute)"
+    },
+    {
+      "type": "text",
+      "content": "fields_to_export (scrapy.exporters.BaseItemExporter attribute)"
+    },
+    {
+      "type": "text",
+      "content": "file_path() (scrapy.pipelines.files.FilesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.pipelines.images.ImagesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_EXPIRES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_RESULT_FIELD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_STORE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_STORE_GCS_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_STORE_S3_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FILES_URLS_FIELD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "FilesPipeline (class in scrapy.pipelines.files)"
+    },
+    {
+      "type": "text",
+      "content": "FilesystemCacheStorage (class in scrapy.extensions.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "find_by_request() (scrapy.spiderloader.SpiderLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "fingerprint()"
+    },
+    {
+      "type": "text",
+      "content": "(in module scrapy.utils.request)"
+    },
+    {
+      "type": "text",
+      "content": "finish_exporting() (scrapy.exporters.BaseItemExporter method)"
+    },
+    {
+      "type": "text",
+      "content": "flags (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "follow() (scrapy.http.Response method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "follow_all() (scrapy.http.Response method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "freeze() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "from_crawler()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.BaseScheduler class method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler class method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.downloadermiddlewares.DownloaderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.robotstxt.RobotParser class method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.Spider method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "from_curl() (scrapy.http.Request class method)"
+    },
+    {
+      "type": "text",
+      "content": "from_response() (scrapy.http.scrapy.FormRequest.FormRequest class method)"
+    },
+    {
+      "type": "text",
+      "content": "from_settings()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.mail.MailSender class method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.spiderloader.SpiderLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "frozencopy() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    FTP_PASSIVE_MODE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    FTP_PASSWORD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    ftp_password\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    FTP_USER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    ftp_user\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "G"
+    },
+    {
+      "type": "text",
+      "content": "\n    GCS_PROJECT_ID\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    genspider\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "get() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "get_collected_values() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "get_css() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "get_jmes() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "get_media_requests() (scrapy.pipelines.files.FilesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.pipelines.images.ImagesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "get_oldest() (in module scrapy.utils.trackref)"
+    },
+    {
+      "type": "text",
+      "content": "get_output_value() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "get_retry_request() (in module scrapy.downloadermiddlewares.retry)"
+    },
+    {
+      "type": "text",
+      "content": "get_settings_priority() (in module scrapy.settings)"
+    },
+    {
+      "type": "text",
+      "content": "get_stats() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "get_value() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "get_xpath() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "getall() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "getbool() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getdict() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getdictorlist() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getfloat() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getint() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getlist() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getpriority() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "getwithbase() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "GzipPlugin (class in scrapy.extensions.postprocessing)"
+    },
+    {
+      "type": "text",
+      "content": "H"
+    },
+    {
+      "type": "text",
+      "content": "\n    handle_httpstatus_all\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    handle_httpstatus_list\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "has_pending_requests() (scrapy.core.scheduler.BaseScheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "headers (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.spiders.CSVFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    headers_received\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "headers_received() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "HtmlResponse (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "HttpAuthMiddleware (class in scrapy.downloadermiddlewares.httpauth)"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_ALWAYS_STORE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_DBM_MODULE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_DIR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_EXPIRATION_SECS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_GZIP\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_IGNORE_HTTP_CODES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_IGNORE_MISSING\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_IGNORE_SCHEMES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_POLICY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPCACHE_STORAGE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "HttpCacheMiddleware (class in scrapy.downloadermiddlewares.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "HttpCompressionMiddleware (class in scrapy.downloadermiddlewares.httpcompression)"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPERROR_ALLOW_ALL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPERROR_ALLOWED_CODES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "HttpErrorMiddleware (class in scrapy.spidermiddlewares.httperror)"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPPROXY_AUTH_ENCODING\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    HTTPPROXY_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "HttpProxyMiddleware (class in scrapy.downloadermiddlewares.httpproxy)"
+    },
+    {
+      "type": "text",
+      "content": "I"
+    },
+    {
+      "type": "text",
+      "content": "IgnoreRequest"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_EXPIRES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_MIN_HEIGHT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_MIN_WIDTH\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_RESULT_FIELD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_STORE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_STORE_GCS_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_STORE_S3_ACL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_THUMBS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    IMAGES_URLS_FIELD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "ImagesPipeline (class in scrapy.pipelines.images)"
+    },
+    {
+      "type": "text",
+      "content": "inc_value() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "indent (scrapy.exporters.BaseItemExporter attribute)"
+    },
+    {
+      "type": "text",
+      "content": "install_reactor() (in module scrapy.utils.reactor)"
+    },
+    {
+      "type": "text",
+      "content": "ip_address (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "is_item() (in module itemadapter)"
+    },
+    {
+      "type": "text",
+      "content": "item (scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "item_completed() (scrapy.pipelines.files.FilesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.pipelines.images.ImagesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    item_dropped\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "item_dropped() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    item_error\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "item_error() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    ITEM_PIPELINES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    ITEM_PIPELINES_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    item_scraped\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "item_scraped() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "ItemAdapter (class in itemadapter)"
+    },
+    {
+      "type": "text",
+      "content": "ItemFilter (class in scrapy.extensions.feedexport)"
+    },
+    {
+      "type": "text",
+      "content": "ItemLoader (class in scrapy.loader)"
+    },
+    {
+      "type": "text",
+      "content": "ItemMeta (class in scrapy.item)"
+    },
+    {
+      "type": "text",
+      "content": "iter_all() (in module scrapy.utils.trackref)"
+    },
+    {
+      "type": "text",
+      "content": "iterator (scrapy.spiders.XMLFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "itertag (scrapy.spiders.XMLFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "J"
+    },
+    {
+      "type": "text",
+      "content": "jmespath() (scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    JOBDIR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "join() (scrapy.crawler.CrawlerProcess method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerRunner method)"
+    },
+    {
+      "type": "text",
+      "content": "json() (scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "JsonItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "JsonLinesItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "JsonRequest (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "L"
+    },
+    {
+      "type": "text",
+      "content": "Link (class in scrapy.link)"
+    },
+    {
+      "type": "text",
+      "content": "\n    list\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "list() (scrapy.spiderloader.SpiderLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "load() (scrapy.spiderloader.SpiderLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "load_item() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "log() (scrapy.Spider method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_DATEFORMAT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_ENCODING\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_FILE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_FILE_APPEND\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_FORMAT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_FORMATTER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_LEVEL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_SHORT_NAMES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOG_STDOUT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "LogFormatter (class in scrapy.logformatter)"
+    },
+    {
+      "type": "text",
+      "content": "logger (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "LogStats (class in scrapy.extensions.logstats)"
+    },
+    {
+      "type": "text",
+      "content": "\n    LOGSTATS_INTERVAL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "LxmlLinkExtractor (class in scrapy.linkextractors.lxmlhtml)"
+    },
+    {
+      "type": "text",
+      "content": "LZMAPlugin (class in scrapy.extensions.postprocessing)"
+    },
+    {
+      "type": "text",
+      "content": "M"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_FROM\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_HOST\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_PASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_PORT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_SSL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_TLS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MAIL_USER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "MailSender (class in scrapy.mail)"
+    },
+    {
+      "type": "text",
+      "content": "MarshalItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "\n    max_retry_times\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "max_value() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "maxpriority() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "maybe_deferred_to_future() (in module scrapy.utils.defer)"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEDIA_ALLOW_REDIRECTS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMDEBUG_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMDEBUG_NOTIFY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "MemoryDebugger (class in scrapy.extensions.memdebug)"
+    },
+    {
+      "type": "text",
+      "content": "MemoryStatsCollector (class in scrapy.statscollectors)"
+    },
+    {
+      "type": "text",
+      "content": "MemoryUsage (class in scrapy.extensions.memusage)"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMUSAGE_CHECK_INTERVAL_SECONDS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMUSAGE_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMUSAGE_LIMIT_MB\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMUSAGE_NOTIFY_MAIL\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    MEMUSAGE_WARNING_MB\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "meta (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    METAREFRESH_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    METAREFRESH_IGNORE_TAGS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    METAREFRESH_MAXDELAY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "MetaRefreshMiddleware (class in scrapy.downloadermiddlewares.redirect)"
+    },
+    {
+      "type": "text",
+      "content": "method (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "min_value() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    module\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "scrapy.contracts"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.contracts.default"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.core.scheduler"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.crawler"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.ajaxcrawl"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.cookies"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.defaultheaders"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.downloadtimeout"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpauth"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpcache"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpcompression"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.httpproxy"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.offsite"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.redirect"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.retry"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.robotstxt"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.stats"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.useragent"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.exceptions"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.exporters"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.closespider"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.corestats"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.debug"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.httpcache"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.logstats"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.memdebug"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.memusage"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.periodic_log"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.statsmailer"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.telnet"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.http"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.item"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.link"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.linkextractors"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.linkextractors.lxmlhtml"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.loader"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.mail"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.pipelines.files"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.pipelines.images"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.robotstxt"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.selector"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.settings"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.signalmanager"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.signals"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spiderloader"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.depth"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.httperror"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.referer"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.urllength"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.statscollectors"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.utils.log"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.utils.trackref"
+    },
+    {
+      "type": "text",
+      "content": "N"
+    },
+    {
+      "type": "text",
+      "content": "name (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "namespaces (scrapy.spiders.XMLFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "nested_css() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "nested_xpath() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    NEWSPIDER_MODULE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "next_request() (scrapy.core.scheduler.BaseScheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "NO_CALLBACK() (in module scrapy.http.request)"
+    },
+    {
+      "type": "text",
+      "content": "NoReferrerPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "NoReferrerWhenDowngradePolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "NotConfigured"
+    },
+    {
+      "type": "text",
+      "content": "NotSupported"
+    },
+    {
+      "type": "text",
+      "content": "O"
+    },
+    {
+      "type": "text",
+      "content": "object_ref (class in scrapy.utils.trackref)"
+    },
+    {
+      "type": "text",
+      "content": "OffsiteMiddleware (class in scrapy.downloadermiddlewares.offsite)"
+    },
+    {
+      "type": "text",
+      "content": "open() (scrapy.core.scheduler.BaseScheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.core.scheduler.Scheduler method)"
+    },
+    {
+      "type": "text",
+      "content": "open_in_browser() (in module scrapy.utils.response)"
+    },
+    {
+      "type": "text",
+      "content": "open_spider()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.extensions.httpcache.CacheStorage method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "OriginPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "OriginWhenCrossOriginPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "P"
+    },
+    {
+      "type": "text",
+      "content": "\n    parse\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "parse() (scrapy.Spider method)"
+    },
+    {
+      "type": "text",
+      "content": "parse_node() (scrapy.spiders.XMLFeedSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "parse_row() (scrapy.spiders.CSVFeedSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "parse_start_url() (scrapy.spiders.CrawlSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    PERIODIC_LOG_DELTA\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    PERIODIC_LOG_STATS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    PERIODIC_LOG_TIMING_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "PeriodicLog (class in scrapy.extensions.periodic_log)"
+    },
+    {
+      "type": "text",
+      "content": "PickleItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "pop() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "post_process() (scrapy.contracts.Contract method)"
+    },
+    {
+      "type": "text",
+      "content": "PprintItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "pre_process() (scrapy.contracts.Contract method)"
+    },
+    {
+      "type": "text",
+      "content": "print_live_refs() (in module scrapy.utils.trackref)"
+    },
+    {
+      "type": "text",
+      "content": "process_exception() (scrapy.downloadermiddlewares.DownloaderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_item()"
+    },
+    {
+      "type": "text",
+      "content": "process_request() (scrapy.downloadermiddlewares.DownloaderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_response() (scrapy.downloadermiddlewares.DownloaderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_results() (scrapy.spiders.XMLFeedSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "process_spider_exception() (scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_spider_input() (scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_spider_output() (scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_spider_output_async() (scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "process_start_requests() (scrapy.spidermiddlewares.SpiderMiddleware method)"
+    },
+    {
+      "type": "text",
+      "content": "protocol (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    proxy\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    Python Enhancement Proposals\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "PEP 8"
+    },
+    {
+      "type": "text",
+      "content": "PythonItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "Q"
+    },
+    {
+      "type": "text",
+      "content": "quotechar (scrapy.spiders.CSVFeedSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "R"
+    },
+    {
+      "type": "text",
+      "content": "\n    RANDOMIZE_DOWNLOAD_DELAY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "re() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "re_first() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    REACTOR_THREADPOOL_MAXSIZE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    REDIRECT_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    REDIRECT_MAX_TIMES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    REDIRECT_PRIORITY_ADJUST\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    redirect_reasons\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "\n    redirect_urls\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "RedirectMiddleware (class in scrapy.downloadermiddlewares.redirect)"
+    },
+    {
+      "type": "text",
+      "content": "\n    REFERER_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "RefererMiddleware (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "\n    REFERRER_POLICY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    referrer_policy\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "reqmeta"
+    },
+    {
+      "type": "text",
+      "content": "register_namespace() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "remove_namespaces() (scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "replace() (scrapy.http.Request method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response method)"
+    },
+    {
+      "type": "text",
+      "content": "replace_css() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "replace_jmes() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "replace_value() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "replace_xpath() (scrapy.loader.ItemLoader method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    reqmeta\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "bindaddress"
+    },
+    {
+      "type": "text",
+      "content": "cookiejar"
+    },
+    {
+      "type": "text",
+      "content": "dont_cache"
+    },
+    {
+      "type": "text",
+      "content": "dont_merge_cookies"
+    },
+    {
+      "type": "text",
+      "content": "dont_obey_robotstxt"
+    },
+    {
+      "type": "text",
+      "content": "dont_redirect"
+    },
+    {
+      "type": "text",
+      "content": "dont_retry"
+    },
+    {
+      "type": "text",
+      "content": "download_fail_on_dataloss"
+    },
+    {
+      "type": "text",
+      "content": "download_latency"
+    },
+    {
+      "type": "text",
+      "content": "download_maxsize"
+    },
+    {
+      "type": "text",
+      "content": "download_timeout"
+    },
+    {
+      "type": "text",
+      "content": "download_warnsize"
+    },
+    {
+      "type": "text",
+      "content": "ftp_password"
+    },
+    {
+      "type": "text",
+      "content": "ftp_user"
+    },
+    {
+      "type": "text",
+      "content": "handle_httpstatus_all"
+    },
+    {
+      "type": "text",
+      "content": "handle_httpstatus_list"
+    },
+    {
+      "type": "text",
+      "content": "max_retry_times"
+    },
+    {
+      "type": "text",
+      "content": "proxy"
+    },
+    {
+      "type": "text",
+      "content": "redirect_reasons"
+    },
+    {
+      "type": "text",
+      "content": "redirect_urls"
+    },
+    {
+      "type": "text",
+      "content": "referrer_policy"
+    },
+    {
+      "type": "text",
+      "content": "Request (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "request (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    request_dropped\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "request_dropped() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "request_fingerprinter (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    REQUEST_FINGERPRINTER_CLASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    REQUEST_FINGERPRINTER_IMPLEMENTATION\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "request_from_dict() (in module scrapy.utils.request)"
+    },
+    {
+      "type": "text",
+      "content": "\n    request_left_downloader\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "request_left_downloader() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    request_reached_downloader\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "request_reached_downloader() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    request_scheduled\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "request_scheduled() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "RequestFingerprinter (class in scrapy.utils.request)"
+    },
+    {
+      "type": "text",
+      "content": "Response (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "\n    response_downloaded\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "response_downloaded() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    response_received\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "response_received() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "retrieve_response() (scrapy.extensions.httpcache.CacheStorage method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    RETRY_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    RETRY_EXCEPTIONS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    RETRY_HTTP_CODES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    RETRY_PRIORITY_ADJUST\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    RETRY_TIMES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "RetryMiddleware (class in scrapy.downloadermiddlewares.retry)"
+    },
+    {
+      "type": "text",
+      "content": "ReturnsContract (class in scrapy.contracts.default)"
+    },
+    {
+      "type": "text",
+      "content": "RFC2616Policy (class in scrapy.extensions.httpcache)"
+    },
+    {
+      "type": "text",
+      "content": "RobotParser (class in scrapy.robotstxt)"
+    },
+    {
+      "type": "text",
+      "content": "\n    ROBOTSTXT_OBEY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    ROBOTSTXT_PARSER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    ROBOTSTXT_USER_AGENT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "RobotsTxtMiddleware (class in scrapy.downloadermiddlewares.robotstxt)"
+    },
+    {
+      "type": "text",
+      "content": "Rule (class in scrapy.spiders)"
+    },
+    {
+      "type": "text",
+      "content": "rules (scrapy.spiders.CrawlSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    runspider\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "S"
+    },
+    {
+      "type": "text",
+      "content": "SameOriginPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCHEDULER\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler (class in scrapy.core.scheduler)"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCHEDULER_DEBUG\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCHEDULER_DISK_QUEUE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCHEDULER_MEMORY_QUEUE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCHEDULER_PRIORITY_QUEUE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "scraped() (scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    SCRAPER_SLOT_MAX_ACTIVE_SIZE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "ScrapesContract (class in scrapy.contracts.default)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.contracts\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.contracts.default\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.core.scheduler\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.crawler\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.ajaxcrawl\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.cookies\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.defaultheaders\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.downloadtimeout\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.httpauth\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.httpcache\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.httpcompression\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.httpproxy\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.offsite\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.redirect\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.retry\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.robotstxt\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.stats\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.downloadermiddlewares.useragent\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.exceptions\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.exporters\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.closespider\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.corestats\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.debug\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.httpcache\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.logstats\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.memdebug\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.memusage\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.periodic_log\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.statsmailer\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.extensions.telnet\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.Field (class in scrapy.item)"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.FormRequest (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.http\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.http.FormRequest (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.http.request.form.FormRequest (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.item\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.Item (class in scrapy.item)"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.item.Field (class in scrapy.item)"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.item.Item (class in scrapy.item)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.link\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.linkextractors\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.linkextractors.lxmlhtml\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.loader\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.mail\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.pipelines.files\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.pipelines.images\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.robotstxt\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.selector\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.settings\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.signalmanager\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.signals\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.Spider (built-in class)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spiderloader\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spidermiddlewares\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spidermiddlewares.depth\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spidermiddlewares.httperror\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spidermiddlewares.referer\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.spidermiddlewares.urllength\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spiders.Spider (built-in class)"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.statscollectors\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.utils.log\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "\n    scrapy.utils.trackref\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "module"
+    },
+    {
+      "type": "text",
+      "content": "Selector (class in scrapy.selector)"
+    },
+    {
+      "type": "text",
+      "content": "selector (scrapy.http.TextResponse attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.loader.ItemLoader attribute)"
+    },
+    {
+      "type": "text",
+      "content": "SelectorList (class in scrapy.selector)"
+    },
+    {
+      "type": "text",
+      "content": "send() (scrapy.mail.MailSender method)"
+    },
+    {
+      "type": "text",
+      "content": "send_catch_log() (scrapy.signalmanager.SignalManager method)"
+    },
+    {
+      "type": "text",
+      "content": "send_catch_log_deferred() (scrapy.signalmanager.SignalManager method)"
+    },
+    {
+      "type": "text",
+      "content": "serialize_field() (scrapy.exporters.BaseItemExporter method)"
+    },
+    {
+      "type": "text",
+      "content": "set() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "set_stats() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "set_value() (scrapy.statscollectors.StatsCollector method)"
+    },
+    {
+      "type": "text",
+      "content": "set_xpathfunc() (in module parsel.xpathfuncs)"
+    },
+    {
+      "type": "text",
+      "content": "setdefault() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "setmodule() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    setting\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "ADDONS"
+    },
+    {
+      "type": "text",
+      "content": "AJAXCRAWL_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "ASYNCIO_EVENT_LOOP"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_MAX_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_START_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "AUTOTHROTTLE_TARGET_CONCURRENCY"
+    },
+    {
+      "type": "text",
+      "content": "AWS_ACCESS_KEY_ID"
+    },
+    {
+      "type": "text",
+      "content": "AWS_ENDPOINT_URL"
+    },
+    {
+      "type": "text",
+      "content": "AWS_REGION_NAME"
+    },
+    {
+      "type": "text",
+      "content": "AWS_SECRET_ACCESS_KEY"
+    },
+    {
+      "type": "text",
+      "content": "AWS_SESSION_TOKEN"
+    },
+    {
+      "type": "text",
+      "content": "AWS_USE_SSL"
+    },
+    {
+      "type": "text",
+      "content": "AWS_VERIFY"
+    },
+    {
+      "type": "text",
+      "content": "BOT_NAME"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ERRORCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_ITEMCOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_PAGECOUNT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT"
+    },
+    {
+      "type": "text",
+      "content": "CLOSESPIDER_TIMEOUT_NO_ITEM"
+    },
+    {
+      "type": "text",
+      "content": "COMMANDS_MODULE"
+    },
+    {
+      "type": "text",
+      "content": "COMPRESSION_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_ITEMS"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_DOMAIN"
+    },
+    {
+      "type": "text",
+      "content": "CONCURRENT_REQUESTS_PER_IP"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "COOKIES_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "DEFAULT_ITEM_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "DEFAULT_REQUEST_HEADERS"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_LIMIT"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_PRIORITY"
+    },
+    {
+      "type": "text",
+      "content": "DEPTH_STATS_VERBOSE"
+    },
+    {
+      "type": "text",
+      "content": "DNS_RESOLVER"
+    },
+    {
+      "type": "text",
+      "content": "DNS_TIMEOUT"
+    },
+    {
+      "type": "text",
+      "content": "DNSCACHE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "DNSCACHE_SIZE"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_FAIL_ON_DATALOSS"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_HANDLERS"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_HANDLERS_BASE"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_MAXSIZE"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_SLOTS"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_TIMEOUT"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOAD_WARNSIZE"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENT_TLS_CIPHERS"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENT_TLS_METHOD"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_CLIENTCONTEXTFACTORY"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_HTTPCLIENTFACTORY"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_MIDDLEWARES"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_MIDDLEWARES_BASE"
+    },
+    {
+      "type": "text",
+      "content": "DOWNLOADER_STATS"
+    },
+    {
+      "type": "text",
+      "content": "DUPEFILTER_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "DUPEFILTER_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "EDITOR"
+    },
+    {
+      "type": "text",
+      "content": "EXTENSIONS"
+    },
+    {
+      "type": "text",
+      "content": "EXTENSIONS_BASE"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORT_BATCH_ITEM_COUNT"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORT_ENCODING"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORT_FIELDS"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORT_INDENT"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORTERS"
+    },
+    {
+      "type": "text",
+      "content": "FEED_EXPORTERS_BASE"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGE_FTP_ACTIVE"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGE_GCS_ACL"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGE_S3_ACL"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGES"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORAGES_BASE"
+    },
+    {
+      "type": "text",
+      "content": "FEED_STORE_EMPTY"
+    },
+    {
+      "type": "text",
+      "content": "FEED_TEMPDIR"
+    },
+    {
+      "type": "text",
+      "content": "FEED_URI_PARAMS"
+    },
+    {
+      "type": "text",
+      "content": "FEEDS"
+    },
+    {
+      "type": "text",
+      "content": "FILES_EXPIRES"
+    },
+    {
+      "type": "text",
+      "content": "FILES_RESULT_FIELD"
+    },
+    {
+      "type": "text",
+      "content": "FILES_STORE"
+    },
+    {
+      "type": "text",
+      "content": "FILES_STORE_GCS_ACL"
+    },
+    {
+      "type": "text",
+      "content": "FILES_STORE_S3_ACL"
+    },
+    {
+      "type": "text",
+      "content": "FILES_URLS_FIELD"
+    },
+    {
+      "type": "text",
+      "content": "FTP_PASSIVE_MODE"
+    },
+    {
+      "type": "text",
+      "content": "FTP_PASSWORD"
+    },
+    {
+      "type": "text",
+      "content": "FTP_USER"
+    },
+    {
+      "type": "text",
+      "content": "GCS_PROJECT_ID"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_ALWAYS_STORE"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_DBM_MODULE"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_DIR"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_EXPIRATION_SECS"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_GZIP"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_HTTP_CODES"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_MISSING"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_IGNORE_SCHEMES"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_POLICY"
+    },
+    {
+      "type": "text",
+      "content": "HTTPCACHE_STORAGE"
+    },
+    {
+      "type": "text",
+      "content": "HTTPERROR_ALLOW_ALL"
+    },
+    {
+      "type": "text",
+      "content": "HTTPERROR_ALLOWED_CODES"
+    },
+    {
+      "type": "text",
+      "content": "HTTPPROXY_AUTH_ENCODING"
+    },
+    {
+      "type": "text",
+      "content": "HTTPPROXY_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_EXPIRES"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_MIN_HEIGHT"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_MIN_WIDTH"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_RESULT_FIELD"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_STORE"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_STORE_GCS_ACL"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_STORE_S3_ACL"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_THUMBS"
+    },
+    {
+      "type": "text",
+      "content": "IMAGES_URLS_FIELD"
+    },
+    {
+      "type": "text",
+      "content": "ITEM_PIPELINES"
+    },
+    {
+      "type": "text",
+      "content": "ITEM_PIPELINES_BASE"
+    },
+    {
+      "type": "text",
+      "content": "JOBDIR"
+    },
+    {
+      "type": "text",
+      "content": "LOG_DATEFORMAT"
+    },
+    {
+      "type": "text",
+      "content": "LOG_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "LOG_ENCODING"
+    },
+    {
+      "type": "text",
+      "content": "LOG_FILE"
+    },
+    {
+      "type": "text",
+      "content": "LOG_FILE_APPEND"
+    },
+    {
+      "type": "text",
+      "content": "LOG_FORMAT"
+    },
+    {
+      "type": "text",
+      "content": "LOG_FORMATTER"
+    },
+    {
+      "type": "text",
+      "content": "LOG_LEVEL"
+    },
+    {
+      "type": "text",
+      "content": "LOG_SHORT_NAMES"
+    },
+    {
+      "type": "text",
+      "content": "LOG_STDOUT"
+    },
+    {
+      "type": "text",
+      "content": "LOGSTATS_INTERVAL"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_FROM"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_HOST"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_PASS"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_PORT"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_SSL"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_TLS"
+    },
+    {
+      "type": "text",
+      "content": "MAIL_USER"
+    },
+    {
+      "type": "text",
+      "content": "MEDIA_ALLOW_REDIRECTS"
+    },
+    {
+      "type": "text",
+      "content": "MEMDEBUG_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "MEMDEBUG_NOTIFY"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_CHECK_INTERVAL_SECONDS"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_LIMIT_MB"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_NOTIFY_MAIL"
+    },
+    {
+      "type": "text",
+      "content": "MEMUSAGE_WARNING_MB"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_IGNORE_TAGS"
+    },
+    {
+      "type": "text",
+      "content": "METAREFRESH_MAXDELAY"
+    },
+    {
+      "type": "text",
+      "content": "NEWSPIDER_MODULE"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_DELTA"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_STATS"
+    },
+    {
+      "type": "text",
+      "content": "PERIODIC_LOG_TIMING_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "RANDOMIZE_DOWNLOAD_DELAY"
+    },
+    {
+      "type": "text",
+      "content": "REACTOR_THREADPOOL_MAXSIZE"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_MAX_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "REDIRECT_PRIORITY_ADJUST"
+    },
+    {
+      "type": "text",
+      "content": "REFERER_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "REFERRER_POLICY"
+    },
+    {
+      "type": "text",
+      "content": "REQUEST_FINGERPRINTER_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "REQUEST_FINGERPRINTER_IMPLEMENTATION"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_EXCEPTIONS"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_HTTP_CODES"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_PRIORITY_ADJUST"
+    },
+    {
+      "type": "text",
+      "content": "RETRY_TIMES"
+    },
+    {
+      "type": "text",
+      "content": "ROBOTSTXT_OBEY"
+    },
+    {
+      "type": "text",
+      "content": "ROBOTSTXT_PARSER"
+    },
+    {
+      "type": "text",
+      "content": "ROBOTSTXT_USER_AGENT"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_DEBUG"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_DISK_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_MEMORY_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCHEDULER_PRIORITY_QUEUE"
+    },
+    {
+      "type": "text",
+      "content": "SCRAPER_SLOT_MAX_ACTIVE_SIZE"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_CONTRACTS"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_CONTRACTS_BASE"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_LOADER_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_LOADER_WARN_ONLY"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_MIDDLEWARES"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_MIDDLEWARES_BASE"
+    },
+    {
+      "type": "text",
+      "content": "SPIDER_MODULES"
+    },
+    {
+      "type": "text",
+      "content": "STATS_CLASS"
+    },
+    {
+      "type": "text",
+      "content": "STATS_DUMP"
+    },
+    {
+      "type": "text",
+      "content": "STATSMAILER_RCPTS"
+    },
+    {
+      "type": "text",
+      "content": "TELNETCONSOLE_ENABLED"
+    },
+    {
+      "type": "text",
+      "content": "TELNETCONSOLE_HOST"
+    },
+    {
+      "type": "text",
+      "content": "TELNETCONSOLE_PASSWORD"
+    },
+    {
+      "type": "text",
+      "content": "TELNETCONSOLE_PORT"
+    },
+    {
+      "type": "text",
+      "content": "TELNETCONSOLE_USERNAME"
+    },
+    {
+      "type": "text",
+      "content": "TEMPLATES_DIR"
+    },
+    {
+      "type": "text",
+      "content": "TWISTED_REACTOR"
+    },
+    {
+      "type": "text",
+      "content": "URLLENGTH_LIMIT"
+    },
+    {
+      "type": "text",
+      "content": "USER_AGENT"
+    },
+    {
+      "type": "text",
+      "content": "\n    settings\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "Settings (class in scrapy.settings)"
+    },
+    {
+      "type": "text",
+      "content": "settings (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "SETTINGS_PRIORITIES (in module scrapy.settings)"
+    },
+    {
+      "type": "text",
+      "content": "\n    shell\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "\n    signal\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "bytes_received"
+    },
+    {
+      "type": "text",
+      "content": "engine_started"
+    },
+    {
+      "type": "text",
+      "content": "engine_stopped"
+    },
+    {
+      "type": "text",
+      "content": "feed_exporter_closed"
+    },
+    {
+      "type": "text",
+      "content": "feed_slot_closed"
+    },
+    {
+      "type": "text",
+      "content": "headers_received"
+    },
+    {
+      "type": "text",
+      "content": "item_dropped"
+    },
+    {
+      "type": "text",
+      "content": "item_error"
+    },
+    {
+      "type": "text",
+      "content": "item_scraped"
+    },
+    {
+      "type": "text",
+      "content": "request_dropped"
+    },
+    {
+      "type": "text",
+      "content": "request_left_downloader"
+    },
+    {
+      "type": "text",
+      "content": "request_reached_downloader"
+    },
+    {
+      "type": "text",
+      "content": "request_scheduled"
+    },
+    {
+      "type": "text",
+      "content": "response_downloaded"
+    },
+    {
+      "type": "text",
+      "content": "response_received"
+    },
+    {
+      "type": "text",
+      "content": "spider_closed"
+    },
+    {
+      "type": "text",
+      "content": "spider_error"
+    },
+    {
+      "type": "text",
+      "content": "spider_idle"
+    },
+    {
+      "type": "text",
+      "content": "spider_opened"
+    },
+    {
+      "type": "text",
+      "content": "update_telnet_vars"
+    },
+    {
+      "type": "text",
+      "content": "SignalManager (class in scrapy.signalmanager)"
+    },
+    {
+      "type": "text",
+      "content": "signals (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "sitemap_alternate_links (scrapy.spiders.SitemapSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "sitemap_filter() (scrapy.spiders.SitemapSpider method)"
+    },
+    {
+      "type": "text",
+      "content": "sitemap_follow (scrapy.spiders.SitemapSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "sitemap_rules (scrapy.spiders.SitemapSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "sitemap_urls (scrapy.spiders.SitemapSpider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "SitemapSpider (class in scrapy.spiders)"
+    },
+    {
+      "type": "text",
+      "content": "spider (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    spider_closed\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "spider_closed() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_CONTRACTS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_CONTRACTS_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    spider_error\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "spider_error() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.logformatter.LogFormatter method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    spider_idle\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "spider_idle() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_LOADER_CLASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_LOADER_WARN_ONLY\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_MIDDLEWARES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_MIDDLEWARES_BASE\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    SPIDER_MODULES\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    spider_opened\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "spider_opened() (in module scrapy.signals)"
+    },
+    {
+      "type": "text",
+      "content": "spider_stats (scrapy.statscollectors.MemoryStatsCollector attribute)"
+    },
+    {
+      "type": "text",
+      "content": "SpiderLoader (class in scrapy.spiderloader)"
+    },
+    {
+      "type": "text",
+      "content": "SpiderMiddleware (class in scrapy.spidermiddlewares)"
+    },
+    {
+      "type": "text",
+      "content": "StackTraceDump (class in scrapy.extensions.periodic_log)"
+    },
+    {
+      "type": "text",
+      "content": "start() (scrapy.crawler.CrawlerProcess method)"
+    },
+    {
+      "type": "text",
+      "content": "start_exporting() (scrapy.exporters.BaseItemExporter method)"
+    },
+    {
+      "type": "text",
+      "content": "start_requests() (scrapy.Spider method)"
+    },
+    {
+      "type": "text",
+      "content": "start_urls (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    startproject\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "state (scrapy.Spider attribute)"
+    },
+    {
+      "type": "text",
+      "content": "stats (scrapy.crawler.Crawler attribute)"
+    },
+    {
+      "type": "text",
+      "content": "\n    STATS_CLASS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    STATS_DUMP\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "StatsCollector (class in scrapy.statscollectors)"
+    },
+    {
+      "type": "text",
+      "content": "StatsMailer (class in scrapy.extensions.statsmailer)"
+    },
+    {
+      "type": "text",
+      "content": "\n    STATSMAILER_RCPTS\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "status (scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "stop() (scrapy.crawler.Crawler method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerProcess method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.crawler.CrawlerRunner method)"
+    },
+    {
+      "type": "text",
+      "content": "StopDownload"
+    },
+    {
+      "type": "text",
+      "content": "store_response() (scrapy.extensions.httpcache.CacheStorage method)"
+    },
+    {
+      "type": "text",
+      "content": "StrictOriginPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "StrictOriginWhenCrossOriginPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "T"
+    },
+    {
+      "type": "text",
+      "content": "TelnetConsole (class in scrapy.extensions.telnet)"
+    },
+    {
+      "type": "text",
+      "content": "\n    TELNETCONSOLE_ENABLED\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    TELNETCONSOLE_HOST\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    TELNETCONSOLE_PASSWORD\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    TELNETCONSOLE_PORT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    TELNETCONSOLE_USERNAME\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "\n    TEMPLATES_DIR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "text (scrapy.http.TextResponse attribute)"
+    },
+    {
+      "type": "text",
+      "content": "TextResponse (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "thumb_path() (scrapy.pipelines.images.ImagesPipeline method)"
+    },
+    {
+      "type": "text",
+      "content": "to_dict() (scrapy.http.Request method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    TWISTED_REACTOR\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "U"
+    },
+    {
+      "type": "text",
+      "content": "UnsafeUrlPolicy (class in scrapy.spidermiddlewares.referer)"
+    },
+    {
+      "type": "text",
+      "content": "update() (scrapy.settings.BaseSettings method)"
+    },
+    {
+      "type": "text",
+      "content": "update_settings()"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.Spider class method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    update_telnet_vars\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "signal"
+    },
+    {
+      "type": "text",
+      "content": "update_telnet_vars() (in module scrapy.extensions.telnet)"
+    },
+    {
+      "type": "text",
+      "content": "uri_params() (in module scrapy.extensions.feedexport)"
+    },
+    {
+      "type": "text",
+      "content": "url (scrapy.http.Request attribute)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.Response attribute)"
+    },
+    {
+      "type": "text",
+      "content": "UrlContract (class in scrapy.contracts.default)"
+    },
+    {
+      "type": "text",
+      "content": "urljoin() (scrapy.http.Response method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "\n    URLLENGTH_LIMIT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "UrlLengthMiddleware (class in scrapy.spidermiddlewares.urllength)"
+    },
+    {
+      "type": "text",
+      "content": "\n    USER_AGENT\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "setting"
+    },
+    {
+      "type": "text",
+      "content": "UserAgentMiddleware (class in scrapy.downloadermiddlewares.useragent)"
+    },
+    {
+      "type": "text",
+      "content": "V"
+    },
+    {
+      "type": "text",
+      "content": "\n    version\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "\n    view\n\n      "
+    },
+    {
+      "type": "text",
+      "content": "command"
+    },
+    {
+      "type": "text",
+      "content": "W"
+    },
+    {
+      "type": "text",
+      "content": "write()"
+    },
+    {
+      "type": "text",
+      "content": "X"
+    },
+    {
+      "type": "text",
+      "content": "XMLFeedSpider (class in scrapy.spiders)"
+    },
+    {
+      "type": "text",
+      "content": "XmlItemExporter (class in scrapy.exporters)"
+    },
+    {
+      "type": "text",
+      "content": "xmliter_lxml() (in module scrapy.utils.iterators)"
+    },
+    {
+      "type": "text",
+      "content": "XmlResponse (class in scrapy.http)"
+    },
+    {
+      "type": "text",
+      "content": "xpath() (scrapy.http.TextResponse method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.Selector method)"
+    },
+    {
+      "type": "text",
+      "content": "(scrapy.selector.SelectorList method)"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

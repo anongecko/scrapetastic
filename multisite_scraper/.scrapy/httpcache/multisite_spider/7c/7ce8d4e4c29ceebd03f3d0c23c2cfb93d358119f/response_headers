@@ -1,0 +1,30 @@
+Date: Wed, 24 Jul 2024 05:29:28 GMT
+Content-Type: text/html; charset=utf-8
+Cf-Ray: 8a818340ec8918f3-FRA
+Cf-Cache-Status: MISS
+Access-Control-Allow-Origin: *
+Cache-Control: max-age=1200
+Content-Encoding: gzip
+Etag: W/"ab8990dd3e675663b37008762be26e97"
+Last-Modified: Wed, 24 Jul 2024 04:42:20 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Methods: HEAD, OPTIONS, GET
+Cdn-Cache-Control: public
+Referrer-Policy: no-referrer-when-downgrade
+X-Amz-Id-2: VCsYPzd8MmMa7QnI5hCahWtM5HN8YE/VGh0hkVgFWbZZkfrr2FUTG86Jn1cYQI5TdWvZYlbIEwo=
+X-Amz-Meta-Mtime: 1721796078.513585684
+X-Amz-Request-Id: 4M4GMHPNVQXWZ81N
+X-Amz-Server-Side-Encryption: AES256
+X-Backend: web-i-0b945bc5f09993de8
+X-Content-Type-Options: nosniff
+X-Rtd-Domain: docs.scrapy.org
+X-Rtd-Path: /proxito/html/scrapy/master/_modules/scrapy/http/response.html
+X-Rtd-Project: scrapy
+X-Rtd-Project-Method: custom_domain
+X-Rtd-Resolver-Filename: /_modules/scrapy/http/response.html
+X-Rtd-Version: master
+X-Rtd-Version-Method: path
+X-Served: Nginx-Proxito-Sendfile
+Set-Cookie: _cfuvid=FUh6G7TCxFbIaM8AOw7JqvCk73EBIxKSLSKIQaqDAb8-1721798968796-0.0.1.1-604800000; path=/; domain=.docs.scrapy.org; HttpOnly; Secure; SameSite=None
+Server: cloudflare
+Alt-Svc: h3=":443"; ma=86400

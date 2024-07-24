@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/spidermiddlewares/httperror.html",
+  "title": "scrapy.spidermiddlewares.httperror — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spidermiddlewares.httperror"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.spidermiddlewares.httperror"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">HttpError Spider Middleware</span>\n\n<span class=\"sd\">See documentation in docs/topics/spider-middleware.rst</span>\n<span class=\"sd\">\"\"\"</span>\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">IgnoreRequest</span>\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"k\">class</span> <span class=\"nc\">HttpError</span><span class=\"p\">(</span><span class=\"n\">IgnoreRequest</span><span class=\"p\">):</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"A non-200 response was filtered\"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">response</span>\n        <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n\n\n<div class=\"viewcode-block\" id=\"HttpErrorMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/spider-middleware.html#scrapy.spidermiddlewares.httperror.HttpErrorMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">HttpErrorMiddleware</span><span class=\"p\">:</span>\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">handle_httpstatus_all</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"HTTPERROR_ALLOW_ALL\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">handle_httpstatus_list</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"HTTPERROR_ALLOWED_CODES\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_spider_input</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"mi\">200</span> <span class=\"o\">&lt;=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"o\">&lt;</span> <span class=\"mi\">300</span><span class=\"p\">:</span>  <span class=\"c1\"># common case</span>\n            <span class=\"k\">return</span>\n        <span class=\"n\">meta</span> <span class=\"o\">=</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">meta</span>\n        <span class=\"k\">if</span> <span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"handle_httpstatus_all\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span>\n        <span class=\"k\">if</span> <span class=\"s2\">\"handle_httpstatus_list\"</span> <span class=\"ow\">in</span> <span class=\"n\">meta</span><span class=\"p\">:</span>\n            <span class=\"n\">allowed_statuses</span> <span class=\"o\">=</span> <span class=\"n\">meta</span><span class=\"p\">[</span><span class=\"s2\">\"handle_httpstatus_list\"</span><span class=\"p\">]</span>\n        <span class=\"k\">elif</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">handle_httpstatus_all</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span>\n        <span class=\"k\">else</span><span class=\"p\">:</span>\n            <span class=\"n\">allowed_statuses</span> <span class=\"o\">=</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span>\n                <span class=\"n\">spider</span><span class=\"p\">,</span> <span class=\"s2\">\"handle_httpstatus_list\"</span><span class=\"p\">,</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">handle_httpstatus_list</span>\n            <span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"n\">allowed_statuses</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span>\n        <span class=\"k\">raise</span> <span class=\"n\">HttpError</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"s2\">\"Ignoring non-200 response\"</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_spider_exception</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">exception</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">exception</span><span class=\"p\">,</span> <span class=\"n\">HttpError</span><span class=\"p\">):</span>\n            <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span><span class=\"s2\">\"httperror/response_ignored_count\"</span><span class=\"p\">)</span>\n            <span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">inc_value</span><span class=\"p\">(</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"httperror/response_ignored_status_count/</span><span class=\"si\">{</span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">status</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n            <span class=\"p\">)</span>\n            <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">info</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"Ignoring response </span><span class=\"si\">%(response)r</span><span class=\"s2\">: HTTP status code is not handled or not allowed\"</span><span class=\"p\">,</span>\n                <span class=\"p\">{</span><span class=\"s2\">\"response\"</span><span class=\"p\">:</span> <span class=\"n\">response</span><span class=\"p\">},</span>\n                <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">},</span>\n            <span class=\"p\">)</span>\n            <span class=\"k\">return</span> <span class=\"p\">[]</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

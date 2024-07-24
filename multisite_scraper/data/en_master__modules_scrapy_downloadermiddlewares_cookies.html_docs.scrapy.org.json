@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/downloadermiddlewares/cookies.html",
+  "title": "scrapy.downloadermiddlewares.cookies — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.downloadermiddlewares.cookies"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.downloadermiddlewares.cookies"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">logging</span>\n<span class=\"kn\">from</span> <span class=\"nn\">collections</span> <span class=\"kn\">import</span> <span class=\"n\">defaultdict</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">DefaultDict</span><span class=\"p\">,</span> <span class=\"n\">Iterable</span><span class=\"p\">,</span> <span class=\"n\">Optional</span><span class=\"p\">,</span> <span class=\"n\">Sequence</span><span class=\"p\">,</span> <span class=\"n\">Union</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">tldextract</span> <span class=\"kn\">import</span> <span class=\"n\">TLDExtract</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http</span> <span class=\"kn\">import</span> <span class=\"n\">Response</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.cookies</span> <span class=\"kn\">import</span> <span class=\"n\">CookieJar</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.httpobj</span> <span class=\"kn\">import</span> <span class=\"n\">urlparse_cached</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.python</span> <span class=\"kn\">import</span> <span class=\"n\">to_unicode</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">http.cookiejar</span> <span class=\"kn\">import</span> <span class=\"n\">Cookie</span>\n\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.crawler</span> <span class=\"kn\">import</span> <span class=\"n\">Crawler</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.http.request</span> <span class=\"kn\">import</span> <span class=\"n\">VerboseCookie</span>\n\n\n<span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"n\">logging</span><span class=\"o\">.</span><span class=\"n\">getLogger</span><span class=\"p\">(</span><span class=\"vm\">__name__</span><span class=\"p\">)</span>\n\n\n<span class=\"n\">_split_domain</span> <span class=\"o\">=</span> <span class=\"n\">TLDExtract</span><span class=\"p\">(</span><span class=\"n\">include_psl_private_domains</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)</span>\n<span class=\"n\">_UNSET</span> <span class=\"o\">=</span> <span class=\"nb\">object</span><span class=\"p\">()</span>\n\n\n<span class=\"k\">def</span> <span class=\"nf\">_is_public_domain</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">bool</span><span class=\"p\">:</span>\n    <span class=\"n\">parts</span> <span class=\"o\">=</span> <span class=\"n\">_split_domain</span><span class=\"p\">(</span><span class=\"n\">domain</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"ow\">not</span> <span class=\"n\">parts</span><span class=\"o\">.</span><span class=\"n\">domain</span>\n\n\n<div class=\"viewcode-block\" id=\"CookiesMiddleware\"><a class=\"viewcode-back\" href=\"../../../topics/downloader-middleware.html#scrapy.downloadermiddlewares.cookies.CookiesMiddleware\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">CookiesMiddleware</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"This middleware enables working with sites that need cookies\"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">debug</span><span class=\"p\">:</span> <span class=\"nb\">bool</span> <span class=\"o\">=</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">jars</span><span class=\"p\">:</span> <span class=\"n\">DefaultDict</span><span class=\"p\">[</span><span class=\"n\">Any</span><span class=\"p\">,</span> <span class=\"n\">CookieJar</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">defaultdict</span><span class=\"p\">(</span><span class=\"n\">CookieJar</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">:</span> <span class=\"nb\">bool</span> <span class=\"o\">=</span> <span class=\"n\">debug</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">:</span> <span class=\"n\">Crawler</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"COOKIES_ENABLED\"</span><span class=\"p\">):</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"COOKIES_DEBUG\"</span><span class=\"p\">))</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_process_cookies</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">cookies</span><span class=\"p\">:</span> <span class=\"n\">Iterable</span><span class=\"p\">[</span><span class=\"n\">Cookie</span><span class=\"p\">],</span> <span class=\"o\">*</span><span class=\"p\">,</span> <span class=\"n\">jar</span><span class=\"p\">:</span> <span class=\"n\">CookieJar</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">for</span> <span class=\"n\">cookie</span> <span class=\"ow\">in</span> <span class=\"n\">cookies</span><span class=\"p\">:</span>\n            <span class=\"n\">cookie_domain</span> <span class=\"o\">=</span> <span class=\"n\">cookie</span><span class=\"o\">.</span><span class=\"n\">domain</span>\n            <span class=\"k\">if</span> <span class=\"n\">cookie_domain</span><span class=\"o\">.</span><span class=\"n\">startswith</span><span class=\"p\">(</span><span class=\"s2\">\".\"</span><span class=\"p\">):</span>\n                <span class=\"n\">cookie_domain</span> <span class=\"o\">=</span> <span class=\"n\">cookie_domain</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">:]</span>\n\n            <span class=\"n\">hostname</span> <span class=\"o\">=</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">hostname</span>\n            <span class=\"k\">assert</span> <span class=\"n\">hostname</span> <span class=\"ow\">is</span> <span class=\"ow\">not</span> <span class=\"kc\">None</span>\n            <span class=\"n\">request_domain</span> <span class=\"o\">=</span> <span class=\"n\">hostname</span><span class=\"o\">.</span><span class=\"n\">lower</span><span class=\"p\">()</span>\n\n            <span class=\"k\">if</span> <span class=\"n\">cookie_domain</span> <span class=\"ow\">and</span> <span class=\"n\">_is_public_domain</span><span class=\"p\">(</span><span class=\"n\">cookie_domain</span><span class=\"p\">):</span>\n                <span class=\"k\">if</span> <span class=\"n\">cookie_domain</span> <span class=\"o\">!=</span> <span class=\"n\">request_domain</span><span class=\"p\">:</span>\n                    <span class=\"k\">continue</span>\n                <span class=\"n\">cookie</span><span class=\"o\">.</span><span class=\"n\">domain</span> <span class=\"o\">=</span> <span class=\"n\">request_domain</span>\n\n            <span class=\"n\">jar</span><span class=\"o\">.</span><span class=\"n\">set_cookie_if_ok</span><span class=\"p\">(</span><span class=\"n\">cookie</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_request</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_merge_cookies\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n        <span class=\"n\">cookiejarkey</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"cookiejar\"</span><span class=\"p\">)</span>\n        <span class=\"n\">jar</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">jars</span><span class=\"p\">[</span><span class=\"n\">cookiejarkey</span><span class=\"p\">]</span>\n        <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_get_request_cookies</span><span class=\"p\">(</span><span class=\"n\">jar</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_process_cookies</span><span class=\"p\">(</span><span class=\"n\">cookies</span><span class=\"p\">,</span> <span class=\"n\">jar</span><span class=\"o\">=</span><span class=\"n\">jar</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"o\">=</span><span class=\"n\">request</span><span class=\"p\">)</span>\n\n        <span class=\"c1\"># set Cookie header</span>\n        <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s2\">\"Cookie\"</span><span class=\"p\">,</span> <span class=\"kc\">None</span><span class=\"p\">)</span>\n        <span class=\"n\">jar</span><span class=\"o\">.</span><span class=\"n\">add_cookie_header</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_debug_cookie</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"kc\">None</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">process_response</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Union</span><span class=\"p\">[</span><span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Response</span><span class=\"p\">]:</span>\n        <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"dont_merge_cookies\"</span><span class=\"p\">,</span> <span class=\"kc\">False</span><span class=\"p\">):</span>\n            <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n        <span class=\"c1\"># extract cookies from Set-Cookie and drop invalid/expired cookies</span>\n        <span class=\"n\">cookiejarkey</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">meta</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">\"cookiejar\"</span><span class=\"p\">)</span>\n        <span class=\"n\">jar</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">jars</span><span class=\"p\">[</span><span class=\"n\">cookiejarkey</span><span class=\"p\">]</span>\n        <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"n\">jar</span><span class=\"o\">.</span><span class=\"n\">make_cookies</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_process_cookies</span><span class=\"p\">(</span><span class=\"n\">cookies</span><span class=\"p\">,</span> <span class=\"n\">jar</span><span class=\"o\">=</span><span class=\"n\">jar</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"o\">=</span><span class=\"n\">request</span><span class=\"p\">)</span>\n\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_debug_set_cookie</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">)</span>\n\n        <span class=\"k\">return</span> <span class=\"n\">response</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_debug_cookie</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">:</span>\n            <span class=\"n\">cl</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n                <span class=\"n\">to_unicode</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">,</span> <span class=\"n\">errors</span><span class=\"o\">=</span><span class=\"s2\">\"replace\"</span><span class=\"p\">)</span>\n                <span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"ow\">in</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"Cookie\"</span><span class=\"p\">)</span>\n            <span class=\"p\">]</span>\n            <span class=\"k\">if</span> <span class=\"n\">cl</span><span class=\"p\">:</span>\n                <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Cookie: </span><span class=\"si\">{</span><span class=\"n\">c</span><span class=\"si\">}</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span> <span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"ow\">in</span> <span class=\"n\">cl</span><span class=\"p\">)</span>\n                <span class=\"n\">msg</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"Sending cookies to: </span><span class=\"si\">{</span><span class=\"n\">request</span><span class=\"si\">}</span><span class=\"se\">\\n</span><span class=\"si\">{</span><span class=\"n\">cookies</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n                <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span><span class=\"n\">msg</span><span class=\"p\">,</span> <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">})</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_debug_set_cookie</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">:</span> <span class=\"n\">Response</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">:</span> <span class=\"n\">Spider</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">:</span>\n            <span class=\"n\">cl</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n                <span class=\"n\">to_unicode</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">,</span> <span class=\"n\">errors</span><span class=\"o\">=</span><span class=\"s2\">\"replace\"</span><span class=\"p\">)</span>\n                <span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"ow\">in</span> <span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">headers</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"Set-Cookie\"</span><span class=\"p\">)</span>\n            <span class=\"p\">]</span>\n            <span class=\"k\">if</span> <span class=\"n\">cl</span><span class=\"p\">:</span>\n                <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Set-Cookie: </span><span class=\"si\">{</span><span class=\"n\">c</span><span class=\"si\">}</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span> <span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"ow\">in</span> <span class=\"n\">cl</span><span class=\"p\">)</span>\n                <span class=\"n\">msg</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"Received cookies from: </span><span class=\"si\">{</span><span class=\"n\">response</span><span class=\"si\">}</span><span class=\"se\">\\n</span><span class=\"si\">{</span><span class=\"n\">cookies</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n                <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">debug</span><span class=\"p\">(</span><span class=\"n\">msg</span><span class=\"p\">,</span> <span class=\"n\">extra</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"spider\"</span><span class=\"p\">:</span> <span class=\"n\">spider</span><span class=\"p\">})</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_format_cookie</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">cookie</span><span class=\"p\">:</span> <span class=\"n\">VerboseCookie</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Optional</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Given a dict consisting of cookie components, return its string representation.</span>\n<span class=\"sd\">        Decode from bytes if necessary.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"n\">decoded</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n        <span class=\"n\">flags</span> <span class=\"o\">=</span> <span class=\"nb\">set</span><span class=\"p\">()</span>\n        <span class=\"k\">for</span> <span class=\"n\">key</span> <span class=\"ow\">in</span> <span class=\"p\">(</span><span class=\"s2\">\"name\"</span><span class=\"p\">,</span> <span class=\"s2\">\"value\"</span><span class=\"p\">,</span> <span class=\"s2\">\"path\"</span><span class=\"p\">,</span> <span class=\"s2\">\"domain\"</span><span class=\"p\">):</span>\n            <span class=\"k\">if</span> <span class=\"n\">cookie</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"p\">)</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n                <span class=\"k\">if</span> <span class=\"n\">key</span> <span class=\"ow\">in</span> <span class=\"p\">(</span><span class=\"s2\">\"name\"</span><span class=\"p\">,</span> <span class=\"s2\">\"value\"</span><span class=\"p\">):</span>\n                    <span class=\"n\">msg</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"Invalid cookie found in request </span><span class=\"si\">{</span><span class=\"n\">request</span><span class=\"si\">}</span><span class=\"s2\">: </span><span class=\"si\">{</span><span class=\"n\">cookie</span><span class=\"si\">}</span><span class=\"s2\"> ('</span><span class=\"si\">{</span><span class=\"n\">key</span><span class=\"si\">}</span><span class=\"s2\">' is missing)\"</span>\n                    <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">warning</span><span class=\"p\">(</span><span class=\"n\">msg</span><span class=\"p\">)</span>\n                    <span class=\"k\">return</span> <span class=\"kc\">None</span>\n                <span class=\"k\">continue</span>\n            <span class=\"c1\"># https://github.com/python/mypy/issues/7178, https://github.com/python/mypy/issues/9168</span>\n            <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">cookie</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">],</span> <span class=\"p\">(</span><span class=\"nb\">bool</span><span class=\"p\">,</span> <span class=\"nb\">float</span><span class=\"p\">,</span> <span class=\"nb\">int</span><span class=\"p\">,</span> <span class=\"nb\">str</span><span class=\"p\">)):</span>  <span class=\"c1\"># type: ignore[literal-required]</span>\n                <span class=\"n\">decoded</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"nb\">str</span><span class=\"p\">(</span><span class=\"n\">cookie</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">])</span>  <span class=\"c1\"># type: ignore[literal-required]</span>\n            <span class=\"k\">else</span><span class=\"p\">:</span>\n                <span class=\"k\">try</span><span class=\"p\">:</span>\n                    <span class=\"n\">decoded</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">cookie</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"s2\">\"utf8\"</span><span class=\"p\">)</span>  <span class=\"c1\"># type: ignore[literal-required]</span>\n                <span class=\"k\">except</span> <span class=\"ne\">UnicodeDecodeError</span><span class=\"p\">:</span>\n                    <span class=\"n\">logger</span><span class=\"o\">.</span><span class=\"n\">warning</span><span class=\"p\">(</span>\n                        <span class=\"s2\">\"Non UTF-8 encoded cookie found in request </span><span class=\"si\">%s</span><span class=\"s2\">: </span><span class=\"si\">%s</span><span class=\"s2\">\"</span><span class=\"p\">,</span>\n                        <span class=\"n\">request</span><span class=\"p\">,</span>\n                        <span class=\"n\">cookie</span><span class=\"p\">,</span>\n                    <span class=\"p\">)</span>\n                    <span class=\"n\">decoded</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">cookie</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"s2\">\"latin1\"</span><span class=\"p\">,</span> <span class=\"n\">errors</span><span class=\"o\">=</span><span class=\"s2\">\"replace\"</span><span class=\"p\">)</span>  <span class=\"c1\"># type: ignore[literal-required]</span>\n        <span class=\"k\">for</span> <span class=\"n\">flag</span> <span class=\"ow\">in</span> <span class=\"p\">(</span><span class=\"s2\">\"secure\"</span><span class=\"p\">,):</span>\n            <span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"n\">cookie</span><span class=\"o\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">flag</span><span class=\"p\">,</span> <span class=\"n\">_UNSET</span><span class=\"p\">)</span>\n            <span class=\"k\">if</span> <span class=\"n\">value</span> <span class=\"ow\">is</span> <span class=\"n\">_UNSET</span> <span class=\"ow\">or</span> <span class=\"ow\">not</span> <span class=\"n\">value</span><span class=\"p\">:</span>\n                <span class=\"k\">continue</span>\n            <span class=\"n\">flags</span><span class=\"o\">.</span><span class=\"n\">add</span><span class=\"p\">(</span><span class=\"n\">flag</span><span class=\"p\">)</span>\n        <span class=\"n\">cookie_str</span> <span class=\"o\">=</span> <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">decoded</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s1\">'name'</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s2\">=</span><span class=\"si\">{</span><span class=\"n\">decoded</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">(</span><span class=\"s1\">'value'</span><span class=\"p\">)</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n        <span class=\"k\">for</span> <span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">value</span> <span class=\"ow\">in</span> <span class=\"n\">decoded</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>  <span class=\"c1\"># path, domain</span>\n            <span class=\"n\">cookie_str</span> <span class=\"o\">+=</span> <span class=\"sa\">f</span><span class=\"s2\">\"; </span><span class=\"si\">{</span><span class=\"n\">key</span><span class=\"o\">.</span><span class=\"n\">capitalize</span><span class=\"p\">()</span><span class=\"si\">}</span><span class=\"s2\">=</span><span class=\"si\">{</span><span class=\"n\">value</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n        <span class=\"k\">for</span> <span class=\"n\">flag</span> <span class=\"ow\">in</span> <span class=\"n\">flags</span><span class=\"p\">:</span>  <span class=\"c1\"># secure</span>\n            <span class=\"n\">cookie_str</span> <span class=\"o\">+=</span> <span class=\"sa\">f</span><span class=\"s2\">\"; </span><span class=\"si\">{</span><span class=\"n\">flag</span><span class=\"o\">.</span><span class=\"n\">capitalize</span><span class=\"p\">()</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n        <span class=\"k\">return</span> <span class=\"n\">cookie_str</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_get_request_cookies</span><span class=\"p\">(</span>\n        <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">jar</span><span class=\"p\">:</span> <span class=\"n\">CookieJar</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span>\n    <span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Sequence</span><span class=\"p\">[</span><span class=\"n\">Cookie</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Extract cookies from the Request.cookies attribute</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">cookies</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"p\">[]</span>\n        <span class=\"n\">cookies</span><span class=\"p\">:</span> <span class=\"n\">Iterable</span><span class=\"p\">[</span><span class=\"n\">VerboseCookie</span><span class=\"p\">]</span>\n        <span class=\"k\">if</span> <span class=\"nb\">isinstance</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">cookies</span><span class=\"p\">,</span> <span class=\"nb\">dict</span><span class=\"p\">):</span>\n            <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"nb\">tuple</span><span class=\"p\">({</span><span class=\"s2\">\"name\"</span><span class=\"p\">:</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"s2\">\"value\"</span><span class=\"p\">:</span> <span class=\"n\">v</span><span class=\"p\">}</span> <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">cookies</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">())</span>\n        <span class=\"k\">else</span><span class=\"p\">:</span>\n            <span class=\"n\">cookies</span> <span class=\"o\">=</span> <span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">cookies</span>\n        <span class=\"k\">for</span> <span class=\"n\">cookie</span> <span class=\"ow\">in</span> <span class=\"n\">cookies</span><span class=\"p\">:</span>\n            <span class=\"n\">cookie</span><span class=\"o\">.</span><span class=\"n\">setdefault</span><span class=\"p\">(</span><span class=\"s2\">\"secure\"</span><span class=\"p\">,</span> <span class=\"n\">urlparse_cached</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span><span class=\"o\">.</span><span class=\"n\">scheme</span> <span class=\"o\">==</span> <span class=\"s2\">\"https\"</span><span class=\"p\">)</span>\n        <span class=\"n\">formatted</span> <span class=\"o\">=</span> <span class=\"nb\">filter</span><span class=\"p\">(</span><span class=\"kc\">None</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_format_cookie</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"ow\">in</span> <span class=\"n\">cookies</span><span class=\"p\">))</span>\n        <span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">Response</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"o\">.</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">headers</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"Set-Cookie\"</span><span class=\"p\">:</span> <span class=\"n\">formatted</span><span class=\"p\">})</span>\n        <span class=\"k\">return</span> <span class=\"n\">jar</span><span class=\"o\">.</span><span class=\"n\">make_cookies</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

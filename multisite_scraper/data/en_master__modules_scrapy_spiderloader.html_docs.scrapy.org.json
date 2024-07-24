@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/master/_modules/scrapy/spiderloader.html",
+  "title": "scrapy.spiderloader — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": null
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.spiderloader"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.spiderloader"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"kn\">from</span> <span class=\"nn\">__future__</span> <span class=\"kn\">import</span> <span class=\"n\">annotations</span>\n\n<span class=\"kn\">import</span> <span class=\"nn\">traceback</span>\n<span class=\"kn\">import</span> <span class=\"nn\">warnings</span>\n<span class=\"kn\">from</span> <span class=\"nn\">collections</span> <span class=\"kn\">import</span> <span class=\"n\">defaultdict</span>\n<span class=\"kn\">from</span> <span class=\"nn\">typing</span> <span class=\"kn\">import</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">,</span> <span class=\"n\">DefaultDict</span><span class=\"p\">,</span> <span class=\"n\">Dict</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">,</span> <span class=\"n\">Tuple</span><span class=\"p\">,</span> <span class=\"n\">Type</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">zope.interface</span> <span class=\"kn\">import</span> <span class=\"n\">implementer</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.interfaces</span> <span class=\"kn\">import</span> <span class=\"n\">ISpiderLoader</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.misc</span> <span class=\"kn\">import</span> <span class=\"n\">walk_modules</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.utils.spider</span> <span class=\"kn\">import</span> <span class=\"n\">iter_spider_classes</span>\n\n<span class=\"k\">if</span> <span class=\"n\">TYPE_CHECKING</span><span class=\"p\">:</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">types</span> <span class=\"kn\">import</span> <span class=\"n\">ModuleType</span>\n\n    <span class=\"c1\"># typing.Self requires Python 3.11</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">typing_extensions</span> <span class=\"kn\">import</span> <span class=\"n\">Self</span>\n\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">Request</span><span class=\"p\">,</span> <span class=\"n\">Spider</span>\n    <span class=\"kn\">from</span> <span class=\"nn\">scrapy.settings</span> <span class=\"kn\">import</span> <span class=\"n\">BaseSettings</span>\n\n\n<div class=\"viewcode-block\" id=\"SpiderLoader\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.spiderloader.SpiderLoader\">[docs]</a><span class=\"nd\">@implementer</span><span class=\"p\">(</span><span class=\"n\">ISpiderLoader</span><span class=\"p\">)</span>\n<span class=\"k\">class</span> <span class=\"nc\">SpiderLoader</span><span class=\"p\">:</span>\n<span class=\"w\">    </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">    SpiderLoader is a class which locates and loads spiders</span>\n<span class=\"sd\">    in a Scrapy project.</span>\n<span class=\"sd\">    \"\"\"</span>\n\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_modules</span><span class=\"p\">:</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"SPIDER_MODULES\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">warn_only</span><span class=\"p\">:</span> <span class=\"nb\">bool</span> <span class=\"o\">=</span> <span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getbool</span><span class=\"p\">(</span><span class=\"s2\">\"SPIDER_LOADER_WARN_ONLY\"</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_spiders</span><span class=\"p\">:</span> <span class=\"n\">Dict</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">Type</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]]</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_found</span><span class=\"p\">:</span> <span class=\"n\">DefaultDict</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"n\">Tuple</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"nb\">str</span><span class=\"p\">]]]</span> <span class=\"o\">=</span> <span class=\"n\">defaultdict</span><span class=\"p\">(</span><span class=\"nb\">list</span><span class=\"p\">)</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_load_all_spiders</span><span class=\"p\">()</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_check_name_duplicates</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"n\">dupes</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n        <span class=\"k\">for</span> <span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">locations</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_found</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n            <span class=\"n\">dupes</span><span class=\"o\">.</span><span class=\"n\">extend</span><span class=\"p\">(</span>\n                <span class=\"p\">[</span>\n                    <span class=\"sa\">f</span><span class=\"s2\">\"  </span><span class=\"si\">{</span><span class=\"bp\">cls</span><span class=\"si\">}</span><span class=\"s2\"> named </span><span class=\"si\">{</span><span class=\"n\">name</span><span class=\"si\">!r}</span><span class=\"s2\"> (in </span><span class=\"si\">{</span><span class=\"n\">mod</span><span class=\"si\">}</span><span class=\"s2\">)\"</span>\n                    <span class=\"k\">for</span> <span class=\"n\">mod</span><span class=\"p\">,</span> <span class=\"bp\">cls</span> <span class=\"ow\">in</span> <span class=\"n\">locations</span>\n                    <span class=\"k\">if</span> <span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">locations</span><span class=\"p\">)</span> <span class=\"o\">&gt;</span> <span class=\"mi\">1</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">)</span>\n\n        <span class=\"k\">if</span> <span class=\"n\">dupes</span><span class=\"p\">:</span>\n            <span class=\"n\">dupes_string</span> <span class=\"o\">=</span> <span class=\"s2\">\"</span><span class=\"se\">\\n\\n</span><span class=\"s2\">\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">dupes</span><span class=\"p\">)</span>\n            <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span>\n                <span class=\"s2\">\"There are several spiders with the same name:</span><span class=\"se\">\\n\\n</span><span class=\"s2\">\"</span>\n                <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">dupes_string</span><span class=\"si\">}</span><span class=\"se\">\\n\\n</span><span class=\"s2\">  This can cause unexpected behavior.\"</span><span class=\"p\">,</span>\n                <span class=\"n\">category</span><span class=\"o\">=</span><span class=\"ne\">UserWarning</span><span class=\"p\">,</span>\n            <span class=\"p\">)</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_load_spiders</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">:</span> <span class=\"n\">ModuleType</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">for</span> <span class=\"n\">spcls</span> <span class=\"ow\">in</span> <span class=\"n\">iter_spider_classes</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">):</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_found</span><span class=\"p\">[</span><span class=\"n\">spcls</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">((</span><span class=\"n\">module</span><span class=\"o\">.</span><span class=\"vm\">__name__</span><span class=\"p\">,</span> <span class=\"n\">spcls</span><span class=\"o\">.</span><span class=\"vm\">__name__</span><span class=\"p\">))</span>\n            <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_spiders</span><span class=\"p\">[</span><span class=\"n\">spcls</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">spcls</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">_load_all_spiders</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"k\">for</span> <span class=\"n\">name</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">spider_modules</span><span class=\"p\">:</span>\n            <span class=\"k\">try</span><span class=\"p\">:</span>\n                <span class=\"k\">for</span> <span class=\"n\">module</span> <span class=\"ow\">in</span> <span class=\"n\">walk_modules</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">):</span>\n                    <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_load_spiders</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n            <span class=\"k\">except</span> <span class=\"ne\">ImportError</span><span class=\"p\">:</span>\n                <span class=\"k\">if</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">warn_only</span><span class=\"p\">:</span>\n                    <span class=\"n\">warnings</span><span class=\"o\">.</span><span class=\"n\">warn</span><span class=\"p\">(</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"si\">{</span><span class=\"n\">traceback</span><span class=\"o\">.</span><span class=\"n\">format_exc</span><span class=\"p\">()</span><span class=\"si\">}</span><span class=\"s2\">Could not load spiders \"</span>\n                        <span class=\"sa\">f</span><span class=\"s2\">\"from module '</span><span class=\"si\">{</span><span class=\"n\">name</span><span class=\"si\">}</span><span class=\"s2\">'. \"</span>\n                        <span class=\"s2\">\"See above traceback for details.\"</span><span class=\"p\">,</span>\n                        <span class=\"n\">category</span><span class=\"o\">=</span><span class=\"ne\">RuntimeWarning</span><span class=\"p\">,</span>\n                    <span class=\"p\">)</span>\n                <span class=\"k\">else</span><span class=\"p\">:</span>\n                    <span class=\"k\">raise</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_check_name_duplicates</span><span class=\"p\">()</span>\n\n<div class=\"viewcode-block\" id=\"SpiderLoader.from_settings\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.spiderloader.SpiderLoader.from_settings\">[docs]</a>    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_settings</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">settings</span><span class=\"p\">:</span> <span class=\"n\">BaseSettings</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Self</span><span class=\"p\">:</span>\n        <span class=\"k\">return</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">settings</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SpiderLoader.load\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.spiderloader.SpiderLoader.load\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">load</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider_name</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">Type</span><span class=\"p\">[</span><span class=\"n\">Spider</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Return the Spider class for the given spider name. If the spider</span>\n<span class=\"sd\">        name is not found, raise a KeyError.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"k\">try</span><span class=\"p\">:</span>\n            <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_spiders</span><span class=\"p\">[</span><span class=\"n\">spider_name</span><span class=\"p\">]</span>\n        <span class=\"k\">except</span> <span class=\"ne\">KeyError</span><span class=\"p\">:</span>\n            <span class=\"k\">raise</span> <span class=\"ne\">KeyError</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Spider not found: </span><span class=\"si\">{</span><span class=\"n\">spider_name</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span></div>\n\n<div class=\"viewcode-block\" id=\"SpiderLoader.find_by_request\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.spiderloader.SpiderLoader.find_by_request\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">find_by_request</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">request</span><span class=\"p\">:</span> <span class=\"n\">Request</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Return the list of spider names that can handle the given request.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"k\">return</span> <span class=\"p\">[</span>\n            <span class=\"n\">name</span> <span class=\"k\">for</span> <span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"bp\">cls</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_spiders</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">()</span> <span class=\"k\">if</span> <span class=\"bp\">cls</span><span class=\"o\">.</span><span class=\"n\">handles_request</span><span class=\"p\">(</span><span class=\"n\">request</span><span class=\"p\">)</span>\n        <span class=\"p\">]</span></div>\n\n<div class=\"viewcode-block\" id=\"SpiderLoader.list\"><a class=\"viewcode-back\" href=\"../../topics/api.html#scrapy.spiderloader.SpiderLoader.list\">[docs]</a>    <span class=\"k\">def</span> <span class=\"nf\">list</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"n\">List</span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">]:</span>\n<span class=\"w\">        </span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">        Return a list with the names of all spiders available in the project.</span>\n<span class=\"sd\">        \"\"\"</span>\n        <span class=\"k\">return</span> <span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_spiders</span><span class=\"o\">.</span><span class=\"n\">keys</span><span class=\"p\">())</span></div></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>e376c0b3</code>"
+    }
+  ]
+}

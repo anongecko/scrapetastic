@@ -1,0 +1,254 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/_modules/scrapy/extensions/statsmailer.html",
+  "title": "scrapy.extensions.statsmailer — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy at a glance"
+    },
+    {
+      "type": "text",
+      "content": "Installation guide"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy Tutorial"
+    },
+    {
+      "type": "text",
+      "content": "Examples"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "text",
+      "content": "Command line tool"
+    },
+    {
+      "type": "text",
+      "content": "Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Selectors"
+    },
+    {
+      "type": "text",
+      "content": "Items"
+    },
+    {
+      "type": "text",
+      "content": "Item Loaders"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy shell"
+    },
+    {
+      "type": "text",
+      "content": "Item Pipeline"
+    },
+    {
+      "type": "text",
+      "content": "Feed exports"
+    },
+    {
+      "type": "text",
+      "content": "Requests and Responses"
+    },
+    {
+      "type": "text",
+      "content": "Link Extractors"
+    },
+    {
+      "type": "text",
+      "content": "Settings"
+    },
+    {
+      "type": "text",
+      "content": "Exceptions"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Logging"
+    },
+    {
+      "type": "text",
+      "content": "Stats Collection"
+    },
+    {
+      "type": "text",
+      "content": "Sending e-mail"
+    },
+    {
+      "type": "text",
+      "content": "Telnet Console"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "content": "Debugging Spiders"
+    },
+    {
+      "type": "text",
+      "content": "Spiders Contracts"
+    },
+    {
+      "type": "text",
+      "content": "Common Practices"
+    },
+    {
+      "type": "text",
+      "content": "Broad Crawls"
+    },
+    {
+      "type": "text",
+      "content": "Using your browser’s Developer Tools for scraping"
+    },
+    {
+      "type": "text",
+      "content": "Selecting dynamically-loaded content"
+    },
+    {
+      "type": "text",
+      "content": "Debugging memory leaks"
+    },
+    {
+      "type": "text",
+      "content": "Downloading and processing files and images"
+    },
+    {
+      "type": "text",
+      "content": "Deploying Spiders"
+    },
+    {
+      "type": "text",
+      "content": "AutoThrottle extension"
+    },
+    {
+      "type": "text",
+      "content": "Benchmarking"
+    },
+    {
+      "type": "text",
+      "content": "Jobs: pausing and resuming crawls"
+    },
+    {
+      "type": "text",
+      "content": "Coroutines"
+    },
+    {
+      "type": "text",
+      "content": "asyncio"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Architecture overview"
+    },
+    {
+      "type": "text",
+      "content": "Add-ons"
+    },
+    {
+      "type": "text",
+      "content": "Downloader Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Spider Middleware"
+    },
+    {
+      "type": "text",
+      "content": "Extensions"
+    },
+    {
+      "type": "text",
+      "content": "Signals"
+    },
+    {
+      "type": "text",
+      "content": "Scheduler"
+    },
+    {
+      "type": "text",
+      "content": "Item Exporters"
+    },
+    {
+      "type": "text",
+      "content": "Components"
+    },
+    {
+      "type": "text",
+      "content": "Core API"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Release notes"
+    },
+    {
+      "type": "text",
+      "content": "Contributing to Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "Versioning and API stability"
+    },
+    {
+      "type": "text",
+      "content": " »"
+    },
+    {
+      "type": "text",
+      "content": "Module code"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.extensions.statsmailer"
+    },
+    {
+      "type": "text",
+      "content": "\n      "
+    },
+    {
+      "type": "text",
+      "content": "Source code for scrapy.extensions.statsmailer"
+    },
+    {
+      "type": "code",
+      "content": "<pre>\n<span></span><span class=\"sd\">\"\"\"</span>\n<span class=\"sd\">StatsMailer extension sends an email when a spider finishes scraping.</span>\n\n<span class=\"sd\">Use STATSMAILER_RCPTS setting to enable and give the recipient mail address</span>\n<span class=\"sd\">\"\"\"</span>\n\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy</span> <span class=\"kn\">import</span> <span class=\"n\">signals</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.exceptions</span> <span class=\"kn\">import</span> <span class=\"n\">NotConfigured</span>\n<span class=\"kn\">from</span> <span class=\"nn\">scrapy.mail</span> <span class=\"kn\">import</span> <span class=\"n\">MailSender</span>\n\n\n<div class=\"viewcode-block\" id=\"StatsMailer\"><a class=\"viewcode-back\" href=\"../../../topics/extensions.html#scrapy.extensions.statsmailer.StatsMailer\">[docs]</a><span class=\"k\">class</span> <span class=\"nc\">StatsMailer</span><span class=\"p\">:</span>\n    <span class=\"k\">def</span> <span class=\"fm\">__init__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">stats</span><span class=\"p\">,</span> <span class=\"n\">recipients</span><span class=\"p\">,</span> <span class=\"n\">mail</span><span class=\"p\">):</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span> <span class=\"o\">=</span> <span class=\"n\">stats</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">recipients</span> <span class=\"o\">=</span> <span class=\"n\">recipients</span>\n        <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"n\">mail</span>\n\n    <span class=\"nd\">@classmethod</span>\n    <span class=\"k\">def</span> <span class=\"nf\">from_crawler</span><span class=\"p\">(</span><span class=\"bp\">cls</span><span class=\"p\">,</span> <span class=\"n\">crawler</span><span class=\"p\">):</span>\n        <span class=\"n\">recipients</span> <span class=\"o\">=</span> <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"o\">.</span><span class=\"n\">getlist</span><span class=\"p\">(</span><span class=\"s2\">\"STATSMAILER_RCPTS\"</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">recipients</span><span class=\"p\">:</span>\n            <span class=\"k\">raise</span> <span class=\"n\">NotConfigured</span>\n        <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"n\">MailSender</span><span class=\"o\">.</span><span class=\"n\">from_settings</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">settings</span><span class=\"p\">)</span>\n        <span class=\"n\">o</span> <span class=\"o\">=</span> <span class=\"bp\">cls</span><span class=\"p\">(</span><span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"p\">,</span> <span class=\"n\">recipients</span><span class=\"p\">,</span> <span class=\"n\">mail</span><span class=\"p\">)</span>\n        <span class=\"n\">crawler</span><span class=\"o\">.</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">,</span> <span class=\"n\">signal</span><span class=\"o\">=</span><span class=\"n\">signals</span><span class=\"o\">.</span><span class=\"n\">spider_closed</span><span class=\"p\">)</span>\n        <span class=\"k\">return</span> <span class=\"n\">o</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">spider_closed</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">spider</span><span class=\"p\">):</span>\n        <span class=\"n\">spider_stats</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">get_stats</span><span class=\"p\">(</span><span class=\"n\">spider</span><span class=\"p\">)</span>\n        <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"s2\">\"Global stats</span><span class=\"se\">\\n\\n</span><span class=\"s2\">\"</span>\n        <span class=\"n\">body</span> <span class=\"o\">+=</span> <span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">k</span><span class=\"si\">:</span><span class=\"s2\">&lt;50</span><span class=\"si\">}</span><span class=\"s2\"> : </span><span class=\"si\">{</span><span class=\"n\">v</span><span class=\"si\">}</span><span class=\"s2\">\"</span> <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">stats</span><span class=\"o\">.</span><span class=\"n\">get_stats</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">())</span>\n        <span class=\"n\">body</span> <span class=\"o\">+=</span> <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"se\">\\n\\n</span><span class=\"si\">{</span><span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"si\">}</span><span class=\"s2\"> stats</span><span class=\"se\">\\n\\n</span><span class=\"s2\">\"</span>\n        <span class=\"n\">body</span> <span class=\"o\">+=</span> <span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">k</span><span class=\"si\">:</span><span class=\"s2\">&lt;50</span><span class=\"si\">}</span><span class=\"s2\"> : </span><span class=\"si\">{</span><span class=\"n\">v</span><span class=\"si\">}</span><span class=\"s2\">\"</span> <span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">spider_stats</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">())</span>\n        <span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">mail</span><span class=\"o\">.</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">recipients</span><span class=\"p\">,</span> <span class=\"sa\">f</span><span class=\"s2\">\"Scrapy stats for: </span><span class=\"si\">{</span><span class=\"n\">spider</span><span class=\"o\">.</span><span class=\"n\">name</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">,</span> <span class=\"n\">body</span><span class=\"p\">)</span></div>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}

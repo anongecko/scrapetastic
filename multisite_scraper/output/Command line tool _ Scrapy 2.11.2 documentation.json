@@ -1,0 +1,1226 @@
+{
+  "url": "https://docs.scrapy.org/en/latest/topics/commands.html",
+  "title": "Command line tool — Scrapy 2.11.2 documentation",
+  "content": [
+    {
+      "type": "text",
+      "content": "First steps"
+    },
+    {
+      "type": "text",
+      "content": "Basic concepts"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Built-in services"
+    },
+    {
+      "type": "text",
+      "content": "Solving specific problems"
+    },
+    {
+      "type": "text",
+      "content": "Extending Scrapy"
+    },
+    {
+      "type": "text",
+      "content": "All the rest"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy is controlled through the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The Scrapy tool provides several commands, for multiple purposes, and each one\naccepts a different set of arguments and options."
+    },
+    {
+      "type": "text",
+      "content": "(The "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">deploy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapyd-deploy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Scrapy will look for configuration parameters in ini-style "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.cfg</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "/etc/scrapy.cfg"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/scrapy.cfg</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">c:\\scrapy\\scrapy.cfg</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "~/.config/scrapy.cfg"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">~/.config/scrapy.cfg</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">$XDG_CONFIG_HOME</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">~/.scrapy.cfg</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">$HOME</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "scrapy.cfg"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.cfg</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Settings from these files are merged in the listed order of preference:\nuser-defined values have higher priority than system-wide defaults\nand project-wide settings will override all others, when defined."
+    },
+    {
+      "type": "text",
+      "content": "Scrapy also understands, and can be configured through, a number of environment\nvariables. Currently these are:"
+    },
+    {
+      "type": "text",
+      "content": "SCRAPY_SETTINGS_MODULE"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SCRAPY_SETTINGS_MODULE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCRAPY_PROJECT"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SCRAPY_PROJECT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "SCRAPY_PYTHON_SHELL"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SCRAPY_PYTHON_SHELL</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Before delving into the command-line tool and its sub-commands, let’s first\nunderstand the directory structure of a Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Though it can be modified, all Scrapy projects have the same file\nstructure by default, similar to this:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy.cfg\nmyproject/\n    __init__.py\n    items.py\n    middlewares.py\n    pipelines.py\n    settings.py\n    spiders/\n        __init__.py\n        spider1.py\n        spider2.py\n        ...\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The directory where the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.cfg</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">[settings]</span>\n<span class=\"na\">default</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">myproject.settings</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "A project root directory, the one that contains the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.cfg</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "In that case, you must define one or more aliases for those settings modules\nunder "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">[settings]</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.cfg</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"k\">[settings]</span>\n<span class=\"na\">default</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">myproject1.settings</span>\n<span class=\"na\">project1</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">myproject1.settings</span>\n<span class=\"na\">project2</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">myproject2.settings</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "By default, the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">default</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">SCRAPY_PROJECT</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy settings --get BOT_NAME\nProject 1 Bot\n$ export SCRAPY_PROJECT=project2\n$ scrapy settings --get BOT_NAME\nProject 2 Bot\n</pre>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You can start by running the Scrapy tool with no arguments and it will print\nsome usage help and the available commands:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>Scrapy X.Y - no active project\n\nUsage:\n  scrapy &lt;command&gt; [options] [args]\n\nAvailable commands:\n  crawl         Run a spider\n  fetch         Fetch a URL using the Scrapy downloader\n[...]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The first line will print the currently active project if you’re inside a\nScrapy project. In this example it was run from outside a project. If run from inside\na project it would have printed something like this:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>Scrapy X.Y - project: myproject\n\nUsage:\n  scrapy &lt;command&gt; [options] [args]\n\n[...]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "The first thing you typically do with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy startproject myproject [project_dir]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "That will create a Scrapy project under the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">myproject</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Next, you go inside the new project directory:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>cd project_dir\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "And you’re ready to use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "You use the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "For example, to create a new spider:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy genspider mydomain mydomain.com\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Some Scrapy commands (like "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">crawl</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Also keep in mind that some commands may have slightly different behaviours\nwhen running them from inside projects. For example, the fetch command will use\nspider-overridden behaviours (such as the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">user_agent</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">fetch</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This section contains a list of the available built-in commands with a\ndescription and some usage examples. Remember, you can always get more info\nabout each command by running:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy &lt;command&gt; -h\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "And you can see all available commands with:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>scrapy -h\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "There are two kinds of commands, those that only work from inside a Scrapy\nproject (Project-specific commands) and those that also work without an active\nScrapy project (Global commands), though they may behave slightly different\nwhen running from inside a project (as they would use the project overridden\nsettings)."
+    },
+    {
+      "type": "text",
+      "content": "Global commands:"
+    },
+    {
+      "type": "text",
+      "content": "startproject"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">startproject</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "genspider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">genspider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "settings"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">settings</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "runspider"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">runspider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "shell"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">shell</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "fetch"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">fetch</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "view"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">view</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "version"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">version</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Project-only commands:"
+    },
+    {
+      "type": "text",
+      "content": "crawl"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">crawl</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "check"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">check</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "list"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">list</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "edit"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">edit</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "parse"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "bench"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-command docutils literal notranslate\"><span class=\"pre\">bench</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">startproject</span> <span class=\"pre\">&lt;project_name&gt;</span> <span class=\"pre\">[project_dir]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Creates a new Scrapy project named "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_name</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_dir</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">project_name</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy startproject myproject\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">genspider</span> <span class=\"pre\">[-t</span> <span class=\"pre\">template]</span> <span class=\"pre\">&lt;name&gt;</span> <span class=\"pre\">&lt;domain</span> <span class=\"pre\">or</span> <span class=\"pre\">URL&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.6.0: "
+    },
+    {
+      "type": "text",
+      "content": "Create a new spider in the current folder or in the current project’s "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">spiders</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;name&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;domain</span> <span class=\"pre\">or</span> <span class=\"pre\">URL&gt;</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">allowed_domains</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">start_urls</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy genspider -l\nAvailable templates:\n  basic\n  crawl\n  csvfeed\n  xmlfeed\n\n$ scrapy genspider example example.com\nCreated spider 'example' using template 'basic'\n\n$ scrapy genspider -t crawl scrapyorg scrapy.org\nCreated spider 'scrapyorg' using template 'crawl'\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "This is just a convenience shortcut command for creating spiders based on\npre-defined templates, but certainly not the only way to create spiders. You\ncan just create the spider source code files yourself, instead of using this\ncommand."
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">crawl</span> <span class=\"pre\">&lt;spider&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Start crawling using a spider."
+    },
+    {
+      "type": "text",
+      "content": "Supported options:"
+    },
+    {
+      "type": "text",
+      "content": "-h,"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-h,</span> <span class=\"pre\">--help</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "-a"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-a</span> <span class=\"pre\">NAME=VALUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--output"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--output</span> <span class=\"pre\">FILE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-o</span> <span class=\"pre\">FILE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-o</span> <span class=\"pre\">FILE:FORMAT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--overwrite-output"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--overwrite-output</span> <span class=\"pre\">FILE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-O</span> <span class=\"pre\">FILE</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-O</span> <span class=\"pre\">FILE:FORMAT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--output-format"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--output-format</span> <span class=\"pre\">FORMAT</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-t</span> <span class=\"pre\">FORMAT</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-O</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage examples:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy crawl myspider\n[ ... myspider starts crawling ... ]\n\n$ scrapy crawl -o myfile:csv myspider\n[ ... myspider starts crawling and appends the result to the file myfile in csv format ... ]\n\n$ scrapy crawl -O myfile:json myspider\n[ ... myspider starts crawling and saves the result in myfile in json format overwriting the original content... ]\n\n$ scrapy crawl -o myfile -t csv myspider\n[ ... myspider starts crawling and appends the result to the file myfile in csv format ... ]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">check</span> <span class=\"pre\">[-l]</span> <span class=\"pre\">&lt;spider&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Run contract checks."
+    },
+    {
+      "type": "text",
+      "content": "Usage examples:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy check -l\nfirst_spider\n  * parse\n  * parse_item\nsecond_spider\n  * parse\n  * parse_item\n\n$ scrapy check\n[FAILED] first_spider:parse_item\n&gt;&gt;&gt; 'RetailPricex' field is missing\n\n[FAILED] first_spider:parse\n&gt;&gt;&gt; Returned 92 requests, expected 0..4\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">list</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "List all available spiders in the current project. The output is one spider per\nline."
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy list\nspider1\nspider2\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">edit</span> <span class=\"pre\">&lt;spider&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Edit the given spider using the editor defined in the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">EDITOR</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">EDITOR</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "This command is provided only as a convenience shortcut for the most common\ncase, the developer is of course free to choose any tool or IDE to write and\ndebug spiders."
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy edit spider1\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">fetch</span> <span class=\"pre\">&lt;url&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Downloads the given URL using the Scrapy downloader and writes the contents to\nstandard output."
+    },
+    {
+      "type": "text",
+      "content": "The interesting thing about this command is that it fetches the page how the\nspider would download it. For example, if the spider has a "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">USER_AGENT</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "So this command can be used to “see” how your spider would fetch a certain page."
+    },
+    {
+      "type": "text",
+      "content": "If used outside a project, no particular per-spider behaviour would be applied\nand it will just use the default Scrapy downloader settings."
+    },
+    {
+      "type": "text",
+      "content": "Supported options:"
+    },
+    {
+      "type": "text",
+      "content": "--spider=SPIDER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--spider=SPIDER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--headers"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--headers</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--no-redirect"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--no-redirect</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage examples:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy fetch --nolog http://www.example.com/some/page.html\n[ ... html content here ... ]\n\n$ scrapy fetch --nolog --headers http://www.example.com/\n{'Accept-Ranges': ['bytes'],\n 'Age': ['1263   '],\n 'Connection': ['close     '],\n 'Content-Length': ['596'],\n 'Content-Type': ['text/html; charset=UTF-8'],\n 'Date': ['Wed, 18 Aug 2010 23:59:46 GMT'],\n 'Etag': ['\"573c1-254-48c9c87349680\"'],\n 'Last-Modified': ['Fri, 30 Jul 2010 15:30:18 GMT'],\n 'Server': ['Apache/2.2.3 (CentOS)']}\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">view</span> <span class=\"pre\">&lt;url&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Opens the given URL in a browser, as your Scrapy spider would “see” it.\nSometimes spiders see pages differently from regular users, so this can be used\nto check what the spider “sees” and confirm it’s what you expect."
+    },
+    {
+      "type": "text",
+      "content": "Supported options:"
+    },
+    {
+      "type": "text",
+      "content": "--spider=SPIDER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--spider=SPIDER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--no-redirect"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--no-redirect</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy view http://www.example.com/some/page.html\n[ ... browser starts ... ]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">shell</span> <span class=\"pre\">[url]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Starts the Scrapy shell for the given URL (if given) or empty if no URL is\ngiven. Also supports UNIX-style local file paths, either relative with\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">./</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">../</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Supported options:"
+    },
+    {
+      "type": "text",
+      "content": "--spider=SPIDER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--spider=SPIDER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "-c"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-c</span> <span class=\"pre\">code</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--no-redirect"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--no-redirect</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">fetch(url)</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy shell http://www.example.com/some/page.html\n[ ... scrapy shell starts ... ]\n\n$ scrapy shell --nolog http://www.example.com/ -c '(response.status, response.url)'\n(200, 'http://www.example.com/')\n\n# shell follows HTTP redirects by default\n$ scrapy shell --nolog http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F -c '(response.status, response.url)'\n(200, 'http://example.com/')\n\n# you can disable this with --no-redirect\n# (only for the URL passed as command line argument)\n$ scrapy shell --no-redirect --nolog http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F -c '(response.status, response.url)'\n(302, 'http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F')\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">parse</span> <span class=\"pre\">&lt;url&gt;</span> <span class=\"pre\">[options]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Fetches the given URL and parses it with the spider that handles it, using the\nmethod passed with the "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--callback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">parse</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Supported options:"
+    },
+    {
+      "type": "text",
+      "content": "--spider=SPIDER"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--spider=SPIDER</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--a"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--a</span> <span class=\"pre\">NAME=VALUE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--callback"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--callback</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-c</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--meta"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--meta</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-m</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--cbkwargs"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--cbkwargs</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--pipelines"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--pipelines</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--rules"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--rules</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-r</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref py py-class docutils literal notranslate\"><span class=\"pre\">CrawlSpider</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--noitems"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--noitems</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--nolinks"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--nolinks</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--nocolour"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--nocolour</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--depth"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--depth</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-d</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--verbose"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--verbose</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-v</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "--output"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">--output</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-o</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "New in version 2.3."
+    },
+    {
+      "type": "text",
+      "content": "Usage example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy parse http://www.example.com/ -c parse_item\n[ ... scrapy log lines crawling example.com spider ... ]\n\n&gt;&gt;&gt; STATUS DEPTH LEVEL 1 &lt;&lt;&lt;\n# Scraped Items  ------------------------------------------------------------\n[{'name': 'Example item',\n 'category': 'Furniture',\n 'length': '12 cm'}]\n\n# Requests  -----------------------------------------------------------------\n[]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">settings</span> <span class=\"pre\">[options]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Get the value of a Scrapy setting."
+    },
+    {
+      "type": "text",
+      "content": "If used inside a project it’ll show the project setting value, otherwise it’ll\nshow the default Scrapy value for that setting."
+    },
+    {
+      "type": "text",
+      "content": "Example usage:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy settings --get BOT_NAME\nscrapybot\n$ scrapy settings --get DOWNLOAD_DELAY\n0\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">runspider</span> <span class=\"pre\">&lt;spider_file.py&gt;</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Run a spider self-contained in a Python file, without having to create a\nproject."
+    },
+    {
+      "type": "text",
+      "content": "Example usage:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span>$ scrapy runspider myspider.py\n[ ... spider starts crawling ... ]\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">version</span> <span class=\"pre\">[-v]</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Prints the Scrapy version. If used with "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">-v</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Syntax: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy</span> <span class=\"pre\">bench</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Requires project: "
+    },
+    {
+      "type": "text",
+      "content": "Run a quick benchmark test. "
+    },
+    {
+      "type": "text",
+      "content": "You can also add your custom project commands by using the\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"xref std std-setting docutils literal notranslate\"><span class=\"pre\">COMMANDS_MODULE</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "Default: "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">''</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "A module to use for looking up custom Scrapy commands. This is used to add custom\ncommands for your Scrapy project."
+    },
+    {
+      "type": "text",
+      "content": "Example:"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"n\">COMMANDS_MODULE</span> <span class=\"o\">=</span> <span class=\"s2\">\"mybot.commands\"</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "You can also add Scrapy commands from an external library by adding a\n"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">scrapy.commands</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">setup.py</span></code>"
+    },
+    {
+      "type": "text",
+      "content": "The following example adds "
+    },
+    {
+      "type": "code",
+      "content": "<code class=\"docutils literal notranslate\"><span class=\"pre\">my_command</span></code>"
+    },
+    {
+      "type": "code",
+      "content": "<pre><span></span><span class=\"kn\">from</span> <span class=\"nn\">setuptools</span> <span class=\"kn\">import</span> <span class=\"n\">setup</span><span class=\"p\">,</span> <span class=\"n\">find_packages</span>\n\n<span class=\"n\">setup</span><span class=\"p\">(</span>\n    <span class=\"n\">name</span><span class=\"o\">=</span><span class=\"s2\">\"scrapy-mymodule\"</span><span class=\"p\">,</span>\n    <span class=\"n\">entry_points</span><span class=\"o\">=</span><span class=\"p\">{</span>\n        <span class=\"s2\">\"scrapy.commands\"</span><span class=\"p\">:</span> <span class=\"p\">[</span>\n            <span class=\"s2\">\"my_command=my_scrapy_module.commands:MyCommand\"</span><span class=\"p\">,</span>\n        <span class=\"p\">],</span>\n    <span class=\"p\">},</span>\n<span class=\"p\">)</span>\n</pre>"
+    },
+    {
+      "type": "text",
+      "content": "© Copyright Scrapy developers.\n      "
+    },
+    {
+      "type": "code",
+      "content": "<code>b84d000c</code>"
+    }
+  ]
+}
