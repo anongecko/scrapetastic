@@ -2,7 +2,7 @@
 
 ## Description
 
-Scrapetastic is a powerful, flexible, and feature-rich web scraping tool built with Scrapy and enhanced with Playwright for JavaScript rendering. It's designed to efficiently crawl and extract data from multiple websites while adhering to ethical scraping practices.
+Scrapetastic is a powerful, flexible, and feature-rich web scraping tool built with Scrapy and enhanced with Playwright for JavaScript rendering. It's designed to efficiently crawl and extract data from multiple websites while adhering to ethical scraping practices. Make sure to create a sites_to_scrape.txt file in your project directory with a list of URLs to scrape, one per line.
 
 ## Features
 
