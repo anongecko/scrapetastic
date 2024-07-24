@@ -1,0 +1,5 @@
+Scrapy==2.8.0
+trafilatura==1.5.0
+jsonschema==4.17.3
+pip install playwright==1.35.0
+pip install scrapy-playwright==0.0.31
