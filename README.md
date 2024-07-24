@@ -1,8 +1,8 @@
-# Multisite Web Scraper
+# Scrapetastic
 
 ## Description
 
-Multisite Web Scraper is a powerful, flexible, and feature-rich web scraping tool built with Scrapy and enhanced with Playwright for JavaScript rendering. It's designed to efficiently crawl and extract data from multiple websites while adhering to ethical scraping practices.
+Scrapetastic is a powerful, flexible, and feature-rich web scraping tool built with Scrapy and enhanced with Playwright for JavaScript rendering. It's designed to efficiently crawl and extract data from multiple websites while adhering to ethical scraping practices.
 
 ## Features
 
