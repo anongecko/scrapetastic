@@ -8,6 +8,7 @@ import json
 import asyncio
 import hashlib
 from datetime import datetime
+from tqdm import tqdm
 from ..utils.content_extractor import extract_content
 from ..utils.data_processor import process_data
 from ..utils.link_analyzer import analyze_links
@@ -75,7 +76,8 @@ class MultisiteSpider(SitemapSpider):
 
     def __init__(self, *args, **kwargs):
         super(MultisiteSpider, self).__init__(*args, **kwargs)
-        self.start_urls = kwargs.get('start_urls', '').split(',')
+        self.sites_file = kwargs.get('sites_file', 'sites_to_scrape.txt')
+        self.start_urls = self.load_sites()
         self.allowed_domains = [urlparse(url).netloc for url in self.start_urls]
         self.sitemap_urls = [f"{url}/sitemap.xml" for url in self.start_urls]
         self.max_pages = int(kwargs.get('max_pages', 1000))
@@ -91,9 +93,25 @@ class MultisiteSpider(SitemapSpider):
             "[role='tab']",
             # Add more selectors as needed
         ]
+        self.current_site = None
+        self.current_site_pages = 0
+        self.progress_bars = {}
+
+    def load_sites(self):
+        with open(self.sites_file, 'r') as f:
+            return [line.strip() for line in f if line.strip()]
+
+    def update_sites_file(self):
+        with open(self.sites_file, 'w') as f:
+            for url in self.start_urls:
+                if url != self.current_site:
+                    f.write(f"{url}\n")
 
     def start_requests(self):
         for url in self.start_urls:
+            self.current_site = url
+            self.current_site_pages = 0
+            self.progress_bars[url] = tqdm(total=self.max_pages, desc=f"Crawling {url}", unit="page")
             yield scrapy.Request(url, callback=self.parse, meta={
                 "playwright": True,
                 "playwright_include_page": True,
@@ -116,7 +134,12 @@ class MultisiteSpider(SitemapSpider):
             new_response = response.replace(body=content)
 
             self.page_count += 1
-            if self.page_count > self.max_pages:
+            self.current_site_pages += 1
+            self.progress_bars[self.current_site].update(1)
+
+            if self.current_site_pages >= self.max_pages:
+                self.progress_bars[self.current_site].close()
+                self.update_sites_file()
                 await page.close()
                 return
 
@@ -152,7 +175,7 @@ class MultisiteSpider(SitemapSpider):
             # Follow links within the same domain
             for href in new_response.css('a::attr(href)').getall():
                 url = response.urljoin(href)
-                if urlparse(url).netloc in self.allowed_domains:
+                if urlparse(url).netloc == urlparse(self.current_site).netloc:
                     yield scrapy.Request(url, callback=self.parse, meta={
                         "playwright": True,
                         "playwright_include_page": True,
@@ -189,14 +212,18 @@ class MultisiteSpider(SitemapSpider):
         self.log(f"Total duration: {duration}")
         generate_documentation(self)
 
+        # Close any remaining progress bars
+        for bar in self.progress_bars.values():
+            bar.close()
+
         # Generate a crawl report
         report = {
             "start_time": self.start_time.isoformat(),
             "end_time": end_time.isoformat(),
             "duration": str(duration),
             "total_pages": self.page_count,
-            "max_pages": self.max_pages,
-            "allowed_domains": self.allowed_domains,
+            "max_pages_per_site": self.max_pages,
+            "sites_crawled": list(self.progress_bars.keys()),
             "reason": reason
         }
         
